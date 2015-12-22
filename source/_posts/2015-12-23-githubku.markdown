@@ -1,0 +1,34 @@
+---
+layout: post
+title: "GitHub库"
+date: 2015-12-23 02:31:25 +0800
+comments: true
+categories: GitHub 
+---
+
+[Erik](https://github.com/phimage/Erik) ---  WebKit的分装，较好支持CSS和JS
+
+[KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess)
+
+[ios-charts](https://github.com/danielgindi/ios-charts) ---   表格
+
+[顶部标题滚动条](http://www.jianshu.com/p/b45655e23a42)
+
+[XXYAudioEngine](https://github.com/xxycode/XXYAudioEngine) --- 基于NSURLSession和AVAudioPlayer封装的一个播放在线音乐的工具，可以把音乐下载至本地，支持清除缓存
+
+[VirwMonitor 点击测量视图位置、大小、背景、字体大小等信息](https://github.com/daisuke0131/ViewMonitor)
+
+[netfox：iOS 网络调试工具](https://github.com/kasketis/netfox) --- 配置只需一行代码，可以调试包括第三方库在内的网络请求
+
+[ImagePicker is an all-in-one camera solution for your iOS app](https://github.com/hyperoslo/ImagePicker)
+
+[高性能 AttributedLabel](https://github.com/KyoheiG3/AttributedLabel)
+
+[KeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)
+
+[tabBar上的角标Category写法，无需继承子类](https://github.com/DeveloperLx/LxTabBadgePoint)
+
+[Export your Live Photos as animated GIFs](https://github.com/neonichu/LiveGIFs)
+
+[实现类似微信的 webView 导航效果，左滑返回上个网页](https://github.com/Roxasora/RxWebViewController)
+

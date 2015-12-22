@@ -1,0 +1,31 @@
+#banner {
+  display: block;
+  padding: 0;
+  border-top: none;
+
+  section.about {
+    margin: 20px auto;
+    border: 1px dotted #258fb8;
+    min-height: 80px;
+    background: white;
+
+    .avatar {
+    	float: left;
+    	padding-right: 20px;
+    }
+    p {
+      padding: 14px;
+      font-size: 14px;
+      line-height: 24px;
+      text-align: left;
+
+      .hi {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
+    .more img {
+      margin-bottom: -4px;
+    }
+  }
+}
