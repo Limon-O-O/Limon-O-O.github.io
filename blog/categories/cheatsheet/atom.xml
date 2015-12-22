@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: cheatsheet | Limon's Blog]]></title>
+  <link href="http://devinwadsworth.com/blog/categories/cheatsheet/atom.xml" rel="self"/>
+  <link href="http://devinwadsworth.com/"/>
+  <updated>2015-12-23T05:09:57+08:00</updated>
+  <id>http://devinwadsworth.com/</id>
+  <author>
+    <name><![CDATA[Limon]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CheatSheet]]></title>
+    <link href="http://devinwadsworth.com/blog/2015/12/23/cheatsheet/"/>
+    <updated>2015-12-23T02:22:06+08:00</updated>
+    <id>http://devinwadsworth.com/blog/2015/12/23/cheatsheet</id>
+    <content type="html"><![CDATA[<p>判断一个view是否是另一个view的子视图
+<code>
+- (BOOL)isDescendantOfView:(UIView *)view;
+</code></p>
+
+<p>隐藏或显示&#8221;隐藏文件&#8221;
+<code>
+defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder
+</code></p>
+
+<h3>Octopress</h3>
+
+<pre><code>rake "new_post[Post Title]" // zsh下
+rake generate                                  生成html文件
+rake preview
+rake deploy                                    部署文章（博客）
+</code></pre>
+
+<pre><code>git add .
+git commit -m 'initial source commit'
+git push origin source
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

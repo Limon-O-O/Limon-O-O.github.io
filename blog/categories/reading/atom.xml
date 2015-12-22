@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: reading | Limon's Blog]]></title>
+  <link href="http://devinwadsworth.com/blog/categories/reading/atom.xml" rel="self"/>
+  <link href="http://devinwadsworth.com/"/>
+  <updated>2015-12-23T05:09:57+08:00</updated>
+  <id>http://devinwadsworth.com/</id>
+  <author>
+    <name><![CDATA[Limon]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Reading record]]></title>
+    <link href="http://devinwadsworth.com/blog/2015/01/02/reading-record/"/>
+    <updated>2015-01-02T10:16:07+08:00</updated>
+    <id>http://devinwadsworth.com/blog/2015/01/02/reading-record</id>
+    <content type="html"><![CDATA[<h2>Swift</h2>
+
+<p><a href="http://www.devtalking.com/articles/ios-design-pattern-in-swift-1/">Swift 中的iOS设计模式（一）</a></p>
+
+<p><a href="http://swiftist.org/topics/165">Swift 编程风格指南</a></p>
+
+<p><a href="http://stackoverflow.com/questions/24183812/swift-warning-equivalent">Showing TODO as a warning in a Swift Xcode project</a> &mdash; 以⚠️的形式显示TODO、FIXME</p>
+
+<p><a href="http://mikebuss.com/2014/06/22/lazy-initialization-swift/">Lazy Initialization with Swift</a></p>
+
+<p><a href="https://github.com/callmewhy/Swift90Days/blob/master/Day11-initialization.md">Swift90Days - 蛋疼的初始化过程</a></p>
+
+<p><a href="http://nomothetis.svbtle.com/error-handling-in-swift">Error Handling in Swift: Might and Magic</a></p>
+
+<p><a href="http://natashatherobot.com/swift-guard-better-than-if/">Swift 2.0: Why Guard is Better than If</a></p>
+
+<p><a href="https://github.com/100mango/zen/blob/master/2015%20WWDC%20%E6%80%BB%E7%BB%93/2015%20WWDC%20Best%20Practices.md">2015 WWDC Best Practices</a></p>
+
+<p><a href="http://swifter.tips/lazy/">LAZY 修饰符和 LAZY 方法</a></p>
+
+<p><a href="http://oleb.net/blog/2015/12/lazy-properties-in-structs-swift/">Lazy Properties in Structs</a></p>
+
+<p><a href="http://www.obqo.de/blog/2015/11/25/true-lazy-sequences/">True Lazy Sequences</a></p>
+
+<p><a href="http://swift.gg/2015/09/25/ask-erica-how-do-i-loop-from-non-zero-n-swiftlang/">Swift 2.0 数组遍历</a></p>
+
+<p><a href="http://www.mokacoding.com/blog/demistifying-swift-functor/">Swift Optionals, Functional Programming, and You</a> &mdash; 函数式编程</p>
+
+<p><a href="http://www.cocoachina.com/ios/20150916/13324.html">用同一个工程创建两个不同版本的应用</a> &mdash; 如果同一个应用, 需要做一个带广告Lite版本, 一个不带广告的Pro版本. 那么问题来了, 该如何优雅的去实现呢？</p>
+
+<p><a href="https://pspdfkit.com/blog/2015/presentation-controllers/">Presentation Controllers and Adaptive Presentations</a> &mdash; 👍🏼</p>
+
+<p><a href="https://www.omnigroup.com/developer/how-to-make-text-in-a-uivisualeffectview-readable-on-any-background">如何让 UIVisualEffectView 上面显示可读的文字</a></p>
+
+<h5>Enum</h5>
+
+<p><a href="http://swift.gg/2015/11/20/advanced-practical-enum-examples/">Swift 中枚举高级用法及实践</a></p>
+
+<p><a href="http://ericasadun.com/2015/10/19/sets-vs-dictionaries-smackdown-in-swiftlang/?utm_campaign=Swift%252BSandbox&amp;utm_medium=email&amp;utm_source=Swift_Sandbox_12">用枚举作 Options</a></p>
+
+<p><a href="http://swift.gg/2015/11/20/advanced-practical-enum-examples/#API_%E7%AB%AF%E7%82%B9">用枚举作 Rest API</a></p>
+
+<h5>Protocol</h5>
+
+<p><a href="http://natashatherobot.com/protocol-oriented-segue-identifiers-swift/">Protocol-Oriented Segue Identifiers in Swift</a>
+<a href="http://swift.gg/2015/12/15/mixins-over-inheritance/">Mixins 比继承更好</a> &mdash; 面向协议编程</p>
+
+<h2>优化</h2>
+
+<p><a href="http://blog.vars.me/blog/2015/04/26/UICollectionView-Optimizing/">UICollectionView的数据预加载及图片加载逻辑的优化</a></p>
+
+<p><a href="https://github.com/100mango/zen/blob/master/WWDC%E5%BF%83%E5%BE%97%EF%BC%9AAdvanced%20Graphics%20and%20Animations%20for%20iOS%20Apps/Advanced%20Graphics%20and%20Animations%20for%20iOS%20Apps.md">iOS图形性能进阶与测试</a></p>
+
+<p><a href="http://blog.cnbang.net/tech/2578/">iOS图片加载速度极限优化—FastImageCache解析</a></p>
+
+<p><a href="http://blog.cnbang.net/tech/2544/">iOS可执行文件瘦身方法</a></p>
+
+<p><a href="http://www.jianshu.com/p/0d972f45da86?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_author_hots&amp;utm_source=recommendation">iOS生产力之小工具合集</a>
+<a href="http://www.jianshu.com/p/9e1f0b44935c">iOS性能优化</a></p>
+
+<p><a href="http://ios.jobbole.com/83058/">10个加速Table Views开发的建议</a></p>
+
+<p><a href="http://www.ibm.com/developerworks/cn/mobile/mo-ios-memory/">使用 Swift 和 Objective-C 执行 iOS 内存管理的 7 个简单技巧</a></p>
+
+<p><a href="http://southpeak.github.io/blog/2015/12/20/perfect-smooth-scrolling-in-uitableviews/">Perfect smooth scrolling in UITableViews</a></p>
+
+<h2>底层</h2>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=400417748&amp;idx=1&amp;sn=0c5f6747dd192c5a0eea32bb4650c160&amp;scene=1&amp;srcid=1119iAGp9HUSGEMTBjUSM7L0&amp;key=d72a47206eca0ea9f5fd845c39ebee1715577b3db18f002c19b3747d6f2525f50d9ef530d825ee227e428e6dc5bd58a3&amp;ascene=0&amp;uin=MjY5MzMxNTMwMQ%3D%3D">iOS 事件处理机制与图像渲染过程</a></p>
+
+<h2>内存管理</h2>
+
+<p><a href="http://www.oschina.net/translate/automatic-reference-counting-on-ios">iOS开发之ARC</a></p>
+
+<p><a href="http://onevcat.com/2012/06/arc-hand-by-hand/">手把手教你ARC——iOS/Mac开发ARC入门和使用</a></p>
+
+<p><a href="http://blog.csdn.net/nicktang/article/details/6792972">IOS 5编程 内存管理 ARC技术概述</a></p>
+
+<p><a href="http://www.yifeiyang.net/development-of-the-iphone-simply-1/">iPhone开发之深入浅出 (1) — ARC是什么</a></p>
+
+<h2>线程</h2>
+
+<p><a href="http://blog.cnbluebox.com/blog/2014/07/01/cocoashen-ru-xue-xi-nsoperationqueuehe-nsoperationyuan-li-he-shi-yong/">Cocoa深入学习:NSOperationQueue、NSRunLoop和线程安全</a></p>
+
+<p><a href="http://www.cnblogs.com/kenshincui/p/3983982.html">iOS开发系列&ndash;并行开发其实很容易</a></p>
+
+<p><a href="http://ksnowlv.github.io/blog/2014/09/07/ios-tong-bu-suo-xing-neng-dui-bi/">iOS同步对象性能对比</a></p>
+
+<h2>工具</h2>
+
+<p><a href="http://www.bmob.cn">Bmob移动后端云服务平台</a></p>
+
+<p><a href="https://leancloud.cn/docs/rest_api.html">和应用服务器、存储服务器说再见</a></p>
+
+<h2>CoreData</h2>
+
+<p><a href="http://www.jianshu.com/p/5a84008307ad">Core Data: 非标准数据类型总结</a></p>
+
+<h2>CocoaPods</h2>
+
+<p><a href="http://blog.devtang.com/blog/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/">用CocoaPods做iOS程序的依赖管理</a></p>
+
+<p><a href="http://gracelancy.com/blog/2013/08/11/make-your-own-cocoapods-spec/">制作自己的CocoaPods Spec</a></p>
+
+<p><a href="http://www.iwangke.me/2013/04/18/advanced-cocoapods/">CocoaPods进阶：本地包管理</a></p>
+
+<p><a href="http://lexrus.com/setup-a-mirror-of-cocoapods-specs.html">Setup a mirror of CocoaPods/Specs</a></p>
+
+<p><a href="http://blog.csdn.net/agdsdl/article/details/45218987#0-tsina-1-51027-397232819ff9a47a7b7e80a40613cfe1">CocoaPods建立私有仓库</a></p>
+
+<h2>杂</h2>
+
+<p><a href="http://blog.sunnyxx.com/2014/12/20/64-bit-tips/">64-bit Tips</a></p>
+
+<p><a href="http://blog.sunnyxx.com/2014/10/15/behind-autorelease/">黑幕背后的Autorelease</a></p>
+
+<p><a href="http://mobile.51cto.com/iphone-284112.htm">Objective-C内存管理如何理解Autorelease</a></p>
+
+<p><a href="http://cocoa.venj.me/blog/view-controller-based-status-bar-style-and-uinavigationcontroller/#comment-1501032470">UINavigationController和View Controller-based状态栏风格</a> &mdash;&mdash; 指定状态栏风格</p>
+
+<p><a href="http://gracelancy.com/blog/2014/05/05/variable-argument-lists/">Variable Argument Lists</a> &mdash;&mdash; 可变参数函数的定义</p>
+
+<p><a href="http://www.imooc.com/wenda/detail/244497">100个iOS开发/设计面试题汇总</a></p>
+
+<p><a href="http://codingobjc.com/blog/2014/10/15/shi-yong-autolayoutshi-xian-uitableviewde-celldong-tai-bu-ju-he-ke-bian-xing-gao/">使用Autolayout实现UITableView的Cell动态布局和高度动态改变</a></p>
+
+<p><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">常用 Git 命令清单</a></p>
+
+<p><a href="http://flexmonkey.blogspot.co.nz/2015/12/scribe-handwriting-recognition.html"> 手写识别组建 A Handwriting Recognition Component for iOS </a></p>
+
+<p><a href="http://www.jianshu.com/p/98610bdc9bd6"> 加密解密介绍 </a></p>
+
+<p><a href="http://tech.glowing.com/cn/change-uinavigationbar-backgroundcolor-dynamically/">动态修改UINavigationBar的背景色</a></p>
+]]></content>
+  </entry>
+  
+</feed>
