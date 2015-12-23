@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: record | Limon's Blog]]></title>
-  <link href="http://devinwadsworth.com/blog/categories/record/atom.xml" rel="self"/>
-  <link href="http://devinwadsworth.com/"/>
-  <updated>2015-12-23T05:09:57+08:00</updated>
-  <id>http://devinwadsworth.com/</id>
+  <link href="limon.top/blog/categories/record/atom.xml" rel="self"/>
+  <link href="limon.top/"/>
+  <updated>2015-12-23T23:01:57+08:00</updated>
+  <id>limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
     
@@ -15,10 +15,18 @@
   
   <entry>
     <title type="html"><![CDATA[Reading record]]></title>
-    <link href="http://devinwadsworth.com/blog/2015/01/02/reading-record/"/>
+    <link href="limon.top/blog/2015/01/02/reading-record/"/>
     <updated>2015-01-02T10:16:07+08:00</updated>
-    <id>http://devinwadsworth.com/blog/2015/01/02/reading-record</id>
-    <content type="html"><![CDATA[<h2>Swift</h2>
+    <id>limon.top/blog/2015/01/02/reading-record</id>
+    <content type="html"><![CDATA[<h2>Ask and Answer</h2>
+
+<p><a href="http://stackoverflow.com/questions/24788283/ios-animate-morph-shape-from-circle-to-square">圆形和正方形之间的动画</a></p>
+
+<p><a href="http://codingobjc.com/blog/2014/10/15/shi-yong-autolayoutshi-xian-uitableviewde-celldong-tai-bu-ju-he-ke-bian-xing-gao/">使用Autolayout实现UITableView的Cell动态布局和高度动态改变</a></p>
+
+<p><a href="http://stackoverflow.com/questions/20320591/uitableview-and-presentviewcontroller-takes-2-clicks-to-display">UITableView点击两次才能Present</a></p>
+
+<h2>包罗万象</h2>
 
 <p><a href="http://www.devtalking.com/articles/ios-design-pattern-in-swift-1/">Swift 中的iOS设计模式（一）</a></p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: cheatsheet | Limon's Blog]]></title>
-  <link href="http://devinwadsworth.com/blog/categories/cheatsheet/atom.xml" rel="self"/>
-  <link href="http://devinwadsworth.com/"/>
-  <updated>2015-12-23T05:09:57+08:00</updated>
-  <id>http://devinwadsworth.com/</id>
+  <link href="limon.top/blog/categories/cheatsheet/atom.xml" rel="self"/>
+  <link href="limon.top/"/>
+  <updated>2015-12-23T23:01:57+08:00</updated>
+  <id>limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
     
@@ -15,31 +15,140 @@
   
   <entry>
     <title type="html"><![CDATA[CheatSheet]]></title>
-    <link href="http://devinwadsworth.com/blog/2015/12/23/cheatsheet/"/>
+    <link href="limon.top/blog/2015/12/23/cheatsheet/"/>
     <updated>2015-12-23T02:22:06+08:00</updated>
-    <id>http://devinwadsworth.com/blog/2015/12/23/cheatsheet</id>
-    <content type="html"><![CDATA[<p>判断一个view是否是另一个view的子视图
+    <id>limon.top/blog/2015/12/23/cheatsheet</id>
+    <content type="html"><![CDATA[<p>NSURL 解析</p>
+
+<pre><code class="swift">
+extension NSURL {
+    var prt_URLItems: [String: String]? {
+
+        let components = NSURLComponents(URL: self, resolvingAgainstBaseURL: false)
+
+        guard let items = components?.queryItems else {
+            return nil
+        }
+
+        var infos = [String: String]()
+        items.forEach {
+            infos[$0.name] = $0.value
+        }
+        return infos
+    }
+}
+</code></pre>
+
+<pre><code class="swift">
+let items = NSURL(string: "http://www.weibo.com/1783821582/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo")?.prt_URLItems
+print(items)
+
+// Optional(["mod": "personinfo", "rightmod": "1", "wvr": "6"])
+</code></pre>
+
+<p><br /></p>
+
+<p>判断一个view是否是另一个view的子视图</p>
+
+<pre><code class="swift">- (BOOL)isDescendantOfView:(UIView *)view;
+</code></pre>
+
+<p><br /></p>
+
+<p>隐藏或显示&#8221;隐藏文件&#8221;</p>
+
+<pre><code>defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder
+</code></pre>
+
+<p><br /></p>
+
+<p>设置圆角（左上角，右上角）</p>
+
+<pre><code>UIBezierPath(roundedRect: ScreenBounds, byRoundingCorners: [.TopLeft, .TopRight], cornerRadii: CGSize(width: cornerRadius, height: 0.0))
+</code></pre>
+
+<p><br /></p>
+
+<p>BasicAnimation</p>
+
+<pre><code>let pathAnimation = CABasicAnimation(keyPath: "path")
+pathAnimation.fromValue = startPath
+pathAnimation.toValue = endPath
+pathAnimation.duration = 0.3
+pathAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut) // animation curve is Ease Out
+pathAnimation.fillMode = kCAFillModeBoth // keep to value after finishing
+pathAnimation.removedOnCompletion = false // don't remove after finishing
+
+shapeLayer.addAnimation(pathAnimation, forKey: pathAnimation.keyPath)
+</code></pre>
+
+<blockquote><p><a href="http://jamesonquave.com/blog/fun-with-cashapelayer/">Fun with CAShapeLayer</a></p></blockquote>
+
+<p><br /></p>
+
+<p>根据触摸点判断是否touch点击了某个View</p>
+
+<pre><code>override func touchesBegan(touches: Set&lt;NSObject&gt;, withEvent event: UIEvent) {
+    super.touchesBegan(touches, withEvent: event)
+
+    if let location = (touches.first as? UITouch)?.locationInView(self.view) {
+        let searchCircleY = bottomView.frame.origin.y + searchCircleImageView.frame.origin.y
+        let frame = CGRect(origin: CGPoint(x:searchCircleImageView.frame.origin.x, y:searchCircleY) , size: searchCircleImageView.size)
+        if CGRectContainsPoint(frame, location) { // 点击在searchCircleImageView
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+}
+</code></pre>
+
+<p><br /></p>
+
+<p>隐藏键盘(点击屏幕任意位置)</p>
+
+<pre><code>-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
+}
+</code></pre>
+
+<p><br /></p>
+
+<p>在包含UITableView视图中添加单击手势
+如果在包含UITableView视图中添加单击手势，这个单击手势会屏蔽掉UITableView的<code>didSelectRowAtIndexPath</code></p>
+
+<p>在单击点位于UITableView内的时候取消响应</p>
+
+<pre><code>- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    CGPoint point = [gestureRecognizer locationInView:self];
+    if(CGRectContainsPoint(menuTableView.frame, point)){
+        return NO;
+    }
+    return YES;
+}
+</code></pre>
+
+<p>简单点的就将单击手势的cancelsTouchesInView设置为NO即可</p>
+
+<pre><code class="swift">singleTap.cancelsTouchesInView = false
+</code></pre>
+
+<blockquote><p>默认为YES，若NO，Gesture Recognizers和hit-test view同时响应触摸序列</p></blockquote>
+
+<p><br /></p>
+
+<p>Octopress
 <code>
-- (BOOL)isDescendantOfView:(UIView *)view;
-</code></p>
-
-<p>隐藏或显示&#8221;隐藏文件&#8221;
-<code>
-defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder
-</code></p>
-
-<h3>Octopress</h3>
-
-<pre><code>rake "new_post[Post Title]" // zsh下
+rake "new_post[Post Title]" // zsh下
 rake generate                                  生成html文件
 rake preview
 rake deploy                                    部署文章（博客）
-</code></pre>
-
-<pre><code>git add .
+</code>
+<code>
+git add .
 git commit -m 'initial source commit'
 git push origin source
-</code></pre>
+</code>
+<br /></p>
 ]]></content>
   </entry>
   

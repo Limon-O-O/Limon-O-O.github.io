@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: effective-oc | Limon's Blog]]></title>
-  <link href="http://devinwadsworth.com/blog/categories/effective-oc/atom.xml" rel="self"/>
-  <link href="http://devinwadsworth.com/"/>
-  <updated>2015-12-23T05:09:57+08:00</updated>
-  <id>http://devinwadsworth.com/</id>
+  <link href="limon.top/blog/categories/effective-oc/atom.xml" rel="self"/>
+  <link href="limon.top/"/>
+  <updated>2015-12-23T23:01:57+08:00</updated>
+  <id>limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[#01-字面量语法]]></title>
-    <link href="http://devinwadsworth.com/blog/2014/05/26/number-01-zi-mian-liang-yu-fa/"/>
+    <link href="limon.top/blog/2014/05/26/number-01-zi-mian-liang-yu-fa/"/>
     <updated>2014-05-26T12:40:19+08:00</updated>
-    <id>http://devinwadsworth.com/blog/2014/05/26/number-01-zi-mian-liang-yu-fa</id>
+    <id>limon.top/blog/2014/05/26/number-01-zi-mian-liang-yu-fa</id>
     <content type="html"><![CDATA[<h2>字面量数值</h2>
 
 <p>普通创建：</p>

@@ -7,9 +7,23 @@
 	<meta name="author" content="Limon">
 
 	
-	<meta name="description" content="cheatsheet Dec 23rd, 2015 2:22 am 判断一个view是否是另一个view的子视图 1
-- (BOOL)isDescendantOfView:(UIView *)view; 隐藏或显示"隐藏文件" 1
-defaults write com.apple.finder &hellip;">
+	<meta name="description" content="CheatSheet cheatsheet Dec 23rd, 2015 2:22 am NSURL 解析 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+extension NSURL { var prt_URLItems: [String: String &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -31,6 +45,7 @@ defaults write com.apple.finder &hellip;">
 </header>
 
 	<div id="content" class="inner"><article class="post">
+	
 	<h2 class="title">CheatSheet</h2>
 
 	
@@ -54,37 +69,212 @@ defaults write com.apple.finder &hellip;">
 
 		</div>
 		
-		<p>判断一个view是否是另一个view的子视图</p>
+		<p>NSURL 解析</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>- (BOOL)isDescendantOfView:(UIView *)view;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>隐藏或显示&#8221;隐藏文件&#8221;</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Octopress</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake "new_post[Post Title]" // zsh下
-</span><span class='line'>rake generate                                  生成html文件
-</span><span class='line'>rake preview
-</span><span class='line'>rake deploy                                    部署文章（博客）</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">NSURL</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">var</span> <span class="nl">prt_URLItems</span><span class="p">:</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">String</span><span class="p">]</span><span class="o">?</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">let</span> <span class="n">components</span> <span class="o">=</span> <span class="bp">NSURLComponents</span><span class="p">(</span><span class="nl">URL</span><span class="p">:</span> <span class="nb">self</span><span class="p">,</span> <span class="nl">resolvingAgainstBaseURL</span><span class="p">:</span> <span class="nb">false</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">guard</span> <span class="k">let</span> <span class="n">items</span> <span class="o">=</span> <span class="n">components</span><span class="o">?</span><span class="p">.</span><span class="n">queryItems</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">return</span> <span class="nb">nil</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">var</span> <span class="n">infos</span> <span class="o">=</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">String</span><span class="p">]()</span>
+</span><span class='line'>        <span class="n">items</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">infos</span><span class="p">[</span><span class="err">$</span><span class="mf">0.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="err">$</span><span class="mf">0.</span><span class="n">value</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">infos</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
-</span><span class='line'>git commit -m 'initial source commit'
-</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">items</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://www.weibo.com/1783821582/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">prt_URLItems</span>
+</span><span class='line'><span class="n">print</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Optional([&quot;mod&quot;: &quot;personinfo&quot;, &quot;rightmod&quot;: &quot;1&quot;, &quot;wvr&quot;: &quot;6&quot;])</span>
+</span></code></pre></td></tr></table></div></figure>
 
+
+<p><br /></p>
+
+<p>判断一个view是否是另一个view的子视图</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">isDescendantOfView:</span><span class="p">(</span><span class="bp">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">view</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<p>隐藏或显示&#8221;隐藏文件&#8221;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">defaults</span> <span class="n">write</span> <span class="n">com</span><span class="p">.</span><span class="n">apple</span><span class="p">.</span><span class="n">finder</span> <span class="n">AppleShowAllFiles</span> <span class="o">-</span><span class="n">boolean</span> <span class="nb">true</span><span class="p">;</span> <span class="n">killall</span> <span class="n">Finder</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<p>设置圆角（左上角，右上角）</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIBezierPath</span><span class="p">(</span><span class="nl">roundedRect</span><span class="p">:</span> <span class="n">ScreenBounds</span><span class="p">,</span> <span class="nl">byRoundingCorners</span><span class="p">:</span> <span class="p">[.</span><span class="n">TopLeft</span><span class="p">,</span> <span class="p">.</span><span class="n">TopRight</span><span class="p">],</span> <span class="nl">cornerRadii</span><span class="p">:</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">cornerRadius</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<p>BasicAnimation</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">pathAnimation</span> <span class="o">=</span> <span class="bp">CABasicAnimation</span><span class="p">(</span><span class="nl">keyPath</span><span class="p">:</span> <span class="s">&quot;path&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">pathAnimation</span><span class="p">.</span><span class="n">fromValue</span> <span class="o">=</span> <span class="n">startPath</span>
+</span><span class='line'><span class="n">pathAnimation</span><span class="p">.</span><span class="n">toValue</span> <span class="o">=</span> <span class="n">endPath</span>
+</span><span class='line'><span class="n">pathAnimation</span><span class="p">.</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">0.3</span>
+</span><span class='line'><span class="n">pathAnimation</span><span class="p">.</span><span class="n">timingFunction</span> <span class="o">=</span> <span class="bp">CAMediaTimingFunction</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">kCAMediaTimingFunctionEaseOut</span><span class="p">)</span> <span class="c1">// animation curve is Ease Out</span>
+</span><span class='line'><span class="n">pathAnimation</span><span class="p">.</span><span class="n">fillMode</span> <span class="o">=</span> <span class="n">kCAFillModeBoth</span> <span class="c1">// keep to value after finishing</span>
+</span><span class='line'><span class="n">pathAnimation</span><span class="p">.</span><span class="n">removedOnCompletion</span> <span class="o">=</span> <span class="nb">false</span> <span class="c1">// don&#39;t remove after finishing</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">shapeLayer</span><span class="p">.</span><span class="n">addAnimation</span><span class="p">(</span><span class="n">pathAnimation</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="n">pathAnimation</span><span class="p">.</span><span class="n">keyPath</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p><a href="http://jamesonquave.com/blog/fun-with-cashapelayer/">Fun with CAShapeLayer</a></p></blockquote>
+
+<p><br /></p>
+
+<p>根据触摸点判断是否touch点击了某个View</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="kr">override</span> <span class="k">func</span> <span class="nf">touchesBegan</span><span class="p">(</span><span class="nl">touches</span><span class="p">:</span> <span class="n">Set</span><span class="o">&lt;</span><span class="bp">NSObject</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">withEvent</span> <span class="nl">event</span><span class="p">:</span> <span class="bp">UIEvent</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">super</span><span class="p">.</span><span class="n">touchesBegan</span><span class="p">(</span><span class="n">touches</span><span class="p">,</span> <span class="nl">withEvent</span><span class="p">:</span> <span class="n">event</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="k">let</span> <span class="n">location</span> <span class="o">=</span> <span class="p">(</span><span class="n">touches</span><span class="p">.</span><span class="n">first</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">UITouch</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">locationInView</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">searchCircleY</span> <span class="o">=</span> <span class="n">bottomView</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">searchCircleImageView</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">y</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">frame</span> <span class="o">=</span> <span class="bp">CGRect</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="bp">CGPoint</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span><span class="n">searchCircleImageView</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span><span class="n">searchCircleY</span><span class="p">)</span> <span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="n">searchCircleImageView</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">CGRectContainsPoint</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">location</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 点击在searchCircleImageView</span>
+</span><span class='line'>            <span class="n">dismissViewControllerAnimated</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nl">completion</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<p>隐藏键盘(点击屏幕任意位置)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">touchesBegan:</span><span class="p">(</span><span class="bp">NSSet</span> <span class="o">*</span><span class="p">)</span><span class="nv">touches</span> <span class="nf">withEvent:</span><span class="p">(</span><span class="bp">UIEvent</span> <span class="o">*</span><span class="p">)</span><span class="nv">event</span><span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span><span class="nb">super</span> <span class="nl">touchesBegan</span><span class="p">:</span><span class="n">touches</span> <span class="nl">withEvent</span><span class="p">:</span><span class="n">event</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">endEditing</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<p>在包含UITableView视图中添加单击手势
+如果在包含UITableView视图中添加单击手势，这个单击手势会屏蔽掉UITableView的<code>didSelectRowAtIndexPath</code></p>
+
+<p>在单击点位于UITableView内的时候取消响应</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">gestureRecognizerShouldBegin:</span><span class="p">(</span><span class="bp">UIGestureRecognizer</span> <span class="o">*</span><span class="p">)</span><span class="nv">gestureRecognizer</span><span class="p">{</span>
+</span><span class='line'>  <span class="bp">CGPoint</span> <span class="n">point</span> <span class="o">=</span> <span class="p">[</span><span class="n">gestureRecognizer</span> <span class="nl">locationInView</span><span class="p">:</span><span class="nb">self</span><span class="p">];</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="n">CGRectContainsPoint</span><span class="p">(</span><span class="n">menuTableView</span><span class="p">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">point</span><span class="p">)){</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nb">NO</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>简单点的就将单击手势的cancelsTouchesInView设置为NO即可</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">singleTap</span><span class="p">.</span><span class="n">cancelsTouchesInView</span> <span class="o">=</span> <span class="nb">false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>默认为YES，若NO，Gesture Recognizers和hit-test view同时响应触摸序列</p></blockquote>
+
+<p><br /></p>
+
+<p>Octopress</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">rake</span> <span class="s">&quot;new_post[Post Title]&quot;</span> <span class="c1">// zsh下</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">generate</span>                                  <span class="err">生成</span><span class="n">html</span><span class="err">文件</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">preview</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">deploy</span>                                    <span class="err">部署文章（博客）</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+</span><span class='line'><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">initial</span> <span class="n">source</span> <span class="n">commit</span><span class="err">&#39;</span>
+</span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">source</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
 
 	</div>
 
@@ -93,7 +283,11 @@ defaults write com.apple.finder &hellip;">
 <div class="meta">
 	<div class="center"><a href="#"></a></div>
 </div>
+
+	<br />
+	<br />
 </article>
+
 
 	<div class="share">
 	<div class="addthis_toolbox addthis_default_style ">
@@ -108,9 +302,13 @@ defaults write com.apple.finder &hellip;">
 
 
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
+	<footer id="footer" class="inner"><p><br /></p>
+Copyright &copy; 2015
 
-    Limon
+  <a href="http://weibo.com/u/1783821582">Limon</a>
+
+
+<p><br /></p>
 </footer>
 	<script src="/javascripts/slash.js"></script>
 <script src="/javascripts/jquery.fancybox.pack.js"></script>

@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://devinwadsworth.com/sitemap.xml
+Sitemap: limon.top/sitemap.xml

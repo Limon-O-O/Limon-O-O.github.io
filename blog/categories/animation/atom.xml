@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: animation | Limon's Blog]]></title>
-  <link href="http://devinwadsworth.com/blog/categories/animation/atom.xml" rel="self"/>
-  <link href="http://devinwadsworth.com/"/>
-  <updated>2015-12-23T05:09:57+08:00</updated>
-  <id>http://devinwadsworth.com/</id>
+  <link href="limon.top/blog/categories/animation/atom.xml" rel="self"/>
+  <link href="limon.top/"/>
+  <updated>2015-12-23T23:01:57+08:00</updated>
+  <id>limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Animation]]></title>
-    <link href="http://devinwadsworth.com/blog/2015/12/23/animation/"/>
+    <link href="limon.top/blog/2015/12/23/animation/"/>
     <updated>2015-12-23T02:28:25+08:00</updated>
-    <id>http://devinwadsworth.com/blog/2015/12/23/animation</id>
+    <id>limon.top/blog/2015/12/23/animation</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/keefo/CATweaker"> CAMediaTimingFunction helper tool </a></p>
 
 <p><a href="https://github.com/cjwirth/awesome-ios-ui"> 动画集合 </a></p>
@@ -78,6 +78,9 @@
 
 <p><a href="https://github.com/Guidebook/gbkui-button-progress-view"> Download Button Aniamtion </a></p>
 
+<p><br />
+<br /></p>
+
 <h2>CollectionView</h2>
 
 <p><a href="https://github.com/CezaryKopacz/CKWaveCollectionViewTransition"> CollectionView 转场动画 </a></p>
@@ -102,6 +105,9 @@
 
 <p><a href="http://allsome.love/yin-xiang-bi-ji-jiao-hu-xiao-guo-de-shi-xian/?u=1783821582&amp;amp;m=3905429706568663&amp;amp;cu=1783821582&amp;amp;ru=2029464644&amp;amp;rm=3905408588445881"> 印象笔记交互效果 </a></p>
 
+<p><br />
+<br /></p>
+
 <h2>Animations By Emails</h2>
 
 <p><a href="http://www.ios-animations-by-emails.com/posts/2015-may#tutorial">Transitions with CoreImage</a></p>
@@ -111,6 +117,9 @@
 <p><a href="http://ios-animations-by-emails.com/posts/2015-november">fireworks</a></p>
 
 <p><a href="http://www.jianshu.com/p/76c588893b19?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note&amp;utm_source=weibo">使用CAReplicatorLayer创建动画</a></p>
+
+<p><br />
+<br /></p>
 ]]></content>
   </entry>
   
