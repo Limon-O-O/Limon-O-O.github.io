@@ -22,11 +22,11 @@ deploy_dir      = "_deploy"   # deploy directory (for Github pages deployment)
 stash_dir       = "_stash"    # directory to stash posts for speedy generation
 posts_dir       = "_posts"    # directory for blog files
 themes_dir      = ".themes"   # directory for blog files
-new_post_ext    = "markdown"  # default new post file extension when using the new_post task
-new_page_ext    = "markdown"  # default new page file extension when using the new_page task
+new_post_ext    = "md"  # default new post file extension when using the new_post task
+new_page_ext    = "md"  # default new page file extension when using the new_page task
 server_port     = "4000"      # port for preview server eg. localhost:4000
 
-editor = "open -a Mou"
+editor = "open -a Atom"
 
 if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
   puts '## Set the codepage to 65001 for Windows machines'

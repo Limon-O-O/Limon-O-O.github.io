@@ -3,7 +3,12 @@ layout: default
 single: true
 ---
 
-<article class="post">{% include article.html %}</article>
+<article class="post">
+	{% include article.html %}
+	<br />
+	<br />
+</article>
+
 {% unless page.sharing == false %}
 	{% include post/sharing.html %}
 {% endunless %}

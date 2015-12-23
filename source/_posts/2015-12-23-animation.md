@@ -67,6 +67,9 @@ categories: Animation
 [ Download Button Aniamtion ](https://github.com/Guidebook/gbkui-button-progress-view)
 
 
+<br />
+<br />
+
 ##CollectionView
 
 [ CollectionView 转场动画 ](https://github.com/CezaryKopacz/CKWaveCollectionViewTransition)
@@ -91,7 +94,8 @@ categories: Animation
 
 [ 印象笔记交互效果 ](http://allsome.love/yin-xiang-bi-ji-jiao-hu-xiao-guo-de-shi-xian/?u=1783821582&amp;m=3905429706568663&amp;cu=1783821582&amp;ru=2029464644&amp;rm=3905408588445881)
 
-
+<br />
+<br />
 
 
 ##Animations By Emails
@@ -104,3 +108,6 @@ categories: Animation
 
 [使用CAReplicatorLayer创建动画](http://www.jianshu.com/p/76c588893b19?utm_campaign=hugo&utm_medium=reader_share&utm_content=note&utm_source=weibo)
 
+
+<br />
+<br />

@@ -6,7 +6,16 @@ comments: false
 categories: Reading record 
 ---
 
-##Swift
+##Ask and Answer
+
+[圆形和正方形之间的动画](http://stackoverflow.com/questions/24788283/ios-animate-morph-shape-from-circle-to-square)
+
+[使用Autolayout实现UITableView的Cell动态布局和高度动态改变](http://codingobjc.com/blog/2014/10/15/shi-yong-autolayoutshi-xian-uitableviewde-celldong-tai-bu-ju-he-ke-bian-xing-gao/)
+
+[UITableView点击两次才能Present](http://stackoverflow.com/questions/20320591/uitableview-and-presentviewcontroller-takes-2-clicks-to-display)
+
+
+##包罗万象
 
 [Swift 中的iOS设计模式（一）](http://www.devtalking.com/articles/ios-design-pattern-in-swift-1/)
 
