@@ -26,17 +26,21 @@ categories: Animation
 
 [ 粘性加载动画 ](https://github.com/yoavlt/LiquidLoader)
 
+[利用贝塞尔曲线实现Q弹的下拉刷新](http://pandara.xyz/2015/10/29/jelly_refresh/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+
+[水滴效果](https://github.com/PandaraWen/WaterDropViewDemo)
+
 [ Label动画 ](https://github.com/overboming/ZCAnimatedLabel)
 
 [ NavigationBar 动画 ](https://github.com/gmertk/BusyNavigationBar)
 
 [ NavigationBar的背景颜色，高度 ](https://github.com/ltebean/LTNavigationBar)
 
+[ 动态改变UINavigationBar背景色 ](https://github.com/DanisFabric/RainbowNavigation/blob/master/README_CN.md)
+
 [ UILabel 动画 ](https://github.com/overboming/ZCAnimatedLabel)
 
 [ 下拉刷新 PullToBounce ](https://github.com/entotsu/PullToBounce)
-
-[利用贝塞尔曲线实现Q弹的下拉刷新](http://pandara.xyz/2015/10/29/jelly_refresh/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 
 [ 菜单粘性按钮 ](https://github.com/yoavlt/LiquidFloatingActionButton)
 
@@ -93,6 +97,10 @@ categories: Animation
 [ 瀑布流 ](https://github.com/demonnico/PinterestSwift)
 
 [ 印象笔记交互效果 ](http://allsome.love/yin-xiang-bi-ji-jiao-hu-xiao-guo-de-shi-xian/?u=1783821582&amp;m=3905429706568663&amp;cu=1783821582&amp;ru=2029464644&amp;rm=3905408588445881)
+
+[自定义UICollectionViewFlowLayout和UICollectionViewLayout的两个例子](https://github.com/SmallLang/UICollectionViewLayoutDemo)
+
+[响应式CollectionView](https://medium.com/@victor_wang/build-your-cells-in-a-way-of-lego-fbf6a1133bb1#.eh7fkk93s)
 
 <br />
 <br />

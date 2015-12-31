@@ -3,7 +3,7 @@ layout: post
 title: "Reading record"
 date: 2015-01-02 10:16:07 +0800
 comments: false
-categories: Reading record 
+categories: Reading record
 ---
 
 ##Ask and Answer
@@ -47,9 +47,13 @@ categories: Reading record
 
 [用同一个工程创建两个不同版本的应用](http://www.cocoachina.com/ios/20150916/13324.html) --- 如果同一个应用, 需要做一个带广告Lite版本, 一个不带广告的Pro版本. 那么问题来了, 该如何优雅的去实现呢？
 
-[Presentation Controllers and Adaptive Presentations](https://pspdfkit.com/blog/2015/presentation-controllers/) --- 👍🏼
+[Presentation Controllers and Adaptive Presentations](https://pspdfkit.com/blog/2015/presentation-controllers/) --- 👍
 
 [如何让 UIVisualEffectView 上面显示可读的文字](https://www.omnigroup.com/developer/how-to-make-text-in-a-uivisualeffectview-readable-on-any-background)
+
+[CoreText使用教程](http://www.zoomfeng.com/blog/coretextshi-yong-jiao-cheng-%5B%3F%5D.html) --- 五篇
+
+[理解 HTTPS 的工作原理](http://www.codeceo.com/article/https-worker.html)
 
 #####Enum
 
@@ -62,10 +66,16 @@ categories: Reading record
 
 #####Protocol
 [Protocol-Oriented Segue Identifiers in Swift](http://natashatherobot.com/protocol-oriented-segue-identifiers-swift/)
+
 [Mixins 比继承更好](http://swift.gg/2015/12/15/mixins-over-inheritance/) --- 面向协议编程
+
+####翻译
+[Programming iOS9 翻译](http://wdxtub.com/2015/12/22/programming-ios9-translation-1/)
 
 
 ##优化
+
+[猿题库 iOS 客户端架构设计](http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&mid=444322139&idx=1&sn=c7bef4d439f46ee539aa76d612023d43&scene=0#wechat_redirect) --- MVVM without Binding with DataController 
 
 [UICollectionView的数据预加载及图片加载逻辑的优化](http://blog.vars.me/blog/2015/04/26/UICollectionView-Optimizing/)
 
@@ -87,6 +97,8 @@ categories: Reading record
 
 ##底层
 [iOS 事件处理机制与图像渲染过程](https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=400417748&idx=1&sn=0c5f6747dd192c5a0eea32bb4650c160&scene=1&srcid=1119iAGp9HUSGEMTBjUSM7L0&key=d72a47206eca0ea9f5fd845c39ebee1715577b3db18f002c19b3747d6f2525f50d9ef530d825ee227e428e6dc5bd58a3&ascene=0&uin=MjY5MzMxNTMwMQ%3D%3D)
+
+[Swift 中的弱引用](http://swift.gg/2015/12/28/friday-qa-2015-12-11-swift-weak-references/) --- 👍👍👍
 
 
 ##内存管理
@@ -111,6 +123,9 @@ categories: Reading record
 [Bmob移动后端云服务平台](http://www.bmob.cn)
 
 [和应用服务器、存储服务器说再见](https://leancloud.cn/docs/rest_api.html)
+
+##插件
+[VWInstantRun](https://github.com/wangshengjia/VWInstantRun) --- 直接在Xcode中编译执行选中的Swift代码，打印输出到console  👍
 
 
 ##CoreData

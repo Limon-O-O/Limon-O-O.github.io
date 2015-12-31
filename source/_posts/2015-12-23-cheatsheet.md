@@ -42,7 +42,7 @@ print(items)
 <br />
 
 
-判断一个view是否是另一个view的子视图
+判断一个 view 是否是另一个 view 的子视图
 
 ```swift
 - (BOOL)isDescendantOfView:(UIView *)view;
@@ -65,6 +65,16 @@ UIBezierPath(roundedRect: ScreenBounds, byRoundingCorners: [.TopLeft, .TopRight]
 ```
 <br />
 
+阴影
+```
+whiteView.layer.shadowColor = UIColor.redColor().CGColor
+whiteView.layer.shadowOffset = CGSizeMake(0, 1)
+whiteView.layer.shadowOpacity = 1.0
+whiteView.layer.shadowRadius = 20.0
+whiteView.layer.shadowPath = UIBezierPath(rect: whiteView.bounds).CGPath
+```
+
+<br />
 
 BasicAnimation
 
@@ -83,8 +93,49 @@ shapeLayer.addAnimation(pathAnimation, forKey: pathAnimation.keyPath)
 
 <br />
 
+禁止 `WKWebView` 长按复制
 
-根据触摸点判断是否touch点击了某个View
+```
+let source = "var style = document.createElement('style'); style.type = 'text/css'; style.innerText = '*:not(input):not(textarea) { -webkit-user-select: none; -webkit-touch-callout: none; }'; var head = document.getElementsByTagName('head')[0]; head.appendChild(style);";
+
+let script: WKUserScript = WKUserScript(source: source as String, injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
+
+// Create the user content controller and add the script to it
+let userContentController: WKUserContentController = WKUserContentController()
+userContentController.addUserScript(script)
+
+// Create the configuration with the user content controller
+let configuration: WKWebViewConfiguration = WKWebViewConfiguration()
+configuration.userContentController = userContentController
+```
+
+<br />
+
+禁止 `WKWebView` 放大缩小
+
+```
+// Javascript that disables pinch-to-zoom by inserting the HTML viewport meta tag into <head>
+let source: NSString = "var meta = document.createElement('meta');" +
+    "meta.name = 'viewport';" +
+    "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';" +
+    "var head = document.getElementsByTagName('head')[0];" +
+"head.appendChild(meta);";
+
+let script: WKUserScript = WKUserScript(source: source as String, injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
+
+// Create the user content controller and add the script to it
+let userContentController: WKUserContentController = WKUserContentController()
+userContentController.addUserScript(script)
+
+// Create the configuration with the user content controller
+let configuration: WKWebViewConfiguration = WKWebViewConfiguration()
+configuration.userContentController = userContentController
+
+```
+
+<br />
+
+根据触摸点判断是否 touch 点击了某个 view
 
 ```
 override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -113,8 +164,8 @@ override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 <br />
 
 
-在包含UITableView视图中添加单击手势
-如果在包含UITableView视图中添加单击手势，这个单击手势会屏蔽掉UITableView的`didSelectRowAtIndexPath`
+在包含 `UITableView` 视图中添加单击手势
+如果在包含 `UITableView` 视图中添加单击手势，这个单击手势会屏蔽掉 `UITableView `的 `-didSelectRowAtIndexPath`
 
 在单击点位于UITableView内的时候取消响应
 
@@ -128,7 +179,7 @@ override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 }
 ```
 
-简单点的就将单击手势的cancelsTouchesInView设置为NO即可
+简单点的就将单击手势的 `cancelsTouchesInView` 设置为 NO 即可
 
 ```swift
 singleTap.cancelsTouchesInView = false
