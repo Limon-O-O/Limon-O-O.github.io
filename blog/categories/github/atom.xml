@@ -4,7 +4,7 @@
   <title><![CDATA[Category: github | Limon's Blog]]></title>
   <link href="limon.top/blog/categories/github/atom.xml" rel="self"/>
   <link href="limon.top/"/>
-  <updated>2016-01-01T02:31:14+08:00</updated>
+  <updated>2016-01-05T18:00:49+08:00</updated>
   <id>limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -33,6 +33,8 @@
 <p><a href="https://github.com/kasketis/netfox">netfox：iOS 网络调试工具</a> &mdash; 配置只需一行代码，可以调试包括第三方库在内的网络请求</p>
 
 <p><a href="https://github.com/hyperoslo/ImagePicker">ImagePicker is an all-in-one camera solution for your iOS app</a></p>
+
+<p><a href="https://github.com/FlexMonkey/Filterpedia">Filterpedia</a> &mdash; 基于 Core Image 框架，完整、强大的图片滤镜类库</p>
 
 <p><a href="https://github.com/KyoheiG3/AttributedLabel">高性能 AttributedLabel</a></p>
 
