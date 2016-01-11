@@ -4,7 +4,7 @@
   <title><![CDATA[Category: reading | Limon's Blog]]></title>
   <link href="limon.top/blog/categories/reading/atom.xml" rel="self"/>
   <link href="limon.top/"/>
-  <updated>2016-01-05T18:00:49+08:00</updated>
+  <updated>2016-01-11T23:40:33+08:00</updated>
   <id>limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -26,11 +26,15 @@
 
 <p><a href="http://stackoverflow.com/questions/20320591/uitableview-and-presentviewcontroller-takes-2-clicks-to-display">UITableView点击两次才能Present</a></p>
 
+<p><a href="http://www.it165.net/pro/html/201503/36130.html">iOS推送获取不到设备token：未找到应用程序的apsenvironment的权利字符串</a></p>
+
 <h2>包罗万象</h2>
 
 <p><a href="http://www.devtalking.com/articles/ios-design-pattern-in-swift-1/">Swift 中的iOS设计模式（一）</a></p>
 
 <p><a href="http://swiftist.org/topics/165">Swift 编程风格指南</a></p>
+
+<p><a href="http://nshipster.com/new-years-2016">Reader Submissions - New Year&rsquo;s 2016</a> &mdash; 干货多 🍺</p>
 
 <p><a href="http://stackoverflow.com/questions/24183812/swift-warning-equivalent">Showing TODO as a warning in a Swift Xcode project</a> &mdash; 以⚠️的形式显示TODO、FIXME</p>
 
@@ -63,6 +67,8 @@
 <p><a href="http://www.zoomfeng.com/blog/coretextshi-yong-jiao-cheng-%5B%3F%5D.html">CoreText使用教程</a> &mdash; 五篇</p>
 
 <p><a href="http://www.codeceo.com/article/https-worker.html">理解 HTTPS 的工作原理</a></p>
+
+<p><a href="http://swift.gg/2016/01/07/app-thinning-appcoda/">如何使用 iOS 9 App 瘦身功能</a></p>
 
 <h5>Enum</h5>
 
@@ -102,6 +108,8 @@
 <p><a href="http://www.ibm.com/developerworks/cn/mobile/mo-ios-memory/">使用 Swift 和 Objective-C 执行 iOS 内存管理的 7 个简单技巧</a></p>
 
 <p><a href="http://southpeak.github.io/blog/2015/12/20/perfect-smooth-scrolling-in-uitableviews/">Perfect smooth scrolling in UITableViews</a></p>
+
+<p><a href="http://holko.pl/2016/01/05/typed-table-view-controller/">Typed, yet Flexible Table View Controller</a> &mdash; TableViewController 代码重构</p>
 
 <h2>底层</h2>
 

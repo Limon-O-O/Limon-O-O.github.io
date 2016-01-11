@@ -4,7 +4,7 @@
   <title><![CDATA[Limon's Blog]]></title>
   <link href="limon.top/atom.xml" rel="self"/>
   <link href="limon.top/"/>
-  <updated>2016-01-05T18:00:49+08:00</updated>
+  <updated>2016-01-11T23:40:33+08:00</updated>
   <id>limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -12,6 +12,144 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Debug 模式与 Release 模式的区分]]></title>
+    <link href="limon.top/blog/2016/01/08/debugbuild/"/>
+    <updated>2016-01-08T11:31:30+08:00</updated>
+    <id>limon.top/blog/2016/01/08/debugbuild</id>
+    <content type="html"><![CDATA[<h1>Debug 模式与 Release 模式的区分</h1>
+
+<p><br />
+区分 Debug 模式与 Release 模式有两种方法：</p>
+
+<h4>第一种方法：</h4>
+
+<p>在 (Build Settings -> Swift Compiler - Custom Flags) 中加入 <code>-DDEBUG</code>，
+<a href="http://stackoverflow.com/questions/24111854/in-absence-of-preprocessor-macros-is-there-a-way-to-define-practical-scheme-spe/#answer-24112024">Stackoverflow</a>。</p>
+
+<p><img src="http://i.stack.imgur.com/dqp5H.png" alt="" /></p>
+
+<p>但是在 NSHipster 中有提到不推荐此方法 <a href="http://nshipster.com/new-years-2016/#avoiding--ddebug-in-swift">Avoiding -DDEBUG in Swift</a></p>
+
+<p><br /></p>
+
+<h4>第二种方法</h4>
+
+<p>通过 Preprocessor Macros (预处理宏命令) 来区分模式。</p>
+
+<p><br /></p>
+
+<p>1.新建一个 <code>PreProcessorMacros.h</code> 文件，代码如下</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="cp">#import &lt;Foundation/Foundation.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@interface</span> <span class="nc">PreProcessorMacros</span> : <span class="bp">NSObject</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#ifndef PreProcessorMacros_h</span>
+</span><span class='line'><span class="cp">#define PreProcessorMacros_h</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">extern</span> <span class="kt">BOOL</span> <span class="k">const</span> <span class="n">DEBUG_BUILD</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#endif</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@end</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">@implementation</span> <span class="nc">PreProcessorMacros</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#ifdef DEBUG</span>
+</span><span class='line'>    <span class="kt">BOOL</span> <span class="k">const</span> <span class="n">DEBUG_BUILD</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+</span><span class='line'><span class="cp">#else</span>
+</span><span class='line'>    <span class="kt">BOOL</span> <span class="k">const</span> <span class="n">DEBUG_BUILD</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+</span><span class='line'><span class="cp">#endif</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<p>2.在 Bridged Header: <code>#import "PreProcessorMacros.h"</code></p>
+
+<blockquote><p>也可直接把步骤一的代码放进 Bridged Header</p></blockquote>
+
+<p><br /></p>
+
+<p>3.测试</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">if</span> <span class="n">DEBUG_BUILD</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">print</span><span class="p">(</span><span class="s">&quot;It&#39;s Debug build&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">print</span><span class="p">(</span><span class="s">&quot;It&#39;s Release build&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>⌘⇧&lt;</strong> 进入下图可模式切换</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-O-O/DEBUGBUILD/master/images/switch.png" alt="" /></p>
+
+<p><br /></p>
+
+<h2>原理</h2>
+
+<p>关键的代码在：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="cp">#ifdef DEBUG</span>
+</span><span class='line'>    <span class="kt">BOOL</span> <span class="k">const</span> <span class="n">DEBUG_BUILD</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+</span><span class='line'><span class="cp">#else</span>
+</span><span class='line'>    <span class="kt">BOOL</span> <span class="k">const</span> <span class="n">DEBUG_BUILD</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+</span><span class='line'><span class="cp">#endif</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>此处的 <code>DEBUG</code> 究竟来自哪？</p>
+
+<p>进入 &lsquo;Build Settings&rsquo; -> 搜索 &lsquo;Preprocessor Macros&#8217;，真相大白</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-O-O/DEBUGBUILD/master/images/PreprocessorMacros.png" alt="" /></p>
+
+<p><br />
+源码：<a href="https://github.com/Limon-O-O/DEBUGBUILD">DEBUGBUILD</a></p>
+
+<p>抽取于干货极多的：<a href="http://nshipster.com/new-years-2016/">Reader Submissions -
+New Year&rsquo;s 2016</a>  🍺</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[花式自定义下标]]></title>
@@ -419,11 +557,15 @@
 
 <p><a href="https://github.com/onevcat/APNGKit">一个高性能的 APNG 库</a></p>
 
+<p><a href="https://github.com/khaledmtaha/XAnimatedImage">XAnimatedImage</a> &mdash; 一个高性能的 GIF 动画引擎基于 FLAnimatedImage</p>
+
 <p><a href="https://github.com/Aufree/Hodor?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">Hodor</a> &mdash; 应用内直接更改应用语言而无需退出应用, 类似微信</p>
 
 <p><a href="https://github.com/nixzhu/AudioBot">AudioBot</a> &mdash; 录音Demo，录音时，同时也可以录入正在播放的音乐</p>
 
 <p><a href="https://github.com/Shannon-s-Dreamland/DropdownMenu">多级下拉菜单</a></p>
+
+<p><a href="https://github.com/VerbalExpressions/SwiftVerbalExpressions">正则库</a></p>
 ]]></content>
   </entry>
   
@@ -474,6 +616,12 @@
 
 <p><a href="http://code.cocoachina.com/view/128886">自适应边界的散开按钮</a></p>
 
+<p><a href="https://github.com/Yalantis/Context-Menu.iOS">折叠菜单</a></p>
+
+<p><a href="https://github.com/Yalantis/Persei">折叠菜单 (Yalantis出品)</a></p>
+
+<p><a href="http://www.cocoachina.com/ios/20160104/14858.html">图片实现多层折叠效果</a></p>
+
 <p><a href="https://github.com/MartinRGB/MTMaterialDelete"> 粉碎删除 </a></p>
 
 <p><a href="https://github.com/SergioChan/SCTableViewCell"> 侧滑删除cell </a></p>
@@ -501,6 +649,12 @@
 <p><a href="https://github.com/CosmicMind/MaterialKit"> MaterialKit 是一个用 Swift 写的 Material Design 框架, 拥有多种漂亮的动画效果和样式 </a></p>
 
 <p><a href="https://github.com/Guidebook/gbkui-button-progress-view"> Download Button Aniamtion </a></p>
+
+<p><a href="https://github.com/Magic-Unique/DoubleThumbSlider">双滑块Slider控件</a></p>
+
+<p><a href="https://github.com/AfryMask/AFWaveView">心形波浪</a></p>
+
+<p><a href="https://github.com/mukyasa/MMTextFieldEffects">各种输入框交互动画</a></p>
 
 <p><br />
 <br /></p>
@@ -556,7 +710,18 @@
     <link href="limon.top/blog/2015/12/23/cheatsheet/"/>
     <updated>2015-12-23T02:22:06+08:00</updated>
     <id>limon.top/blog/2015/12/23/cheatsheet</id>
-    <content type="html"><![CDATA[<p>NSURL 解析</p>
+    <content type="html"><![CDATA[<p>repeat 一张小图片</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">patternImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span> <span class="s">&quot;comment_bottomLine&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">bottomImageView</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="nb">nil</span>
+</span><span class='line'><span class="n">bottomImageView</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">(</span><span class="nl">patternImage</span><span class="p">:</span> <span class="n">patternImage</span><span class="o">!</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>NSURL 解析</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -1599,11 +1764,15 @@ NSString *orderString = [NSString stringWithFormat:@"%@&amp;sign=\"%@\"&amp;sign
 
 <p><a href="http://stackoverflow.com/questions/20320591/uitableview-and-presentviewcontroller-takes-2-clicks-to-display">UITableView点击两次才能Present</a></p>
 
+<p><a href="http://www.it165.net/pro/html/201503/36130.html">iOS推送获取不到设备token：未找到应用程序的apsenvironment的权利字符串</a></p>
+
 <h2>包罗万象</h2>
 
 <p><a href="http://www.devtalking.com/articles/ios-design-pattern-in-swift-1/">Swift 中的iOS设计模式（一）</a></p>
 
 <p><a href="http://swiftist.org/topics/165">Swift 编程风格指南</a></p>
+
+<p><a href="http://nshipster.com/new-years-2016">Reader Submissions - New Year&rsquo;s 2016</a> &mdash; 干货多 🍺</p>
 
 <p><a href="http://stackoverflow.com/questions/24183812/swift-warning-equivalent">Showing TODO as a warning in a Swift Xcode project</a> &mdash; 以⚠️的形式显示TODO、FIXME</p>
 
@@ -1636,6 +1805,8 @@ NSString *orderString = [NSString stringWithFormat:@"%@&amp;sign=\"%@\"&amp;sign
 <p><a href="http://www.zoomfeng.com/blog/coretextshi-yong-jiao-cheng-%5B%3F%5D.html">CoreText使用教程</a> &mdash; 五篇</p>
 
 <p><a href="http://www.codeceo.com/article/https-worker.html">理解 HTTPS 的工作原理</a></p>
+
+<p><a href="http://swift.gg/2016/01/07/app-thinning-appcoda/">如何使用 iOS 9 App 瘦身功能</a></p>
 
 <h5>Enum</h5>
 
@@ -1675,6 +1846,8 @@ NSString *orderString = [NSString stringWithFormat:@"%@&amp;sign=\"%@\"&amp;sign
 <p><a href="http://www.ibm.com/developerworks/cn/mobile/mo-ios-memory/">使用 Swift 和 Objective-C 执行 iOS 内存管理的 7 个简单技巧</a></p>
 
 <p><a href="http://southpeak.github.io/blog/2015/12/20/perfect-smooth-scrolling-in-uitableviews/">Perfect smooth scrolling in UITableViews</a></p>
+
+<p><a href="http://holko.pl/2016/01/05/typed-table-view-controller/">Typed, yet Flexible Table View Controller</a> &mdash; TableViewController 代码重构</p>
 
 <h2>底层</h2>
 

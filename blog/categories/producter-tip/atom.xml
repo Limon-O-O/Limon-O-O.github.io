@@ -4,7 +4,7 @@
   <title><![CDATA[Category: producter-tip | Limon's Blog]]></title>
   <link href="limon.top/blog/categories/producter-tip/atom.xml" rel="self"/>
   <link href="limon.top/"/>
-  <updated>2016-01-05T18:00:49+08:00</updated>
+  <updated>2016-01-11T23:40:33+08:00</updated>
   <id>limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Debug 模式与 Release 模式的区分]]></title>
+    <link href="limon.top/blog/2016/01/08/debugbuild/"/>
+    <updated>2016-01-08T11:31:30+08:00</updated>
+    <id>limon.top/blog/2016/01/08/debugbuild</id>
+    <content type="html"><![CDATA[<h1>Debug 模式与 Release 模式的区分</h1>
+
+<p><br />
+区分 Debug 模式与 Release 模式有两种方法：</p>
+
+<h4>第一种方法：</h4>
+
+<p>在 (Build Settings -> Swift Compiler - Custom Flags) 中加入 <code>-DDEBUG</code>，
+<a href="http://stackoverflow.com/questions/24111854/in-absence-of-preprocessor-macros-is-there-a-way-to-define-practical-scheme-spe/#answer-24112024">Stackoverflow</a>。</p>
+
+<p><img src="http://i.stack.imgur.com/dqp5H.png" alt="" /></p>
+
+<p>但是在 NSHipster 中有提到不推荐此方法 <a href="http://nshipster.com/new-years-2016/#avoiding--ddebug-in-swift">Avoiding -DDEBUG in Swift</a></p>
+
+<p><br /></p>
+
+<h4>第二种方法</h4>
+
+<p>通过 Preprocessor Macros (预处理宏命令) 来区分模式。</p>
+
+<p><br /></p>
+
+<p>1.新建一个 <code>PreProcessorMacros.h</code> 文件，代码如下</p>
+
+<pre><code class="swift">#import &lt;Foundation/Foundation.h&gt;
+
+@interface PreProcessorMacros : NSObject
+
+#ifndef PreProcessorMacros_h
+#define PreProcessorMacros_h
+
+extern BOOL const DEBUG_BUILD;
+
+#endif
+
+@end
+
+
+@implementation PreProcessorMacros
+
+#ifdef DEBUG
+    BOOL const DEBUG_BUILD = YES;
+#else
+    BOOL const DEBUG_BUILD = NO;
+#endif
+
+@end
+</code></pre>
+
+<p><br /></p>
+
+<p>2.在 Bridged Header: <code>#import "PreProcessorMacros.h"</code></p>
+
+<blockquote><p>也可直接把步骤一的代码放进 Bridged Header</p></blockquote>
+
+<p><br /></p>
+
+<p>3.测试</p>
+
+<pre><code>if DEBUG_BUILD {
+    print("It's Debug build")
+} else {
+    print("It's Release build")
+}
+</code></pre>
+
+<p><strong>⌘⇧&lt;</strong> 进入下图可模式切换</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-O-O/DEBUGBUILD/master/images/switch.png" alt="" /></p>
+
+<p><br /></p>
+
+<h2>原理</h2>
+
+<p>关键的代码在：
+&#8220;`</p>
+
+<h1>ifdef DEBUG</h1>
+
+<pre><code>BOOL const DEBUG_BUILD = YES;
+</code></pre>
+
+<h1>else</h1>
+
+<pre><code>BOOL const DEBUG_BUILD = NO;
+</code></pre>
+
+<h1>endif</h1>
+
+<p><code>``
+此处的</code>DEBUG` 究竟来自哪？</p>
+
+<p>进入 &lsquo;Build Settings&rsquo; -> 搜索 &lsquo;Preprocessor Macros&#8217;，真相大白</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-O-O/DEBUGBUILD/master/images/PreprocessorMacros.png" alt="" /></p>
+
+<p><br />
+源码：<a href="https://github.com/Limon-O-O/DEBUGBUILD">DEBUGBUILD</a></p>
+
+<p>抽取于干货极多的：<a href="http://nshipster.com/new-years-2016/">Reader Submissions -
+New Year&rsquo;s 2016</a>  🍺</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[花式自定义下标]]></title>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cheatsheet | Limon's Blog]]></title>
   <link href="limon.top/blog/categories/cheatsheet/atom.xml" rel="self"/>
   <link href="limon.top/"/>
-  <updated>2016-01-05T18:00:49+08:00</updated>
+  <updated>2016-01-11T23:40:33+08:00</updated>
   <id>limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -18,7 +18,15 @@
     <link href="limon.top/blog/2015/12/23/cheatsheet/"/>
     <updated>2015-12-23T02:22:06+08:00</updated>
     <id>limon.top/blog/2015/12/23/cheatsheet</id>
-    <content type="html"><![CDATA[<p>NSURL 解析</p>
+    <content type="html"><![CDATA[<p>repeat 一张小图片</p>
+
+<pre><code class="swift">
+let patternImage = UIImage(named: "comment_bottomLine")
+bottomImageView.image = nil
+bottomImageView.backgroundColor = UIColor(patternImage: patternImage!)
+</code></pre>
+
+<p>NSURL 解析</p>
 
 <pre><code class="swift">
 extension NSURL {
