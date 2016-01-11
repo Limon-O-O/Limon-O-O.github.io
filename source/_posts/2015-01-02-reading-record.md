@@ -14,6 +14,7 @@ categories: Reading record
 
 [UITableView点击两次才能Present](http://stackoverflow.com/questions/20320591/uitableview-and-presentviewcontroller-takes-2-clicks-to-display)
 
+[iOS推送获取不到设备token：未找到应用程序的apsenvironment的权利字符串](http://www.it165.net/pro/html/201503/36130.html)
 
 ##包罗万象
 
@@ -21,6 +22,7 @@ categories: Reading record
 
 [Swift 编程风格指南](http://swiftist.org/topics/165)
 
+[Reader Submissions - New Year's 2016](http://nshipster.com/new-years-2016) --- 干货多 🍺
 
 [Showing TODO as a warning in a Swift Xcode project](http://stackoverflow.com/questions/24183812/swift-warning-equivalent) --- 以⚠️的形式显示TODO、FIXME
 
@@ -29,7 +31,6 @@ categories: Reading record
 [Swift90Days - 蛋疼的初始化过程](https://github.com/callmewhy/Swift90Days/blob/master/Day11-initialization.md)
 
 [Error Handling in Swift: Might and Magic](http://nomothetis.svbtle.com/error-handling-in-swift)
-
 
 [Swift 2.0: Why Guard is Better than If](http://natashatherobot.com/swift-guard-better-than-if/)
 
@@ -55,6 +56,8 @@ categories: Reading record
 
 [理解 HTTPS 的工作原理](http://www.codeceo.com/article/https-worker.html)
 
+[如何使用 iOS 9 App 瘦身功能](http://swift.gg/2016/01/07/app-thinning-appcoda/)
+
 #####Enum
 
 [Swift 中枚举高级用法及实践](http://swift.gg/2015/11/20/advanced-practical-enum-examples/)
@@ -75,7 +78,7 @@ categories: Reading record
 
 ##优化
 
-[猿题库 iOS 客户端架构设计](http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&mid=444322139&idx=1&sn=c7bef4d439f46ee539aa76d612023d43&scene=0#wechat_redirect) --- MVVM without Binding with DataController 
+[猿题库 iOS 客户端架构设计](http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&mid=444322139&idx=1&sn=c7bef4d439f46ee539aa76d612023d43&scene=0#wechat_redirect) --- MVVM without Binding with DataController
 
 [UICollectionView的数据预加载及图片加载逻辑的优化](http://blog.vars.me/blog/2015/04/26/UICollectionView-Optimizing/)
 
@@ -94,6 +97,7 @@ categories: Reading record
 
 [Perfect smooth scrolling in UITableViews](http://southpeak.github.io/blog/2015/12/20/perfect-smooth-scrolling-in-uitableviews/)
 
+[Typed, yet Flexible Table View Controller](http://holko.pl/2016/01/05/typed-table-view-controller/) --- TableViewController 代码重构
 
 ##底层
 [iOS 事件处理机制与图像渲染过程](https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=400417748&idx=1&sn=0c5f6747dd192c5a0eea32bb4650c160&scene=1&srcid=1119iAGp9HUSGEMTBjUSM7L0&key=d72a47206eca0ea9f5fd845c39ebee1715577b3db18f002c19b3747d6f2525f50d9ef530d825ee227e428e6dc5bd58a3&ascene=0&uin=MjY5MzMxNTMwMQ%3D%3D)

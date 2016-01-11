@@ -6,6 +6,17 @@ comments: true
 categories: CheatSheet
 ---
 
+repeat 一张小图片
+
+```swift
+
+let patternImage = UIImage(named: "comment_bottomLine")
+bottomImageView.image = nil
+bottomImageView.backgroundColor = UIColor(patternImage: patternImage!)
+
+```
+
+
 NSURL 解析
 
 ```swift

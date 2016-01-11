@@ -38,11 +38,21 @@ categories: Animation
 
 [ 动态改变UINavigationBar背景色 ](https://github.com/DanisFabric/RainbowNavigation/blob/master/README_CN.md)
 
+[ 顺滑过渡导航栏（不同背景颜色） ](https://github.com/MoZhouqi/KMNavigationBarTransition) --- 👍
+
 [ UILabel 动画 ](https://github.com/overboming/ZCAnimatedLabel)
 
 [ 下拉刷新 PullToBounce ](https://github.com/entotsu/PullToBounce)
 
 [ 菜单粘性按钮 ](https://github.com/yoavlt/LiquidFloatingActionButton)
+
+[自适应边界的散开按钮](http://code.cocoachina.com/view/128886)
+
+[折叠菜单](https://github.com/Yalantis/Context-Menu.iOS)
+
+[折叠菜单 (Yalantis出品)](https://github.com/Yalantis/Persei)
+
+[图片实现多层折叠效果](http://www.cocoachina.com/ios/20160104/14858.html)
 
 [ 粉碎删除 ](https://github.com/MartinRGB/MTMaterialDelete)
 
@@ -56,19 +66,27 @@ categories: Animation
 
 [皮筋式弹性下拉即刷新 文章 Elastic view animation using UIBezierPath ](http://iostuts.io/2015/10/17/elastic-bounce-using-uibezierpath-and-pan-gesture/)
 
+[皮筋式动画转场效果](https://github.com/lkzhao/ElasticTransition)
+
 [ 瞬间崩塌为小方块动画效果 ](https://github.com/Yalantis/StarWars.iOS)
 
 [ page control ](https://github.com/TBXark/TKRubberIndicator)
 
 [ HorizontalProgress 进程 ](https://github.com/AliThink/HorizontalProgress)
 
-[ trello的导航动效控件 ](https://github.com/SergioChan/SCTrelloNavigation)
+[ trello 的导航动效控件 ](https://github.com/SergioChan/SCTrelloNavigation)
 
 [ Apple TV Parallax 效果的视图 ](https://github.com/DroidsOnRoids/MPParallaxView)
 
 [ MaterialKit 是一个用 Swift 写的 Material Design 框架, 拥有多种漂亮的动画效果和样式 ](https://github.com/CosmicMind/MaterialKit)
 
 [ Download Button Aniamtion ](https://github.com/Guidebook/gbkui-button-progress-view)
+
+[双滑块Slider控件](https://github.com/Magic-Unique/DoubleThumbSlider)
+
+[心形波浪](https://github.com/AfryMask/AFWaveView)
+
+[各种输入框交互动画](https://github.com/mukyasa/MMTextFieldEffects)
 
 
 <br />
