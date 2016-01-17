@@ -6,6 +6,51 @@ comments: true
 categories: CheatSheet
 ---
 
+
+几种遍历
+
+```swift
+
+for i in 1...10 where i % 2 == 0 {
+    print("\(i) is even")
+}
+
+for word in ["Lorem", "ipsum", "dolor", "sit", "amet", "consectetur",
+    "adipiscing", "elit"] where word.characters.count > 5 {
+     print(word, "is a long word")
+}
+
+let items: [String?] = [nil, nil, "Hello", nil, "World"]
+for case let item? in items {
+    print(item)
+}
+
+let mySwitch = UISwitch()
+let myView = UIView()
+let myDate = NSDate()
+
+let myItems: [NSObject] = [mySwitch, myDate, myView]
+for case let item as UIView in myItems {
+    print(item.frame)
+}
+
+protocol MyCustomProtocol {
+    var frame: CGRect {get}
+}
+
+struct Bar {}
+struct Foo: MyCustomProtocol {
+    let frame: CGRect = .zero
+}
+extension UIView: MyCustomProtocol {}
+
+let otherItems = [Bar(), Foo(), UIView()] as [Any]
+for case let item as MyCustomProtocol in otherItems {
+    print(item.frame)
+}
+```
+
+
 repeat 一张小图片
 
 ```swift

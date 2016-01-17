@@ -18,6 +18,8 @@ categories: Reading record
 
 ##包罗万象
 
+[iOS 系统搜索集成](https://realm.io/cn/news/jack-nutting-search-api-ios/) --- Realm
+
 [Swift 中的iOS设计模式（一）](http://www.devtalking.com/articles/ios-design-pattern-in-swift-1/)
 
 [Swift 编程风格指南](http://swiftist.org/topics/165)

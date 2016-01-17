@@ -10,6 +10,8 @@ categories: Animation
 
 [ 动画集合 ](https://github.com/cjwirth/awesome-ios-ui)
 
+[IBAnimatable](https://github.com/JakeLin/IBAnimatable/blob/master/Documentation/README.zh.md) --- 是一个帮助我们在Interface Builder和Swift playground里面设计UI, 交互, 导航模式, 换场和动画的开源库
+
 [ 波浪 ](https://github.com/antiguab/BAFluidView)
 
 [ 水波上涨填满 ](https://github.com/poolqf/FillableLoaders)
@@ -87,6 +89,8 @@ categories: Animation
 [心形波浪](https://github.com/AfryMask/AFWaveView)
 
 [各种输入框交互动画](https://github.com/mukyasa/MMTextFieldEffects)
+
+[可拖拽的标签](https://github.com/lovels/LBTagView)
 
 
 <br />
