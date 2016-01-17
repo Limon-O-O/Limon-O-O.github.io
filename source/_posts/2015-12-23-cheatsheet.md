@@ -20,6 +20,7 @@ for word in ["Lorem", "ipsum", "dolor", "sit", "amet", "consectetur",
      print(word, "is a long word")
 }
 
+
 let items: [String?] = [nil, nil, "Hello", nil, "World"]
 for case let item? in items {
     print(item)
@@ -33,6 +34,7 @@ let myItems: [NSObject] = [mySwitch, myDate, myView]
 for case let item as UIView in myItems {
     print(item.frame)
 }
+
 
 protocol MyCustomProtocol {
     var frame: CGRect {get}
