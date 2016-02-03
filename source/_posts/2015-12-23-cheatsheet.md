@@ -223,8 +223,9 @@ bottomImageView.backgroundColor = UIColor(patternImage: patternImage!)
 
 ```
 
+<br />
 
-NSURL 解析
+#### NSURL 解析
 
 ```swift
 
@@ -259,15 +260,22 @@ print(items)
 
 <br />
 
+#### 获取版本号和 Build 号
+```
+NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as? String // Build
+NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String // 版本号
+```
 
-判断一个 view 是否是另一个 view 的子视图
+<br />
+
+#### 判断一个 view 是否是另一个 view 的子视图
 
 ```swift
 - (BOOL)isDescendantOfView:(UIView *)view;
 ```
 <br />
 
-隐藏或显示"隐藏文件"
+#### 隐藏或显示"隐藏文件"
 
 ```
 defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder
@@ -276,14 +284,14 @@ defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder
 <br />
 
 
-设置圆角（左上角，右上角）
+#### 设置圆角（左上角，右上角）
 
 ```
 UIBezierPath(roundedRect: ScreenBounds, byRoundingCorners: [.TopLeft, .TopRight], cornerRadii: CGSize(width: cornerRadius, height: 0.0))
 ```
 <br />
 
-阴影
+#### 阴影
 ```
 whiteView.layer.shadowColor = UIColor.redColor().CGColor
 whiteView.layer.shadowOffset = CGSizeMake(0, 1)
@@ -294,7 +302,7 @@ whiteView.layer.shadowPath = UIBezierPath(rect: whiteView.bounds).CGPath
 
 <br />
 
-BasicAnimation
+#### BasicAnimation
 
 ```
 let pathAnimation = CABasicAnimation(keyPath: "path")
@@ -311,7 +319,7 @@ shapeLayer.addAnimation(pathAnimation, forKey: pathAnimation.keyPath)
 
 <br />
 
-禁止 `WKWebView` 长按复制
+#### 禁止 `WKWebView` 长按复制
 
 ```
 let source = "var style = document.createElement('style'); style.type = 'text/css'; style.innerText = '*:not(input):not(textarea) { -webkit-user-select: none; -webkit-touch-callout: none; }'; var head = document.getElementsByTagName('head')[0]; head.appendChild(style);";
@@ -329,7 +337,7 @@ configuration.userContentController = userContentController
 
 <br />
 
-禁止 `WKWebView` 放大缩小
+#### 禁止 `WKWebView` 放大缩小
 
 ```
 // Javascript that disables pinch-to-zoom by inserting the HTML viewport meta tag into <head>
@@ -353,7 +361,7 @@ configuration.userContentController = userContentController
 
 <br />
 
-根据触摸点判断是否 touch 点击了某个 view
+#### 根据触摸点判断是否 touch 点击了某个 view
 
 ```
 override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -371,7 +379,7 @@ override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 <br />
 
 
-隐藏键盘(点击屏幕任意位置)
+#### 隐藏键盘(点击屏幕任意位置)
 
 ```
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -407,7 +415,7 @@ singleTap.cancelsTouchesInView = false
 <br />
 
 
-Octopress
+#### Octopress
 ```
 rake "new_post[Post Title]" // zsh下
 rake generate                                  生成html文件

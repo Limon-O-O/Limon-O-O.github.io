@@ -17,7 +17,7 @@ categories: Producter-Tip
 
 ![](http://i.stack.imgur.com/dqp5H.png)
 
-但是在 NSHipster 中有提到不推荐此方法 [Avoiding -DDEBUG in Swift](http://nshipster.com/new-years-2016/#avoiding--ddebug-in-swift)
+但是在 NSHipster 中有提到***不推荐***此方法  [Avoiding -DDEBUG in Swift](http://nshipster.com/new-years-2016/#avoiding--ddebug-in-swift)
 
 <br />
 ####第二种方法
