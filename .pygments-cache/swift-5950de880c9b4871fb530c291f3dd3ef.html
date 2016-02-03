@@ -1,0 +1,10 @@
+<div class="highlight"><pre><span class="k">let</span> <span class="n">pathAnimation</span> <span class="o">=</span> <span class="bp">CABasicAnimation</span><span class="p">(</span><span class="nl">keyPath</span><span class="p">:</span> <span class="s">&quot;path&quot;</span><span class="p">)</span>
+<span class="n">pathAnimation</span><span class="p">.</span><span class="n">fromValue</span> <span class="o">=</span> <span class="n">startPath</span>
+<span class="n">pathAnimation</span><span class="p">.</span><span class="n">toValue</span> <span class="o">=</span> <span class="n">endPath</span>
+<span class="n">pathAnimation</span><span class="p">.</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">pathAnimation</span><span class="p">.</span><span class="n">timingFunction</span> <span class="o">=</span> <span class="bp">CAMediaTimingFunction</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">kCAMediaTimingFunctionEaseOut</span><span class="p">)</span> <span class="c1">// animation curve is Ease Out</span>
+<span class="n">pathAnimation</span><span class="p">.</span><span class="n">fillMode</span> <span class="o">=</span> <span class="n">kCAFillModeBoth</span> <span class="c1">// keep to value after finishing</span>
+<span class="n">pathAnimation</span><span class="p">.</span><span class="n">removedOnCompletion</span> <span class="o">=</span> <span class="nb">false</span> <span class="c1">// don&#39;t remove after finishing</span>
+
+<span class="n">shapeLayer</span><span class="p">.</span><span class="n">addAnimation</span><span class="p">(</span><span class="n">pathAnimation</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="n">pathAnimation</span><span class="p">.</span><span class="n">keyPath</span><span class="p">)</span>
+</pre></div>

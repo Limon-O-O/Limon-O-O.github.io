@@ -1,0 +1,33 @@
+<div class="highlight"><pre><span class="k">protocol</span> <span class="n">ExcutableQueue</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">queue</span><span class="p">:</span> <span class="kt">dispatch_queue_t</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">extension</span> <span class="n">ExcutableQueue</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">execute</span><span class="p">(</span><span class="nl">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dispatch_async</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">closure</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">enum</span> <span class="nl">Queue</span><span class="p">:</span> <span class="n">ExcutableQueue</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Main</span>
+    <span class="k">case</span> <span class="n">UserInteractive</span>
+    <span class="k">case</span> <span class="n">UserInitiated</span>
+    <span class="k">case</span> <span class="n">Utility</span>
+    <span class="k">case</span> <span class="n">Background</span>
+
+    <span class="k">var</span> <span class="nl">queue</span><span class="p">:</span> <span class="kt">dispatch_queue_t</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="nb">self</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">Main</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dispatch_get_main_queue</span><span class="p">()</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">UserInteractive</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="n">QOS_CLASS_USER_INTERACTIVE</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">UserInitiated</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="n">QOS_CLASS_USER_INITIATED</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">Utility</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="n">QOS_CLASS_UTILITY</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">Background</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="n">QOS_CLASS_BACKGROUND</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
