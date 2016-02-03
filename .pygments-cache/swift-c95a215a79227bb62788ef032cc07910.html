@@ -1,0 +1,9 @@
+<div class="highlight"><pre><span class="k">func</span> <span class="nf">deleteObject</span><span class="p">(</span><span class="nl">articleObjects</span><span class="p">:</span> <span class="p">[</span><span class="n">ArticleObject</span><span class="p">])</span> <span class="p">{</span>
+  <span class="n">guard</span> <span class="k">let</span> <span class="n">articleObject</span> <span class="o">=</span> <span class="n">articleObjects</span><span class="p">.</span><span class="n">first</span> <span class="k">where</span> <span class="o">!</span><span class="n">articleObject</span><span class="p">.</span><span class="n">invalidated</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">articleObject</span><span class="p">.</span><span class="n">realm</span><span class="o">?</span><span class="p">.</span><span class="n">isEmpty</span> <span class="o">??</span> <span class="nb">true</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="k">let</span> <span class="n">_</span> <span class="o">=</span> <span class="n">try</span><span class="o">?</span> <span class="n">articleObject</span><span class="p">.</span><span class="n">realm</span><span class="o">?</span><span class="p">.</span><span class="n">write</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">articleObject</span><span class="p">.</span><span class="n">realm</span><span class="o">?</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">objects</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>

@@ -1,0 +1,24 @@
+<div class="highlight"><pre><span class="k">extension</span> <span class="bp">NSDictionary</span> <span class="p">{</span>
+
+    <span class="k">subscript</span><span class="p">(</span><span class="nl">key</span><span class="p">:</span> <span class="n">DictionaryKey</span><span class="o">&lt;</span><span class="n">String</span><span class="o">?&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="o">?</span> <span class="p">{</span>
+        <span class="kr">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">objectForKey</span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">value</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">subscript</span><span class="p">(</span><span class="nl">key</span><span class="p">:</span> <span class="n">DictionaryKey</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">?&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="o">?</span> <span class="p">{</span>
+        <span class="kr">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">objectForKey</span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">value</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Int</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="n">DictionaryKeys</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="k">init</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="n">DictionaryKey</span><span class="o">&lt;</span><span class="n">ValueType</span><span class="o">&gt;:</span> <span class="n">DictionaryKeys</span> <span class="p">{</span>
+
+    <span class="k">let</span> <span class="nl">value</span><span class="p">:</span> <span class="n">String</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="n">_</span> <span class="nl">key</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">key</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>

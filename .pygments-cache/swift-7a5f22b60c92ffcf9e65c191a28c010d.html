@@ -1,0 +1,17 @@
+<div class="highlight"><pre><span class="c1">// Javascript that disables pinch-to-zoom by inserting the HTML viewport meta tag into &lt;head&gt;</span>
+<span class="k">let</span> <span class="nl">source</span><span class="p">:</span> <span class="bp">NSString</span> <span class="o">=</span> <span class="s">&quot;var meta = document.createElement(&#39;meta&#39;);&quot;</span> <span class="o">+</span>
+    <span class="s">&quot;meta.name = &#39;viewport&#39;;&quot;</span> <span class="o">+</span>
+    <span class="s">&quot;meta.content = &#39;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&#39;;&quot;</span> <span class="o">+</span>
+    <span class="s">&quot;var head = document.getElementsByTagName(&#39;head&#39;)[0];&quot;</span> <span class="o">+</span>
+<span class="s">&quot;head.appendChild(meta);&quot;</span><span class="p">;</span>
+
+<span class="k">let</span> <span class="nl">script</span><span class="p">:</span> <span class="n">WKUserScript</span> <span class="o">=</span> <span class="n">WKUserScript</span><span class="p">(</span><span class="nl">source</span><span class="p">:</span> <span class="n">source</span> <span class="kt">as</span> <span class="n">String</span><span class="p">,</span> <span class="nl">injectionTime</span><span class="p">:</span> <span class="p">.</span><span class="n">AtDocumentEnd</span><span class="p">,</span> <span class="nl">forMainFrameOnly</span><span class="p">:</span> <span class="nb">true</span><span class="p">)</span>
+
+<span class="c1">// Create the user content controller and add the script to it</span>
+<span class="k">let</span> <span class="nl">userContentController</span><span class="p">:</span> <span class="n">WKUserContentController</span> <span class="o">=</span> <span class="n">WKUserContentController</span><span class="p">()</span>
+<span class="n">userContentController</span><span class="p">.</span><span class="n">addUserScript</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+
+<span class="c1">// Create the configuration with the user content controller</span>
+<span class="k">let</span> <span class="nl">configuration</span><span class="p">:</span> <span class="n">WKWebViewConfiguration</span> <span class="o">=</span> <span class="n">WKWebViewConfiguration</span><span class="p">()</span>
+<span class="n">configuration</span><span class="p">.</span><span class="n">userContentController</span> <span class="o">=</span> <span class="n">userContentController</span>
+</pre></div>
