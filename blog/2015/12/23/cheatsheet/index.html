@@ -270,7 +270,9 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>NSURL 解析</p>
+<p><br /></p>
+
+<h4>NSURL 解析</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">NSURL</span> <span class="p">{</span>
 </span><span class='line'>    <span class="k">var</span> <span class="nl">prt_URLItems</span><span class="p">:</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">String</span><span class="p">]</span><span class="o">?</span> <span class="p">{</span>
@@ -302,7 +304,16 @@
 
 <p><br /></p>
 
-<p>判断一个 view 是否是另一个 view 的子视图</p>
+<h4>获取版本号和 Build 号</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">infoDictionary</span><span class="o">?</span><span class="p">[</span><span class="s">&quot;CFBundleVersion&quot;</span><span class="p">]</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span> <span class="c1">// Build</span>
+</span><span class='line'><span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">infoDictionary</span><span class="o">?</span><span class="p">[</span><span class="s">&quot;CFBundleShortVersionString&quot;</span><span class="p">]</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span> <span class="c1">// 版本号</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<h4>判断一个 view 是否是另一个 view 的子视图</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">isDescendantOfView:</span><span class="p">(</span><span class="bp">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">view</span><span class="p">;</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -310,7 +321,7 @@
 
 <p><br /></p>
 
-<p>隐藏或显示&#8221;隐藏文件&#8221;</p>
+<h4>隐藏或显示&#8221;隐藏文件&#8221;</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">defaults</span> <span class="n">write</span> <span class="n">com</span><span class="p">.</span><span class="n">apple</span><span class="p">.</span><span class="n">finder</span> <span class="n">AppleShowAllFiles</span> <span class="o">-</span><span class="n">boolean</span> <span class="nb">true</span><span class="p">;</span> <span class="n">killall</span> <span class="n">Finder</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -318,7 +329,7 @@
 
 <p><br /></p>
 
-<p>设置圆角（左上角，右上角）</p>
+<h4>设置圆角（左上角，右上角）</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIBezierPath</span><span class="p">(</span><span class="nl">roundedRect</span><span class="p">:</span> <span class="n">ScreenBounds</span><span class="p">,</span> <span class="nl">byRoundingCorners</span><span class="p">:</span> <span class="p">[.</span><span class="n">TopLeft</span><span class="p">,</span> <span class="p">.</span><span class="n">TopRight</span><span class="p">],</span> <span class="nl">cornerRadii</span><span class="p">:</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">cornerRadius</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">))</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -326,7 +337,7 @@
 
 <p><br /></p>
 
-<p>阴影</p>
+<h4>阴影</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">whiteView</span><span class="p">.</span><span class="n">layer</span><span class="p">.</span><span class="n">shadowColor</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">redColor</span><span class="p">().</span><span class="bp">CGColor</span>
 </span><span class='line'><span class="n">whiteView</span><span class="p">.</span><span class="n">layer</span><span class="p">.</span><span class="n">shadowOffset</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -338,7 +349,7 @@
 
 <p><br /></p>
 
-<p>BasicAnimation</p>
+<h4>BasicAnimation</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">pathAnimation</span> <span class="o">=</span> <span class="bp">CABasicAnimation</span><span class="p">(</span><span class="nl">keyPath</span><span class="p">:</span> <span class="s">&quot;path&quot;</span><span class="p">)</span>
 </span><span class='line'><span class="n">pathAnimation</span><span class="p">.</span><span class="n">fromValue</span> <span class="o">=</span> <span class="n">startPath</span>
@@ -356,7 +367,7 @@
 
 <p><br /></p>
 
-<p>禁止 <code>WKWebView</code> 长按复制</p>
+<h4>禁止 <code>WKWebView</code> 长按复制</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">source</span> <span class="o">=</span> <span class="s">&quot;var style = document.createElement(&#39;style&#39;); style.type = &#39;text/css&#39;; style.innerText = &#39;*:not(input):not(textarea) { -webkit-user-select: none; -webkit-touch-callout: none; }&#39;; var head = document.getElementsByTagName(&#39;head&#39;)[0]; head.appendChild(style);&quot;</span><span class="p">;</span>
 </span><span class='line'>
@@ -374,7 +385,7 @@
 
 <p><br /></p>
 
-<p>禁止 <code>WKWebView</code> 放大缩小</p>
+<h4>禁止 <code>WKWebView</code> 放大缩小</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="c1">// Javascript that disables pinch-to-zoom by inserting the HTML viewport meta tag into &lt;head&gt;</span>
 </span><span class='line'><span class="k">let</span> <span class="nl">source</span><span class="p">:</span> <span class="bp">NSString</span> <span class="o">=</span> <span class="s">&quot;var meta = document.createElement(&#39;meta&#39;);&quot;</span> <span class="o">+</span>
@@ -397,7 +408,7 @@
 
 <p><br /></p>
 
-<p>根据触摸点判断是否 touch 点击了某个 view</p>
+<h4>根据触摸点判断是否 touch 点击了某个 view</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="kr">override</span> <span class="k">func</span> <span class="nf">touchesBegan</span><span class="p">(</span><span class="nl">touches</span><span class="p">:</span> <span class="n">Set</span><span class="o">&lt;</span><span class="bp">NSObject</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">withEvent</span> <span class="nl">event</span><span class="p">:</span> <span class="bp">UIEvent</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nb">super</span><span class="p">.</span><span class="n">touchesBegan</span><span class="p">(</span><span class="n">touches</span><span class="p">,</span> <span class="nl">withEvent</span><span class="p">:</span> <span class="n">event</span><span class="p">)</span>
@@ -415,7 +426,7 @@
 
 <p><br /></p>
 
-<p>隐藏键盘(点击屏幕任意位置)</p>
+<h4>隐藏键盘(点击屏幕任意位置)</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">touchesBegan:</span><span class="p">(</span><span class="bp">NSSet</span> <span class="o">*</span><span class="p">)</span><span class="nv">touches</span> <span class="nf">withEvent:</span><span class="p">(</span><span class="bp">UIEvent</span> <span class="o">*</span><span class="p">)</span><span class="nv">event</span><span class="p">{</span>
 </span><span class='line'>  <span class="p">[</span><span class="nb">super</span> <span class="nl">touchesBegan</span><span class="p">:</span><span class="n">touches</span> <span class="nl">withEvent</span><span class="p">:</span><span class="n">event</span><span class="p">];</span>
@@ -451,7 +462,7 @@
 
 <p><br /></p>
 
-<p>Octopress</p>
+<h4>Octopress</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">rake</span> <span class="s">&quot;new_post[Post Title]&quot;</span> <span class="c1">// zsh下</span>
 </span><span class='line'><span class="n">rake</span> <span class="n">generate</span>                                  <span class="err">生成</span><span class="n">html</span><span class="err">文件</span>
