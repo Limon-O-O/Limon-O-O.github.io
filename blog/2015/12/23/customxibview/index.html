@@ -1,0 +1,157 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>优雅地自定义XibView - Limon&#8217;s Blog</title>
+	<meta name="author" content="Limon">
+
+	
+	<meta name="description" content="优雅地自定义XibView producter-tip Dec 23rd, 2015 9:38 pm 优雅地自定义XibView 好习惯，先上源码。 先创建一个UIView文件和一个Xib文件，在Xib文件里设置如下， 在UIView文件中，不是用-awakeFromNib()作为构造器， &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Limon's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico?v=1" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body data-page=/blog/2015/12/23/customxibview/>
+	<header id="header" class="inner"><h1><a href="/">Limon&#8217;s Blog</a></h1>
+
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	
+	<h2 class="title">优雅地自定义XibView</h2>
+
+	
+
+	<div class="entry-content">
+		<div class="meta_custom">
+		
+			<div class="tags">
+
+
+	<a class='category' href='/blog/categories/producter-tip/'>producter-tip</a>
+
+
+</div>
+			
+
+
+
+
+<time class='entry-date' datetime='2015-12-23T21:38:17+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:38 pm</span></time>
+
+		</div>
+		
+		<h2>优雅地自定义XibView</h2>
+
+<p>好习惯，先上<a href="https://github.com/Limon-catch/XibView">源码</a>。</p>
+
+<p>先创建一个UIView文件和一个Xib文件，在Xib文件里设置如下，</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-catch/XibView/master/XibView/Image/XibView_Step1.png" alt="" /></p>
+
+<p>在UIView文件中，不是用<code>-awakeFromNib()</code>作为构造器，而是正常的<code>-init(frame: CGRect)</code>。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="kr">override</span> <span class="nf">init</span><span class="p">(</span><span class="nl">frame</span><span class="p">:</span> <span class="bp">CGRect</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nb">super</span><span class="p">.</span><span class="k">init</span><span class="p">(</span><span class="nl">frame</span><span class="p">:</span> <span class="n">frame</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">xibSetup</span><span class="p">()</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>而<code>-xibSetup()</code>才是关键，具体可看源码。</p>
+
+<p><br />
+如果需要UIView和Xib文件建立控件属性关联，是设置Xib文件的File`s Owner，<strong><em>而不是设置View的Custom Class</em></strong>。</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-catch/XibView/master/XibView/Image/XibView_Step2.png" alt="" /></p>
+
+<p>设置了File`s Owner就可以像往常一样拖线了。</p>
+
+<p>如果想在<code>Main.storyboard</code>文件中直接使用此Xib，同时也想在SB中设置属性，那怎么使用呢？</p>
+
+<ol>
+<li>在SB中加入一个UIView，将其Class设置成<code>XibView</code><br /></li>
+<li>使用<code>@IBInspectable</code></li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">@</span><span class="n">IBInspectable</span> <span class="k">var</span> <span class="nl">title</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kr">get</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">xibLabel</span><span class="p">.</span><span class="n">text</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="kr">set</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">xibLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">newValue</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br />
+添加了<code>@IBInspectable</code>之后，就可以像系统自带的控件一样设置属性了。</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-catch/XibView/master/XibView/Image/XibView_Step3.png" alt="" /></p>
+
+	</div>
+
+
+
+<div class="meta">
+	<div class="center"><a href="#"></a></div>
+</div>
+
+	<br />
+	<br />
+</article>
+
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		
+		
+	</div>
+	
+</div>
+
+
+
+</div>
+	<footer id="footer" class="inner"><p><br /></p>
+Copyright &copy; 2016
+
+  <a href="http://weibo.com/u/1783821582">Limon</a>
+
+
+<p><br /></p>
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox({
+	  padding : 0
+	});
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 支付宝 | Limon's Blog]]></title>
+  <link href="http://limon.top/blog/categories/zhi-fu-bao/atom.xml" rel="self"/>
+  <link href="http://limon.top/"/>
+  <updated>2016-02-03T14:15:56+08:00</updated>
+  <id>http://limon.top/</id>
+  <author>
+    <name><![CDATA[Limon]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[爬支付宝的各种坑]]></title>
+    <link href="http://limon.top/blog/2015/01/07/pa-zhi-fu-bao-de-ge-chong-keng/"/>
+    <updated>2015-01-07T13:57:57+08:00</updated>
+    <id>http://limon.top/blog/2015/01/07/pa-zhi-fu-bao-de-ge-chong-keng</id>
+    <content type="html"><![CDATA[<p>爬了几天坑，在笔者崩溃之际终于集成好了，在这里分享一下经验。</p>
+
+<p>笔者用的是<code>支付宝移动支付SDK标准版(iOS 2.1.2)</code>，申请的手机快捷支付</p>
+
+<h2>密钥</h2>
+
+<p>利用支付宝给的<code>openssl.exe</code>工具生成一共三种密钥，私钥、公钥，PKCS8类型的私钥</p>
+
+<ul>
+<li>公钥：放在支付宝上，去掉首尾的<code>-----BEGIN PUBLIC KEY-----``-----END PUBLIC KEY-----</code></li>
+<li>PKCS8类型的私钥：如果选择在手机端签名，此私钥放在<code>NSString *privateKey = @"PKCS8类型的私钥"</code></li>
+<li>私钥：此私钥带有<code>-----BEGIN RSA PRIVATE KEY-----</code> <code>-----END RSA PRIVATE KEY-----</code>，是专门给PHP用的，即在服务器端(PHP)签名，需要用到此私钥
+
+<blockquote><p>Note：推荐服务器端签名，不过需要注意的是，PHP端用的是带<code>-----BEGIN RSA PRIVATE KEY-----</code> <code>-----END RSA PRIVATE KEY-----</code>的私钥。</p></blockquote></li>
+</ul>
+
+
+<h2>集成支付宝</h2>
+
+<p>按照文档给的流程理论上想运行Demo是挺容易的，需要注意：</p>
+
+<ul>
+<li>Demo是在本地签的名，所以Demo上填写<code>NSString *privateKey = @"PKCS8类型的私钥"</code></li>
+</ul>
+
+
+<p>如果认为看似Demo超简单，你就错了。</p>
+
+<h3>坑一：Undefined symbols for architecture x86_64:</h3>
+
+<p>笔者爬过的坑，<code>ssl库</code>不支持x86_64就是64位模拟器。（若在服务器端签名不需引入ssl库）</p>
+
+<blockquote><p>程序界公认女神@念茜给出的答案。。。</p></blockquote>
+
+<p>也就是以下这种错误</p>
+
+<p><img src="http://limons-gitimage.stor.sinaapp.com/alipay.png" alt="alipay error" /></p>
+
+<p>针对这个错误，笔者尝试了各种方法，Architectures的各种设置，甚至都是一行一行对着Demo来改的，还有C++ Flage等等，最终还是不行。</p>
+
+<p>和客服聊了一个多小时，最后客服把支付宝最老的版本和13年的版本给笔者。。。。挺好人的。。。。</p>
+
+<h3>坑二：rsaSign()和rsaVerify()</h3>
+
+<p>作为一个技术渣，iOS我是搞不掂了，还是搞PHP吧。。。</p>
+
+<p>吐血的是，笔者用支付宝给的PHP版Demo，用它里面的方法<code>rsaSign()</code>签名，然后再用<code>rsaVerify()</code>验签，结果<code>rsaVerify()</code>返回的结果永远都是false，后来笔者终于准备出坑了，醒悟这个<code>rsaVerify()</code>应该不是验证这签名的。</p>
+
+<p>后来百度了解了点皮毛：</p>
+
+<p>RSA非对称密钥</p>
+
+<p>① 假设A、B机器进行通信，已A机器为主；</p>
+
+<p>② A首先需要用自己的私钥为发送请求数据签名，并将公钥一同发送给B；</p>
+
+<p>③ B收到数据后，需要用A发送的公钥进行验证，已确保收到的数据是未经篡改的；</p>
+
+<p>④ B验签通过后，处理逻辑，并把处理结果返回，返回数据需要用A发送的公钥进行加密（公钥加密后，只能用配对的私钥解密）；</p>
+
+<p>⑤ A收到B返回的数据，使用私钥解密，至此，一次数据交互完成。</p>
+
+<blockquote><p><code>rsaVerify</code>笔者猜测是验证支付宝的回调的。换句话说，签名直接就用<code>rsaSign()</code>就好了，就以下这几行代码</p></blockquote>
+
+<pre><code>&lt;?php
+include('alipay_rsa.function.php');
+
+$data = $_POST['data'];
+$sign = rsaSign($data,'../key/rsa_private_key.pem');
+
+$arr = array(
+    'sign' =&gt; $sign
+);
+
+echo json_encode($arr);
+?&gt;
+</code></pre>
+
+<p>以为这样就爬完了？</p>
+
+<h3>坑三：urlEncoded</h3>
+
+<p>想着服务器直接返回<code>sign</code>直接再拼接一下就提交给支付宝，结果又掉坑里。</p>
+
+<pre><code>NSString *signedString = json[@"sign"];
+NSLog(@"signedString-----%@",signedString);
+
+NSString *orderString = [NSString stringWithFormat:@"%@&amp;sign=\"%@\"&amp;sign_type=\"%@\"",
+                             orderSpec, signedString, @"RSA"];
+
+[[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic).....
+</code></pre>
+
+<p>又跑去和客服聊天，笔者问客服：服务器返回的<code>sign</code>应该还需要<code>urlEncoded</code>对吧，客服回我说：不用啊，服务器已经弄了啊。</p>
+
+<pre><code>/**
+* RSA签名
+* @param $data 待签名数据
+* @param $private_key_path 商户私钥文件路径
+* return 签名结果
+*/
+function rsaSign($data, $private_key_path) {
+    $priKey = file_get_contents($private_key_path);
+    $res = openssl_pkey_get_private($priKey);
+    openssl_sign($data, $sign, $res);
+    openssl_free_key($res);
+    //base64编码
+    $sign = base64_encode($sign);
+    return $sign;
+}
+</code></pre>
+
+<p>客服说<code>base64_encode($sign)</code>完就可以了不需要<code>urlEncoded</code>。笔者果断还是不相信客服。</p>
+
+<pre><code>NSString *signedString = json[@"sign"];
+NSLog(@"signedString-----%@",signedString);
+
+// 深坑啊......    
+signedString = [self urlEncodedString:signedString];
+
+NSString *orderString = [NSString stringWithFormat:@"%@&amp;sign=\"%@\"&amp;sign_type=\"%@\"",
+                             orderSpec, signedString, @"RSA"];
+
+[[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic)....
+</code></pre>
+
+<p>需要在<code>RSADataSigner.m</code>中抽离<code>-urlEncodedString</code>方法出来。。。坑啊，明明都不需要手机端签名了，当然不会去看手机端签名的具体流程啦。又没看到哪里说明服务器端返回的<code>sign</code>需要<code>urlEncoded</code>，连客服都不知道需要<code>urlEncoded</code>&hellip;..</p>
+
+<h3>心塞，不说了&hellip;&hellip;.</h3>
+]]></content>
+  </entry>
+  
+</feed>
