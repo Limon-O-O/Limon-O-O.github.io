@@ -108,6 +108,8 @@ categories: Reading record
 
 ##优化
 
+[iOS 高性能异构滚动视图构建方案 —— LazyScrollView](http://pingguohe.net/2016/01/31/lazyscroll.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+
 [Profiling your Swift compilation times](http://irace.me/swift-profiling/?utm_campaign=iOS%2BDev%2BWeekly&utm_medium=email&utm_source=iOS_Dev_Weekly_Issue_234) --- 查看 Swift 文件编译的时间 👍👍👍👍👍👍
 
 [猿题库 iOS 客户端架构设计](http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&mid=444322139&idx=1&sn=c7bef4d439f46ee539aa76d612023d43&scene=0#wechat_redirect) --- MVVM without Binding with DataController

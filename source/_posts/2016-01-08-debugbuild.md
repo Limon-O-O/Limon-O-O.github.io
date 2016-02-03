@@ -9,7 +9,7 @@ categories: Producter-Tip
 # Debug 模式与 Release 模式的区分
 
 <br />
-区分 Debug 模式与 Release 模式有两种方法：
+区分 Debug 模式与 Release 模式有两种方法，此文的目的是告诉读者尽量避免用 `-DDEBUG`。
 ####第一种方法：
 
 在 (Build Settings -> Swift Compiler - Custom Flags) 中加入 `-DDEBUG`，
