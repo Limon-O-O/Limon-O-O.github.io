@@ -1,13 +1,14 @@
 ---
 layout: post
 title: "CheatSheet"
-date: 2015-12-23 02:22:06 +0800
+date: 2015-12-23 04:22:06 +0800
 comments: true
 categories: CheatSheet
+coderay_line_numbers:
 ---
 
 
-几种遍历
+#### Swift 几种不错的遍历
 
 ```swift
 
@@ -52,8 +53,167 @@ for case let item as MyCustomProtocol in otherItems {
 }
 ```
 
+<br />
 
-repeat 一张小图片
+#### 字典合并
+
+```
+var parameters = [
+    "page": "1",
+    "offset": "20"
+]
+
+let params = ["type": "news"]
+
+parameters.ifr_merge(params) // Output: ["offset": "20", "type": "news", "page": "1"]
+
+
+extension Dictionary {
+
+    mutating func ifr_merge<K, V>(dictionaries: Dictionary<K, V>...) {
+        for dict in dictionaries {
+            for (key, value) in dict {
+                if let v = value as? Value, k = key as? Key {
+                    self.updateValue(v, forKey: k)
+                }
+            }
+        }
+    }
+}
+```
+
+<br />
+
+#### 优化 Cell 的使用体验
+
+```
+collectionView.registerNib(UINib(nibName: NewsCell.ifr_className, bundle: nil), forCellWithReuseIdentifier: NewsCell.ifr_className)
+let cell = collectionView.dequeueReusableCellWithReuseIdentifier(NewsCell.ifr_className, forIndexPath: indexPath) as! NewsCell
+
+extension UICollectionReusableView {
+    static var ifr_className: String {
+        return "\(self)"
+    }
+}
+```
+
+<br />
+
+#### 优化 ReloadData、Insert 的使用体验
+
+```
+var wayToUpdate: UICollectionView.WayToUpdate = .None
+wayToUpdate = page == 1 ? .ReloadData : .Insert(indexPaths)
+wayToUpdate.performWithCollectionView(self.collectionView)
+```
+
+```
+extension UICollectionView {
+
+    enum WayToUpdate {
+
+        case None
+        case ReloadData
+        case Insert([NSIndexPath])
+
+        var needsLabor: Bool {
+
+            switch self {
+            case .None:
+                return false
+            case .ReloadData:
+                return true
+            case .Insert:
+                return true
+            }
+        }
+
+        func performWithCollectionView(collectionView: UICollectionView) {
+
+            switch self {
+                case .None:
+                    break
+                case .ReloadData:
+                    collectionView.reloadData()
+                case .Insert(let indexPaths):
+                    collectionView.insertItemsAtIndexPaths(indexPaths)
+            }
+        }
+    }
+}
+```
+
+<br />
+
+#### 字体的适配
+
+```
+UIFont.ifr_adaptiveFont(.Regular(fontSize: 16.0)
+```
+
+```
+enum FontWeight {
+    case Light(fontSize: CGFloat)
+    case Regular(fontSize: CGFloat)
+    case Medium(fontSize: CGFloat)
+    case Bold(fontSize: CGFloat)
+}
+
+extension UIFont {
+
+    class func ifr_adaptiveFont(weight: FontWeight) -> UIFont {
+
+        var weightString = ""
+        var size: CGFloat = 16.0
+
+        switch weight {
+
+            case .Light(let fontSize):
+                weightString = "-Light"
+                size = fontSize
+
+            case .Regular(let fontSize):
+                weightString = ""
+                size = fontSize
+
+            case .Medium(let fontSize):
+                weightString = "-Medium"
+                size = fontSize
+
+            case .Bold(let fontSize):
+                weightString = "-Bold"
+                size = fontSize
+        }
+
+        guard let systemFont = UIFont(name: "PingFangSC\(weightString)", size: size) ??
+            UIFont(name: "STHeitiSC\(weightString)", size: size) else {
+                return UIFont.systemFontOfSize(size)
+        }
+
+        return systemFont
+    }
+}
+```
+
+<br />
+
+#### HTML 字符转义
+
+```swift
+var ifr_htmlEntityDecode: String {
+    var text = stringByReplacingOccurrencesOfString("&quot;", withString: "\"")
+    text = text.stringByReplacingOccurrencesOfString("&apos;", withString: "'")
+    text = text.stringByReplacingOccurrencesOfString("&lt;", withString: "<")
+    text = text.stringByReplacingOccurrencesOfString("&gt;", withString: ">")
+    text = text.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
+
+    return text
+}
+```
+
+<br />
+
+#### repeat 一张小图片
 
 ```swift
 

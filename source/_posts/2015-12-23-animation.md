@@ -48,13 +48,17 @@ categories: Animation
 
 [ 菜单粘性按钮 ](https://github.com/yoavlt/LiquidFloatingActionButton)
 
-[自适应边界的散开按钮](http://code.cocoachina.com/view/128886)
+[自适应边界的散开按钮](https://github.com/liuzhiyi1992/SpreadButton)
+
+[浮动的 Button](https://github.com/noppefoxwolf/FlowBarButtonItem?utm_campaign=This%2BWeek%2Bin%2BSwift&utm_medium=web&utm_source=This_Week_in_Swift_71)
 
 [折叠菜单](https://github.com/Yalantis/Context-Menu.iOS)
 
 [折叠菜单 (Yalantis出品)](https://github.com/Yalantis/Persei)
 
 [图片实现多层折叠效果](http://www.cocoachina.com/ios/20160104/14858.html)
+
+[Cell 折叠动](https://github.com/Ramotion/folding-cell) --- 👍👍👍
 
 [ 粉碎删除 ](https://github.com/MartinRGB/MTMaterialDelete)
 

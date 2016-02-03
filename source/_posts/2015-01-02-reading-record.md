@@ -16,6 +16,8 @@ categories: Reading record
 
 [iOS推送获取不到设备token：未找到应用程序的apsenvironment的权利字符串](http://www.it165.net/pro/html/201503/36130.html)
 
+[假设有一个巨大（包含很多属性的）的结构体，然后实现 “==” 操作就会很麻烦，因为要每个属性都比较一遍才行](http://stackoverflow.com/questions/35023904/is-there-way-to-define-compare-function-automatically-for-struct-in-swi) --- 👍👍👍
+
 ##包罗万象
 
 [iOS 系统搜索集成](https://realm.io/cn/news/jack-nutting-search-api-ios/) --- Realm
@@ -60,6 +62,32 @@ categories: Reading record
 
 [如何使用 iOS 9 App 瘦身功能](http://swift.gg/2016/01/07/app-thinning-appcoda/)
 
+[64-bit Tips](http://blog.sunnyxx.com/2014/12/20/64-bit-tips/)
+
+[黑幕背后的Autorelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
+
+[Objective-C内存管理如何理解Autorelease](http://mobile.51cto.com/iphone-284112.htm)
+
+[UINavigationController和View Controller-based状态栏风格](http://cocoa.venj.me/blog/view-controller-based-status-bar-style-and-uinavigationcontroller/#comment-1501032470) ------ 指定状态栏风格
+
+[Variable Argument Lists](http://gracelancy.com/blog/2014/05/05/variable-argument-lists/) ------ 可变参数函数的定义
+
+[100个iOS开发/设计面试题汇总](http://www.imooc.com/wenda/detail/244497)
+
+[使用Autolayout实现UITableView的Cell动态布局和高度动态改变](http://codingobjc.com/blog/2014/10/15/shi-yong-autolayoutshi-xian-uitableviewde-celldong-tai-bu-ju-he-ke-bian-xing-gao/)
+
+[常用 Git 命令清单](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
+
+[ 手写识别组建 A Handwriting Recognition Component for iOS ](http://flexmonkey.blogspot.co.nz/2015/12/scribe-handwriting-recognition.html)
+
+[ 加密解密介绍 ](<http://www.jianshu.com/p/98610bdc9bd6>)
+
+[动态修改UINavigationBar的背景色](http://tech.glowing.com/cn/change-uinavigationbar-backgroundcolor-dynamically/)
+
+[iOS开发中用户密码应该保存在哪里](http://www.jianshu.com/p/4af3b8179136)
+
+[由 App 的启动说起](http://oncenote.com/2015/06/01/How-App-Launch/) --- 👍
+
 #####Enum
 
 [Swift 中枚举高级用法及实践](http://swift.gg/2015/11/20/advanced-practical-enum-examples/)
@@ -79,6 +107,8 @@ categories: Reading record
 
 
 ##优化
+
+[Profiling your Swift compilation times](http://irace.me/swift-profiling/?utm_campaign=iOS%2BDev%2BWeekly&utm_medium=email&utm_source=iOS_Dev_Weekly_Issue_234) --- 查看 Swift 文件编译的时间 👍👍👍👍👍👍
 
 [猿题库 iOS 客户端架构设计](http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&mid=444322139&idx=1&sn=c7bef4d439f46ee539aa76d612023d43&scene=0#wechat_redirect) --- MVVM without Binding with DataController
 
@@ -100,6 +130,12 @@ categories: Reading record
 [Perfect smooth scrolling in UITableViews](http://southpeak.github.io/blog/2015/12/20/perfect-smooth-scrolling-in-uitableviews/)
 
 [Typed, yet Flexible Table View Controller](http://holko.pl/2016/01/05/typed-table-view-controller/) --- TableViewController 代码重构
+
+### 缓存
+
+[(慕课网)imooc iPhone3.3 接口数据缓存](http://www.jianshu.com/p/8a4dc775c051) --- 👍👍👍
+
+[使用两行代码就能完成80%的缓存需求](https://github.com/ChenYilong/ParseSourceCodeStudy/blob/master/02_Parse的网络缓存与离线存储/iOS网络缓存扫盲篇.md) --- 👍👍👍
 
 ##底层
 [iOS 事件处理机制与图像渲染过程](https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=400417748&idx=1&sn=0c5f6747dd192c5a0eea32bb4650c160&scene=1&srcid=1119iAGp9HUSGEMTBjUSM7L0&key=d72a47206eca0ea9f5fd845c39ebee1715577b3db18f002c19b3747d6f2525f50d9ef530d825ee227e428e6dc5bd58a3&ascene=0&uin=MjY5MzMxNTMwMQ%3D%3D)
@@ -148,26 +184,3 @@ categories: Reading record
 [Setup a mirror of CocoaPods/Specs](http://lexrus.com/setup-a-mirror-of-cocoapods-specs.html)
 
 [CocoaPods建立私有仓库](http://blog.csdn.net/agdsdl/article/details/45218987#0-tsina-1-51027-397232819ff9a47a7b7e80a40613cfe1)
-
-##杂
-[64-bit Tips](http://blog.sunnyxx.com/2014/12/20/64-bit-tips/)
-
-[黑幕背后的Autorelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
-
-[Objective-C内存管理如何理解Autorelease](http://mobile.51cto.com/iphone-284112.htm)
-
-[UINavigationController和View Controller-based状态栏风格](http://cocoa.venj.me/blog/view-controller-based-status-bar-style-and-uinavigationcontroller/#comment-1501032470) ------ 指定状态栏风格
-
-[Variable Argument Lists](http://gracelancy.com/blog/2014/05/05/variable-argument-lists/) ------ 可变参数函数的定义
-
-[100个iOS开发/设计面试题汇总](http://www.imooc.com/wenda/detail/244497)
-
-[使用Autolayout实现UITableView的Cell动态布局和高度动态改变](http://codingobjc.com/blog/2014/10/15/shi-yong-autolayoutshi-xian-uitableviewde-celldong-tai-bu-ju-he-ke-bian-xing-gao/)
-
-[常用 Git 命令清单](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
-
-[ 手写识别组建 A Handwriting Recognition Component for iOS ](http://flexmonkey.blogspot.co.nz/2015/12/scribe-handwriting-recognition.html)
-
-[ 加密解密介绍 ](<http://www.jianshu.com/p/98610bdc9bd6>)
-
-[动态修改UINavigationBar的背景色](http://tech.glowing.com/cn/change-uinavigationbar-backgroundcolor-dynamically/)
