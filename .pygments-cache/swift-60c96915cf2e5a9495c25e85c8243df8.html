@@ -1,9 +1,0 @@
-<div class="highlight"><pre><span class="n">collectionView</span><span class="p">.</span><span class="n">registerNib</span><span class="p">(</span><span class="bp">UINib</span><span class="p">(</span><span class="nl">nibName</span><span class="p">:</span> <span class="n">NewsCell</span><span class="p">.</span><span class="n">ifr_className</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="nb">nil</span><span class="p">),</span> <span class="nl">forCellWithReuseIdentifier</span><span class="p">:</span> <span class="n">NewsCell</span><span class="p">.</span><span class="n">ifr_className</span><span class="p">)</span>
-<span class="k">let</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">collectionView</span><span class="p">.</span><span class="n">dequeueReusableCellWithReuseIdentifier</span><span class="p">(</span><span class="n">NewsCell</span><span class="p">.</span><span class="n">ifr_className</span><span class="p">,</span> <span class="nl">forIndexPath</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">NewsCell</span>
-
-<span class="k">extension</span> <span class="bp">UICollectionReusableView</span> <span class="p">{</span>
-    <span class="k">static</span> <span class="k">var</span> <span class="nl">ifr_className</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&quot;\(self)&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>

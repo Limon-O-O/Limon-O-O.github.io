@@ -1,8 +1,0 @@
-<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">gestureRecognizerShouldBegin:</span><span class="p">(</span><span class="bp">UIGestureRecognizer</span> <span class="o">*</span><span class="p">)</span><span class="nv">gestureRecognizer</span><span class="p">{</span>
-	<span class="bp">CGPoint</span> <span class="n">point</span> <span class="o">=</span> <span class="p">[</span><span class="n">gestureRecognizer</span> <span class="nl">locationInView</span><span class="p">:</span><span class="nb">self</span><span class="p">];</span>
-	<span class="k">if</span><span class="p">(</span><span class="n">CGRectContainsPoint</span><span class="p">(</span><span class="n">menuTableView</span><span class="p">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">point</span><span class="p">)){</span>
-    	<span class="k">return</span> <span class="nb">NO</span><span class="p">;</span>
-	<span class="p">}</span>
-	<span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
