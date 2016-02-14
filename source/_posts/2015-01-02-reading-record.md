@@ -82,11 +82,17 @@ categories: Reading record
 
 [ 加密解密介绍 ](<http://www.jianshu.com/p/98610bdc9bd6>)
 
+[如何防止客户端被破解](http://tanqisen.github.io/blog/2014/06/06/how-to-prevent-app-crack/)
+
 [动态修改UINavigationBar的背景色](http://tech.glowing.com/cn/change-uinavigationbar-backgroundcolor-dynamically/)
 
 [iOS开发中用户密码应该保存在哪里](http://www.jianshu.com/p/4af3b8179136)
 
 [由 App 的启动说起](http://oncenote.com/2015/06/01/How-App-Launch/) --- 👍
+
+[State Machine for Layout Constraints](https://medium.com/@pcperini/a-protocol-oriented-state-machine-for-layout-constraints-2c6c94bbd844#.g92o77vfm) --- 通过协议实现 Layout 的状态机 👍👍👍
+
+[Asynchronous error handling](http://alisoftware.github.io/swift/async/error/2016/02/06/async-errors/)
 
 #####Enum
 

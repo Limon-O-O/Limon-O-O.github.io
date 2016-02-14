@@ -90,11 +90,15 @@ categories: Animation
 
 [双滑块Slider控件](https://github.com/Magic-Unique/DoubleThumbSlider)
 
+[捷输入并选择组件](https://github.com/Ramotion/reel-search) --- 👍👍
+
 [心形波浪](https://github.com/AfryMask/AFWaveView)
 
 [各种输入框交互动画](https://github.com/mukyasa/MMTextFieldEffects)
 
 [可拖拽的标签](https://github.com/lovels/LBTagView)
+
+[Gradient 渐变 滑动](https://github.com/hyperoslo/Hue#user-content-gradients-1)
 
 
 <br />

@@ -42,7 +42,10 @@ article {
     }
     .caption {
       &:before { content: "\f03e"; }
-      &.url:before { content: "\f08e"; }
+      &.down:before { content: "\f063"; }
+      &.url:before { content: "\f064"; }
+      &.gitHub:before { content: "\f092"; }
+      &.lemon:before { content: "\f094"; }
     }
   }
 }
