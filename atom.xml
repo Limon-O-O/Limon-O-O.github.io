@@ -4,7 +4,7 @@
   <title><![CDATA[Limon's Blog]]></title>
   <link href="http://limon.top/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-03T14:30:18+08:00</updated>
+  <updated>2016-02-14T22:03:19+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[译] 揭秘控制器视图的加载过程]]></title>
-    <link href="http://limon.top/blog/2016/02/02/controller-load-process/"/>
+    <link href="http://limon.top/controller-load-process/"/>
     <updated>2016-02-02T04:20:57+08:00</updated>
-    <id>http://limon.top/blog/2016/02/02/controller-load-process</id>
+    <id>http://limon.top/controller-load-process</id>
     <content type="html"><![CDATA[<p>原文链接:
 <a href="http://szulctomasz.com/ios-uiviewcontrollers-view-loading-process-demystified/">iOS: UIViewController’s view loading process demystified</a></p>
 
@@ -105,9 +105,9 @@ vc.endAppearanceTransition()
   
   <entry>
     <title type="html"><![CDATA[Realm Thread 浅析]]></title>
-    <link href="http://limon.top/blog/2016/01/14/RealmThread/"/>
+    <link href="http://limon.top/RealmThread/"/>
     <updated>2016-01-14T02:27:14+08:00</updated>
-    <id>http://limon.top/blog/2016/01/14/RealmThread</id>
+    <id>http://limon.top/RealmThread</id>
     <content type="html"><![CDATA[<p>两个同一：同一个 realm、同一个线程，两者缺一不可。</p>
 
 <p>打开 App，首先从 Realm 中获取首页的数据，此时在 <strong>主线程</strong> 调用 <code>-fetchArticlesFromRealmByType(.Home)</code>，此方法返回一个元组： <code>result: (articles: [Article], articleObjects: [ArticleObject])</code>，前者是模型，后者是 Realm 的 <code>Object</code>。</p>
@@ -240,9 +240,9 @@ vc.endAppearanceTransition()
   
   <entry>
     <title type="html"><![CDATA[Debug 模式与 Release 模式的区分]]></title>
-    <link href="http://limon.top/blog/2016/01/08/debugbuild/"/>
+    <link href="http://limon.top/debugbuild/"/>
     <updated>2016-01-08T11:31:30+08:00</updated>
-    <id>http://limon.top/blog/2016/01/08/debugbuild</id>
+    <id>http://limon.top/debugbuild</id>
     <content type="html"><![CDATA[<h1>Debug 模式与 Release 模式的区分</h1>
 
 <p><br />
@@ -255,7 +255,7 @@ vc.endAppearanceTransition()
 
 <p><img src="http://i.stack.imgur.com/dqp5H.png" alt="" /></p>
 
-<p>但是在 NSHipster 中有提到不推荐此方法 <a href="http://nshipster.com/new-years-2016/#avoiding--ddebug-in-swift">Avoiding -DDEBUG in Swift</a></p>
+<p>但是在 NSHipster 中有提到<strong><em>不推荐</em></strong>此方法  <a href="http://nshipster.com/new-years-2016/#avoiding--ddebug-in-swift">Avoiding -DDEBUG in Swift</a></p>
 
 <p><br /></p>
 
@@ -345,9 +345,9 @@ New Year&rsquo;s 2016</a>  🍺</p>
   
   <entry>
     <title type="html"><![CDATA[花式自定义下标]]></title>
-    <link href="http://limon.top/blog/2016/01/05/subscriptswift/"/>
+    <link href="http://limon.top/subscriptswift/"/>
     <updated>2016-01-05T17:56:42+08:00</updated>
-    <id>http://limon.top/blog/2016/01/05/subscriptswift</id>
+    <id>http://limon.top/subscriptswift</id>
     <content type="html"><![CDATA[<h1>花式自定义下标</h1>
 
 <h3>一、枚举作 Key</h3>
@@ -459,9 +459,9 @@ New Year&rsquo;s 2016</a>  🍺</p>
   
   <entry>
     <title type="html"><![CDATA[Matching Option]]></title>
-    <link href="http://limon.top/blog/2015/12/23/matching-option/"/>
+    <link href="http://limon.top/matching-option/"/>
     <updated>2015-12-23T22:36:43+08:00</updated>
-    <id>http://limon.top/blog/2015/12/23/matching-option</id>
+    <id>http://limon.top/matching-option</id>
     <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class=''><span class='line'>{
 </span><span class='line'>    "articles": [
 </span><span class='line'>        {
@@ -532,9 +532,9 @@ New Year&rsquo;s 2016</a>  🍺</p>
   
   <entry>
     <title type="html"><![CDATA[优雅地自定义XibView]]></title>
-    <link href="http://limon.top/blog/2015/12/23/customxibview/"/>
+    <link href="http://limon.top/customxibview/"/>
     <updated>2015-12-23T21:38:17+08:00</updated>
-    <id>http://limon.top/blog/2015/12/23/customxibview</id>
+    <id>http://limon.top/customxibview</id>
     <content type="html"><![CDATA[<h2>优雅地自定义XibView</h2>
 
 <p>好习惯，先上<a href="https://github.com/Limon-catch/XibView">源码</a>。</p>
@@ -590,9 +590,9 @@ New Year&rsquo;s 2016</a>  🍺</p>
   
   <entry>
     <title type="html"><![CDATA[CheatSheet]]></title>
-    <link href="http://limon.top/blog/2015/12/23/cheatsheet/"/>
+    <link href="http://limon.top/cheatsheet/"/>
     <updated>2015-12-23T04:22:06+08:00</updated>
-    <id>http://limon.top/blog/2015/12/23/cheatsheet</id>
+    <id>http://limon.top/cheatsheet</id>
     <content type="html"><![CDATA[<h4>Swift 几种不错的遍历</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.10</span> <span class="k">where</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
@@ -1022,9 +1022,9 @@ New Year&rsquo;s 2016</a>  🍺</p>
   
   <entry>
     <title type="html"><![CDATA[GitHub库]]></title>
-    <link href="http://limon.top/blog/2015/12/23/githubku/"/>
+    <link href="http://limon.top/githubku/"/>
     <updated>2015-12-23T02:31:25+08:00</updated>
-    <id>http://limon.top/blog/2015/12/23/githubku</id>
+    <id>http://limon.top/githubku</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/phimage/Erik">Erik</a> &mdash;  WebKit的分装，较好支持CSS和JS</p>
 
 <p><a href="https://github.com/kishikawakatsumi/KeychainAccess">KeychainAccess</a></p>
@@ -1085,9 +1085,9 @@ New Year&rsquo;s 2016</a>  🍺</p>
   
   <entry>
     <title type="html"><![CDATA[Animation]]></title>
-    <link href="http://limon.top/blog/2015/12/23/animation/"/>
+    <link href="http://limon.top/animation/"/>
     <updated>2015-12-23T02:28:25+08:00</updated>
-    <id>http://limon.top/blog/2015/12/23/animation</id>
+    <id>http://limon.top/animation</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/keefo/CATweaker"> CAMediaTimingFunction helper tool </a></p>
 
 <p><a href="https://github.com/cjwirth/awesome-ios-ui"> 动画集合 </a></p>
@@ -1172,11 +1172,15 @@ New Year&rsquo;s 2016</a>  🍺</p>
 
 <p><a href="https://github.com/Magic-Unique/DoubleThumbSlider">双滑块Slider控件</a></p>
 
+<p><a href="https://github.com/Ramotion/reel-search">捷输入并选择组件</a> &mdash; 👍👍</p>
+
 <p><a href="https://github.com/AfryMask/AFWaveView">心形波浪</a></p>
 
 <p><a href="https://github.com/mukyasa/MMTextFieldEffects">各种输入框交互动画</a></p>
 
 <p><a href="https://github.com/lovels/LBTagView">可拖拽的标签</a></p>
+
+<p><a href="https://github.com/hyperoslo/Hue#user-content-gradients-1">Gradient 渐变 滑动</a></p>
 
 <p><br />
 <br /></p>
@@ -1229,9 +1233,9 @@ New Year&rsquo;s 2016</a>  🍺</p>
   
   <entry>
     <title type="html"><![CDATA[内存管理 - ARC]]></title>
-    <link href="http://limon.top/blog/2015/01/22/nei-cun-guan-li-arc/"/>
+    <link href="http://limon.top/nei-cun-guan-li-arc/"/>
     <updated>2015-01-22T18:20:16+08:00</updated>
-    <id>http://limon.top/blog/2015/01/22/nei-cun-guan-li-arc</id>
+    <id>http://limon.top/nei-cun-guan-li-arc</id>
     <content type="html"><![CDATA[<h2>什么是ARC</h2>
 
 <p>Automatic Reference Counting，自动引用计数，即ARC。</p>
@@ -1486,9 +1490,9 @@ New Year&rsquo;s 2016</a>  🍺</p>
   
   <entry>
     <title type="html"><![CDATA[内存管理 - Autorelease]]></title>
-    <link href="http://limon.top/blog/2015/01/19/autoreleasepool/"/>
+    <link href="http://limon.top/autoreleasepool/"/>
     <updated>2015-01-19T16:12:34+08:00</updated>
-    <id>http://limon.top/blog/2015/01/19/autoreleasepool</id>
+    <id>http://limon.top/autoreleasepool</id>
     <content type="html"><![CDATA[<p>Autorelease实际上只是把对release的调用延迟了，对于每一个Autorelease，系统只是把该Object放入了当前的Autorelease pool中，当该pool被释放时，该pool中的所有Object会被调用release，也就是计数器会减1，但是自动释放池被销毁了，里面的对象并不一定会被销毁。</p>
 
 <p>简而言之，autorelease pool 避免了频繁申请/释放内存。</p>
@@ -1585,9 +1589,9 @@ objc_autoreleasePoolPop(context);
   
   <entry>
     <title type="html"><![CDATA[内存管理 - 引用计数]]></title>
-    <link href="http://limon.top/blog/2015/01/13/nei-cun-guan-li-yin-yong-ji-shu-qi/"/>
+    <link href="http://limon.top/nei-cun-guan-li-yin-yong-ji-shu-qi/"/>
     <updated>2015-01-13T14:27:14+08:00</updated>
-    <id>http://limon.top/blog/2015/01/13/nei-cun-guan-li-yin-yong-ji-shu-qi</id>
+    <id>http://limon.top/nei-cun-guan-li-yin-yong-ji-shu-qi</id>
     <content type="html"><![CDATA[<h2>内存管理概述</h2>
 
 <p>在Objective-C中，系统并不会自动释放堆中的内存，其他高级语言C#、JAVA都有垃圾回收机制，但在Objective-C中并没有垃圾回收机制，那么Objective-C中的内存是如何管理？
@@ -1710,9 +1714,9 @@ number = nil;
   
   <entry>
     <title type="html"><![CDATA[爬支付宝的各种坑]]></title>
-    <link href="http://limon.top/blog/2015/01/07/pa-zhi-fu-bao-de-ge-chong-keng/"/>
+    <link href="http://limon.top/pa-zhi-fu-bao-de-ge-chong-keng/"/>
     <updated>2015-01-07T13:57:57+08:00</updated>
-    <id>http://limon.top/blog/2015/01/07/pa-zhi-fu-bao-de-ge-chong-keng</id>
+    <id>http://limon.top/pa-zhi-fu-bao-de-ge-chong-keng</id>
     <content type="html"><![CDATA[<p>爬了几天坑，在笔者崩溃之际终于集成好了，在这里分享一下经验。</p>
 
 <p>笔者用的是<code>支付宝移动支付SDK标准版(iOS 2.1.2)</code>，申请的手机快捷支付</p>
@@ -1847,9 +1851,9 @@ NSString *orderString = [NSString stringWithFormat:@"%@&amp;sign=\"%@\"&amp;sign
   
   <entry>
     <title type="html"><![CDATA[Reading record]]></title>
-    <link href="http://limon.top/blog/2015/01/02/reading-record/"/>
+    <link href="http://limon.top/reading-record/"/>
     <updated>2015-01-02T10:16:07+08:00</updated>
-    <id>http://limon.top/blog/2015/01/02/reading-record</id>
+    <id>http://limon.top/reading-record</id>
     <content type="html"><![CDATA[<h2>Ask and Answer</h2>
 
 <p><a href="http://stackoverflow.com/questions/24788283/ios-animate-morph-shape-from-circle-to-square">圆形和正方形之间的动画</a></p>
@@ -1926,11 +1930,17 @@ NSString *orderString = [NSString stringWithFormat:@"%@&amp;sign=\"%@\"&amp;sign
 
 <p><a href="http://www.jianshu.com/p/98610bdc9bd6"> 加密解密介绍 </a></p>
 
+<p><a href="http://tanqisen.github.io/blog/2014/06/06/how-to-prevent-app-crack/">如何防止客户端被破解</a></p>
+
 <p><a href="http://tech.glowing.com/cn/change-uinavigationbar-backgroundcolor-dynamically/">动态修改UINavigationBar的背景色</a></p>
 
 <p><a href="http://www.jianshu.com/p/4af3b8179136">iOS开发中用户密码应该保存在哪里</a></p>
 
 <p><a href="http://oncenote.com/2015/06/01/How-App-Launch/">由 App 的启动说起</a> &mdash; 👍</p>
+
+<p><a href="https://medium.com/@pcperini/a-protocol-oriented-state-machine-for-layout-constraints-2c6c94bbd844#.g92o77vfm">State Machine for Layout Constraints</a> &mdash; 通过协议实现 Layout 的状态机 👍👍👍</p>
+
+<p><a href="http://alisoftware.github.io/swift/async/error/2016/02/06/async-errors/">Asynchronous error handling</a></p>
 
 <h5>Enum</h5>
 
@@ -2037,9 +2047,9 @@ NSString *orderString = [NSString stringWithFormat:@"%@&amp;sign=\"%@\"&amp;sign
   
   <entry>
     <title type="html"><![CDATA[ReactiveCocoa]]></title>
-    <link href="http://limon.top/blog/2014/09/03/reactivecocoa/"/>
+    <link href="http://limon.top/reactivecocoa/"/>
     <updated>2014-09-03T17:44:25+08:00</updated>
-    <id>http://limon.top/blog/2014/09/03/reactivecocoa</id>
+    <id>http://limon.top/reactivecocoa</id>
     <content type="html"><![CDATA[<h1>ReactiveCocoa</h1>
 
 <h2>RACSignal</h2>
@@ -2241,9 +2251,9 @@ RACSignal *switched = [signalOfSignals switchToLatest];
   
   <entry>
     <title type="html"><![CDATA[ReactiveCocoa的三种基本的模式]]></title>
-    <link href="http://limon.top/blog/2014/06/10/reactivecocoa/"/>
+    <link href="http://limon.top/reactivecocoa/"/>
     <updated>2014-06-10T09:35:03+08:00</updated>
-    <id>http://limon.top/blog/2014/06/10/reactivecocoa</id>
+    <id>http://limon.top/reactivecocoa</id>
     <content type="html"><![CDATA[<h1>ReactiveCocoa</h1>
 
 <hr />
@@ -2338,9 +2348,9 @@ RACSignal *switched = [signalOfSignals switchToLatest];
   
   <entry>
     <title type="html"><![CDATA[#01-字面量语法]]></title>
-    <link href="http://limon.top/blog/2014/05/26/number-01-zi-mian-liang-yu-fa/"/>
+    <link href="http://limon.top/number-01-zi-mian-liang-yu-fa/"/>
     <updated>2014-05-26T12:40:19+08:00</updated>
-    <id>http://limon.top/blog/2014/05/26/number-01-zi-mian-liang-yu-fa</id>
+    <id>http://limon.top/number-01-zi-mian-liang-yu-fa</id>
     <content type="html"><![CDATA[<h2>字面量数值</h2>
 
 <p>普通创建：</p>
@@ -2485,9 +2495,9 @@ NSArray *arr = [json objectForKey:@"school_list"];
   
   <entry>
     <title type="html"><![CDATA[玩转Mantle]]></title>
-    <link href="http://limon.top/blog/2014/04/23/mantlede-shi-yong/"/>
+    <link href="http://limon.top/mantlede-shi-yong/"/>
     <updated>2014-04-23T10:05:15+08:00</updated>
-    <id>http://limon.top/blog/2014/04/23/mantlede-shi-yong</id>
+    <id>http://limon.top/mantlede-shi-yong</id>
     <content type="html"><![CDATA[<h2>MTLModel</h2>
 
 <p>MTLModel provides an easy way to map NSDictionary objects to Objective-C classes and vice-versa.</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mantle | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/mantle/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-03T14:30:18+08:00</updated>
+  <updated>2016-02-14T22:03:19+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[玩转Mantle]]></title>
-    <link href="http://limon.top/blog/2014/04/23/mantlede-shi-yong/"/>
+    <link href="http://limon.top/mantlede-shi-yong/"/>
     <updated>2014-04-23T10:05:15+08:00</updated>
-    <id>http://limon.top/blog/2014/04/23/mantlede-shi-yong</id>
+    <id>http://limon.top/mantlede-shi-yong</id>
     <content type="html"><![CDATA[<h2>MTLModel</h2>
 
 <p>MTLModel provides an easy way to map NSDictionary objects to Objective-C classes and vice-versa.</p>

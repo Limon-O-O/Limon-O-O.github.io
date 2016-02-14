@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 译文 | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/yi-wen/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-03T14:30:18+08:00</updated>
+  <updated>2016-02-14T22:03:19+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[译] 揭秘控制器视图的加载过程]]></title>
-    <link href="http://limon.top/blog/2016/02/02/controller-load-process/"/>
+    <link href="http://limon.top/controller-load-process/"/>
     <updated>2016-02-02T04:20:57+08:00</updated>
-    <id>http://limon.top/blog/2016/02/02/controller-load-process</id>
+    <id>http://limon.top/controller-load-process</id>
     <content type="html"><![CDATA[<p>原文链接:
 <a href="http://szulctomasz.com/ios-uiviewcontrollers-view-loading-process-demystified/">iOS: UIViewController’s view loading process demystified</a></p>
 

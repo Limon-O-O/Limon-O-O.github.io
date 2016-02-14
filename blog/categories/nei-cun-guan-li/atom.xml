@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 内存管理 | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/nei-cun-guan-li/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-03T14:30:18+08:00</updated>
+  <updated>2016-02-14T22:03:19+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[内存管理 - ARC]]></title>
-    <link href="http://limon.top/blog/2015/01/22/nei-cun-guan-li-arc/"/>
+    <link href="http://limon.top/nei-cun-guan-li-arc/"/>
     <updated>2015-01-22T18:20:16+08:00</updated>
-    <id>http://limon.top/blog/2015/01/22/nei-cun-guan-li-arc</id>
+    <id>http://limon.top/nei-cun-guan-li-arc</id>
     <content type="html"><![CDATA[<h2>什么是ARC</h2>
 
 <p>Automatic Reference Counting，自动引用计数，即ARC。</p>
@@ -272,9 +272,9 @@
   
   <entry>
     <title type="html"><![CDATA[内存管理 - 引用计数]]></title>
-    <link href="http://limon.top/blog/2015/01/13/nei-cun-guan-li-yin-yong-ji-shu-qi/"/>
+    <link href="http://limon.top/nei-cun-guan-li-yin-yong-ji-shu-qi/"/>
     <updated>2015-01-13T14:27:14+08:00</updated>
-    <id>http://limon.top/blog/2015/01/13/nei-cun-guan-li-yin-yong-ji-shu-qi</id>
+    <id>http://limon.top/nei-cun-guan-li-yin-yong-ji-shu-qi</id>
     <content type="html"><![CDATA[<h2>内存管理概述</h2>
 
 <p>在Objective-C中，系统并不会自动释放堆中的内存，其他高级语言C#、JAVA都有垃圾回收机制，但在Objective-C中并没有垃圾回收机制，那么Objective-C中的内存是如何管理？

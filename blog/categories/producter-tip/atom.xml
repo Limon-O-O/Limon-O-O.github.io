@@ -4,7 +4,7 @@
   <title><![CDATA[Category: producter-tip | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/producter-tip/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-03T14:30:18+08:00</updated>
+  <updated>2016-02-14T22:03:19+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Debug 模式与 Release 模式的区分]]></title>
-    <link href="http://limon.top/blog/2016/01/08/debugbuild/"/>
+    <link href="http://limon.top/debugbuild/"/>
     <updated>2016-01-08T11:31:30+08:00</updated>
-    <id>http://limon.top/blog/2016/01/08/debugbuild</id>
+    <id>http://limon.top/debugbuild</id>
     <content type="html"><![CDATA[<h1>Debug 模式与 Release 模式的区分</h1>
 
 <p><br />
@@ -30,7 +30,7 @@
 
 <p><img src="http://i.stack.imgur.com/dqp5H.png" alt="" /></p>
 
-<p>但是在 NSHipster 中有提到不推荐此方法 <a href="http://nshipster.com/new-years-2016/#avoiding--ddebug-in-swift">Avoiding -DDEBUG in Swift</a></p>
+<p>但是在 NSHipster 中有提到<strong><em>不推荐</em></strong>此方法  <a href="http://nshipster.com/new-years-2016/#avoiding--ddebug-in-swift">Avoiding -DDEBUG in Swift</a></p>
 
 <p><br /></p>
 
@@ -124,9 +124,9 @@ New Year&rsquo;s 2016</a>  🍺</p>
   
   <entry>
     <title type="html"><![CDATA[花式自定义下标]]></title>
-    <link href="http://limon.top/blog/2016/01/05/subscriptswift/"/>
+    <link href="http://limon.top/subscriptswift/"/>
     <updated>2016-01-05T17:56:42+08:00</updated>
-    <id>http://limon.top/blog/2016/01/05/subscriptswift</id>
+    <id>http://limon.top/subscriptswift</id>
     <content type="html"><![CDATA[<h1>花式自定义下标</h1>
 
 <h3>一、枚举作 Key</h3>
@@ -227,9 +227,9 @@ print("样式三、qqAppID: \(qqAccount!.appID)  weChatAppID: \(weChatAccount!.a
   
   <entry>
     <title type="html"><![CDATA[Matching Option]]></title>
-    <link href="http://limon.top/blog/2015/12/23/matching-option/"/>
+    <link href="http://limon.top/matching-option/"/>
     <updated>2015-12-23T22:36:43+08:00</updated>
-    <id>http://limon.top/blog/2015/12/23/matching-option</id>
+    <id>http://limon.top/matching-option</id>
     <content type="html"><![CDATA[<pre><code>{
     "articles": [
         {
@@ -298,9 +298,9 @@ switch Occupation(rawValue: typeString) {
   
   <entry>
     <title type="html"><![CDATA[优雅地自定义XibView]]></title>
-    <link href="http://limon.top/blog/2015/12/23/customxibview/"/>
+    <link href="http://limon.top/customxibview/"/>
     <updated>2015-12-23T21:38:17+08:00</updated>
-    <id>http://limon.top/blog/2015/12/23/customxibview</id>
+    <id>http://limon.top/customxibview</id>
     <content type="html"><![CDATA[<h2>优雅地自定义XibView</h2>
 
 <p>好习惯，先上<a href="https://github.com/Limon-catch/XibView">源码</a>。</p>

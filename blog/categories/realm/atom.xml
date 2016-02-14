@@ -4,7 +4,7 @@
   <title><![CDATA[Category: realm | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/realm/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-03T14:30:18+08:00</updated>
+  <updated>2016-02-14T22:03:19+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Realm Thread 浅析]]></title>
-    <link href="http://limon.top/blog/2016/01/14/RealmThread/"/>
+    <link href="http://limon.top/RealmThread/"/>
     <updated>2016-01-14T02:27:14+08:00</updated>
-    <id>http://limon.top/blog/2016/01/14/RealmThread</id>
+    <id>http://limon.top/RealmThread</id>
     <content type="html"><![CDATA[<p>两个同一：同一个 realm、同一个线程，两者缺一不可。</p>
 
 <p>打开 App，首先从 Realm 中获取首页的数据，此时在 <strong>主线程</strong> 调用 <code>-fetchArticlesFromRealmByType(.Home)</code>，此方法返回一个元组： <code>result: (articles: [Article], articleObjects: [ArticleObject])</code>，前者是模型，后者是 Realm 的 <code>Object</code>。</p>

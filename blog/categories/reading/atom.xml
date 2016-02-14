@@ -4,7 +4,7 @@
   <title><![CDATA[Category: reading | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-03T14:30:18+08:00</updated>
+  <updated>2016-02-14T22:03:19+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Reading record]]></title>
-    <link href="http://limon.top/blog/2015/01/02/reading-record/"/>
+    <link href="http://limon.top/reading-record/"/>
     <updated>2015-01-02T10:16:07+08:00</updated>
-    <id>http://limon.top/blog/2015/01/02/reading-record</id>
+    <id>http://limon.top/reading-record</id>
     <content type="html"><![CDATA[<h2>Ask and Answer</h2>
 
 <p><a href="http://stackoverflow.com/questions/24788283/ios-animate-morph-shape-from-circle-to-square">圆形和正方形之间的动画</a></p>
@@ -94,11 +94,17 @@
 
 <p><a href="http://www.jianshu.com/p/98610bdc9bd6"> 加密解密介绍 </a></p>
 
+<p><a href="http://tanqisen.github.io/blog/2014/06/06/how-to-prevent-app-crack/">如何防止客户端被破解</a></p>
+
 <p><a href="http://tech.glowing.com/cn/change-uinavigationbar-backgroundcolor-dynamically/">动态修改UINavigationBar的背景色</a></p>
 
 <p><a href="http://www.jianshu.com/p/4af3b8179136">iOS开发中用户密码应该保存在哪里</a></p>
 
 <p><a href="http://oncenote.com/2015/06/01/How-App-Launch/">由 App 的启动说起</a> &mdash; 👍</p>
+
+<p><a href="https://medium.com/@pcperini/a-protocol-oriented-state-machine-for-layout-constraints-2c6c94bbd844#.g92o77vfm">State Machine for Layout Constraints</a> &mdash; 通过协议实现 Layout 的状态机 👍👍👍</p>
+
+<p><a href="http://alisoftware.github.io/swift/async/error/2016/02/06/async-errors/">Asynchronous error handling</a></p>
 
 <h5>Enum</h5>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: github | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/github/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-03T14:30:18+08:00</updated>
+  <updated>2016-02-14T22:03:19+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[GitHub库]]></title>
-    <link href="http://limon.top/blog/2015/12/23/githubku/"/>
+    <link href="http://limon.top/githubku/"/>
     <updated>2015-12-23T02:31:25+08:00</updated>
-    <id>http://limon.top/blog/2015/12/23/githubku</id>
+    <id>http://limon.top/githubku</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/phimage/Erik">Erik</a> &mdash;  WebKit的分装，较好支持CSS和JS</p>
 
 <p><a href="https://github.com/kishikawakatsumi/KeychainAccess">KeychainAccess</a></p>

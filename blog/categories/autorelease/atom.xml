@@ -4,7 +4,7 @@
   <title><![CDATA[Category: autorelease | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/autorelease/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-03T14:30:18+08:00</updated>
+  <updated>2016-02-14T22:03:19+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[内存管理 - Autorelease]]></title>
-    <link href="http://limon.top/blog/2015/01/19/autoreleasepool/"/>
+    <link href="http://limon.top/autoreleasepool/"/>
     <updated>2015-01-19T16:12:34+08:00</updated>
-    <id>http://limon.top/blog/2015/01/19/autoreleasepool</id>
+    <id>http://limon.top/autoreleasepool</id>
     <content type="html"><![CDATA[<p>Autorelease实际上只是把对release的调用延迟了，对于每一个Autorelease，系统只是把该Object放入了当前的Autorelease pool中，当该pool被释放时，该pool中的所有Object会被调用release，也就是计数器会减1，但是自动释放池被销毁了，里面的对象并不一定会被销毁。</p>
 
 <p>简而言之，autorelease pool 避免了频繁申请/释放内存。</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: animation | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/animation/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-03T14:30:18+08:00</updated>
+  <updated>2016-02-14T22:03:19+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Animation]]></title>
-    <link href="http://limon.top/blog/2015/12/23/animation/"/>
+    <link href="http://limon.top/animation/"/>
     <updated>2015-12-23T02:28:25+08:00</updated>
-    <id>http://limon.top/blog/2015/12/23/animation</id>
+    <id>http://limon.top/animation</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/keefo/CATweaker"> CAMediaTimingFunction helper tool </a></p>
 
 <p><a href="https://github.com/cjwirth/awesome-ios-ui"> 动画集合 </a></p>
@@ -102,11 +102,15 @@
 
 <p><a href="https://github.com/Magic-Unique/DoubleThumbSlider">双滑块Slider控件</a></p>
 
+<p><a href="https://github.com/Ramotion/reel-search">捷输入并选择组件</a> &mdash; 👍👍</p>
+
 <p><a href="https://github.com/AfryMask/AFWaveView">心形波浪</a></p>
 
 <p><a href="https://github.com/mukyasa/MMTextFieldEffects">各种输入框交互动画</a></p>
 
 <p><a href="https://github.com/lovels/LBTagView">可拖拽的标签</a></p>
+
+<p><a href="https://github.com/hyperoslo/Hue#user-content-gradients-1">Gradient 渐变 滑动</a></p>
 
 <p><br />
 <br /></p>
