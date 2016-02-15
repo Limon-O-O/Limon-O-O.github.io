@@ -7,6 +7,35 @@ sharing: false
 footer: true
 ---
 
+<style type="text/css">
+
+  .myinfo span i {
+    width: 20px;
+    height: 20px;
+    padding-right: 20px;
+    display: inline-block;
+  }
+
+  .myinfo span i:before {
+      height: 20px;
+      width: 20px;
+      display: inline-block;
+      text-align: center;
+      line-height: 20px;
+  }
+
+  @media screen and (max-width: 512px) {
+    .myinfo {
+      white-space: nowrap;
+    }
+
+    .myinfo span {
+      margin: 0 !important;
+      display: block;
+    }
+  }
+</style>
+
 <!-- A list of Font Awesome icons and their CSS content values  https://astronautweb.co/snippet/font-awesome/ -->
 <link rel="stylesheet" href="/images/portfolio/font-awesome-4.5.0/css/font-awesome.min.css">
 
@@ -14,32 +43,39 @@ footer: true
 
 <div style="margin-bottom: 20px;">
 
-  <p style="font-size: 19px; margin-top: 20px;">冯柠龙 Limon</p>
-
-  <p style="margin-top: 28px; margin-bottom: 25px;">
+  <p style="font-size: 19px; margin-top: 20px;">冯柠龙 Limon </p>
+  <p class="myinfo" style="margin-top: 28px; margin-bottom: 25px;">
     <span>
-      <i class="fa fa-puzzle-piece fa-lg"></i>&nbsp; &nbsp; 男，25岁，东莞人
-    </span> 
+      <i class="fa fa-puzzle-piece fa-lg"></i>
+      <a style="color: #666; text-decoration: none;">男，25岁，东莞人</a>
+    </span>
     <span style="margin-left: 50px;">
-      <i class="fa fa-graduation-cap fa-lg"></i>&nbsp; &nbsp; 吉林大学珠海学院
+      <i class="fa fa-graduation-cap fa-lg"></i>
+      <a style="color: #666; text-decoration: none;">吉林大学珠海学院</a>
     </span>
   </p>
-
-  <p style="margin-top: 20px;">
+  <p class="myinfo" style="margin-top: 20px;">
     <span>
-      <i class="fa fa-tablet fa-lg" style="padding-right: 18px;"></i> <a href="tel:+13926961193">139-2696-1193</a>
+      <i class="fa fa-tablet fa-lg">
+      </i>
+      <a href="tel:+13926961193">139-2696-1193</a>
     </span>
     <span style="margin-left: 70.2px;">
-      <i class="fa fa-paper-plane-o fa-lg" style="padding-right: 20px;"></i><a href="mailto:fengninglong@gmail.com">fengninglong@gmail.com</a>
+      <i class="fa fa-paper-plane-o fa-lg">
+      </i>
+      <a href="mailto:fengninglong@gmail.com">fengninglong@gmail.com</a>
     </span>
   </p>
-
-  <p style="margin-top: 20px;">
+  <p class="myinfo" style="margin-top: 20px;">
     <span>
-      <i class="fa fa-lemon-o fa-lg" style="padding-right: 18px;"></i> <a href="http://limon.top">limon.top</a>
+      <i class="fa fa-lemon-o fa-lg">
+      </i>
+      <a href="http://limon.top"> limon.top</a>
     </span>
     <span style="margin-left: 108px;">
-      <i class="fa fa-github fa-lg" style="padding-right: 21px;"></i><a href="https://github.com/Limon-O-O">github.com/Limon-O-O</a>
+      <i class="fa fa-github fa-lg">
+      </i>
+      <a href="https://github.com/Limon-O-O">github.com/Limon-O-O</a>
     </span>
   </p>
 
@@ -76,14 +112,14 @@ footer: true
     </p>
   </div>
   <div class="project">
-    <img src="/images/portfolio/AppSo.JPG">
+    <img src="/images/portfolio/AppSo.jpg">
     <span><i class="fa fa-mobile fa-lg"></i>&nbsp; <a href="https://itunes.apple.com/cn/app/appso-wan-zhuan-iphone-cheng/id966457637?mt=8" style="vertical-align: middle;">AppSo</a></span>
     <p>
       AppSo，国内第一的数字应用社区，于 2015.04 - 2015.10 由 Limon 独立开发并迭代至 1.7，Swift 项目。特色：动画舒服，体验棒棒哒。
     </p>
   </div>
   <div class="project">
-    <img src="/images/portfolio/Yao.png">
+    <img src="/images/portfolio/Yao.jpg">
     <span><i class="fa fa-mobile fa-lg"></i>&nbsp; <a href="https://itunes.apple.com/in/app/yao-da-xue-tong-xue-shi-ming/id967100519?mt=8" style="vertical-align: middle;">Yao</a></span>
     <p>
       Yao (1.0)，2014.09 - 2015.01，负责支付、搜索、个人中心等模块，三人小组的 Objective-C 项目。
@@ -94,14 +130,14 @@ footer: true
 <h2>PHP</h2>
 <div class="projects-row first">
   <div class="project">
-    <img src="/images/portfolio/ywuliu.png">
+    <img src="/images/portfolio/ywuliu.jpg">
     <span><i class="fa fa-globe fa-lg"></i>&nbsp; <a href="http://ywuliu.applinzi.com" style="vertical-align: middle;">云物流</a></span>
     <p>
       云物流，2014.06 - 2014.10，主要职责是：用 Thinkphp 框架搭建服务器端，配合前端构建一个响应式网站。
     </p>
   </div>
   <div class="project">
-    <img src="/images/portfolio/ounce.png">
+    <img src="/images/portfolio/ounce.jpg">
     <span><i class="fa fa-globe fa-lg"></i>&nbsp; <a href="http://ounce.applinzi.com" style="vertical-align: middle;">Ounce</a></span>
     <p>
       Ounce，一个响应式博客网站。前端使用 Bootstrap 框架，后端使用 PHP。主要用于学习前端知识。
