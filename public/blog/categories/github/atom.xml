@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: github | Limon's Blog]]></title>
+  <link href="http://limon.top/blog/categories/github/atom.xml" rel="self"/>
+  <link href="http://limon.top/"/>
+  <updated>2016-02-15T20:00:32+08:00</updated>
+  <id>http://limon.top/</id>
+  <author>
+    <name><![CDATA[Limon]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[GitHub库]]></title>
+    <link href="http://limon.top/githubku/"/>
+    <updated>2015-12-23T02:31:25+08:00</updated>
+    <id>http://limon.top/githubku</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/phimage/Erik">Erik</a> &mdash;  WebKit的分装，较好支持CSS和JS</p>
+
+<p><a href="https://github.com/kishikawakatsumi/KeychainAccess">KeychainAccess</a></p>
+
+<p><a href="https://github.com/danielgindi/ios-charts">ios-charts</a> &mdash;   表格</p>
+
+<p><a href="http://www.jianshu.com/p/b45655e23a42">顶部标题滚动条</a></p>
+
+<p><a href="https://github.com/xxycode/XXYAudioEngine">XXYAudioEngine</a> &mdash; 基于NSURLSession和AVAudioPlayer封装的一个播放在线音乐的工具，可以把音乐下载至本地，支持清除缓存</p>
+
+<p><a href="https://github.com/daisuke0131/ViewMonitor">VirwMonitor 点击测量视图位置、大小、背景、字体大小等信息</a></p>
+
+<p><a href="https://github.com/wojteklu/Watchdog">Watchdog</a> &mdash; iOS实时卡顿监控</p>
+
+<p><a href="https://github.com/kasketis/netfox">netfox：iOS 网络调试工具</a> &mdash; 配置只需一行代码，可以调试包括第三方库在内的网络请求</p>
+
+<p><a href="https://github.com/hyperoslo/ImagePicker">ImagePicker is an all-in-one camera solution for your iOS app</a></p>
+
+<p><a href="https://github.com/FlexMonkey/Filterpedia">Filterpedia</a> &mdash; 基于 Core Image 框架，完整、强大的图片滤镜类库</p>
+
+<p><a href="https://github.com/KyoheiG3/AttributedLabel">高性能 AttributedLabel</a></p>
+
+<p><a href="https://github.com/hackiftekhar/IQKeyboardManager">KeyboardManager</a></p>
+
+<p><a href="https://github.com/DeveloperLx/LxTabBadgePoint">tabBar上的角标Category写法，无需继承子类</a></p>
+
+<p><a href="https://github.com/neonichu/LiveGIFs">Export your Live Photos as animated GIFs</a></p>
+
+<p><a href="https://github.com/Roxasora/RxWebViewController">实现类似微信的 webView 导航效果，左滑返回上个网页</a></p>
+
+<p><a href="https://github.com/onevcat/APNGKit">一个高性能的 APNG 库</a></p>
+
+<p><a href="https://github.com/khaledmtaha/XAnimatedImage">XAnimatedImage</a> &mdash; 一个高性能的 GIF 动画引擎基于 FLAnimatedImage</p>
+
+<p><a href="https://github.com/Aufree/Hodor?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">Hodor</a> &mdash; 应用内直接更改应用语言而无需退出应用, 类似微信</p>
+
+<p><a href="https://github.com/nixzhu/AudioBot">AudioBot</a> &mdash; 录音Demo，录音时，同时也可以录入正在播放的音乐</p>
+
+<p><a href="https://github.com/audiokit/AudioKit">AudioKit</a> &mdash; 一个很棒的录音库，文档教程齐全，已有一个上架<a href="http://matthewfecher.com/app-developement/swift-synth/">App</a></p>
+
+<p><a href="https://github.com/Shannon-s-Dreamland/DropdownMenu">多级下拉菜单</a></p>
+
+<p><a href="https://github.com/VerbalExpressions/SwiftVerbalExpressions">正则库</a></p>
+
+<p><a href="http://www.weibo.com/mygroups?gid=3771498714262571&amp;wvr=6&amp;leftnav=1">面向协议编程单元测试 Mock 框架</a></p>
+
+<p><a href="https://github.com/GJGroup/GJRatioAutoLayout">RatioAutoLayout</a> &mdash; Autolayout下，只需一个开关，即可让当前view进行等比缩放</p>
+
+<p><a href="https://github.com/lra/mackup">Macup</a> &mdash; dotfiles 管理，通过git，dropbox来进行备份，恢复自定义设置的文件</p>
+
+<p><a href="https://github.com/yukiasai/Gecco">支持对视图进行局部高亮</a> &mdash; 快速创建产品的新手指导界面</p>
+
+<p><a href="https://github.com/FolioReader/FolioReaderKit?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=web&amp;utm_source=This_Week_in_Swift_71">阅读器</a></p>
+
+<p><a href="https://github.com/pili-engineering/PLCameraStreamingKit">PLCameraStreamingKit, 快速构建一款类似 Meerkat 或 Periscope 的手机直播应用</a> &mdash; 👍👍👍</p>
+]]></content>
+  </entry>
+  
+</feed>
