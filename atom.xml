@@ -4,7 +4,7 @@
   <title><![CDATA[Limon's Blog]]></title>
   <link href="http://limon.top/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-15T20:46:21+08:00</updated>
+  <updated>2016-02-15T20:56:25+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -1013,6 +1013,15 @@ New Year&rsquo;s 2016</a>  🍺</p>
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
 </span><span class='line'><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="err">&#39;</span><span class="n">initial</span> <span class="n">source</span> <span class="n">commit</span><span class="err">&#39;</span>
 </span><span class='line'><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">source</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>deploy 时 <code>non-fast-forward</code> 问题解决方案</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">cd</span> <span class="n">octopress</span><span class="o">/</span><span class="n">_deploy</span>
+</span><span class='line'><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
+</span><span class='line'><span class="n">cd</span> <span class="p">..</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">deploy</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
