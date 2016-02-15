@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: animation | Limon's Blog]]></title>
+  <link href="http://limon.top/blog/categories/animation/atom.xml" rel="self"/>
+  <link href="http://limon.top/"/>
+  <updated>2016-02-15T20:20:11+08:00</updated>
+  <id>http://limon.top/</id>
+  <author>
+    <name><![CDATA[Limon]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Animation]]></title>
+    <link href="http://limon.top/animation/"/>
+    <updated>2015-12-23T02:28:25+08:00</updated>
+    <id>http://limon.top/animation</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/keefo/CATweaker"> CAMediaTimingFunction helper tool </a></p>
+
+<p><a href="https://github.com/cjwirth/awesome-ios-ui"> 动画集合 </a></p>
+
+<p><a href="https://github.com/JakeLin/IBAnimatable/blob/master/Documentation/README.zh.md">IBAnimatable</a> &mdash; 是一个帮助我们在Interface Builder和Swift playground里面设计UI, 交互, 导航模式, 换场和动画的开源库</p>
+
+<p><a href="https://github.com/antiguab/BAFluidView"> 波浪 </a></p>
+
+<p><a href="https://github.com/poolqf/FillableLoaders"> 水波上涨填满 </a></p>
+
+<p><a href="https://github.com/FancyPixel/BallSwift"> UIDynamics iOS 9 </a></p>
+
+<p><a href="https://github.com/okmr-d/DOFavoriteButton"> 点赞 </a></p>
+
+<p><a href="https://github.com/IFTTT/RazzleDazzle"> A simple keyframe-based animation framework </a></p>
+
+<p><a href="https://github.com/ninjaprox/NVActivityIndicatorView"> 加载动画集合 </a></p>
+
+<p><a href="http://www.cocoachina.com/ios/20151202/14532.html"> 一款Loading动画的实现思路 </a></p>
+
+<p><a href="https://github.com/yoavlt/LiquidLoader"> 粘性加载动画 </a></p>
+
+<p><a href="http://pandara.xyz/2015/10/29/jelly_refresh/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">利用贝塞尔曲线实现Q弹的下拉刷新</a></p>
+
+<p><a href="https://github.com/PandaraWen/WaterDropViewDemo">水滴效果</a></p>
+
+<p><a href="https://github.com/overboming/ZCAnimatedLabel"> Label动画 </a></p>
+
+<p><a href="https://github.com/gmertk/BusyNavigationBar"> NavigationBar 动画 </a></p>
+
+<p><a href="https://github.com/ltebean/LTNavigationBar"> NavigationBar的背景颜色，高度 </a></p>
+
+<p><a href="https://github.com/DanisFabric/RainbowNavigation/blob/master/README_CN.md"> 动态改变UINavigationBar背景色 </a></p>
+
+<p><a href="https://github.com/MoZhouqi/KMNavigationBarTransition"> 顺滑过渡导航栏（不同背景颜色） </a> &mdash; 👍</p>
+
+<p><a href="https://github.com/overboming/ZCAnimatedLabel"> UILabel 动画 </a></p>
+
+<p><a href="https://github.com/entotsu/PullToBounce"> 下拉刷新 PullToBounce </a></p>
+
+<p><a href="https://github.com/yoavlt/LiquidFloatingActionButton"> 菜单粘性按钮 </a></p>
+
+<p><a href="https://github.com/liuzhiyi1992/SpreadButton">自适应边界的散开按钮</a></p>
+
+<p><a href="https://github.com/noppefoxwolf/FlowBarButtonItem?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=web&amp;utm_source=This_Week_in_Swift_71">浮动的 Button</a></p>
+
+<p><a href="https://github.com/Yalantis/Context-Menu.iOS">折叠菜单</a></p>
+
+<p><a href="https://github.com/Yalantis/Persei">折叠菜单 (Yalantis出品)</a></p>
+
+<p><a href="http://www.cocoachina.com/ios/20160104/14858.html">图片实现多层折叠效果</a></p>
+
+<p><a href="https://github.com/Ramotion/folding-cell">Cell 折叠动</a> &mdash; 👍👍👍</p>
+
+<p><a href="https://github.com/MartinRGB/MTMaterialDelete"> 粉碎删除 </a></p>
+
+<p><a href="https://github.com/SergioChan/SCTableViewCell"> 侧滑删除cell </a></p>
+
+<p><a href="http://xxycode.com/ru-he-zhi-zuo-ge-xuan-ku-hao-wan-de-bao-zha-xiao-guo-2/"> 如何制作一个炫酷好玩的爆炸效果 </a></p>
+
+<p><a href="https://github.com/Boris-Em/BEMCheckBox"> Check box </a></p>
+
+<p><a href="https://github.com/gontovnik/DGElasticPullToRefresh"> 皮筋式弹性下拉即刷新 </a></p>
+
+<p><a href="http://iostuts.io/2015/10/17/elastic-bounce-using-uibezierpath-and-pan-gesture/">皮筋式弹性下拉即刷新 文章 Elastic view animation using UIBezierPath </a></p>
+
+<p><a href="https://github.com/lkzhao/ElasticTransition">皮筋式动画转场效果</a></p>
+
+<p><a href="https://github.com/Yalantis/StarWars.iOS"> 瞬间崩塌为小方块动画效果 </a></p>
+
+<p><a href="https://github.com/TBXark/TKRubberIndicator"> page control </a></p>
+
+<p><a href="https://github.com/AliThink/HorizontalProgress"> HorizontalProgress 进程 </a></p>
+
+<p><a href="https://github.com/SergioChan/SCTrelloNavigation"> trello 的导航动效控件 </a></p>
+
+<p><a href="https://github.com/DroidsOnRoids/MPParallaxView"> Apple TV Parallax 效果的视图 </a></p>
+
+<p><a href="https://github.com/CosmicMind/MaterialKit"> MaterialKit 是一个用 Swift 写的 Material Design 框架, 拥有多种漂亮的动画效果和样式 </a></p>
+
+<p><a href="https://github.com/Guidebook/gbkui-button-progress-view"> Download Button Aniamtion </a></p>
+
+<p><a href="https://github.com/Magic-Unique/DoubleThumbSlider">双滑块Slider控件</a></p>
+
+<p><a href="https://github.com/Ramotion/reel-search">捷输入并选择组件</a> &mdash; 👍👍</p>
+
+<p><a href="https://github.com/AfryMask/AFWaveView">心形波浪</a></p>
+
+<p><a href="https://github.com/mukyasa/MMTextFieldEffects">各种输入框交互动画</a></p>
+
+<p><a href="https://github.com/lovels/LBTagView">可拖拽的标签</a></p>
+
+<p><a href="https://github.com/hyperoslo/Hue#user-content-gradients-1">Gradient 渐变 滑动</a></p>
+
+<p><br />
+<br /></p>
+
+<h2>CollectionView</h2>
+
+<p><a href="https://github.com/CezaryKopacz/CKWaveCollectionViewTransition"> CollectionView 转场动画 </a></p>
+
+<p><a href="https://github.com/nathanwhy/HYAwesomeTransition"> 格瓦拉 cell移动动画Demo </a></p>
+
+<p><a href="https://github.com/nshintio/uicollectionview-reordering"> UICollectionViews 拖动 </a></p>
+
+<p><a href="https://github.com/alienjun/MyTags"> CollectionView实现的个人标签 </a></p>
+
+<p><a href="https://github.com/CezaryKopacz/CKWaveCollectionViewTransition"> Wave CollectionView Transition </a></p>
+
+<p><a href="http://t.cn/Rybxgpy?u=1783821582&amp;amp;amp;amp;amp;amp;amp;m=3885611247173418&amp;amp;amp;amp;amp;amp;amp;cu=1783821582"> iOS 书本打开动画制作教程 </a></p>
+
+<p><a href="https://github.com/zhxnlai/ZLSwipeableViewSwift"> 卡片 </a></p>
+
+<p><a href="https://github.com/seedante/CardAnimation"> 卡片式垂直翻转动画 </a></p>
+
+<p><a href="https://github.com/seedante/SDECollectionViewAlbumTransition"> 相册翻开动画效果 </a></p>
+
+<p><a href="https://github.com/demonnico/PinterestSwift"> 瀑布流 </a></p>
+
+<p><a href="http://allsome.love/yin-xiang-bi-ji-jiao-hu-xiao-guo-de-shi-xian/?u=1783821582&amp;amp;m=3905429706568663&amp;amp;cu=1783821582&amp;amp;ru=2029464644&amp;amp;rm=3905408588445881"> 印象笔记交互效果 </a></p>
+
+<p><a href="https://github.com/SmallLang/UICollectionViewLayoutDemo">自定义UICollectionViewFlowLayout和UICollectionViewLayout的两个例子</a></p>
+
+<p><a href="https://medium.com/@victor_wang/build-your-cells-in-a-way-of-lego-fbf6a1133bb1#.eh7fkk93s">响应式CollectionView</a></p>
+
+<p><br />
+<br /></p>
+
+<h2>Animations By Emails</h2>
+
+<p><a href="http://www.ios-animations-by-emails.com/posts/2015-may#tutorial">Transitions with CoreImage</a></p>
+
+<p><a href="http://ios-animations-by-emails.com/posts/2015-july">Fun with Gradients and Masks</a></p>
+
+<p><a href="http://ios-animations-by-emails.com/posts/2015-november">fireworks</a></p>
+
+<p><a href="http://www.jianshu.com/p/76c588893b19?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note&amp;utm_source=weibo">使用CAReplicatorLayer创建动画</a></p>
+
+<p><br />
+<br /></p>
+]]></content>
+  </entry>
+  
+</feed>
