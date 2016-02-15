@@ -1,0 +1,42 @@
+<div class="highlight"><pre><span class="k">enum</span> <span class="n">FontWeight</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Light</span><span class="p">(</span><span class="nl">fontSize</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">Regular</span><span class="p">(</span><span class="nl">fontSize</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">Medium</span><span class="p">(</span><span class="nl">fontSize</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">Bold</span><span class="p">(</span><span class="nl">fontSize</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">extension</span> <span class="bp">UIFont</span> <span class="p">{</span>
+
+    <span class="k">class</span> <span class="k">func</span> <span class="n">ifr_adaptiveFont</span><span class="p">(</span><span class="nl">weight</span><span class="p">:</span> <span class="n">FontWeight</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">UIFont</span> <span class="p">{</span>
+
+        <span class="k">var</span> <span class="n">weightString</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="k">var</span> <span class="nl">size</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="mf">16.0</span>
+
+        <span class="k">switch</span> <span class="n">weight</span> <span class="p">{</span>
+
+            <span class="k">case</span> <span class="p">.</span><span class="n">Light</span><span class="p">(</span><span class="k">let</span> <span class="n">fontSize</span><span class="p">)</span><span class="o">:</span>
+                <span class="n">weightString</span> <span class="o">=</span> <span class="s">&quot;-Light&quot;</span>
+                <span class="n">size</span> <span class="o">=</span> <span class="n">fontSize</span>
+
+            <span class="k">case</span> <span class="p">.</span><span class="n">Regular</span><span class="p">(</span><span class="k">let</span> <span class="n">fontSize</span><span class="p">)</span><span class="o">:</span>
+                <span class="n">weightString</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+                <span class="n">size</span> <span class="o">=</span> <span class="n">fontSize</span>
+
+            <span class="k">case</span> <span class="p">.</span><span class="n">Medium</span><span class="p">(</span><span class="k">let</span> <span class="n">fontSize</span><span class="p">)</span><span class="o">:</span>
+                <span class="n">weightString</span> <span class="o">=</span> <span class="s">&quot;-Medium&quot;</span>
+                <span class="n">size</span> <span class="o">=</span> <span class="n">fontSize</span>
+
+            <span class="k">case</span> <span class="p">.</span><span class="n">Bold</span><span class="p">(</span><span class="k">let</span> <span class="n">fontSize</span><span class="p">)</span><span class="o">:</span>
+                <span class="n">weightString</span> <span class="o">=</span> <span class="s">&quot;-Bold&quot;</span>
+                <span class="n">size</span> <span class="o">=</span> <span class="n">fontSize</span>
+        <span class="p">}</span>
+
+        <span class="n">guard</span> <span class="k">let</span> <span class="n">systemFont</span> <span class="o">=</span> <span class="bp">UIFont</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;PingFangSC\(weightString)&quot;</span><span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="n">size</span><span class="p">)</span> <span class="o">??</span>
+            <span class="bp">UIFont</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;STHeitiSC\(weightString)&quot;</span><span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="n">size</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="bp">UIFont</span><span class="p">.</span><span class="n">systemFontOfSize</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">systemFont</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
