@@ -4,7 +4,7 @@
   <title><![CDATA[Limon's Blog]]></title>
   <link href="http://limon.top/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-25T11:54:26+08:00</updated>
+  <updated>2016-03-16T22:28:10+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -1036,6 +1036,8 @@ New Year&rsquo;s 2016</a>  🍺</p>
     <id>http://limon.top/githubku</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/phimage/Erik">Erik</a> &mdash;  WebKit的分装，较好支持CSS和JS</p>
 
+<p><a href="https://github.com/henrinormak/Heimdall">Heimdall</a> &mdash; 简单易用的加、解密安全框架（AES/RSA）库及示例</p>
+
 <p><a href="https://github.com/kishikawakatsumi/KeychainAccess">KeychainAccess</a></p>
 
 <p><a href="https://github.com/danielgindi/ios-charts">ios-charts</a> &mdash;   表格</p>
@@ -1089,6 +1091,8 @@ New Year&rsquo;s 2016</a>  🍺</p>
 <p><a href="https://github.com/FolioReader/FolioReaderKit?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=web&amp;utm_source=This_Week_in_Swift_71">阅读器</a></p>
 
 <p><a href="https://github.com/pili-engineering/PLCameraStreamingKit">PLCameraStreamingKit, 快速构建一款类似 Meerkat 或 Periscope 的手机直播应用</a> &mdash; 👍👍👍</p>
+
+<p><a href="https://github.com/longitachi/ZLPhotoBrowser">ZLPhotoBrowser</a> &mdash; 相册照片多选框架，支持拍照、预览快速多选</p>
 ]]></content>
   </entry>
   
@@ -1877,6 +1881,12 @@ NSString *orderString = [NSString stringWithFormat:@"%@&amp;sign=\"%@\"&amp;sign
 
 <h2>包罗万象</h2>
 
+<p><a href="http://www.jianshu.com/p/990ee3db0563">iOS 视频边下边播&ndash;缓存播放数据流</a> &mdash; 👍👍👍</p>
+
+<p><a href="http://www.jianshu.com/p/af2d471f7b9c?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note&amp;utm_source=weibo">在 iOS 开发中如何优雅地进行图片缩放</a></p>
+
+<p><a href="http://pomax.github.io/bezierinfo/">最好的 Bezier 曲线教程</a></p>
+
 <p><a href="https://realm.io/cn/news/jack-nutting-search-api-ios/">iOS 系统搜索集成</a> &mdash; Realm</p>
 
 <p><a href="http://www.devtalking.com/articles/ios-design-pattern-in-swift-1/">Swift 中的iOS设计模式（一）</a></p>
@@ -2025,6 +2035,8 @@ NSString *orderString = [NSString stringWithFormat:@"%@&amp;sign=\"%@\"&amp;sign
 <p><a href="http://www.cnblogs.com/kenshincui/p/3983982.html">iOS开发系列&ndash;并行开发其实很容易</a></p>
 
 <p><a href="http://ksnowlv.github.io/blog/2014/09/07/ios-tong-bu-suo-xing-neng-dui-bi/">iOS同步对象性能对比</a></p>
+
+<p><a href="http://geek.csdn.net/news/detail/60236">iOS开发中设计并发任务技术与注意事项</a></p>
 
 <h2>工具</h2>
 

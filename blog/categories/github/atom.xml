@@ -4,7 +4,7 @@
   <title><![CDATA[Category: github | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/github/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-02-25T11:54:26+08:00</updated>
+  <updated>2016-03-16T22:28:10+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -19,6 +19,8 @@
     <updated>2015-12-23T02:31:25+08:00</updated>
     <id>http://limon.top/githubku</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/phimage/Erik">Erik</a> &mdash;  WebKit的分装，较好支持CSS和JS</p>
+
+<p><a href="https://github.com/henrinormak/Heimdall">Heimdall</a> &mdash; 简单易用的加、解密安全框架（AES/RSA）库及示例</p>
 
 <p><a href="https://github.com/kishikawakatsumi/KeychainAccess">KeychainAccess</a></p>
 
@@ -73,6 +75,8 @@
 <p><a href="https://github.com/FolioReader/FolioReaderKit?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=web&amp;utm_source=This_Week_in_Swift_71">阅读器</a></p>
 
 <p><a href="https://github.com/pili-engineering/PLCameraStreamingKit">PLCameraStreamingKit, 快速构建一款类似 Meerkat 或 Periscope 的手机直播应用</a> &mdash; 👍👍👍</p>
+
+<p><a href="https://github.com/longitachi/ZLPhotoBrowser">ZLPhotoBrowser</a> &mdash; 相册照片多选框架，支持拍照、预览快速多选</p>
 ]]></content>
   </entry>
   
