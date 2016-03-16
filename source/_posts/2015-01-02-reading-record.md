@@ -20,6 +20,12 @@ categories: Reading record
 
 ##包罗万象
 
+[iOS 视频边下边播--缓存播放数据流](http://www.jianshu.com/p/990ee3db0563) --- 👍👍👍
+
+[在 iOS 开发中如何优雅地进行图片缩放](http://www.jianshu.com/p/af2d471f7b9c?utm_campaign=hugo&utm_medium=reader_share&utm_content=note&utm_source=weibo)
+
+[最好的 Bezier 曲线教程](http://pomax.github.io/bezierinfo/)
+
 [iOS 系统搜索集成](https://realm.io/cn/news/jack-nutting-search-api-ios/) --- Realm
 
 [Swift 中的iOS设计模式（一）](http://www.devtalking.com/articles/ios-design-pattern-in-swift-1/)
@@ -167,6 +173,8 @@ categories: Reading record
 [iOS开发系列--并行开发其实很容易](http://www.cnblogs.com/kenshincui/p/3983982.html)
 
 [iOS同步对象性能对比](http://ksnowlv.github.io/blog/2014/09/07/ios-tong-bu-suo-xing-neng-dui-bi/)
+
+[iOS开发中设计并发任务技术与注意事项](http://geek.csdn.net/news/detail/60236)
 
 
 ##工具

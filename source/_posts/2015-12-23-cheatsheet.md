@@ -427,4 +427,14 @@ git add .
 git commit -m 'initial source commit'
 git push origin source
 ```
+
+deploy 时 `non-fast-forward` 问题解决方案
+
+```
+cd octopress/_deploy
+git pull origin master
+cd ..
+rake deploy
+```
+
 <br />
