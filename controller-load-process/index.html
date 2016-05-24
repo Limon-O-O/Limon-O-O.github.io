@@ -1,0 +1,190 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>[译] 揭秘控制器视图的加载过程 - Limon&#8217;s Blog</title>
+	<meta name="author" content="Limon">
+
+	
+	<meta name="description" content="[译] 揭秘控制器视图的加载过程 译文 Feb 2nd, 2016 4:20 am 原文链接:
+iOS: UIViewController’s view loading process demystified @ &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Limon's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico?v=1" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="/javascripts/jquery-1.7.2.min.js"></script>
+	
+</head>
+
+
+<body data-page=/controller-load-process/>
+	<header id="header" class="inner"><h1><a href="/">Limon&#8217;s Blog</a></h1>
+
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	
+	<h2 class="title">[译] 揭秘控制器视图的加载过程</h2>
+
+	
+
+	<div class="entry-content">
+		<div class="meta_custom">
+		
+			<div class="tags">
+
+
+	<a class='category' href='/blog/categories/yi-wen/'>译文</a>
+
+
+</div>
+			
+
+
+
+
+<time class='entry-date' datetime='2016-02-02T04:20:57+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>4:20 am</span></time>
+
+		</div>
+		
+		<p>原文链接:
+<a href="http://szulctomasz.com/ios-uiviewcontrollers-view-loading-process-demystified/">iOS: UIViewController’s view loading process demystified</a></p>
+
+<p><a href="https://twitter.com/NatashaTheRobot">@NatashaTheRobot</a>在她的博客里发过一篇关于测试控制器及视图加载问题的文章<a href="http://natashatherobot.com/ios-testing-view-controllers-swift/">The One Weird Trick For Testing View Controllers in Swift</a></p>
+
+<blockquote><p>她写道：
+    这里的关键是苹果重载了控制器视图的getter去调用加载视图的方法，并做了许多我们没有权限访问的其它事情。如果有谁深入了解过其中的工作原理，尽情地说出来吧。</p></blockquote>
+
+<p>了解背后的工作原理确实是一个很有趣的事情。在她的鼓励下，我开始进行深入的探索。</p>
+
+<p>我发现有两种情况：控制器被设置为 window 的根控制器或者 控制器不作为根控制器（例如，当你想要测试视图控制器，并从 Storyboard 中实例化了一个时）</p>
+
+<h2>控制器作为根控制器</h2>
+
+<pre><code>if self.window == nil {
+    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+}
+
+let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+let vc = storyboard.instantiateViewControllerWithIdentifier("ViewController")
+self.window!.rootViewController = vc
+</code></pre>
+
+<p>比如说，这部分程序流运行在 <code>-application:DidFinishLaunchingWithOptions:</code> 方法中，
+<img src="http://szulctomasz.com/wp-content/uploads/2015/08/ex-1.png" alt="" />
+<code>UIWindow</code> 的 <code>-makeKeyAndVisible</code> 是第一个被调用的方法，此方法调用了 UIWindow 的私有方法 <code>-addRootViewControllerViewIfPossible</code> 去为其根控制器添加 view，并显示出来。<code>UIWindow</code>  获取根控制器的 <code>view</code> 属性之后，就开始了视图加载的一系列过程，首先被调用的方法是 <code>-loadViewIfRequired</code>，此方法再调用 <code>-loadView</code> 方法。<code>-loadView</code> 方法调用 <code>UIViewController</code> 的的内部方法来加载 Nib 以达到设置视图的目的。</p>
+
+<p>今年（2015年）的 WWDC 上有个非常好的演讲，介绍了 <code>storyboard</code> 及 <code>nibs</code> 在运行时是如何运作的。<a href="https://developer.apple.com/videos/wwdc/2015/?id=407">Implementing UI Design in Interface Builder</a></p>
+
+<p>在 <code>loadView</code> 设置好后，控制器调用它内部的方法 <code>-_window</code>，并读取了诸如<code>preferedInterfaceOrientation</code>、<code>supportedInterfaceOrientations</code>、<code>shouldAutorotate</code>的许多设置。事实上，控制器调用了 <code>-_window</code> 许多次，此外也调用了许多其它方法。</p>
+
+<p>接着，<code>-viewDidLoad</code> 方法被调用，私有 <code>-__viewWillAppear</code> 调用 <code>-viewWillAppear</code>。视图即将被呈现出来，所以 <code>-willMoveToWindow:</code> <code>-willMoveToSuperview:</code> 和私有 <code>-_didMoveFromWindow:toWindow:</code> 等方法被调用。</p>
+
+<p>下一步是为视图作自动布局，所以 <code>layoutMarginsDidChange, didMoveToWindow, didMoveToSuperview, updateViewConstraints, updateConstraints, layoutSublayersOfLayer, viewWillLayoutSubviews, layoutSubviews</code> 等一系列方法被调用</p>
+
+<p>最后，<code>-viewDidAppear:</code>被调用了，视图也呈现出来了。</p>
+
+<h4>.</h4>
+
+<h2>普通控制器的加载测试</h2>
+
+<p>这是另外一个值得去研究的重要情况。在这种情况下，你不用创建 <code>window</code> 并把你的 <code>view controller</code> 加到其上来进行测试，只需要通过storyboard创建控制器的实例以进行测试。在看了 Natasha 的文章之前，我只知道直接通过访问控制器的 <code>view</code> 属性来获取视图。现在我知道在 iOS9 之后，<code>-loadViewIfNeeded</code> 方法和访问属性 <code>view</code> 的行为是一样的。并且在<a href="https://github.com/orta">Ørta</a>的推荐下，我知道了两个更好的方法 去测试控制器视图的加载并确保其可用。<code>-beginAppearanceTransition:animated</code> 和 <code>-endApperanceTransition</code>。<a href="https://github.com/artsy/eigen/blob/master/Artsy_Tests/Extensions/UIViewController+PresentWithFrame.m#L20-L22">这是他推荐的方法</a></p>
+
+<h3>直接访问View属性</h3>
+
+<p>让我们看看直接访问 <code>view</code> 时的情况。</p>
+
+<pre><code>let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+let vc = storyboard.instantiateViewControllerWithIdentifier("ViewController")
+_ = vc.view
+</code></pre>
+
+<p><img src="http://szulctomasz.com/wp-content/uploads/2015/08/ex-2.png" alt="" /></p>
+
+<p>好吧，许多方法没被调用。<code>window</code> 为 <code>nil</code>，视图可以被访问和加载，图上的加载过程却在 <code>-viewDidLoad</code> 中就结束了，所以我认为还有许多方法没被找出来。</p>
+
+<p>让我们看看 <code>-beginApperanceTransition:animated:</code> 是怎样工作的。</p>
+
+<h3>beginApperanceTransition:animated</h3>
+
+<pre><code>let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+let vc = storyboard.instantiateViewControllerWithIdentifier("ViewController")
+vc.beginAppearanceTransition(true, animated: false)
+vc.endAppearanceTransition()
+</code></pre>
+
+<p><img src="http://szulctomasz.com/wp-content/uploads/2015/08/ex-3.png" alt="" /></p>
+
+<p>非常好，这次的加载过程比第一个要详细。可以看到，这里 <code>window</code> 同样是 <code>nil</code>，所以控制器的视图，没有出现在加载过程中，也没有设置布局的代码在运行，仅仅是控制器的一些设置。</p>
+
+<blockquote><p>译者：这里可能很难理解，可以结合本文的三个图，图都是分三列，分别为 <code>UIWindow</code>、<code>UIViewController</code>、<code>UIView</code>，这里说 <code>window</code> 同样是 <code>nil</code> 的意思是，<code>UIWindow</code> 列没出现东西，原因是控制器不是根控制器，这里仅仅测试单独一个控制器。作者在这里想表达的意思是</p></blockquote>
+
+<h2>总结</h2>
+
+<p>现在应该知道，视图的加载过程取决于控制器的上下文。</p>
+
+<p>在第一个例子中，控制器作为根控制器，所以控制器和视图都进行了许多设置。</p>
+
+<p>在最后的一个例子中，因为没有 <code>UIWindow</code>，只有控制器初始化了，连视图也没有初始化的需要 必要。这种情况就类似于模拟 <code>present</code> 一个控制器，因此 <code>-viewWillAppear</code> 和 <code>-viewDidAppear</code> 方法被调用了。这在某些情况下或许很重要。</p>
+
+<p>最后，我要再谈谈第二个例子。
+在不知道 <code>-beginApperanceTransition:animated</code> 之前，我以为 viewWill/viewDid 会被调用，但是并没有，就如以上图二所示。Ørta 提供的方法可能是测试控制器的最好途径之一。</p>
+
+	</div>
+
+
+
+<div class="meta">
+	<div class="center"><a href="#"></a></div>
+</div>
+
+	<br />
+	<br />
+</article>
+
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		
+		
+	</div>
+	
+</div>
+
+
+
+</div>
+	<footer id="footer" class="inner"><p><br /></p>
+Copyright &copy; 2016
+
+  <a href="http://weibo.com/u/1783821582">Limon</a>
+
+
+<p><br /></p>
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox({
+	  padding : 0
+	});
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>内存管理 - 引用计数 - Limon&#8217;s Blog</title>
+	<meta name="author" content="Limon">
+
+	
+	<meta name="description" content="内存管理 - 引用计数 内存管理 Jan 13th, 2015 2:27 pm 内存管理概述 在Objective-C中，系统并不会自动释放堆中的内存，其他高级语言C#、JAVA都有垃圾回收机制，但在Objective-C中并没有垃圾回收机制，那么Objective-C中的内存是如何管理？ &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Limon's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico?v=1" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="/javascripts/jquery-1.7.2.min.js"></script>
+	
+</head>
+
+
+<body data-page=/nei-cun-guan-li-yin-yong-ji-shu-qi/>
+	<header id="header" class="inner"><h1><a href="/">Limon&#8217;s Blog</a></h1>
+
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	
+	<h2 class="title">内存管理 - 引用计数</h2>
+
+	
+
+	<div class="entry-content">
+		<div class="meta_custom">
+		
+			<div class="tags">
+
+
+	<a class='category' href='/blog/categories/nei-cun-guan-li/'>内存管理</a>
+
+
+</div>
+			
+
+
+
+
+<time class='entry-date' datetime='2015-01-13T14:27:14+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:27 pm</span></time>
+
+		</div>
+		
+		<h2>内存管理概述</h2>
+
+<p>在Objective-C中，系统并不会自动释放堆中的内存，其他高级语言C#、JAVA都有垃圾回收机制，但在Objective-C中并没有垃圾回收机制，那么Objective-C中的内存是如何管理？
+Objective-C语言使用引用计数器来管理内存，每个对象都有个可以递增或递减的计数器。如果想使某个对象继续存活，那就递增其引用计数器；用完之后，就递减其计数器；当计数器为0，就表示没人关注此对象，此对象就会被销毁。</p>
+
+<h2>引用计数工作原理</h2>
+
+<p>在引用计数架构下，对象有个计数器，用以表示当前有多少个事物想令此对象继续存活。
+NSObject协议声明了三个方法用于操作计数器</p>
+
+<ul>
+<li>Retain 递增计数器</li>
+<li>Release 递减计数器</li>
+<li>autorelease 待销毁autorelease pool时，再递减pool内的全部计数器</li>
+</ul>
+
+
+<p>1.对一个对象发送alloc、retain、new、copy消息，计数器 +1</p>
+
+<p>2.对一个对象发送release消息，计数器 -1</p>
+
+<p>3.当一个对象的引用计数器为0，对象就被回收(dealloced)，也就是说，系统会将对象其占用的内存标记为“可重用”(reuse)，放到“可用内存池”(avaiable pool)</p>
+
+<h3>手动管理内存的三点原则</h3>
+
+<ul>
+<li>如果需要持有一个对象，那么对其发送retain</li>
+<li>如果之后不再使用该对象，那么需要对其发送release（或者autorealse）</li>
+<li>每一次对retain,alloc或者new的调用，需要对应一次release或autorealse调用</li>
+</ul>
+
+
+<h3>图表演示</h3>
+
+<p>下图演示了一个对象自创建出来之后经历一次retain及两次release操作的过程</p>
+
+<p><img src="http://limons-gitimage.stor.sinaapp.com/Memory.png" alt="Memory" /></p>
+
+<p>下图所示的对象图中，ObjectB和ObjectC都引用了ObjectA，若B和C都不再使用A，则其计数器为0，便被回收。还有OrderObject想令B和C继续存活，而应用程序里又有另外的对象想令OrderObject继续存活，如果按“引用树“回溯，那么会发现一个“根对象”，在iOS中，则是UIApplication对象。此”根对象”是应用程序启动时创建的单例。</p>
+
+<p><img src="http://limons-gitimage.stor.sinaapp.com/Memory-2.png" alt="Memory" /></p>
+
+<h3>代码演示</h3>
+
+<pre><code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    NSNumber *number = [[NSNumber alloc] initWithInt:1337]; 
+
+    [array addObject:number]; //number的引用计数器+1（此时number的引用计数器至少为2）
+    [number release]; // -1
+
+    // do something with `array’
+
+    [array release];
+    return YES;
+}
+</code></pre>
+
+<blockquote><p>在调用数组的<code>-addObject</code>方法时，数组也会在number上调用retain，以期令此对象存活</p></blockquote>
+
+<h2>引用计数的应用场景</h2>
+
+<p>在上面的代码演示中，还不看出引用计数的真正用处。在函数内使用一个临时的对象，通常不需要修改引用计数，只需在返回前将该对象销毁即可。
+引用计数真正的应用场景是，用于对象之间传递和共享数据。</p>
+
+<h2>引用计数的注意要点</h2>
+
+<h3>retainCount可能永远不为0</h3>
+
+<p>可能有人会测试对象释放时，看retainCount是否为0，代码如下：</p>
+
+<pre><code>NSObject *object = [[NSObject alloc] init];
+NSLog(@"%lu",(unsigned long)[object retainCount]);
+[object release];
+NSLog(@"%lu",(unsigned long)[object retainCount]);
+</code></pre>
+
+<p>但是，打印的结果是 1  1</p>
+
+<p>最后一次输出，引用计数并没有变成0，原因是在最后一次 release 时，系统马上就回收了内存，就没有再将retainCount减1，因为不将值从1变成0，可以减少一次内存操作，加快对象的回收，只有在系统不打算这么优化时，计数值才会递减为0</p>
+
+<h3>悬挂指针</h3>
+
+<p>当所指向的对象被释放或者收回，此情况下该指针便称悬垂指针（也叫迷途指针）。</p>
+
+<blockquote><p>某些编程语言允许未初始化的指针的存在，而这类指针即为野指针。</p></blockquote>
+
+<p>为什么对象被回收了，向其发送消息不会崩？代码如下：</p>
+
+<pre><code>NSNumber *number = [[NSNumber alloc] initWithInt:1337];
+
+[number release];
+
+NSLog(@"number = %@",number);
+</code></pre>
+
+<p>内存已经被回收，如果向其发送消息，可能使程序崩溃。为什么说“可能”，而没说“一定”，是因为对象的所占的内存在“解除分配”(deallocated)之后，只是放回了“可用内存池”(avaiable pool)。如果在执行NSLog时尚未覆写对象内存，那么该对象仍然有效。</p>
+
+<blockquote><p>由此可见，因过早释放对象而导致的bug很难调试</p></blockquote>
+
+<p>为了防止此情况的发送，一般release之后都会清空指针</p>
+
+<pre><code>NSNumber *number = [[NSNumber alloc] initWithInt:1337];
+
+[number release];
+number = nil; 
+</code></pre>
+
+<blockquote><p>在Objective-C中，向nil发送消息不会出错。</p></blockquote>
+
+<h2>总结</h2>
+
+<ul>
+<li>Objective-C通过<code>引用计数机制</code>来管理内存</li>
+<li>对象创建之后，其引用计数器至少为1，<code>retain</code>和<code>release</code>分别会递增及递减计数器</li>
+</ul>
+
+
+	</div>
+
+
+
+<div class="meta">
+	<div class="center"><a href="#"></a></div>
+</div>
+
+	<br />
+	<br />
+</article>
+
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		
+		
+	</div>
+	
+</div>
+
+
+
+</div>
+	<footer id="footer" class="inner"><p><br /></p>
+Copyright &copy; 2016
+
+  <a href="http://weibo.com/u/1783821582">Limon</a>
+
+
+<p><br /></p>
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox({
+	  padding : 0
+	});
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

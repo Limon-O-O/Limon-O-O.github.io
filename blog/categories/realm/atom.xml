@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: realm | Limon's Blog]]></title>
+  <link href="http://limon.top/blog/categories/realm/atom.xml" rel="self"/>
+  <link href="http://limon.top/"/>
+  <updated>2016-05-24T18:56:51+08:00</updated>
+  <id>http://limon.top/</id>
+  <author>
+    <name><![CDATA[Limon]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Realm Thread 浅析]]></title>
+    <link href="http://limon.top/RealmThread/"/>
+    <updated>2016-01-14T02:27:14+08:00</updated>
+    <id>http://limon.top/RealmThread</id>
+    <content type="html"><![CDATA[<p>两个同一：同一个 realm、同一个线程，两者缺一不可。</p>
+
+<p>打开 App，首先从 Realm 中获取首页的数据，此时在 <strong>主线程</strong> 调用 <code>-fetchArticlesFromRealmByType(.Home)</code>，此方法返回一个元组： <code>result: (articles: [Article], articleObjects: [ArticleObject])</code>，前者是模型，后者是 Realm 的 <code>Object</code>。</p>
+
+<p>然后再进行网络请求，网络请求完之后，<strong>主线程</strong> 更新 UI，并保存数据最新的数据和删除旧的数据（[ArticleObject]）。
+保存数据直接可以实例化一个 Realm，所以不需要考虑 <strong>两个同一</strong>。</p>
+
+<p>重点讲删除数据的两个同一：</p>
+
+<pre><code class="swift">func fetchArticlesFromRealmByType(articleType: ArticleType, result: (articles: [Article], articleObjects: [ArticleObject]) -&gt; Void) {
+
+  // 省略部分代码...
+
+  // 成功从本地数据库中获取数据之后，在 **主线程*** 回调，在外面更新 UI，并持有 articleObjects，待网络请求完，删除此 articleObjects
+  let articleRealmObjects = realm.objects(ArticleObject)
+  result(articles: articles, articleObjects: articleRealmObjects)
+
+  // 注意，Object 不能切换线程，意思就是说，你如果在 Background 线程得到 articleRealmObjects，不能再切换到主线程回调出去，推荐使用通知。
+  Queue.Background.execute() {
+    let articleRealmObjects = realm.objects(ArticleObject)
+    Queue.Main.execute() {
+      result(articles: articles, articleObjects: articleRealmObjects)
+    }
+  }
+
+}
+</code></pre>
+
+<pre><code class="swift">func deleteObject(articleObjects: [ArticleObject]) {
+  guard let articleObjects = articleObjects else {
+    return
+  }
+  let _ = try? articleObjects.first?.realm?.write() {
+    articleObjects.first?.realm?.delete(articleObjects)
+  }
+}
+</code></pre>
+
+<h3>同一个线程</h3>
+
+<p>待网络请求完后，想要删除旧的 <code>articleObjects</code>，应该在 <code>articleObjects</code> 同一线程内删除，在此例子中，<code>articleObjects</code> 是从 <code>Queue.Main</code> 中得到，那删除时也要在此线程删除，代码如下：</p>
+
+<pre><code>Queue.Main.execute() {
+  print("delete action on thread: \(NSThread.currentThread())")
+  deleteObject(self.articleObjects)
+}
+</code></pre>
+
+<p>如果打印出来的内存地址和在 <code>-fetchArticlesFromRealmByType(.Home)</code> 打印的不同，此时就会 Crash: <code>Realm accessed from incorrect thread.</code></p>
+
+<blockquote><p>如果是在串行队列中，需要持有此队列，就算 <code>-dispatch_queue_create(key, _)</code> 中的 key 每次创建都是同一个 key，也不能保证所有串行任务都在同一个队列对象中。</p></blockquote>
+
+<h3>同一个 realm</h3>
+
+<p>可以直接从 <code>ArticleObject</code> 获取 <code>realm</code>，前提是数组内所有的 Object 都是在同一个 <code>realm</code> 内。(还没遇到过，一个数组内放不同 realm 的 Object 这样变态的需求 -.- )</p>
+
+<pre><code>let _ = try? articleObjects.first?.realm?.write() {
+  articleObjects.first?.realm?.delete(articleObjects)
+}
+</code></pre>
+
+<p>这里值得注意的是，删除了此 <code>articleObject</code>之后，如果你还访问了此对象的自定义属性，就会 Crash: <code>Object has been deleted or invalidated.</code></p>
+
+<p>例如：</p>
+
+<pre><code>let _ = try? articleObject.realm?.write() {
+  articleObject.realm?.delete(objects)
+  print(articleObject.title)
+}
+</code></pre>
+
+<p>因为 <code>articleObject</code> 已经无效了，因此稳妥点，在访问前先判断此 <code>Object</code> 的有效性。</p>
+
+<pre><code>func deleteObject(articleObjects: [ArticleObject]) {
+  guard let articleObject = articleObjects.first where !articleObject.invalidated &amp;&amp; !(articleObject.realm?.isEmpty ?? true) else {
+    return
+  }
+  let _ = try? articleObject.realm?.write() {
+    articleObject.realm?.delete(objects)
+  }
+}
+</code></pre>
+
+<p>在 <a href="http://nshipster.com/new-years-2016/#swiftier-gcd">NSHipster</a> 找到的 GCD 封装</p>
+
+<pre><code>protocol ExcutableQueue {
+    var queue: dispatch_queue_t { get }
+}
+
+extension ExcutableQueue {
+    func execute(closure: () -&gt; Void) {
+        dispatch_async(queue, closure)
+    }
+}
+
+enum Queue: ExcutableQueue {
+    case Main
+    case UserInteractive
+    case UserInitiated
+    case Utility
+    case Background
+
+    var queue: dispatch_queue_t {
+        switch self {
+        case .Main:
+            return dispatch_get_main_queue()
+        case .UserInteractive:
+            return dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
+        case .UserInitiated:
+            return dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)
+        case .Utility:
+            return dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)
+        case .Background:
+            return dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)
+        }
+    }
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
