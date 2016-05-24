@@ -1,0 +1,40 @@
+<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.10</span> <span class="k">where</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;\(i) is even&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">word</span> <span class="k">in</span> <span class="p">[</span><span class="s">&quot;Lorem&quot;</span><span class="p">,</span> <span class="s">&quot;ipsum&quot;</span><span class="p">,</span> <span class="s">&quot;dolor&quot;</span><span class="p">,</span> <span class="s">&quot;sit&quot;</span><span class="p">,</span> <span class="s">&quot;amet&quot;</span><span class="p">,</span> <span class="s">&quot;consectetur&quot;</span><span class="p">,</span>
+    <span class="s">&quot;adipiscing&quot;</span><span class="p">,</span> <span class="s">&quot;elit&quot;</span><span class="p">]</span> <span class="k">where</span> <span class="n">word</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="p">{</span>
+     <span class="n">print</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s">&quot;is a long word&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="k">let</span> <span class="nl">items</span><span class="p">:</span> <span class="p">[</span><span class="n">String</span><span class="o">?</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">nil</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">&quot;Hello&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">&quot;World&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="k">case</span> <span class="k">let</span> <span class="n">item</span><span class="o">?</span> <span class="k">in</span> <span class="n">items</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">mySwitch</span> <span class="o">=</span> <span class="bp">UISwitch</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">myView</span> <span class="o">=</span> <span class="bp">UIView</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">myDate</span> <span class="o">=</span> <span class="bp">NSDate</span><span class="p">()</span>
+
+<span class="k">let</span> <span class="nl">myItems</span><span class="p">:</span> <span class="p">[</span><span class="bp">NSObject</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mySwitch</span><span class="p">,</span> <span class="n">myDate</span><span class="p">,</span> <span class="n">myView</span><span class="p">]</span>
+<span class="k">for</span> <span class="k">case</span> <span class="k">let</span> <span class="n">item</span> <span class="kt">as</span> <span class="bp">UIView</span> <span class="k">in</span> <span class="n">myItems</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">frame</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="k">protocol</span> <span class="n">MyCustomProtocol</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">frame</span><span class="p">:</span> <span class="bp">CGRect</span> <span class="p">{</span><span class="kr">get</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">struct</span> <span class="n">Bar</span> <span class="p">{}</span>
+<span class="k">struct</span> <span class="nl">Foo</span><span class="p">:</span> <span class="n">MyCustomProtocol</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nl">frame</span><span class="p">:</span> <span class="bp">CGRect</span> <span class="o">=</span> <span class="p">.</span><span class="n">zero</span>
+<span class="p">}</span>
+<span class="k">extension</span> <span class="nl">UIView</span><span class="p">:</span> <span class="n">MyCustomProtocol</span> <span class="p">{}</span>
+
+<span class="k">let</span> <span class="n">otherItems</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bar</span><span class="p">(),</span> <span class="n">Foo</span><span class="p">(),</span> <span class="bp">UIView</span><span class="p">()]</span> <span class="kt">as</span> <span class="p">[</span><span class="n">Any</span><span class="p">]</span>
+<span class="k">for</span> <span class="k">case</span> <span class="k">let</span> <span class="n">item</span> <span class="kt">as</span> <span class="n">MyCustomProtocol</span> <span class="k">in</span> <span class="n">otherItems</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">frame</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
