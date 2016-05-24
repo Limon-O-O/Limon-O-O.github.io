@@ -4,7 +4,7 @@
   <title><![CDATA[Category: record | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/record/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-05-24T18:56:51+08:00</updated>
+  <updated>2016-05-24T19:09:40+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -18,7 +18,9 @@
     <link href="http://limon.top/reading-record/"/>
     <updated>2015-01-02T10:16:07+08:00</updated>
     <id>http://limon.top/reading-record</id>
-    <content type="html"><![CDATA[<h2>Ask and Answer</h2>
+    <content type="html"><![CDATA[<p><a href="http://www.apokrupto.com/blog-1/2016/3/17/coordinators-with">Coordinators with Storyboards</a></p>
+
+<h2>Ask and Answer</h2>
 
 <p><a href="http://stackoverflow.com/questions/24788283/ios-animate-morph-shape-from-circle-to-square">圆形和正方形之间的动画</a></p>
 
@@ -29,6 +31,17 @@
 <p><a href="http://www.it165.net/pro/html/201503/36130.html">iOS推送获取不到设备token：未找到应用程序的apsenvironment的权利字符串</a></p>
 
 <p><a href="http://stackoverflow.com/questions/35023904/is-there-way-to-define-compare-function-automatically-for-struct-in-swi">假设有一个巨大（包含很多属性的）的结构体，然后实现 “==” 操作就会很麻烦，因为要每个属性都比较一遍才行</a> &mdash; 👍👍👍</p>
+
+<h2>多 Target</h2>
+
+<p><a href="http://www.teratotech.com/blog/xcode-7-steps-to-easily-switch-between-multiple-environments/">XCode: 7 Steps to Easily Switch Between Multiple Environments</a>
+<a href="http://appfoundry.be/blog/2014/07/04/Xcode-Env-Configuration/">iOS multi-environment configuration</a></p>
+
+<p><a href="https://medium.com/@danielgalasko/change-your-api-endpoint-environment-using-xcode-configurations-in-swift-c1ad2722200e#.9ghrll66j">Change your API endpoint/environment using Xcode Configurations in Swift</a></p>
+
+<p><a href="http://blog.startry.com/2015/07/24/iOS_EnvWithXcconfig/">环境变量配置(Debug &amp; Release)</a></p>
+
+<p><a href="https://lookback.io/blog/cocoapods-by-configuration">CocoaPods and Lookback: The Build Configuration Journey</a></p>
 
 <h2>包罗万象</h2>
 
@@ -128,6 +141,20 @@
 
 <p><a href="http://swift.gg/2015/12/15/mixins-over-inheritance/">Mixins 比继承更好</a> &mdash; 面向协议编程</p>
 
+<p><a href="https://www.natashatherobot.com/protocol-oriented-networking-in-swift/">Protocol-Oriented-Networking in Swift</a> &mdash; 👍👍👍</p>
+
+<h4>MapKit</h4>
+
+<p><a href="http://rshankar.com/how-to-add-mapview-annotation-and-draw-polyline-in-swift/">Add annotations and Polyline to MapView in Swift</a></p>
+
+<p><a href="http://www.jianshu.com/p/9d998307dc21">怎么样创建一个像RunKeeper一样的App（一）</a></p>
+
+<p><a href="https://www.raywenderlich.com/97945/make-app-like-runkeeper-swift-part-2">How To Make an App Like RunKeeper with Swift: Part 2</a></p>
+
+<p><a href="http://adad184.com/2015/07/22/how-to-deal-with-background-location-update/">后台定位上传的代码实践</a></p>
+
+<p><a href="http://adad184.com/2015/07/13/improve-performance-with-mkmapview/">一次对MKMapView的性能优化</a></p>
+
 <h4>翻译</h4>
 
 <p><a href="http://wdxtub.com/2015/12/22/programming-ios9-translation-1/">Programming iOS9 翻译</a></p>
@@ -204,6 +231,10 @@
 <h2>CoreData</h2>
 
 <p><a href="http://www.jianshu.com/p/5a84008307ad">Core Data: 非标准数据类型总结</a></p>
+
+<h2>硬件</h2>
+
+<p><a href="http://blog.csdn.net/dolacmeng/article/details/46457487">iOS的蓝牙连接、数据接收及发送</a></p>
 
 <h2>CocoaPods</h2>
 

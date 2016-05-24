@@ -4,7 +4,7 @@
   <title><![CDATA[Category: animation | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/animation/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-05-24T18:56:51+08:00</updated>
+  <updated>2016-05-24T19:09:40+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -39,6 +39,8 @@
 <p><a href="http://www.cocoachina.com/ios/20151202/14532.html"> 一款Loading动画的实现思路 </a></p>
 
 <p><a href="https://github.com/yoavlt/LiquidLoader"> 粘性加载动画 </a></p>
+
+<p><a href="https://github.com/KittenYang/KYAnimatedPageControl">KYAnimatedPageControl 拥有两种动画样式的自定义 UIPageControl</a></p>
 
 <p><a href="http://pandara.xyz/2015/10/29/jelly_refresh/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">利用贝塞尔曲线实现Q弹的下拉刷新</a></p>
 
@@ -115,6 +117,8 @@
 <p><a href="https://github.com/lovels/LBTagView">可拖拽的标签</a></p>
 
 <p><a href="https://github.com/hyperoslo/Hue#user-content-gradients-1">Gradient 渐变 滑动</a></p>
+
+<p><a href="https://github.com/manuelescrig/MEVHorizontalContacts">联系人列表 HorizontalContacts</a></p>
 
 <p><br />
 <br /></p>
