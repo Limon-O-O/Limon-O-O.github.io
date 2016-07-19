@@ -6,6 +6,26 @@ comments: false
 categories: Reading record
 ---
 
+[Coordinators with Storyboards](http://www.apokrupto.com/blog-1/2016/3/17/coordinators-with)
+
+## AVFoundation
+
+[iOS微信小视频优化心得](https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=207686973&idx=1&sn=1883a6c9fa0462dd5596b8890b6fccf6&scene=1&srcid=bquF9P7agLaSN3IU0FFr&key=18e81ac7415f67c4a63984a53bc911c050fb54e0890e4efac2d4d4f4b41ff63ff9b132efe16b0bcd17b23221ffadf5bb&ascene=0)
+
+[VideoCaptureDemo](https://github.com/adriaan/VideoCaptureDemo) --- objc.io issue 23
+
+[iOS8 Core Image In Swift：视频实时滤镜](http://blog.csdn.net/zhangao0086/article/details/39433519)
+
+[AVReaderWriter](https://github.com/robovm/apple-ios-samples/tree/master/AVReaderWriterOfflineAudioVideoProcessing) --- Apple Demo
+
+[SDAVAssetExportSession](https://github.com/rs/SDAVAssetExportSession)
+
+[AVFoundation(一):基础知识](http://www.jianshu.com/p/485e946f80b4)
+
+[AVFoundation Programming Guide](https://developer.apple.com/library/mac/documentation/AudioVideo/Conceptual/AVFoundationPG/Articles/05_Export.html#//apple_ref/doc/uid/TP40010188-CH9-SW1)
+
+[断点拍摄](http://stackoverflow.com/questions/14905892/pause-resume-video-capture-for-same-file-with-avfoundation-in-ios#answer-14986631)
+
 ##Ask and Answer
 
 [圆形和正方形之间的动画](http://stackoverflow.com/questions/24788283/ios-animate-morph-shape-from-circle-to-square)
@@ -17,6 +37,17 @@ categories: Reading record
 [iOS推送获取不到设备token：未找到应用程序的apsenvironment的权利字符串](http://www.it165.net/pro/html/201503/36130.html)
 
 [假设有一个巨大（包含很多属性的）的结构体，然后实现 “==” 操作就会很麻烦，因为要每个属性都比较一遍才行](http://stackoverflow.com/questions/35023904/is-there-way-to-define-compare-function-automatically-for-struct-in-swi) --- 👍👍👍
+
+
+##多 Target
+[XCode: 7 Steps to Easily Switch Between Multiple Environments](http://www.teratotech.com/blog/xcode-7-steps-to-easily-switch-between-multiple-environments/)
+[iOS multi-environment configuration](http://appfoundry.be/blog/2014/07/04/Xcode-Env-Configuration/)
+
+[Change your API endpoint/environment using Xcode Configurations in Swift](https://medium.com/@danielgalasko/change-your-api-endpoint-environment-using-xcode-configurations-in-swift-c1ad2722200e#.9ghrll66j)
+
+[环境变量配置(Debug & Release)](http://blog.startry.com/2015/07/24/iOS_EnvWithXcconfig/)
+
+[CocoaPods and Lookback: The Build Configuration Journey](https://lookback.io/blog/cocoapods-by-configuration)
 
 ##包罗万象
 
@@ -100,6 +131,12 @@ categories: Reading record
 
 [Asynchronous error handling](http://alisoftware.github.io/swift/async/error/2016/02/06/async-errors/)
 
+[Adapting Auto Layout Without Interface Builder](http://useyourloaf.com/blog/adapting-auto-layout-without-interface-builder/?utm_source=newsletter&utm_medium=email&utm_campaign=week_125_is_ready)
+
+[手势签名](https://github.com/ipraba/EPSignature?utm_campaign=This%2BWeek%2Bin%2BSwift&utm_medium=email&utm_source=This_Week_in_Swift_89)
+
+[iOS 程序 main 函数之前发生了什么](http://blog.sunnyxx.com/2014/08/30/objc-pre-main/)
+
 #####Enum
 
 [Swift 中枚举高级用法及实践](http://swift.gg/2015/11/20/advanced-practical-enum-examples/)
@@ -113,6 +150,19 @@ categories: Reading record
 [Protocol-Oriented Segue Identifiers in Swift](http://natashatherobot.com/protocol-oriented-segue-identifiers-swift/)
 
 [Mixins 比继承更好](http://swift.gg/2015/12/15/mixins-over-inheritance/) --- 面向协议编程
+
+[Protocol-Oriented-Networking in Swift](https://www.natashatherobot.com/protocol-oriented-networking-in-swift/) --- 👍👍👍
+
+#### MapKit
+[Add annotations and Polyline to MapView in Swift](http://rshankar.com/how-to-add-mapview-annotation-and-draw-polyline-in-swift/)
+
+[怎么样创建一个像RunKeeper一样的App（一）](http://www.jianshu.com/p/9d998307dc21)
+
+[How To Make an App Like RunKeeper with Swift: Part 2](https://www.raywenderlich.com/97945/make-app-like-runkeeper-swift-part-2)
+
+[后台定位上传的代码实践](http://adad184.com/2015/07/22/how-to-deal-with-background-location-update/)
+
+[一次对MKMapView的性能优化](http://adad184.com/2015/07/13/improve-performance-with-mkmapview/)
 
 ####翻译
 [Programming iOS9 翻译](http://wdxtub.com/2015/12/22/programming-ios9-translation-1/)
@@ -189,8 +239,14 @@ categories: Reading record
 ##CoreData
 [Core Data: 非标准数据类型总结](http://www.jianshu.com/p/5a84008307ad)
 
+##硬件
+[iOS的蓝牙连接、数据接收及发送](http://blog.csdn.net/dolacmeng/article/details/46457487)
+
 
 ##CocoaPods
+
+[Cocoapods系列教程(三)——私有库管理和模块化管理](http://www.pluto-y.com/cocoapod-private-pods-and-module-manager/)
+
 [用CocoaPods做iOS程序的依赖管理](http://blog.devtang.com/blog/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/)
 
 [制作自己的CocoaPods Spec](http://gracelancy.com/blog/2013/08/11/make-your-own-cocoapods-spec/)

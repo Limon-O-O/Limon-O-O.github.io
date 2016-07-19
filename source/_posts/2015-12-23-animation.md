@@ -20,6 +20,10 @@ categories: Animation
 
 [ 点赞 ](https://github.com/okmr-d/DOFavoriteButton)
 
+[粒子扩散效果的点赞按钮](https://github.com/dgytdhy/DGThumbUpButton)
+
+[火柴文字下拉刷新](https://github.com/Fnoz/FNMatchPull)
+
 [ A simple keyframe-based animation framework ](https://github.com/IFTTT/RazzleDazzle)
 
 [ 加载动画集合 ](https://github.com/ninjaprox/NVActivityIndicatorView)
@@ -27,6 +31,8 @@ categories: Animation
 [ 一款Loading动画的实现思路 ](http://www.cocoachina.com/ios/20151202/14532.html)
 
 [ 粘性加载动画 ](https://github.com/yoavlt/LiquidLoader)
+
+[KYAnimatedPageControl 拥有两种动画样式的自定义 UIPageControl](https://github.com/KittenYang/KYAnimatedPageControl)
 
 [利用贝塞尔曲线实现Q弹的下拉刷新](http://pandara.xyz/2015/10/29/jelly_refresh/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 
@@ -48,9 +54,13 @@ categories: Animation
 
 [ 菜单粘性按钮 ](https://github.com/yoavlt/LiquidFloatingActionButton)
 
+[粘性动画菜单](https://github.com/yannickl/FlowingMenu)
+
 [自适应边界的散开按钮](https://github.com/liuzhiyi1992/SpreadButton)
 
 [浮动的 Button](https://github.com/noppefoxwolf/FlowBarButtonItem?utm_campaign=This%2BWeek%2Bin%2BSwift&utm_medium=web&utm_source=This_Week_in_Swift_71)
+
+[浮动 Button](https://github.com/tinymind/LSFloatingActionMenu)
 
 [折叠菜单](https://github.com/Yalantis/Context-Menu.iOS)
 
@@ -59,6 +69,8 @@ categories: Animation
 [图片实现多层折叠效果](http://www.cocoachina.com/ios/20160104/14858.html)
 
 [Cell 折叠动](https://github.com/Ramotion/folding-cell) --- 👍👍👍
+
+[可展开型预览 TableView](https://github.com/liuzhiyi1992/ZYThumbnailTableView) --- 👍👍👍
 
 [ 粉碎删除 ](https://github.com/MartinRGB/MTMaterialDelete)
 
@@ -94,11 +106,15 @@ categories: Animation
 
 [心形波浪](https://github.com/AfryMask/AFWaveView)
 
+[脉搏效果，适合附近的人之类的功能](https://github.com/shu223/Pulsator)
+
 [各种输入框交互动画](https://github.com/mukyasa/MMTextFieldEffects)
 
 [可拖拽的标签](https://github.com/lovels/LBTagView)
 
 [Gradient 渐变 滑动](https://github.com/hyperoslo/Hue#user-content-gradients-1)
+
+[联系人列表 HorizontalContacts](https://github.com/manuelescrig/MEVHorizontalContacts)
 
 
 <br />
