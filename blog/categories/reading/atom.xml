@@ -4,7 +4,7 @@
   <title><![CDATA[Category: reading | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-05-24T19:09:40+08:00</updated>
+  <updated>2016-07-19T12:29:01+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -19,6 +19,24 @@
     <updated>2015-01-02T10:16:07+08:00</updated>
     <id>http://limon.top/reading-record</id>
     <content type="html"><![CDATA[<p><a href="http://www.apokrupto.com/blog-1/2016/3/17/coordinators-with">Coordinators with Storyboards</a></p>
+
+<h2>AVFoundation</h2>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=207686973&amp;idx=1&amp;sn=1883a6c9fa0462dd5596b8890b6fccf6&amp;scene=1&amp;srcid=bquF9P7agLaSN3IU0FFr&amp;key=18e81ac7415f67c4a63984a53bc911c050fb54e0890e4efac2d4d4f4b41ff63ff9b132efe16b0bcd17b23221ffadf5bb&amp;ascene=0">iOS微信小视频优化心得</a></p>
+
+<p><a href="https://github.com/adriaan/VideoCaptureDemo">VideoCaptureDemo</a> &mdash; objc.io issue 23</p>
+
+<p><a href="http://blog.csdn.net/zhangao0086/article/details/39433519">iOS8 Core Image In Swift：视频实时滤镜</a></p>
+
+<p><a href="https://github.com/robovm/apple-ios-samples/tree/master/AVReaderWriterOfflineAudioVideoProcessing">AVReaderWriter</a> &mdash; Apple Demo</p>
+
+<p><a href="https://github.com/rs/SDAVAssetExportSession">SDAVAssetExportSession</a></p>
+
+<p><a href="http://www.jianshu.com/p/485e946f80b4">AVFoundation(一):基础知识</a></p>
+
+<p><a href="https://developer.apple.com/library/mac/documentation/AudioVideo/Conceptual/AVFoundationPG/Articles/05_Export.html#//apple_ref/doc/uid/TP40010188-CH9-SW1">AVFoundation Programming Guide</a></p>
+
+<p><a href="http://stackoverflow.com/questions/14905892/pause-resume-video-capture-for-same-file-with-avfoundation-in-ios#answer-14986631">断点拍摄</a></p>
 
 <h2>Ask and Answer</h2>
 
@@ -126,6 +144,10 @@
 <p><a href="http://alisoftware.github.io/swift/async/error/2016/02/06/async-errors/">Asynchronous error handling</a></p>
 
 <p><a href="http://useyourloaf.com/blog/adapting-auto-layout-without-interface-builder/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=week_125_is_ready">Adapting Auto Layout Without Interface Builder</a></p>
+
+<p><a href="https://github.com/ipraba/EPSignature?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=email&amp;utm_source=This_Week_in_Swift_89">手势签名</a></p>
+
+<p><a href="http://blog.sunnyxx.com/2014/08/30/objc-pre-main/">iOS 程序 main 函数之前发生了什么</a></p>
 
 <h5>Enum</h5>
 
@@ -237,6 +259,8 @@
 <p><a href="http://blog.csdn.net/dolacmeng/article/details/46457487">iOS的蓝牙连接、数据接收及发送</a></p>
 
 <h2>CocoaPods</h2>
+
+<p><a href="http://www.pluto-y.com/cocoapod-private-pods-and-module-manager/">Cocoapods系列教程(三)——私有库管理和模块化管理</a></p>
 
 <p><a href="http://blog.devtang.com/blog/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/">用CocoaPods做iOS程序的依赖管理</a></p>
 
