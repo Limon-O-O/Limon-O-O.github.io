@@ -4,7 +4,7 @@
   <title><![CDATA[Limon's Blog]]></title>
   <link href="http://limon.top/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-07-19T12:29:01+08:00</updated>
+  <updated>2016-07-19T12:35:46+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -1034,7 +1034,7 @@ New Year&rsquo;s 2016</a>  🍺</p>
     <link href="http://limon.top/githubku/"/>
     <updated>2015-12-23T02:31:25+08:00</updated>
     <id>http://limon.top/githubku</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/enochng1/RaceMe">一个功能完整的运动追踪 App，做的很漂亮</a></p>
+    <content type="html"><![CDATA[<p><a href="https://github.com/enochng1/RaceMe">RaceMe</a> &mdash; 一个功能完整的运动追踪 App，做的很漂亮</p>
 
 <p><a href="https://github.com/phimage/Erik">Erik</a> &mdash;  WebKit的分装，较好支持CSS和JS</p>
 
