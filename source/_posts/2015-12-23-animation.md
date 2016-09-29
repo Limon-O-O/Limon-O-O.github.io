@@ -10,6 +10,10 @@ categories: Animation
 
 [ 动画集合 ](https://github.com/cjwirth/awesome-ios-ui)
 
+[Group Avatar](https://github.com/ttmdung203/MDGroupAvatarView)
+
+[ProgressWindow](https://github.com/luowenxing/WXProgressWindow) --- 进度悬浮窗
+
 [IBAnimatable](https://github.com/JakeLin/IBAnimatable/blob/master/Documentation/README.zh.md) --- 是一个帮助我们在Interface Builder和Swift playground里面设计UI, 交互, 导航模式, 换场和动画的开源库
 
 [ 波浪 ](https://github.com/antiguab/BAFluidView)
@@ -40,6 +44,8 @@ categories: Animation
 
 [ Label动画 ](https://github.com/overboming/ZCAnimatedLabel)
 
+[滑动推动 Nav Bar 效果](https://github.com/andreamazz/AMScrollingNavbar)
+
 [ NavigationBar 动画 ](https://github.com/gmertk/BusyNavigationBar)
 
 [ NavigationBar的背景颜色，高度 ](https://github.com/ltebean/LTNavigationBar)
@@ -57,6 +63,8 @@ categories: Animation
 [粘性动画菜单](https://github.com/yannickl/FlowingMenu)
 
 [自适应边界的散开按钮](https://github.com/liuzhiyi1992/SpreadButton)
+
+[瞬间爆炸菜单按钮](https://github.com/Nightonke/VHBoomMenuButton)
 
 [浮动的 Button](https://github.com/noppefoxwolf/FlowBarButtonItem?utm_campaign=This%2BWeek%2Bin%2BSwift&utm_medium=web&utm_source=This_Week_in_Swift_71)
 
@@ -100,6 +108,8 @@ categories: Animation
 
 [ Download Button Aniamtion ](https://github.com/Guidebook/gbkui-button-progress-view)
 
+[Checkbox](https://github.com/vladislav-k/VKCheckbox)
+
 [双滑块Slider控件](https://github.com/Magic-Unique/DoubleThumbSlider)
 
 [捷输入并选择组件](https://github.com/Ramotion/reel-search) --- 👍👍
@@ -116,6 +126,17 @@ categories: Animation
 
 [联系人列表 HorizontalContacts](https://github.com/manuelescrig/MEVHorizontalContacts)
 
+[仿 Evernote 的列表的下拉弹性效果](https://github.com/imwangxuesen/EvernoteAnimation)
+
+[图片选择器](https://github.com/cbangchen/CBImagePicker)
+
+[雅虎图片选择器](https://github.com/yahoo/YangMingShan)
+
+[PageControls](https://github.com/popwarsweet/PageControls)
+
+[全屏 blur](https://github.com/edwinbosire/SwiflyOverlay)
+
+[涟漪效应](https://github.com/alsedi/RippleEffectView)
 
 <br />
 <br />
@@ -123,6 +144,8 @@ categories: Animation
 ##CollectionView
 
 [ CollectionView 转场动画 ](https://github.com/CezaryKopacz/CKWaveCollectionViewTransition)
+
+[ZLSwipeableViewSwift](https://github.com/zhxnlai/ZLSwipeableViewSwift) --- 片滑动效果
 
 [ 格瓦拉 cell移动动画Demo ](https://github.com/nathanwhy/HYAwesomeTransition)
 
@@ -165,3 +188,5 @@ categories: Animation
 
 <br />
 <br />
+
+

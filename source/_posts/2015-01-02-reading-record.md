@@ -172,6 +172,8 @@ categories: Reading record
 
 [iOS 高性能异构滚动视图构建方案 —— LazyScrollView](http://pingguohe.net/2016/01/31/lazyscroll.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 
+[Build Time Analyzer for Xcode](https://github.com/RobertGummesson/BuildTimeAnalyzer-for-Xcode) --- 查看 Swift 文件编译的时间(插件)
+
 [Profiling your Swift compilation times](http://irace.me/swift-profiling/?utm_campaign=iOS%2BDev%2BWeekly&utm_medium=email&utm_source=iOS_Dev_Weekly_Issue_234) --- 查看 Swift 文件编译的时间 👍👍👍👍👍👍
 
 [猿题库 iOS 客户端架构设计](http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&mid=444322139&idx=1&sn=c7bef4d439f46ee539aa76d612023d43&scene=0#wechat_redirect) --- MVVM without Binding with DataController
@@ -256,3 +258,5 @@ categories: Reading record
 [Setup a mirror of CocoaPods/Specs](http://lexrus.com/setup-a-mirror-of-cocoapods-specs.html)
 
 [CocoaPods建立私有仓库](http://blog.csdn.net/agdsdl/article/details/45218987#0-tsina-1-51027-397232819ff9a47a7b7e80a40613cfe1)
+
+
