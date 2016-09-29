@@ -4,7 +4,7 @@
   <title><![CDATA[Limon's Blog]]></title>
   <link href="http://limon.top/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-07-19T12:35:46+08:00</updated>
+  <updated>2016-09-29T14:46:56+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -593,7 +593,50 @@ New Year&rsquo;s 2016</a>  🍺</p>
     <link href="http://limon.top/cheatsheet/"/>
     <updated>2015-12-23T04:22:06+08:00</updated>
     <id>http://limon.top/cheatsheet</id>
-    <content type="html"><![CDATA[<h4>Swift 几种不错的遍历</h4>
+    <content type="html"><![CDATA[<h4>Swift Either enum</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="n">Either</span><span class="o">&lt;</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="o">&gt;</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">case</span> <span class="n">Left</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">case</span> <span class="n">Right</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">let</span> <span class="nl">x</span><span class="p">:</span> <span class="n">Either</span><span class="o">&lt;</span><span class="n">SomeType</span><span class="p">,</span> <span class="n">AnotherType</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">...</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">switch</span> <span class="n">x</span> <span class="p">{</span>
+</span><span class='line'><span class="k">case</span> <span class="p">.</span><span class="n">Left</span><span class="p">(</span><span class="k">let</span> <span class="n">someTypeValue</span><span class="p">)</span><span class="o">:</span>
+</span><span class='line'>  <span class="c1">// do something with someTypeValue</span>
+</span><span class='line'><span class="k">case</span> <span class="p">.</span><span class="n">Right</span><span class="p">(</span><span class="k">let</span> <span class="n">anotherTypeValue</span><span class="p">)</span><span class="o">:</span>
+</span><span class='line'>  <span class="c1">// do something with anotherTypeValue</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>一个数据源，两种类型</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="nl">data</span><span class="p">:</span> <span class="n">Either</span><span class="o">&lt;</span><span class="n">CellModel</span><span class="p">,</span> <span class="n">BannerModel</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">...</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">numberOfRowsInSection</span> <span class="nl">section</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">data</span><span class="p">.</span><span class="n">count</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">cellForRowAt</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="n">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">UITableViewCell</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">let</span> <span class="n">item</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">let</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">tableView</span><span class="p">.</span><span class="n">dequeueReusableCell</span><span class="p">(</span><span class="nl">withIdentifier</span><span class="p">:</span> <span class="n">identifier</span><span class="p">,</span> <span class="k">for</span><span class="o">:</span> <span class="n">indexPath</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">switch</span> <span class="n">item</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">case</span> <span class="p">.</span><span class="n">Left</span><span class="p">(</span><span class="k">let</span> <span class="n">pizza</span><span class="p">)</span><span class="o">:</span>
+</span><span class='line'>        <span class="n">configure</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="nl">with</span><span class="p">:</span> <span class="n">pizza</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">case</span> <span class="p">.</span><span class="n">Right</span><span class="p">(</span><span class="k">let</span> <span class="n">ad</span><span class="p">)</span><span class="o">:</span>
+</span><span class='line'>        <span class="n">configure</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="nl">with</span><span class="p">:</span> <span class="n">ad</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="n">cell</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Swift 几种不错的遍历</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.10</span> <span class="k">where</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
 </span><span class='line'>    <span class="n">print</span><span class="p">(</span><span class="s">&quot;\(i) is even&quot;</span><span class="p">)</span>
@@ -1026,6 +1069,15 @@ New Year&rsquo;s 2016</a>  🍺</p>
 
 
 <p><br /></p>
+
+<h5>Can&rsquo;t ignore UserInterfaceState.xcuserstate</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">git</span> <span class="n">rm</span> <span class="o">--</span><span class="n">cached</span> <span class="n">ProjectFolder</span><span class="p">.</span><span class="n">xcodeproj</span><span class="o">/</span><span class="n">project</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">myUserName</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">UserInterfaceState</span><span class="p">.</span><span class="n">xcuserstate</span>
+</span><span class='line'><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;Removed file that shouldn&#39;t be tracked&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 ]]></content>
   </entry>
   
@@ -1034,7 +1086,9 @@ New Year&rsquo;s 2016</a>  🍺</p>
     <link href="http://limon.top/githubku/"/>
     <updated>2015-12-23T02:31:25+08:00</updated>
     <id>http://limon.top/githubku</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/enochng1/RaceMe">RaceMe</a> &mdash; 一个功能完整的运动追踪 App，做的很漂亮</p>
+    <content type="html"><![CDATA[<p><a href="https://github.com/luiyezheng/JLStickerTextView">JLStickerTextView</a> &mdash; 在图片上，添加文字，支持旋转，平移，缩放，编辑图的功能</p>
+
+<p><a href="https://github.com/enochng1/RaceMe">RaceMe</a> &mdash; 一个功能完整的运动追踪 App，做的很漂亮</p>
 
 <p><a href="https://github.com/phimage/Erik">Erik</a> &mdash;  WebKit的分装，较好支持CSS和JS</p>
 
@@ -1055,8 +1109,6 @@ New Year&rsquo;s 2016</a>  🍺</p>
 <p><a href="https://github.com/wojteklu/Watchdog">Watchdog</a> &mdash; iOS实时卡顿监控</p>
 
 <p><a href="https://github.com/kasketis/netfox">netfox：iOS 网络调试工具</a> &mdash; 配置只需一行代码，可以调试包括第三方库在内的网络请求</p>
-
-<p><a href="https://github.com/hyperoslo/ImagePicker">ImagePicker is an all-in-one camera solution for your iOS app</a></p>
 
 <p><a href="https://github.com/FlexMonkey/Filterpedia">Filterpedia</a> &mdash; 基于 Core Image 框架，完整、强大的图片滤镜类库</p>
 
@@ -1100,7 +1152,27 @@ New Year&rsquo;s 2016</a>  🍺</p>
 
 <p><a href="https://github.com/longitachi/ZLPhotoBrowser">ZLPhotoBrowser</a> &mdash; 相册照片多选框架，支持拍照、预览快速多选</p>
 
+<p><a href="https://github.com/cbangchen/CBImagePicker">图片选择器</a></p>
+
+<p><a href="https://github.com/hyperoslo/ImagePicker">ImagePicker is an all-in-one camera solution for your iOS app</a></p>
+
+<p><a href="https://github.com/TimOliver/TOCropViewController">图片裁切</a></p>
+
 <p><a href="https://github.com/delba/TextAttributes?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=week_127_is_ready">TextAttributes</a></p>
+
+<p><a href="https://github.com/Lickability/PinpointKit">当 App 崩溃的时候，它会帮你自动截屏并打开邮件反馈页面，提交崩溃页面日志以及截屏</a></p>
+
+<p><a href="http://www.jianshu.com/p/b45655e23a42">顶部标题滚动条</a></p>
+
+<p><a href="https://github.com/kean/Preheat">Preheat</a> &mdash; UITableView and UICollectionView 预加载</p>
+
+<p><a href="https://github.com/Pluto-Y/iOS-Echarts">Echarts</a> &mdash; 强大的图表库</p>
+
+<p><a href="https://github.com/mariohahn/StatusProvider">StatusProvider</a> &mdash; 空白状态时的占位</p>
+
+<p><a href="https://github.com/liuf1986/LFRtmp">一个全开源的纯 OC 实现的 RTMP 推流 SDK，支持 AAC、H264、美颜滤镜、AMF编解码</a></p>
+
+<p><a href="https://github.com/hsylife/SwiftyPickerPopover">弹出滑动选择器</a></p>
 ]]></content>
   </entry>
   
@@ -1112,6 +1184,10 @@ New Year&rsquo;s 2016</a>  🍺</p>
     <content type="html"><![CDATA[<p><a href="https://github.com/keefo/CATweaker"> CAMediaTimingFunction helper tool </a></p>
 
 <p><a href="https://github.com/cjwirth/awesome-ios-ui"> 动画集合 </a></p>
+
+<p><a href="https://github.com/ttmdung203/MDGroupAvatarView">Group Avatar</a></p>
+
+<p><a href="https://github.com/luowenxing/WXProgressWindow">ProgressWindow</a> &mdash; 进度悬浮窗</p>
 
 <p><a href="https://github.com/JakeLin/IBAnimatable/blob/master/Documentation/README.zh.md">IBAnimatable</a> &mdash; 是一个帮助我们在Interface Builder和Swift playground里面设计UI, 交互, 导航模式, 换场和动画的开源库</p>
 
@@ -1143,6 +1219,8 @@ New Year&rsquo;s 2016</a>  🍺</p>
 
 <p><a href="https://github.com/overboming/ZCAnimatedLabel"> Label动画 </a></p>
 
+<p><a href="https://github.com/andreamazz/AMScrollingNavbar">滑动推动 Nav Bar 效果</a></p>
+
 <p><a href="https://github.com/gmertk/BusyNavigationBar"> NavigationBar 动画 </a></p>
 
 <p><a href="https://github.com/ltebean/LTNavigationBar"> NavigationBar的背景颜色，高度 </a></p>
@@ -1160,6 +1238,8 @@ New Year&rsquo;s 2016</a>  🍺</p>
 <p><a href="https://github.com/yannickl/FlowingMenu">粘性动画菜单</a></p>
 
 <p><a href="https://github.com/liuzhiyi1992/SpreadButton">自适应边界的散开按钮</a></p>
+
+<p><a href="https://github.com/Nightonke/VHBoomMenuButton">瞬间爆炸菜单按钮</a></p>
 
 <p><a href="https://github.com/noppefoxwolf/FlowBarButtonItem?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=web&amp;utm_source=This_Week_in_Swift_71">浮动的 Button</a></p>
 
@@ -1203,6 +1283,8 @@ New Year&rsquo;s 2016</a>  🍺</p>
 
 <p><a href="https://github.com/Guidebook/gbkui-button-progress-view"> Download Button Aniamtion </a></p>
 
+<p><a href="https://github.com/vladislav-k/VKCheckbox">Checkbox</a></p>
+
 <p><a href="https://github.com/Magic-Unique/DoubleThumbSlider">双滑块Slider控件</a></p>
 
 <p><a href="https://github.com/Ramotion/reel-search">捷输入并选择组件</a> &mdash; 👍👍</p>
@@ -1219,12 +1301,26 @@ New Year&rsquo;s 2016</a>  🍺</p>
 
 <p><a href="https://github.com/manuelescrig/MEVHorizontalContacts">联系人列表 HorizontalContacts</a></p>
 
+<p><a href="https://github.com/imwangxuesen/EvernoteAnimation">仿 Evernote 的列表的下拉弹性效果</a></p>
+
+<p><a href="https://github.com/cbangchen/CBImagePicker">图片选择器</a></p>
+
+<p><a href="https://github.com/yahoo/YangMingShan">雅虎图片选择器</a></p>
+
+<p><a href="https://github.com/popwarsweet/PageControls">PageControls</a></p>
+
+<p><a href="https://github.com/edwinbosire/SwiflyOverlay">全屏 blur</a></p>
+
+<p><a href="https://github.com/alsedi/RippleEffectView">涟漪效应</a></p>
+
 <p><br />
 <br /></p>
 
 <h2>CollectionView</h2>
 
 <p><a href="https://github.com/CezaryKopacz/CKWaveCollectionViewTransition"> CollectionView 转场动画 </a></p>
+
+<p><a href="https://github.com/zhxnlai/ZLSwipeableViewSwift">ZLSwipeableViewSwift</a> &mdash; 片滑动效果</p>
 
 <p><a href="https://github.com/nathanwhy/HYAwesomeTransition"> 格瓦拉 cell移动动画Demo </a></p>
 
@@ -2057,6 +2153,8 @@ NSString *orderString = [NSString stringWithFormat:@"%@&amp;sign=\"%@\"&amp;sign
 <h2>优化</h2>
 
 <p><a href="http://pingguohe.net/2016/01/31/lazyscroll.html?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">iOS 高性能异构滚动视图构建方案 —— LazyScrollView</a></p>
+
+<p><a href="https://github.com/RobertGummesson/BuildTimeAnalyzer-for-Xcode">Build Time Analyzer for Xcode</a> &mdash; 查看 Swift 文件编译的时间(插件)</p>
 
 <p><a href="http://irace.me/swift-profiling/?utm_campaign=iOS%2BDev%2BWeekly&amp;utm_medium=email&amp;utm_source=iOS_Dev_Weekly_Issue_234">Profiling your Swift compilation times</a> &mdash; 查看 Swift 文件编译的时间 👍👍👍👍👍👍</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cheatsheet | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/cheatsheet/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-07-19T12:35:46+08:00</updated>
+  <updated>2016-09-29T14:46:56+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -18,7 +18,49 @@
     <link href="http://limon.top/cheatsheet/"/>
     <updated>2015-12-23T04:22:06+08:00</updated>
     <id>http://limon.top/cheatsheet</id>
-    <content type="html"><![CDATA[<h4>Swift 几种不错的遍历</h4>
+    <content type="html"><![CDATA[<h4>Swift Either enum</h4>
+
+<pre><code class="swift">enum Either&lt;A, B&gt;{
+  case Left(A)
+  case Right(B)
+}
+
+let x: Either&lt;SomeType, AnotherType&gt; = ...
+
+switch x {
+case .Left(let someTypeValue):
+  // do something with someTypeValue
+case .Right(let anotherTypeValue):
+  // do something with anotherTypeValue
+}
+</code></pre>
+
+<p>一个数据源，两种类型</p>
+
+<pre><code class="swift">
+let data: Either&lt;CellModel, BannerModel&gt; = ...
+
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+  return data.count
+}
+
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+    let item = data[indexPath.row]
+
+    let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+
+    switch item {
+    case .Left(let pizza):
+        configure(cell, with: pizza)
+    case .Right(let ad):
+        configure(cell, with: ad)
+    }
+
+    return cell
+}
+</code></pre>
+
+<h4>Swift 几种不错的遍历</h4>
 
 <pre><code class="swift">
 for i in 1...10 where i % 2 == 0 {
@@ -423,6 +465,12 @@ rake deploy
 </code></pre>
 
 <p><br /></p>
+
+<h5>Can&rsquo;t ignore UserInterfaceState.xcuserstate</h5>
+
+<pre><code>git rm --cached ProjectFolder.xcodeproj/project.xcworkspace/xcuserdata/myUserName.xcuserdatad/UserInterfaceState.xcuserstate
+git commit -m "Removed file that shouldn't be tracked"
+</code></pre>
 ]]></content>
   </entry>
   

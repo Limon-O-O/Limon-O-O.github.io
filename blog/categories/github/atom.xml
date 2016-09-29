@@ -4,7 +4,7 @@
   <title><![CDATA[Category: github | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/github/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-07-19T12:35:46+08:00</updated>
+  <updated>2016-09-29T14:46:56+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -18,7 +18,9 @@
     <link href="http://limon.top/githubku/"/>
     <updated>2015-12-23T02:31:25+08:00</updated>
     <id>http://limon.top/githubku</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/enochng1/RaceMe">RaceMe</a> &mdash; 一个功能完整的运动追踪 App，做的很漂亮</p>
+    <content type="html"><![CDATA[<p><a href="https://github.com/luiyezheng/JLStickerTextView">JLStickerTextView</a> &mdash; 在图片上，添加文字，支持旋转，平移，缩放，编辑图的功能</p>
+
+<p><a href="https://github.com/enochng1/RaceMe">RaceMe</a> &mdash; 一个功能完整的运动追踪 App，做的很漂亮</p>
 
 <p><a href="https://github.com/phimage/Erik">Erik</a> &mdash;  WebKit的分装，较好支持CSS和JS</p>
 
@@ -39,8 +41,6 @@
 <p><a href="https://github.com/wojteklu/Watchdog">Watchdog</a> &mdash; iOS实时卡顿监控</p>
 
 <p><a href="https://github.com/kasketis/netfox">netfox：iOS 网络调试工具</a> &mdash; 配置只需一行代码，可以调试包括第三方库在内的网络请求</p>
-
-<p><a href="https://github.com/hyperoslo/ImagePicker">ImagePicker is an all-in-one camera solution for your iOS app</a></p>
 
 <p><a href="https://github.com/FlexMonkey/Filterpedia">Filterpedia</a> &mdash; 基于 Core Image 框架，完整、强大的图片滤镜类库</p>
 
@@ -84,7 +84,27 @@
 
 <p><a href="https://github.com/longitachi/ZLPhotoBrowser">ZLPhotoBrowser</a> &mdash; 相册照片多选框架，支持拍照、预览快速多选</p>
 
+<p><a href="https://github.com/cbangchen/CBImagePicker">图片选择器</a></p>
+
+<p><a href="https://github.com/hyperoslo/ImagePicker">ImagePicker is an all-in-one camera solution for your iOS app</a></p>
+
+<p><a href="https://github.com/TimOliver/TOCropViewController">图片裁切</a></p>
+
 <p><a href="https://github.com/delba/TextAttributes?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=week_127_is_ready">TextAttributes</a></p>
+
+<p><a href="https://github.com/Lickability/PinpointKit">当 App 崩溃的时候，它会帮你自动截屏并打开邮件反馈页面，提交崩溃页面日志以及截屏</a></p>
+
+<p><a href="http://www.jianshu.com/p/b45655e23a42">顶部标题滚动条</a></p>
+
+<p><a href="https://github.com/kean/Preheat">Preheat</a> &mdash; UITableView and UICollectionView 预加载</p>
+
+<p><a href="https://github.com/Pluto-Y/iOS-Echarts">Echarts</a> &mdash; 强大的图表库</p>
+
+<p><a href="https://github.com/mariohahn/StatusProvider">StatusProvider</a> &mdash; 空白状态时的占位</p>
+
+<p><a href="https://github.com/liuf1986/LFRtmp">一个全开源的纯 OC 实现的 RTMP 推流 SDK，支持 AAC、H264、美颜滤镜、AMF编解码</a></p>
+
+<p><a href="https://github.com/hsylife/SwiftyPickerPopover">弹出滑动选择器</a></p>
 ]]></content>
   </entry>
   

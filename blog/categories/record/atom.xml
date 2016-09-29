@@ -4,7 +4,7 @@
   <title><![CDATA[Category: record | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/record/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2016-07-19T12:35:46+08:00</updated>
+  <updated>2016-09-29T14:46:56+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -184,6 +184,8 @@
 <h2>优化</h2>
 
 <p><a href="http://pingguohe.net/2016/01/31/lazyscroll.html?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">iOS 高性能异构滚动视图构建方案 —— LazyScrollView</a></p>
+
+<p><a href="https://github.com/RobertGummesson/BuildTimeAnalyzer-for-Xcode">Build Time Analyzer for Xcode</a> &mdash; 查看 Swift 文件编译的时间(插件)</p>
 
 <p><a href="http://irace.me/swift-profiling/?utm_campaign=iOS%2BDev%2BWeekly&amp;utm_medium=email&amp;utm_source=iOS_Dev_Weekly_Issue_234">Profiling your Swift compilation times</a> &mdash; 查看 Swift 文件编译的时间 👍👍👍👍👍👍</p>
 
