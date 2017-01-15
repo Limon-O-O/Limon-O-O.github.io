@@ -10,6 +10,10 @@ categories: Animation
 
 [ 动画集合 ](https://github.com/cjwirth/awesome-ios-ui)
 
+[Group Avatar](https://github.com/ttmdung203/MDGroupAvatarView)
+
+[ProgressWindow](https://github.com/luowenxing/WXProgressWindow) --- 进度悬浮窗
+
 [IBAnimatable](https://github.com/JakeLin/IBAnimatable/blob/master/Documentation/README.zh.md) --- 是一个帮助我们在Interface Builder和Swift playground里面设计UI, 交互, 导航模式, 换场和动画的开源库
 
 [ 波浪 ](https://github.com/antiguab/BAFluidView)
@@ -20,6 +24,10 @@ categories: Animation
 
 [ 点赞 ](https://github.com/okmr-d/DOFavoriteButton)
 
+[粒子扩散效果的点赞按钮](https://github.com/dgytdhy/DGThumbUpButton)
+
+[火柴文字下拉刷新](https://github.com/Fnoz/FNMatchPull)
+
 [ A simple keyframe-based animation framework ](https://github.com/IFTTT/RazzleDazzle)
 
 [ 加载动画集合 ](https://github.com/ninjaprox/NVActivityIndicatorView)
@@ -28,11 +36,15 @@ categories: Animation
 
 [ 粘性加载动画 ](https://github.com/yoavlt/LiquidLoader)
 
+[KYAnimatedPageControl 拥有两种动画样式的自定义 UIPageControl](https://github.com/KittenYang/KYAnimatedPageControl)
+
 [利用贝塞尔曲线实现Q弹的下拉刷新](http://pandara.xyz/2015/10/29/jelly_refresh/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 
 [水滴效果](https://github.com/PandaraWen/WaterDropViewDemo)
 
 [ Label动画 ](https://github.com/overboming/ZCAnimatedLabel)
+
+[滑动推动 Nav Bar 效果](https://github.com/andreamazz/AMScrollingNavbar)
 
 [ NavigationBar 动画 ](https://github.com/gmertk/BusyNavigationBar)
 
@@ -48,9 +60,15 @@ categories: Animation
 
 [ 菜单粘性按钮 ](https://github.com/yoavlt/LiquidFloatingActionButton)
 
+[粘性动画菜单](https://github.com/yannickl/FlowingMenu)
+
 [自适应边界的散开按钮](https://github.com/liuzhiyi1992/SpreadButton)
 
+[瞬间爆炸菜单按钮](https://github.com/Nightonke/VHBoomMenuButton)
+
 [浮动的 Button](https://github.com/noppefoxwolf/FlowBarButtonItem?utm_campaign=This%2BWeek%2Bin%2BSwift&utm_medium=web&utm_source=This_Week_in_Swift_71)
+
+[浮动 Button](https://github.com/tinymind/LSFloatingActionMenu)
 
 [折叠菜单](https://github.com/Yalantis/Context-Menu.iOS)
 
@@ -59,6 +77,8 @@ categories: Animation
 [图片实现多层折叠效果](http://www.cocoachina.com/ios/20160104/14858.html)
 
 [Cell 折叠动](https://github.com/Ramotion/folding-cell) --- 👍👍👍
+
+[可展开型预览 TableView](https://github.com/liuzhiyi1992/ZYThumbnailTableView) --- 👍👍👍
 
 [ 粉碎删除 ](https://github.com/MartinRGB/MTMaterialDelete)
 
@@ -88,11 +108,15 @@ categories: Animation
 
 [ Download Button Aniamtion ](https://github.com/Guidebook/gbkui-button-progress-view)
 
+[Checkbox](https://github.com/vladislav-k/VKCheckbox)
+
 [双滑块Slider控件](https://github.com/Magic-Unique/DoubleThumbSlider)
 
 [捷输入并选择组件](https://github.com/Ramotion/reel-search) --- 👍👍
 
 [心形波浪](https://github.com/AfryMask/AFWaveView)
+
+[脉搏效果，适合附近的人之类的功能](https://github.com/shu223/Pulsator)
 
 [各种输入框交互动画](https://github.com/mukyasa/MMTextFieldEffects)
 
@@ -100,6 +124,19 @@ categories: Animation
 
 [Gradient 渐变 滑动](https://github.com/hyperoslo/Hue#user-content-gradients-1)
 
+[联系人列表 HorizontalContacts](https://github.com/manuelescrig/MEVHorizontalContacts)
+
+[仿 Evernote 的列表的下拉弹性效果](https://github.com/imwangxuesen/EvernoteAnimation)
+
+[图片选择器](https://github.com/cbangchen/CBImagePicker)
+
+[雅虎图片选择器](https://github.com/yahoo/YangMingShan)
+
+[PageControls](https://github.com/popwarsweet/PageControls)
+
+[全屏 blur](https://github.com/edwinbosire/SwiflyOverlay)
+
+[涟漪效应](https://github.com/alsedi/RippleEffectView)
 
 <br />
 <br />
@@ -107,6 +144,8 @@ categories: Animation
 ##CollectionView
 
 [ CollectionView 转场动画 ](https://github.com/CezaryKopacz/CKWaveCollectionViewTransition)
+
+[ZLSwipeableViewSwift](https://github.com/zhxnlai/ZLSwipeableViewSwift) --- 片滑动效果
 
 [ 格瓦拉 cell移动动画Demo ](https://github.com/nathanwhy/HYAwesomeTransition)
 
@@ -149,3 +188,5 @@ categories: Animation
 
 <br />
 <br />
+
+

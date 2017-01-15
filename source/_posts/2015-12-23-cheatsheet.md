@@ -8,6 +8,53 @@ coderay_line_numbers:
 ---
 
 
+
+#### Swift Either enum
+
+```swift
+enum Either<A, B>{
+  case Left(A)
+  case Right(B)
+}
+
+let x: Either<SomeType, AnotherType> = ...
+
+switch x {
+case .Left(let someTypeValue):
+  // do something with someTypeValue
+case .Right(let anotherTypeValue):
+  // do something with anotherTypeValue
+}
+```
+
+一个数据源，两种类型
+
+```swift
+
+let data: Either<CellModel, BannerModel> = ...
+
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  return data.count
+}
+
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let item = data[indexPath.row]
+
+    let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+
+    switch item {
+    case .Left(let pizza):
+        configure(cell, with: pizza)
+    case .Right(let ad):
+        configure(cell, with: ad)
+    }
+
+    return cell
+}
+
+```
+
+
 #### Swift 几种不错的遍历
 
 ```swift
@@ -438,3 +485,12 @@ rake deploy
 ```
 
 <br />
+
+
+##### Can't ignore UserInterfaceState.xcuserstate
+
+```
+git rm --cached ProjectFolder.xcodeproj/project.xcworkspace/xcuserdata/myUserName.xcuserdatad/UserInterfaceState.xcuserstate
+git commit -m "Removed file that shouldn't be tracked"
+```
+
