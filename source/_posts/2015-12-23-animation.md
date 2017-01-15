@@ -138,7 +138,7 @@ categories: Animation
 
 ##Animations By Emails
 
-[Transitions with CoreImage](http://www.ios-animations-by-emails.com/posts/2015-may#tutorial)
+[Transitions with CoreImage](http://www.ios-animations-by-emails.com/posts/2015-may)
 
 [Fun with Gradients and Masks](http://ios-animations-by-emails.com/posts/2015-july)
 

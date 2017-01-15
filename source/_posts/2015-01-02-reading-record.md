@@ -20,6 +20,12 @@ categories: Reading record
 
 ##包罗万象
 
+[Extending Swift generic types](http://www.marisibrothers.com/2016/03/extending-swift-generic-types.html) --- extension 时指定 Element 类型
+
+[深入探究Swift数组背后的协议、方法、拓展](http://www.jianshu.com/p/b93c07fa8c3d)
+
+[Creating a Cheap Protocol-Oriented Copy of SequenceType](http://christiantietze.de/posts/2016/03/custom-enumerated-sequence/?utm_campaign=This%2BWeek%2Bin%2BSwift&utm_medium=web&utm_source=This_Week_in_Swift_78)
+
 [iOS 视频边下边播--缓存播放数据流](http://www.jianshu.com/p/990ee3db0563) --- 👍👍👍
 
 [在 iOS 开发中如何优雅地进行图片缩放](http://www.jianshu.com/p/af2d471f7b9c?utm_campaign=hugo&utm_medium=reader_share&utm_content=note&utm_source=weibo)
@@ -99,6 +105,8 @@ categories: Reading record
 [State Machine for Layout Constraints](https://medium.com/@pcperini/a-protocol-oriented-state-machine-for-layout-constraints-2c6c94bbd844#.g92o77vfm) --- 通过协议实现 Layout 的状态机 👍👍👍
 
 [Asynchronous error handling](http://alisoftware.github.io/swift/async/error/2016/02/06/async-errors/)
+
+[Extending Swift generic types](http://www.marisibrothers.com/2016/03/extending-swift-generic-types.html) --- 为 extension 指定类型 👍👍👍
 
 #####Enum
 
@@ -181,6 +189,8 @@ categories: Reading record
 [Bmob移动后端云服务平台](http://www.bmob.cn)
 
 [和应用服务器、存储服务器说再见](https://leancloud.cn/docs/rest_api.html)
+
+[Bug 提交](https://www.buglife.com)
 
 ##插件
 [VWInstantRun](https://github.com/wangshengjia/VWInstantRun) --- 直接在Xcode中编译执行选中的Swift代码，打印输出到console  👍
