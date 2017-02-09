@@ -1,0 +1,19 @@
+<div class="highlight"><pre><span class="k">enum</span> <span class="nl">Occupation</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="n">AppSo</span> <span class="o">=</span> <span class="s">&quot;app&quot;</span>
+  <span class="k">case</span> <span class="n">Number</span> <span class="o">=</span> <span class="s">&quot;number&quot;</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">typeString</span> <span class="o">=</span> <span class="s">&quot;mindStore&quot;</span>
+
+<span class="k">switch</span> <span class="n">Occupation</span><span class="p">(</span><span class="nl">rawValue</span><span class="p">:</span> <span class="n">typeString</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="k">case</span> <span class="p">.</span><span class="n">AppSo</span><span class="o">?:</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;AppSo Article&quot;</span><span class="p">)</span>
+
+  <span class="k">case</span> <span class="p">.</span><span class="n">Number</span><span class="o">?:</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Number Article&quot;</span><span class="p">)</span>
+
+  <span class="k">case</span> <span class="nb">nil</span><span class="o">:</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Article?&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
