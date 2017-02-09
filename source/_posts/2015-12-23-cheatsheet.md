@@ -479,7 +479,7 @@ deploy 时 `non-fast-forward` 问题解决方案
 
 ```
 cd octopress/_deploy
-git pull origin master
+git pull origin master // --allow-unrelated-histories
 cd ..
 rake deploy
 ```
