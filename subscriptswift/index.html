@@ -1,0 +1,213 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>花式自定义下标 - Limon&#8217;s Blog</title>
+	<meta name="author" content="Limon">
+
+	
+	<meta name="description" content="花式自定义下标 producter-tip Jan 5th, 2016 5:56 pm 花式自定义下标 一、枚举作 Key let dictionaryOne = [ MyDictionaryKeys.Name.rawValue: &quot;Limon&quot;, &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Limon's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico?v=1" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="/javascripts/jquery-1.7.2.min.js"></script>
+	
+</head>
+
+
+<body data-page=/subscriptswift/>
+	<header id="header" class="inner"><h1><a href="/">Limon&#8217;s Blog</a></h1>
+
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	
+	<h2 class="title">花式自定义下标</h2>
+
+	
+
+	<div class="entry-content">
+		<div class="meta_custom">
+		
+			<div class="tags">
+
+
+	<a class='category' href='/blog/categories/producter-tip/'>producter-tip</a>
+
+
+</div>
+			
+
+
+
+
+<time class='entry-date' datetime='2016-01-05T17:56:42+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:56 pm</span></time>
+
+		</div>
+		
+		<h1>花式自定义下标</h1>
+
+<h3>一、枚举作 Key</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">dictionaryOne</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>        <span class="n">MyDictionaryKeys</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="nl">rawValue</span><span class="p">:</span> <span class="s">&quot;Limon&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">MyDictionaryKeys</span><span class="p">.</span><span class="n">Age</span><span class="p">.</span><span class="nl">rawValue</span><span class="p">:</span> <span class="n">Int</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
+</span><span class='line'><span class="p">]</span>
+</span><span class='line'><span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="n">dictionaryOne</span><span class="p">[.</span><span class="n">Name</span><span class="p">]</span><span class="o">!</span>
+</span><span class='line'><span class="k">let</span> <span class="n">age</span> <span class="o">=</span> <span class="n">dictionaryOne</span><span class="p">[.</span><span class="n">Age</span><span class="p">]</span><span class="o">!</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="nl">MyDictionaryKeys</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">Name</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">Age</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">extension</span> <span class="n">Dictionary</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">subscript</span><span class="p">(</span><span class="nl">customKey</span><span class="p">:</span> <span class="n">MyDictionaryKeys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnyObject</span><span class="o">?</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">guard</span> <span class="k">let</span> <span class="n">key</span> <span class="o">=</span> <span class="n">customKey</span><span class="p">.</span><span class="n">rawValue</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Key</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">return</span> <span class="nb">nil</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="nb">self</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">k</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="n">value</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nb">nil</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">extension</span> <span class="bp">NSDictionary</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">subscript</span><span class="p">(</span><span class="nl">customKey</span><span class="p">:</span> <span class="n">MyDictionaryKeys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnyObject</span><span class="o">?</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">objectForKey</span><span class="p">(</span><span class="n">customKey</span><span class="p">.</span><span class="n">rawValue</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<h3>二、声明 Key 时，同时定义 Value 的类型</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">userID</span> <span class="o">=</span> <span class="n">dictionaryTwo</span><span class="p">[.</span><span class="n">tip_UserIDKey</span><span class="p">]</span><span class="o">!</span>
+</span><span class='line'><span class="n">print</span><span class="p">(</span><span class="n">userID</span> <span class="kt">is</span> <span class="n">Int</span><span class="p">)</span> <span class="c1">// Always true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">DictionaryKeys</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">static</span> <span class="k">let</span> <span class="n">tip_UserIDKey</span> <span class="o">=</span> <span class="n">DictionaryKey</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">?&gt;</span><span class="p">(</span><span class="s">&quot;userID&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">NSDictionary</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">subscript</span><span class="p">(</span><span class="nl">key</span><span class="p">:</span> <span class="n">DictionaryKey</span><span class="o">&lt;</span><span class="n">String</span><span class="o">?&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="o">?</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kr">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">objectForKey</span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">value</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span> <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">subscript</span><span class="p">(</span><span class="nl">key</span><span class="p">:</span> <span class="n">DictionaryKey</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">?&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="o">?</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kr">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">objectForKey</span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">value</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Int</span> <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="n">DictionaryKeys</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">private</span> <span class="k">init</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="n">DictionaryKey</span><span class="o">&lt;</span><span class="n">ValueType</span><span class="o">&gt;:</span> <span class="n">DictionaryKeys</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">let</span> <span class="nl">value</span><span class="p">:</span> <span class="n">String</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">init</span><span class="p">(</span><span class="n">_</span> <span class="nl">key</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nb">self</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">key</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<h3>三、用枚举获取 Set 的元素</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">qqAccount</span> <span class="o">=</span> <span class="n">accountSet</span><span class="p">[.</span><span class="n">QQ</span><span class="p">]</span>
+</span><span class='line'><span class="k">let</span> <span class="n">weChatAccount</span> <span class="o">=</span> <span class="n">accountSet</span><span class="p">[.</span><span class="n">WeChat</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">print</span><span class="p">(</span><span class="s">&quot;样式三、qqAppID: \(qqAccount!.appID)  weChatAppID: \(weChatAccount!.appID)&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<p>源码：<a href="https://github.com/Limon-catch/SubscriptSwift">SubscriptSwift</a></p>
+
+	</div>
+
+
+
+<div class="meta">
+	<div class="center"><a href="#"></a></div>
+</div>
+
+	<br />
+	<br />
+</article>
+
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		
+		
+	</div>
+	
+</div>
+
+
+
+</div>
+	<footer id="footer" class="inner"><p><br /></p>
+Copyright &copy; 2017
+
+  <a href="http://weibo.com/u/1783821582">Limon</a>
+
+
+<p><br /></p>
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox({
+	  padding : 0
+	});
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

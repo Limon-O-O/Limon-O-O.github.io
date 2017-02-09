@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: producter-tip | Limon's Blog]]></title>
+  <link href="http://limon.top/blog/categories/producter-tip/atom.xml" rel="self"/>
+  <link href="http://limon.top/"/>
+  <updated>2017-02-09T13:37:15+08:00</updated>
+  <id>http://limon.top/</id>
+  <author>
+    <name><![CDATA[Limon]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Debug 模式与 Release 模式的区分]]></title>
+    <link href="http://limon.top/debugbuild/"/>
+    <updated>2016-01-08T11:31:30+08:00</updated>
+    <id>http://limon.top/debugbuild</id>
+    <content type="html"><![CDATA[<h1>Debug 模式与 Release 模式的区分</h1>
+
+<p><br />
+区分 Debug 模式与 Release 模式有两种方法，此文的目的是告诉读者尽量避免用 <code>-DDEBUG</code>。</p>
+
+<h4>第一种方法：</h4>
+
+<p>在 (Build Settings -> Swift Compiler - Custom Flags) 中加入 <code>-DDEBUG</code>，
+<a href="http://stackoverflow.com/questions/24111854/in-absence-of-preprocessor-macros-is-there-a-way-to-define-practical-scheme-spe/#answer-24112024">Stackoverflow</a>。</p>
+
+<p><img src="http://i.stack.imgur.com/dqp5H.png" alt="" /></p>
+
+<p>但是在 NSHipster 中有提到<strong><em>不推荐</em></strong>此方法  <a href="http://nshipster.com/new-years-2016/#avoiding--ddebug-in-swift">Avoiding -DDEBUG in Swift</a></p>
+
+<p><br /></p>
+
+<h4>第二种方法</h4>
+
+<p>通过 Preprocessor Macros (预处理宏命令) 来区分模式。</p>
+
+<p><br /></p>
+
+<p>1.新建一个 <code>PreProcessorMacros.h</code> 文件，代码如下</p>
+
+<pre><code class="swift">#import &lt;Foundation/Foundation.h&gt;
+
+@interface PreProcessorMacros : NSObject
+
+#ifndef PreProcessorMacros_h
+#define PreProcessorMacros_h
+
+extern BOOL const DEBUG_BUILD;
+
+#endif
+
+@end
+
+
+@implementation PreProcessorMacros
+
+#ifdef DEBUG
+    BOOL const DEBUG_BUILD = YES;
+#else
+    BOOL const DEBUG_BUILD = NO;
+#endif
+
+@end
+</code></pre>
+
+<p><br /></p>
+
+<p>2.在 Bridged Header: <code>#import "PreProcessorMacros.h"</code></p>
+
+<blockquote><p>也可直接把步骤一的代码放进 Bridged Header</p></blockquote>
+
+<p><br /></p>
+
+<p>3.测试</p>
+
+<pre><code>if DEBUG_BUILD {
+    print("It's Debug build")
+} else {
+    print("It's Release build")
+}
+</code></pre>
+
+<p><strong>⌘⇧&lt;</strong> 进入下图可模式切换</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-O-O/DEBUGBUILD/master/images/switch.png" alt="" /></p>
+
+<p><br /></p>
+
+<h2>原理</h2>
+
+<p>关键的代码在：
+&#8220;`</p>
+
+<h1>ifdef DEBUG</h1>
+
+<pre><code>BOOL const DEBUG_BUILD = YES;
+</code></pre>
+
+<h1>else</h1>
+
+<pre><code>BOOL const DEBUG_BUILD = NO;
+</code></pre>
+
+<h1>endif</h1>
+
+<p><code>``
+此处的</code>DEBUG` 究竟来自哪？</p>
+
+<p>进入 &lsquo;Build Settings&rsquo; -> 搜索 &lsquo;Preprocessor Macros&#8217;，真相大白</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-O-O/DEBUGBUILD/master/images/PreprocessorMacros.png" alt="" /></p>
+
+<p><br />
+源码：<a href="https://github.com/Limon-O-O/DEBUGBUILD">DEBUGBUILD</a></p>
+
+<p>抽取于干货极多的：<a href="http://nshipster.com/new-years-2016/">Reader Submissions -
+New Year&rsquo;s 2016</a>  🍺</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[花式自定义下标]]></title>
+    <link href="http://limon.top/subscriptswift/"/>
+    <updated>2016-01-05T17:56:42+08:00</updated>
+    <id>http://limon.top/subscriptswift</id>
+    <content type="html"><![CDATA[<h1>花式自定义下标</h1>
+
+<h3>一、枚举作 Key</h3>
+
+<pre><code class="swift">let dictionaryOne = [
+        MyDictionaryKeys.Name.rawValue: "Limon",
+        MyDictionaryKeys.Age.rawValue: Int(18)
+]
+let name = dictionaryOne[.Name]!
+let age = dictionaryOne[.Age]!
+</code></pre>
+
+<pre><code class="swift">enum MyDictionaryKeys: String {
+    case Name
+    case Age
+}
+
+extension Dictionary {
+
+    subscript(customKey: MyDictionaryKeys) -&gt; AnyObject? {
+
+        guard let key = customKey.rawValue as? Key else {
+            return nil
+        }
+
+        for (k, value) in self {
+            if key == k {
+                return value as? String
+            }
+        }
+
+        return nil
+    }
+}
+
+extension NSDictionary {
+
+    subscript(customKey: MyDictionaryKeys) -&gt; AnyObject? {
+        return objectForKey(customKey.rawValue)
+    }
+}
+</code></pre>
+
+<p><br /></p>
+
+<h3>二、声明 Key 时，同时定义 Value 的类型</h3>
+
+<pre><code class="swift">let userID = dictionaryTwo[.tip_UserIDKey]!
+print(userID is Int) // Always true
+</code></pre>
+
+<pre><code class="swift">extension DictionaryKeys {
+    static let tip_UserIDKey = DictionaryKey&lt;Int?&gt;("userID")
+}
+</code></pre>
+
+<pre><code class="swift">
+extension NSDictionary {
+
+    subscript(key: DictionaryKey&lt;String?&gt;) -&gt; String? {
+        get { return objectForKey(key.value) as? String }
+    }
+
+    subscript(key: DictionaryKey&lt;Int?&gt;) -&gt; Int? {
+        get { return objectForKey(key.value) as? Int }
+    }
+}
+
+class DictionaryKeys {
+    private init() {}
+}
+
+class DictionaryKey&lt;ValueType&gt;: DictionaryKeys {
+
+    let value: String
+
+    init(_ key: String) {
+        self.value = key
+    }
+}
+</code></pre>
+
+<p><br /></p>
+
+<h3>三、用枚举获取 Set 的元素</h3>
+
+<pre><code class="swift">let qqAccount = accountSet[.QQ]
+let weChatAccount = accountSet[.WeChat]
+
+print("样式三、qqAppID: \(qqAccount!.appID)  weChatAppID: \(weChatAccount!.appID)")
+</code></pre>
+
+<p><br /></p>
+
+<p>源码：<a href="https://github.com/Limon-catch/SubscriptSwift">SubscriptSwift</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Matching Option]]></title>
+    <link href="http://limon.top/matching-option/"/>
+    <updated>2015-12-23T22:36:43+08:00</updated>
+    <id>http://limon.top/matching-option</id>
+    <content type="html"><![CDATA[<pre><code>{
+    "articles": [
+        {
+            "type": "app", // AppSo文章
+            "cellHeight": "100"
+        },
+        {
+            "type": "number", // 数独文章
+            "cellHeight": "200"
+        },
+        {
+            "type": "mindStore", // MindStore文章
+            "cellHeight": "300"
+        }
+    ]
+}
+</code></pre>
+
+<p>假设服务器返回以上的JSON，客户端需要根据文章类型来作不同的布局。</p>
+
+<p>第一时间可能会想到以下的方法来switch：</p>
+
+<pre><code class="Swift">let typeString = "app"
+switch typeString {
+
+  case "app":
+    print("AppSo Article")
+
+  case "number":
+    print("Number Article")
+
+  default:
+    break
+}
+</code></pre>
+
+<p><br /></p>
+
+<p>较为优雅的方法是用<code>enum</code>来管理类型：</p>
+
+<pre><code>enum Occupation: String {
+  case AppSo = "app"
+  case Number = "number"
+}
+
+let typeString = "mindStore"
+
+switch Occupation(rawValue: typeString) {
+
+  case .AppSo?:
+    print("AppSo Article")
+
+  case .Number?:
+    print("Number Article")
+
+  case nil:
+    print("Article?")
+}
+</code></pre>
+
+<p><br /></p>
+
+<p>抽取于：<a href="http://www.figure.ink/blog/2015/12/6/matching-with-swifts-optional-pattern?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=web&amp;utm_source=This_Week_in_Swift_65">Matching with Swift&rsquo;s Optional Pattern</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[优雅地自定义XibView]]></title>
+    <link href="http://limon.top/customxibview/"/>
+    <updated>2015-12-23T21:38:17+08:00</updated>
+    <id>http://limon.top/customxibview</id>
+    <content type="html"><![CDATA[<h2>优雅地自定义XibView</h2>
+
+<p>好习惯，先上<a href="https://github.com/Limon-catch/XibView">源码</a>。</p>
+
+<p>先创建一个UIView文件和一个Xib文件，在Xib文件里设置如下，</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-catch/XibView/master/XibView/Image/XibView_Step1.png" alt="" /></p>
+
+<p>在UIView文件中，不是用<code>-awakeFromNib()</code>作为构造器，而是正常的<code>-init(frame: CGRect)</code>。</p>
+
+<pre><code class="swift">
+override init(frame: CGRect) {
+    super.init(frame: frame)
+
+    xibSetup()
+}
+</code></pre>
+
+<p>而<code>-xibSetup()</code>才是关键，具体可看源码。</p>
+
+<p><br />
+如果需要UIView和Xib文件建立控件属性关联，是设置Xib文件的File`s Owner，<strong><em>而不是设置View的Custom Class</em></strong>。</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-catch/XibView/master/XibView/Image/XibView_Step2.png" alt="" /></p>
+
+<p>设置了File`s Owner就可以像往常一样拖线了。</p>
+
+<p>如果想在<code>Main.storyboard</code>文件中直接使用此Xib，同时也想在SB中设置属性，那怎么使用呢？</p>
+
+<ol>
+<li>在SB中加入一个UIView，将其Class设置成<code>XibView</code><br /></li>
+<li>使用<code>@IBInspectable</code></li>
+</ol>
+
+
+<pre><code>@IBInspectable var title: String? {
+    get {
+        return xibLabel.text
+    }
+    set {
+        xibLabel.text = newValue
+    }
+}
+</code></pre>
+
+<p><br />
+添加了<code>@IBInspectable</code>之后，就可以像系统自带的控件一样设置属性了。</p>
+
+<p><img src="https://raw.githubusercontent.com/Limon-catch/XibView/master/XibView/Image/XibView_Step3.png" alt="" /></p>
+]]></content>
+  </entry>
+  
+</feed>

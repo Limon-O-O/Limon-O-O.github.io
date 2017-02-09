@@ -1,0 +1,408 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>数字媒体(内部分享) - Limon&#8217;s Blog</title>
+	<meta name="author" content="Limon">
+
+	
+	<meta name="description" content="数字媒体(内部分享) Jan 16th, 2017 12:32 am 了解数字媒体 数字媒体是指以二进制数的形式记录、处理、传播、获取过程的信息载体，这些载体包括数字化的文字、图形、图像、声音、视频影像和动画等。使用数字媒体已经成为广大用户一种本能的习惯，但你是否想过这些媒体内容被数字化的呢？ &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Limon's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico?v=1" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="/javascripts/jquery-1.7.2.min.js"></script>
+	
+</head>
+
+
+<body data-page=/media/>
+	<header id="header" class="inner"><h1><a href="/">Limon&#8217;s Blog</a></h1>
+
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	
+	<h2 class="title">数字媒体(内部分享)</h2>
+
+	
+
+	<div class="entry-content">
+		<div class="meta_custom">
+		
+			<div class="tags">
+
+</div>
+			
+
+
+
+
+<time class='entry-date' datetime='2017-01-16T00:32:32+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>12:32 am</span></time>
+
+		</div>
+		
+		<h2>了解数字媒体</h2>
+
+<p>数字媒体是指以二进制数的形式记录、处理、传播、获取过程的信息载体，这些载体包括数字化的文字、图形、图像、声音、视频影像和动画等。使用数字媒体已经成为广大用户一种本能的习惯，但你是否想过这些媒体内容被数字化的呢？</p>
+
+<p>我们看到的信号标志和所听到的音乐都是通过模拟信号传递给我们的，我们的研究和耳朵构成将这些信息转换为我们大脑能解析出来的电信号。</p>
+
+<p>现实生活中的信号是连续的，信号的频率和强度是在不断变化的，但是数字世界的信号是离散的，由 1 和 0 两个状态表示，要将模式信号转换成能存储传输的数字信号，要经过模拟-数字转换过程，这一过程称为<strong>采样(Smapling)</strong></p>
+
+<h2>数字媒体采样</h2>
+
+<p>对媒体内容进行数字化主要有两种方式：</p>
+
+<h6>时间采样</h6>
+
+<p>时间采样方法捕捉一个信号周期内的变化。比如当记录一个音频，在录制期间所有的音高变化和声调变化都会被捕捉下来。</p>
+
+<h6>空间采样</h6>
+
+<p>空间采样一般都用在图片数字化和其他可视化媒体内容数字化的过程中。空间采样包含对一副图片在一定分辨率之下捕捉其亮度和色度，进而创建由该图片的像素点数据所构成的数字化结果。</p>
+
+<h2>音频采样介绍</h2>
+
+<p>想象一下，当你拨动琴弦的时候，可以直观地看到信号的频率和振幅。这个振动会导致周围的空气分子移动，这些分子会依次同其临近的空气分子进行碰撞，之后再依次传递这个碰撞，将最初的振动能量不断地向各个方向进行传播。当这些波动传到接受者的耳中时，会带动耳膜以同样的频率和振幅振动。这些振动继续传递到内耳的耳蜗上，此时会将这些振动转换成电信号传给大脑，大脑会处理这个信号并知道“我听到了一个 G 声调”。</p>
+
+<p>当我们记录一个声音时，一般会使用麦克风设备。麦克风是将机械能量(声波)转换成电能量(电压信号)的转换设备。这里讨论下电动式麦克风(dynamic microphone)。图 1 展示了电动式麦克风内部的高级视图。</p>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNbRwjw1f5jfgz937hj312a0gmmyj.jpg" width="600"></p>
+
+<p>在麦克风的头部设备中所包含的，作为接收声音的一部分，是薄薄的被称为&#8221;膜片&#8221;的薄膜。这个膜片连接缠绕着磁极的线圈，当你对着麦克风讲话时，膜片会根据其感受到的声波进行振动，再依次带动线圈振动，产生同输入信号相同频率和振幅的电流信号。使用示波器我们可以看到电信号的振荡，如图 2 所示：</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/006tNbRwjw1f5jflubgm6j314s0moac1.jpg" width="600"></p>
+
+<p>回归音频采样的主题，我们应该如何将这个连续的信号转换成相应的离散形式呢，即使用音频生成器，这里我们创建了两个不同的音频正弦波，如图 3 所示。</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/006tNbRwjw1f5jfsn0jufj31ie0pyn14.jpg" width="600"></p>
+
+<p>我们对这个信号的两个方面比较感兴趣。</p>
+
+<ul>
+<li>振幅</li>
+<li>频率</li>
+</ul>
+
+
+<p>振幅，它代表了电压的强度或相应信号的强度。虽然可以通过不同坐标系来呈现正弦曲线的变化，但是通常我们会选择-1.0f到1.0f作为坐标系的最大值和最小值。</p>
+
+<p>频率，信号频率的测量单位是赫兹(Hz)，表示在一定周期内振动完成循环的次数。图 3 左边的图片展示了 1Hz 情况下音频信号的一个周期，右边的图片展示了 5Hz 情况下的信号情况。人类可以听到的音频范围是20Hz～20kHz(20 000Hz)。</p>
+
+<p><br/></p>
+
+<h4>线性脉冲编码调制</h4>
+
+<p>音频数字化的过程包含一个编码方法，称为<strong>线性脉冲编码调制</strong>(linear pulse-code modulation)，比较常见的说法是Linear PCM或LPCM。线性脉冲编码调制是对连续变化的模拟信号进行抽样、量化和编码产生的数字信号。LPCM的优点就是音质好，缺点就是体积大。</p>
+
+<p>这个过程采样或测量一个固定的音频信号，过程的周期率被称为<strong>采样率</strong>。图 4 展示了在一秒内对信号进行 7 次采样及信号的数字化结果图。</p>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNbRwjw1f5jg1su2dfj31j60midi4.jpg" width="600"></p>
+
+<p>显然低采样率的数字信号版本无法很好地表现原始数据。我们按图 5 所示的情况再做一次，这次我们提高采样频率。</p>
+
+<p><img src="http://ww2.sinaimg.cn/large/72f96cbajw1f5lrg6drzgj21k20lsjti.jpg" width="600"></p>
+
+<p>这次效果显然得到提升，但仍不能准确表示原始信号。
+不过通过这个示例你可以推测，如果不断提高采样的频率，我们就有可能以数字化方式准确表现原始信号的信息。那我们能否找到一个采样频率用于生成足够好的数字呈现效果？答案是肯定的。</p>
+
+<p>20世纪30年代，Harry Nyquist 是贝尔实验室的一名工程师，他精确地捕捉到了一个特定频率，该频率为需要采样对象的最高频率的两倍。
+我们称其为<strong>尼奎斯特频率(Nyquist rate)</strong> 。</p>
+
+<p>比如一个你需要捕捉的音频素材的最高频率为10kHz，你所需要的采样率最起码为20kHz才能得到较好的数字化效果。</p>
+
+<p>除采样率外，数字音频采样的另一个重要方面是我们能够捕捉到什么精度的音频样本，那就是音频的位元深。<strong>音频的位元深</strong> 用于保存样本值的字节数定义了在线性维度上可行的离散度。使用位元深度为8的方法可以提供256个离散级别的数据，对于一些音频资源来说，这个级别的采样率已经足够了，但对于大部分音频内容来说还不够高。CD音质的位元深度为16，可以达到65 536个离散级别。专业级别的音频录制环境的位元深度可以达到24或更高。</p>
+
+<p><br/></p>
+
+<h2>数字媒体压缩</h2>
+
+<h4>音频压缩</h4>
+
+<p>音频信号压缩编码的主要依据是人耳的听觉特性，主要有两点：</p>
+
+<ul>
+<li>人的听觉系统中存在一个听觉阈值电平，低于这个电平的声音信号人耳听不到。</li>
+<li>人的听觉存在 屏蔽效应。当几个强弱不同的声音同时存在时，强声使弱声难以听到，并且两者之间的关系与其相对频率的大小有关。</li>
+</ul>
+
+
+<p>声音编码算法就是通过这些特性来去掉更多的冗余数据来达到压缩数据的目的。
+音频信号数字化后经过压缩编码，形成下列主要格式的文件：</p>
+
+<h5>WAV(.wav)</h5>
+
+<p>WAV 文件又称波形文件，来源于对声音模拟波形的采样，并以不同的量化位数把这些采样点的值轮换成二进制数，然后存入磁盘，这就产生了波形文件。 WAV 文件用于保存 Windows 平台的音频信息资源，被 Windows 平台及其应用程序所广泛支持。</p>
+
+<p>特点：声音再现容易，占用存储空间大，用Windows播放器播放</p>
+
+<h5>MP3</h5>
+
+<p>MP3的全名是MPEG Audio Layer-3。
+ISO/MPEG 音频压缩标准里包括了三个使用高性能音频数据压缩方法的感知编码方案， 按照压缩质量(每Bit的声音效果)和编码方案的复杂程度分别是 Layer1、Layer2、Layer3，同时也分别对应 .mp1、.mp2、.mp3 的文件格式。所有这三层的编码采用的基本结构是相同的。它们在采用传统的频谱分析和编码技术的基础上还应用了子带分析和心理声学模型理论。也就是通过研究人耳和大脑听觉神经对音频失真的敏感度，在编码时先分析声音文件的波形，利用滤波器找出噪音电平(Noise Level)，然后滤去人耳不敏感的信号，通过矩阵量化的方式将余下的数据每一位打散排列，最后编码形成MPEG的文件。而音质听起来与CD相差不大。</p>
+
+<h5>MP4</h5>
+
+<p>MP4 并不是 MPEG-4 或者 MPEG Audio Layer-3，它的出现是针对MP3的大众化、无版权的一种保护格式，由美国网络技术公司开发，美国唱片行业联合会倡导公布的一种新的网络下载和音乐播放格式。</p>
+
+<p>MP4 使用的是 MPEG-2 AAC技术也就是俗称的 a2b 或 AAC(Advanced Audio Coding(先进音频编码))。</p>
+
+<p>MP4 技术的优越性要远远高于MP3，因为它更适合多媒体技术的发展以及视听欣赏的需求。但是，MP4是一种商品，它利用改良后的MPEG-2 AAC技术并强加上由出版公司直接授权的知识产权协议作为新的标准；而MP3是一种自由音乐格式，任何人都可以自由使用。此外，MP4 实际上是由音乐出版界联合授意的官方标准；MP3 则是广为流传的民间标准。</p>
+
+<p><br /></p>
+
+<h4>视频压缩</h4>
+
+<h5>色彩二次抽样</h5>
+
+<p>视频数据是使用称之为Y&#8217;CbCr′ 颜色模式的典型案例，Y&#8217;CbCr′ 也常称为YUV。虽然YUV术语并不很准确，但是 YUV 读起来要比Y-Prime-C-B-C-R 方便很多。YUV 将亮度信息（Y）与色彩信息（UV）分离，没有 UV 信息一样可以显示完整的图像，只不过是黑白的（这个设计很好地解决了彩色电视机与黑白电视的兼容问题）。</p>
+
+<p>YUV 不像 RGB 那样要求三个独立的视频信号同时传输，所以用 YUV 方式传送占用极少的频宽。</p>
+
+<p>图 6、图 7 展示了一幅图片分离亮度和色彩通道后的效果。</p>
+
+<p><img src="http://ww2.sinaimg.cn/large/72f96cbajw1f5lsjb0zlaj20vg09s413.jpg" width="600"></p>
+
+<p><img src="http://ww2.sinaimg.cn/large/72f96cbajw1f5miuaijg1j205k0gm3zt.jpg" width="260"></p>
+
+<p>可以看到图片的所有细节都保存在亮度通道中，如果除去亮度，剩下的就是一幅灰度图片，我们再看整合的色彩通道中几乎所有的细节都丢失了。这是因为我们的眼睛对亮度的敏感度要高于颜色，聪明的工程师们认识到，我们可以大幅减少存储在每个像素中的颜色信息，而不至于图片的质量严重受损。这个减少颜色数据的过程就称为<strong>色彩二次抽样</strong>。</p>
+
+<p>当每次看到诸如摄像头规范和其他视频设备硬件或软件中提到的4:4:4、4:2:2 及 4:2:0 时，这些值的含义就是这些设备所使用的色彩二次抽样的参数（YUV 采样方式）。</p>
+
+<p>当每次看到诸如摄像头规范和其他视频设备硬件或软件中提到的4:4:4、4:2:2及4:2:0时，这些值的含义就是这些设备所使用的色彩二次抽样的参数</p>
+
+<ul>
+<li>YUV 4:4:4采样，每一个 Y 对应一组 UV 分量。</li>
+<li>YUV 4:2:2采样，每两个 Y 共用一组 UV 分量。</li>
+<li>YUV 4:2:0采样，每四个 Y 共用一组 UV 分量。</li>
+</ul>
+
+
+<p>用三个图来直观地表示采集的方式吧，以黑点表示采样该像素点的 Y 分量，以空心圆圈表示采用该像素点的 UV 分量。</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f5lsdr21poj20pu07374w.jpg" alt="" /></p>
+
+<p>色彩二次抽样一般发生在取样时，一些专业的相机以 4:4:4 的参数捕捉图像，但大部分情况下对于图片的拍摄是使用 4:2:2 的方式进行的。面向消费者的摄像头装置，比如 iPhone 手机上的摄像头，通常以 4:2:0 的方式进行拍摄。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">videoDataOutput</span><span class="p">.</span><span class="n">videoSettings</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>            <span class="nl">kCVPixelBufferPixelFormatTypeKey</span><span class="p">:</span> <span class="n">Int</span><span class="p">(</span><span class="n">kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<h4>编解码器压缩</h4>
+
+<p>大部分音频和视频都是使用编解码器(codec)来压缩的，编解码器这个术语是由编码器/解码器结合简写得来的(encoder/decoder)。编解码器使用高级压缩算法对需要保存或发送的音频或视频数据进行压缩和编码，同时它还可以将压缩文件解码成适合播放和编辑的媒体资源文件。</p>
+
+<p>视频编解码器(编码器/解码器)是指两个协同运行的压缩-解压算法。使用不同标准的视频编解码器通 常彼此之间互不兼容;也就是说,使用一种标准进行压缩的视频内容无法使用另外一种标准进行解压缩。例如，MPEG-4 Part2 解码器就不能与 H.264 编码器协同运行。这是因为一种算法无法正确地对另外一个算法的输出信号进行解码，然而我们可以在同一软件或硬件中使用多种不同的算法,以支持对多种 格式的文件进行压缩。</p>
+
+<h5>H.264</h5>
+
+<p>H.264，是一种影片压缩标准。H.264 规范是Motion Picture Experts Group(MPEG)所定义的 MPEG-4 的一部分。H.264 遵循早期的 MEPG-1 和 MPEG-2 标准，但是在以更低比特率得到更高图片质量方面有了长足进步，使其更好地用于流媒体文件和移动设备及视频摄像头。</p>
+
+<p>下图是在相同图像质量水平下，采用下列视频标准的比特率对比：M-JPEG，MPEG-4、MPEG-4 Part 2 和 H.264。</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79jw1f5mkb08mgfj31ki168799.jpg" width="600"></p>
+
+<p>如图所示，对于视频序列样本来说，使用 H.264 编码器能够比使用 MPEG-4 编码器降低 50% 的比特率(bps)，比 M-JPEG 编码器高6倍。</p>
+
+<h5>H.264 压缩原理</h5>
+
+<p>H.264 与其他形式的 MPEG 压缩一样，通过以下两个维度缩小了视频文件的尺寸：</p>
+
+<ul>
+<li>空间：压缩独立视频帧，被称为帧内压缩</li>
+<li>时间：通过以组为单位的视频帧压缩冗余数据，这一过程称为帧间压缩</li>
+</ul>
+
+
+<p>帧内压缩通过消除包含在每个独立视频帧内的色彩及结构中的冗余信息来进行压缩，因此可在不降低图片质量的情况下尽可能缩小尺寸。这类压缩同 JEPG 压缩的原理类似。帧内压缩也可以作为有损压缩算法，但通常用于对原始图片的一部分进行处理以生成极高质量的照片。通过这一过程创建的帧称为 I-frames。</p>
+
+<p>在帧间压缩中，很多帧被组合在一起作为一组图片(简称GOP)，对于 GOP 所存在的时间维度的冗余可以被消除。如果想象视频文件中的典型场景，就会有一些特定运动元素的概念，比如行驶的汽车或街上走路的行人，场景的背景环境通常是固定的。固定的背景环境就代表一个时间维度上的冗余，这个冗余就可以通过压缩方式进行消除。</p>
+
+<p>总结一句话：H264 采用的核心算法是帧内压缩和帧间压缩，帧内压缩是生成 I 帧的算法，帧间压缩是生成 B 帧和 P 帧的算法。</p>
+
+<p>图 8 给出了存储在 GOP 中的三个不同类型的帧。</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/72f96cbajw1f5miy74zj8j21dm0noju3.jpg" width="600"></p>
+
+<ul>
+<li><p>I-frames</p>
+
+<p>这些帧都是一些单独的帧或关键帧，包含创建完整图片需要的所有数据。每个 GOP 都正好有一个 I-frames。由于它是一个独立帧，其尺寸是最大的，但也是解压最快的。</p></li>
+</ul>
+
+
+<blockquote><p>你可以理解为这一帧画面的完整保留；解码时只需要本帧数据就可以完成（因为包含完整画面）</p></blockquote>
+
+<ul>
+<li><p>P-frames</p>
+
+<p>P-frames 又称为预测帧，P帧表示的是这一帧跟之前的一个 I 帧或 P 帧的差别，解码时需要用之前缓存的画面叠加上本帧定义的差别，生成最终画面。（也就是差别帧，P 帧没有完整画面数据，只有与前一帧的画面差别的数据）</p></li>
+<li><p>B-frames</p>
+
+<p>B-frames 又称为双向帧，是基于使用之前和之后的帧信息进行编码后得到的帧。几乎不需要存储空间，但其解压过程会耗费较长时间，因为它依赖于周围其他的帧。
+B 帧记录的是本帧与前后帧的差别，换言之，要解码 B 帧，不仅要取得之前的缓存画面，还要解码之后的画面，通过前后画面的与本帧数据的叠加取得最终的画面。</p></li>
+</ul>
+
+
+<p><br /></p>
+
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gw1f5mlf72ri8j317y0g2dhe.jpg" width="600"></p>
+
+<p>对M-JPEG格式来说,上述序列中的三个图像分别作为独立的图像(I帧)进行编码和发送,彼此之间互不依赖。</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79jw1f5mlfqeuw1j319e0geabo.jpg" width="600"></p>
+
+<p>只有第一个图像(I帧)是将全帧图像信息进行编码。在后面的两个图像(P帧)中，其静态部分(即房子)将参考第一个图像，而仅对运动部分(即正在跑步的人)使用运动矢量进行编码，从而减少发送和存储的信息量。</p>
+
+<h5>H.264 编码标准</h5>
+
+<p>H.264 还支持编码标准，用于确定在整个编码过程中所使用的算法。共定义了 3 个高级标准：</p>
+
+<p>Baseline：基本画质，支持I/P 帧。这个标准通常用于对移动设备的媒体内容进行处理，提供了最低效的压缩，因此经过这个标准压缩后的文件仍较大，但是同时这种方法也是最少计算强度的方法，因为它不支持 B-frames。如果开发者的编译目标是年代比较久远的 iOS 设备，比如 iPhone 3GS，可能需要用到 Baseline 标准。</p>
+
+<p>Main：主流画质，支持 I/P/B 帧。这个标准的计算强度要比 Baseline 的高，因为它使用的算法更多，但可以达到比较高的压缩率。</p>
+
+<p>High：高级画质，在 Main Profile 的基础上增加了8×8内部预测、自定义量化、 无损视频编码和更多的YUV 格式。高标准的方法会得到最高质量的压缩效果，但它也是 3 种方法中计算复杂度最高的，因为所有能用到的编码技术和算法几乎都用到了。</p>
+
+<p><br /></p>
+
+<p>实时直播：</p>
+
+<ul>
+<li>低清Baseline Level 1.3</li>
+<li>标清Baseline Level 3</li>
+<li>半高清Baseline Level 3.1</li>
+<li>全高清Baseline Level 4.1</li>
+</ul>
+
+
+<p>存储媒体：</p>
+
+<ul>
+<li>低清 Main Level 1.3</li>
+<li>标清 Main Level 3</li>
+<li>半高清 Main Level 3.1</li>
+<li>全高清 Main Level 4.1</li>
+</ul>
+
+
+<p>高清存储：</p>
+
+<ul>
+<li>半高清 High Level 3.1</li>
+<li>全高清 High Level 4.1</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelKey</span> <span class="cm">/* NSString, H.264 only, one of: */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">4</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Baseline30</span> <span class="cm">/* Baseline Profile Level 3.0 */</span>        <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">4</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Baseline31</span> <span class="cm">/* Baseline Profile Level 3.1 */</span>        <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">4</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Baseline41</span> <span class="cm">/* Baseline Profile Level 4.1 */</span>        <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">5</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264BaselineAutoLevel</span> <span class="cm">/* Baseline Profile Auto Level */</span> <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_9</span><span class="p">,</span> <span class="mi">7</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Main30</span> <span class="cm">/* Main Profile Level 3.0 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">4</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Main31</span> <span class="cm">/* Main Profile Level 3.1 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">4</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Main32</span> <span class="cm">/* Main Profile Level 3.2 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">5</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Main41</span> <span class="cm">/* Main Profile Level 4.1 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">5</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264MainAutoLevel</span> <span class="cm">/* Main Profile Auto Level */</span>        <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_9</span><span class="p">,</span> <span class="mi">7</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264High40</span> <span class="cm">/* High Profile Level 4.0 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_9</span><span class="p">,</span> <span class="mi">6</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264High41</span> <span class="cm">/* High Profile Level 4.1 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_9</span><span class="p">,</span> <span class="mi">6</span><span class="n">_0</span><span class="p">);</span>
+</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264HighAutoLevel</span> <span class="cm">/* High Profile Auto Level */</span>        <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_9</span><span class="p">,</span> <span class="mi">7</span><span class="n">_0</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>视频码率(bitRate)</h5>
+
+<p>码率是指单位时间内传输的数据位数。视频体积=视频码率*时间，由此可见固定长度的视频，码率是决定大小的唯一因素。视频码率决定着视频的压缩效果，也决定了视频是质量。码率越高，质量越好，体积越大。码率越低，体积越小，视频质量也越差。
+编码时，根据码率可以分为固定码率(CBR)编码和可变码率(VBR)编码。</p>
+
+<ul>
+<li><p>固定码率：指编码器输出的码率一直为一个固定值，这种编码方式计算量小，编码速度快，但是编码效果不怎么好。对于画面变化大的视频片段，由于码率限制，导致视频非常模糊，然而对于画面变化小的片段，却会造成码率浪费。</p></li>
+<li><p>可变码率：指编码器的输出码率可以根据编码器的输入源信号的复杂度自适应的调整，这种方式编码效果比较好</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">codecSettings</span> <span class="o">=</span> <span class="p">[</span><span class="nl">AVVideoAverageBitRateKey</span><span class="p">:</span> <span class="mi">2000000</span><span class="p">,</span> <span class="nl">AVVideoProfileLevelKey</span><span class="p">:</span> <span class="n">AVVideoProfileLevelH264BaselineAutoLevel</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">let</span> <span class="nl">videoCompressionSettings</span><span class="p">:</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nl">AVVideoCodecKey</span><span class="p">:</span> <span class="n">AVVideoCodecH264</span><span class="p">,</span> <span class="nl">AVVideoCompressionPropertiesKey</span><span class="p">:</span> <span class="n">codecSettings</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">let</span> <span class="n">videoWriterInput</span> <span class="o">=</span> <span class="bp">AVAssetWriterInput</span><span class="p">(</span><span class="nl">mediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">,</span> <span class="nl">outputSettings</span><span class="p">:</span> <span class="n">videoCompressionSettings</span><span class="p">,</span> <span class="nl">sourceFormatHint</span><span class="p">:</span> <span class="n">videoFormatHint</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br /></p>
+
+<h2>Reference</h2>
+
+<p><a href="http://item.jd.com/11742630.html">AV Foundation 开发秘籍</a></p>
+
+<p><a href="http://www.cnblogs.com/azraelly/archive/2013/01/01/2841269.html">图文详解YUV420数据格式</a></p>
+
+<p><a href="http://itony.me/808.html">iOS RTMP 视频直播开发笔记（3）- 了解 H.264 编码</a></p>
+
+<p><a href="http://blog.csdn.net/voipmaker/article/details/8451577">H264 GOP 扫盲</a></p>
+
+<p><a href="http://www.axis.com/files/whitepaper/wp_h264_34203_cn_0901_lo.pdf">H.264视频压缩标准</a></p>
+
+	</div>
+
+
+
+<div class="meta">
+	<div class="center"><a href="#"></a></div>
+</div>
+
+	<br />
+	<br />
+</article>
+
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		
+		
+	</div>
+	
+</div>
+
+
+
+</div>
+	<footer id="footer" class="inner"><p><br /></p>
+Copyright &copy; 2017
+
+  <a href="http://weibo.com/u/1783821582">Limon</a>
+
+
+<p><br /></p>
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox({
+	  padding : 0
+	});
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>
