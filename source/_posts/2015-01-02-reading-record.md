@@ -51,6 +51,12 @@ categories: Reading record
 
 ##包罗万象
 
+[Extending Swift generic types](http://www.marisibrothers.com/2016/03/extending-swift-generic-types.html) --- extension 时指定 Element 类型
+
+[深入探究Swift数组背后的协议、方法、拓展](http://www.jianshu.com/p/b93c07fa8c3d)
+
+[Creating a Cheap Protocol-Oriented Copy of SequenceType](http://christiantietze.de/posts/2016/03/custom-enumerated-sequence/?utm_campaign=This%2BWeek%2Bin%2BSwift&utm_medium=web&utm_source=This_Week_in_Swift_78)
+
 [iOS 视频边下边播--缓存播放数据流](http://www.jianshu.com/p/990ee3db0563) --- 👍👍👍
 
 [在 iOS 开发中如何优雅地进行图片缩放](http://www.jianshu.com/p/af2d471f7b9c?utm_campaign=hugo&utm_medium=reader_share&utm_content=note&utm_source=weibo)
@@ -131,11 +137,15 @@ categories: Reading record
 
 [Asynchronous error handling](http://alisoftware.github.io/swift/async/error/2016/02/06/async-errors/)
 
+
+[Extending Swift generic types](http://www.marisibrothers.com/2016/03/extending-swift-generic-types.html) --- 为 extension 指定类型 👍👍👍
+
 [Adapting Auto Layout Without Interface Builder](http://useyourloaf.com/blog/adapting-auto-layout-without-interface-builder/?utm_source=newsletter&utm_medium=email&utm_campaign=week_125_is_ready)
 
 [手势签名](https://github.com/ipraba/EPSignature?utm_campaign=This%2BWeek%2Bin%2BSwift&utm_medium=email&utm_source=This_Week_in_Swift_89)
 
 [iOS 程序 main 函数之前发生了什么](http://blog.sunnyxx.com/2014/08/30/objc-pre-main/)
+>>>>>>> ff68b1dc5240f4333526a172ce5b1c3218c9aa3a
 
 #####Enum
 
@@ -234,6 +244,8 @@ categories: Reading record
 
 [和应用服务器、存储服务器说再见](https://leancloud.cn/docs/rest_api.html)
 
+[Bug 提交](https://www.buglife.com)
+
 ##插件
 [VWInstantRun](https://github.com/wangshengjia/VWInstantRun) --- 直接在Xcode中编译执行选中的Swift代码，打印输出到console  👍
 
@@ -258,5 +270,3 @@ categories: Reading record
 [Setup a mirror of CocoaPods/Specs](http://lexrus.com/setup-a-mirror-of-cocoapods-specs.html)
 
 [CocoaPods建立私有仓库](http://blog.csdn.net/agdsdl/article/details/45218987#0-tsina-1-51027-397232819ff9a47a7b7e80a40613cfe1)
-
-
