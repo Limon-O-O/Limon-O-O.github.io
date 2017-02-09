@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cheatsheet | Limon's Blog]]></title>
   <link href="http://limon.top/blog/categories/cheatsheet/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2017-02-09T13:37:15+08:00</updated>
+  <updated>2017-02-09T13:50:30+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -459,7 +459,7 @@ git push origin source
 <p>deploy 时 <code>non-fast-forward</code> 问题解决方案</p>
 
 <pre><code>cd octopress/_deploy
-git pull origin master
+git pull origin master // --allow-unrelated-histories
 cd ..
 rake deploy
 </code></pre>

@@ -4,7 +4,7 @@
   <title><![CDATA[Limon's Blog]]></title>
   <link href="http://limon.top/atom.xml" rel="self"/>
   <link href="http://limon.top/"/>
-  <updated>2017-02-09T13:37:15+08:00</updated>
+  <updated>2017-02-09T13:50:30+08:00</updated>
   <id>http://limon.top/</id>
   <author>
     <name><![CDATA[Limon]]></name>
@@ -1375,7 +1375,7 @@ New Year&rsquo;s 2016</a>  🍺</p>
 <p>deploy 时 <code>non-fast-forward</code> 问题解决方案</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">cd</span> <span class="n">octopress</span><span class="o">/</span><span class="n">_deploy</span>
-</span><span class='line'><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span> <span class="c1">// --allow-unrelated-histories</span>
 </span><span class='line'><span class="n">cd</span> <span class="p">..</span>
 </span><span class='line'><span class="n">rake</span> <span class="n">deploy</span>
 </span></code></pre></td></tr></table></div></figure>
