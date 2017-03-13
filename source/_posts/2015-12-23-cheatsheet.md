@@ -494,3 +494,44 @@ git rm --cached ProjectFolder.xcodeproj/project.xcworkspace/xcuserdata/myUserNam
 git commit -m "Removed file that shouldn't be tracked"
 ```
 
+```
+
+# brew uninstall ruby # not using homebrew's ruby
+
+rm -rf ~/.gem
+rm -rf ~/.gems
+rm -rf ~/.rbenv
+brew install rbenv ruby-built
+
+# Add rbenv to bash so that it loads every time you open a terminal
+
+echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
+source ~/.bash_profile
+
+# Install Ruby
+
+rbenv install 2.3.1
+rbenv global 2.3.1
+
+```
+
+```
+# close teminal and re-open it
+
+ruby -v # should output 2.3.1 now
+sudo chown -R $(whoami): ~/.rbenv # important!!!
+gem update --system
+gem install fastlane # this will install a lot of gems, since we are not using the old 2.0.0 gems anymore.
+
+```
+
+Then you may need to modify your .bash_profile or .zshrc if you use zsh.
+Add these 2 lines:
+
+```
+vim .zshrc
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+```
+> https://github.com/fastlane/fastlane/issues/6553
+
