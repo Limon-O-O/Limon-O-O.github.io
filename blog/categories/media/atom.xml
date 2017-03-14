@@ -1,59 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>数字媒体(内部分享) - Limon&#8217;s Blog</title>
-	<meta name="author" content="Limon">
+  <title><![CDATA[Category: media | Limon's Blog]]></title>
+  <link href="http://limon.top/blog/categories/media/atom.xml" rel="self"/>
+  <link href="http://limon.top/"/>
+  <updated>2017-03-14T22:10:27+08:00</updated>
+  <id>http://limon.top/</id>
+  <author>
+    <name><![CDATA[Limon]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
-	
-	<meta name="description" content="数字媒体(内部分享) media Jan 16th, 2017 12:32 am 了解数字媒体 数字媒体是指以二进制数的形式记录、处理、传播、获取过程的信息载体，这些载体包括数字化的文字、图形、图像、声音、视频影像和动画等。使用数字媒体已经成为广大用户一种本能的习惯， &hellip;">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<link href="/atom.xml" rel="alternate" title="Limon's Blog" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/favicon.ico?v=1" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script src="/javascripts/jquery-1.7.2.min.js"></script>
-	
-</head>
-
-
-<body data-page=/media/>
-	<header id="header" class="inner"><h1><a href="/">Limon&#8217;s Blog</a></h1>
-
-
-
-</header>
-
-	<div id="content" class="inner"><article class="post">
-	
-	<h2 class="title">数字媒体(内部分享)</h2>
-
-	
-
-	<div class="entry-content">
-		<div class="meta_custom">
-		
-			<div class="tags">
-
-
-	<a class='category' href='/blog/categories/media/'>media</a>
-
-
-</div>
-			
-
-
-
-
-<time class='entry-date' datetime='2017-01-16T00:32:32+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>12:32 am</span></time>
-
-		</div>
-		
-		<h2>了解数字媒体</h2>
+  
+  <entry>
+    <title type="html"><![CDATA[数字媒体(内部分享)]]></title>
+    <link href="http://limon.top/media/"/>
+    <updated>2017-01-16T00:32:32+08:00</updated>
+    <id>http://limon.top/media</id>
+    <content type="html"><![CDATA[<h2>了解数字媒体</h2>
 
 <p>数字媒体是指以二进制数的形式记录、处理、传播、获取过程的信息载体，这些载体包括数字化的文字、图形、图像、声音、视频影像和动画等。使用数字媒体已经成为广大用户一种本能的习惯，但你是否想过这些媒体内容被数字化的呢？</p>
 
@@ -196,11 +161,10 @@ ISO/MPEG 音频压缩标准里包括了三个使用高性能音频数据压缩�
 
 <p>色彩二次抽样一般发生在取样时，一些专业的相机以 4:4:4 的参数捕捉图像，但大部分情况下对于图片的拍摄是使用 4:2:2 的方式进行的。面向消费者的摄像头装置，比如 iPhone 手机上的摄像头，通常以 4:2:0 的方式进行拍摄。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">videoDataOutput</span><span class="p">.</span><span class="n">videoSettings</span> <span class="o">=</span> <span class="p">[</span>
-</span><span class='line'>            <span class="nl">kCVPixelBufferPixelFormatTypeKey</span><span class="p">:</span> <span class="n">Int</span><span class="p">(</span><span class="n">kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange</span><span class="p">)</span>
-</span><span class='line'>        <span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<pre><code class="swift">videoDataOutput.videoSettings = [
+            kCVPixelBufferPixelFormatTypeKey: Int(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)
+        ]
+</code></pre>
 
 <p><br /></p>
 
@@ -310,21 +274,21 @@ B 帧记录的是本帧与前后帧的差别，换言之，要解码 B 帧，不
 </ul>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelKey</span> <span class="cm">/* NSString, H.264 only, one of: */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">4</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Baseline30</span> <span class="cm">/* Baseline Profile Level 3.0 */</span>        <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">4</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Baseline31</span> <span class="cm">/* Baseline Profile Level 3.1 */</span>        <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">4</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Baseline41</span> <span class="cm">/* Baseline Profile Level 4.1 */</span>        <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">5</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264BaselineAutoLevel</span> <span class="cm">/* Baseline Profile Auto Level */</span> <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_9</span><span class="p">,</span> <span class="mi">7</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Main30</span> <span class="cm">/* Main Profile Level 3.0 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">4</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Main31</span> <span class="cm">/* Main Profile Level 3.1 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">4</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Main32</span> <span class="cm">/* Main Profile Level 3.2 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">5</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264Main41</span> <span class="cm">/* Main Profile Level 4.1 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_8</span><span class="p">,</span> <span class="mi">5</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264MainAutoLevel</span> <span class="cm">/* Main Profile Auto Level */</span>        <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_9</span><span class="p">,</span> <span class="mi">7</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264High40</span> <span class="cm">/* High Profile Level 4.0 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_9</span><span class="p">,</span> <span class="mi">6</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264High41</span> <span class="cm">/* High Profile Level 4.1 */</span>                <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_9</span><span class="p">,</span> <span class="mi">6</span><span class="n">_0</span><span class="p">);</span>
-</span><span class='line'><span class="n">AVF_EXPORT</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">AVVideoProfileLevelH264HighAutoLevel</span> <span class="cm">/* High Profile Auto Level */</span>        <span class="n">NS_AVAILABLE</span><span class="p">(</span><span class="mi">10</span><span class="n">_9</span><span class="p">,</span> <span class="mi">7</span><span class="n">_0</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<pre><code class="swift">
+AVF_EXPORT NSString *const AVVideoProfileLevelKey /* NSString, H.264 only, one of: */                NS_AVAILABLE(10_8, 4_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264Baseline30 /* Baseline Profile Level 3.0 */        NS_AVAILABLE(10_8, 4_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264Baseline31 /* Baseline Profile Level 3.1 */        NS_AVAILABLE(10_8, 4_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264Baseline41 /* Baseline Profile Level 4.1 */        NS_AVAILABLE(10_8, 5_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264BaselineAutoLevel /* Baseline Profile Auto Level */ NS_AVAILABLE(10_9, 7_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264Main30 /* Main Profile Level 3.0 */                NS_AVAILABLE(10_8, 4_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264Main31 /* Main Profile Level 3.1 */                NS_AVAILABLE(10_8, 4_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264Main32 /* Main Profile Level 3.2 */                NS_AVAILABLE(10_8, 5_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264Main41 /* Main Profile Level 4.1 */                NS_AVAILABLE(10_8, 5_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264MainAutoLevel /* Main Profile Auto Level */        NS_AVAILABLE(10_9, 7_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264High40 /* High Profile Level 4.0 */                NS_AVAILABLE(10_9, 6_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264High41 /* High Profile Level 4.1 */                NS_AVAILABLE(10_9, 6_0);
+AVF_EXPORT NSString *const AVVideoProfileLevelH264HighAutoLevel /* High Profile Auto Level */        NS_AVAILABLE(10_9, 7_0);
+</code></pre>
 
 <h5>视频码率(bitRate)</h5>
 
@@ -337,13 +301,13 @@ B 帧记录的是本帧与前后帧的差别，换言之，要解码 B 帧，不
 </ul>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">codecSettings</span> <span class="o">=</span> <span class="p">[</span><span class="nl">AVVideoAverageBitRateKey</span><span class="p">:</span> <span class="mi">2000000</span><span class="p">,</span> <span class="nl">AVVideoProfileLevelKey</span><span class="p">:</span> <span class="n">AVVideoProfileLevelH264BaselineAutoLevel</span><span class="p">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">let</span> <span class="nl">videoCompressionSettings</span><span class="p">:</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nl">AVVideoCodecKey</span><span class="p">:</span> <span class="n">AVVideoCodecH264</span><span class="p">,</span> <span class="nl">AVVideoCompressionPropertiesKey</span><span class="p">:</span> <span class="n">codecSettings</span><span class="p">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">let</span> <span class="n">videoWriterInput</span> <span class="o">=</span> <span class="bp">AVAssetWriterInput</span><span class="p">(</span><span class="nl">mediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">,</span> <span class="nl">outputSettings</span><span class="p">:</span> <span class="n">videoCompressionSettings</span><span class="p">,</span> <span class="nl">sourceFormatHint</span><span class="p">:</span> <span class="n">videoFormatHint</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code class="swift">
+let codecSettings = [AVVideoAverageBitRateKey: 2000000, AVVideoProfileLevelKey: AVVideoProfileLevelH264BaselineAutoLevel]
 
+let videoCompressionSettings: [String: Any] = [AVVideoCodecKey: AVVideoCodecH264, AVVideoCompressionPropertiesKey: codecSettings]
+
+let videoWriterInput = AVAssetWriterInput(mediaType: AVMediaTypeVideo, outputSettings: videoCompressionSettings, sourceFormatHint: videoFormatHint)
+</code></pre>
 
 <p><br /></p>
 
@@ -358,55 +322,7 @@ B 帧记录的是本帧与前后帧的差别，换言之，要解码 B 帧，不
 <p><a href="http://blog.csdn.net/voipmaker/article/details/8451577">H264 GOP 扫盲</a></p>
 
 <p><a href="http://www.axis.com/files/whitepaper/wp_h264_34203_cn_0901_lo.pdf">H.264视频压缩标准</a></p>
-
-	</div>
-
-
-
-<div class="meta">
-	<div class="center"><a href="#"></a></div>
-</div>
-
-	<br />
-	<br />
-</article>
-
-
-	<div class="share">
-	<div class="addthis_toolbox addthis_default_style ">
-		
-		
-		
-		
-	</div>
-	
-</div>
-
-
-
-</div>
-	<footer id="footer" class="inner"><p><br /></p>
-Copyright &copy; 2017
-
-  <a href="http://weibo.com/u/1783821582">Limon</a>
-
-
-<p><br /></p>
-</footer>
-	<script src="/javascripts/slash.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox({
-	  padding : 0
-	});
-})(jQuery);
-</script> <!-- Delete or comment this line to disable Fancybox -->
-
-
-
-
-
-
-</body>
-</html>
+]]></content>
+  </entry>
+  
+</feed>
