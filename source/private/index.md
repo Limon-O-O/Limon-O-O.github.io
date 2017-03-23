@@ -8,6 +8,56 @@ footer: true
 
 <br />
 
+<p><a name="Notes"></a></p>
+
+<br />
+
+# Notes
+
+### 界面渲染流程
+UIView 是继承自 UIResponder 的，所以说 UIView 是可以响应事件的，而 CALayer 是不能的。
+也就是说 UIView 负责处理用户交互，负责绘制内容的则是它持有的那个 CALayer。
+
+CALayer 是负责绘制内容管理的一个类，而真正的绘制部分是由 CoreGraphics Framework 框架来处理的。CoreGraphics 中包括下图所示的各种类来处理绘制，比如：path 的绘图工作(如，CGPath)、变形操作(如，CGAffineTransform)、颜色管理(如，CGColor)、离屏渲染(如，CGBitmapContextCreateImage)、渲染模式(patterns)、渐变(gradients)、阴影效果、图形数据管理、图形创建、蒙版以及PDF文档的创建、显示和解析等等。
+
+CoreGraphics 负责创建显示到屏幕上的数据模型，QuartzCore(CoreAnimation –> OpenGLES)负责把CoreGraphics 创建的数据模型真正显示到屏幕上。 CG 打头的类都是属于 CoreGraphics Framework
+
+HIDEventSystemClientQueueCallback)，并且在下一个runloop里由source0转发给UIApplication(_UIApplicationHandleEventQueue)，从而能过source0里的事件队列来调用CoreAnimation内部的CA::Transaction::commit() ();方法
+
+[CALayer drawInContext:] ()
+
+Core Animation 的核心是 OpenGL ES 的一个抽象物
+
+着色器程序， 在 OpenGL ES 中着色器程序必须创建两种着色器：顶点着色器 (vertex shaders) 和片段着色器 (fragment shaders)
+
+
+顶点着色器定义了在 2D 或者 3D 场景中几何图形是如何处理的。一个顶点指的是 2D 或者 3D 空间中的一个点。在图像处理中，有 4 个顶点：每一个顶点代表图像的一个角。顶点着色器设置顶点的位置，并且把位置和纹理坐标这样的参数发送到片段着色器。
+
+顶点着色器，定义在 2D 或者 3D 场景中几何图形是如何处理的
+
+经过 图元装配、光栅化
+在光栅化阶段，基本图元被转换为二维的片元(fragment)，fragment 表示可以被渲染到屏幕上的像素，它包含位置，颜色，纹理坐标等信息
+
+片段着色器实现了一个通用的可编程操作片段的方法.片段着色器执行由光栅化生成的每个片段。
+
+片段着色器计算出每个像素的最终颜色
+
+片段着色器的目的就是确定一个像素的颜色
+
+再进行一些列测试，剪裁测试、模版测试、深度测试
+
+混合、抖动
+
+帧缓冲区
+
+视频控制器会按照 VSync 信号逐行读取帧缓冲区的数据，经过可能的数模转换传递给显示器显示
+
+[iOS 事件处理机制与图像渲染过程](http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=400417748&idx=1&sn=0c5f6747dd192c5a0eea32bb4650c160&scene=4#wechat_redirect)
+
+[界面渲染的整体流程](http://blog.handy.wang/blog/2015/10/03/uiviewyu-calayerxie-zuo-xuan-ran-jie-mian-de-guo-cheng/)
+
+<br />
+
 <p><a name="animations"></a></p>
 
 <br />
@@ -335,6 +385,8 @@ footer: true
 [细腻的图片 Shadow 效果](https://github.com/PierrePerrin/PPMusicImageShadow)
 
 [可以点击和显示更多的 TextView](https://github.com/jhurray/SelectableTextView)
+
+[圆点翻页 PageControl](https://github.com/ChiliLabs/CHIPageControl)
 
 
 <br />
@@ -903,6 +955,10 @@ eval "$(rbenv init -)"
 #Reading
 
 [Coordinators with Storyboards](http://www.apokrupto.com/blog-1/2016/3/17/coordinators-with)
+
+## WebView
+[WKWebView 那些坑](https://zhuanlan.zhihu.com/p/24990222)
+[WKWebViewWithURLProtocol](https://github.com/WildDylan/WKWebViewWithURLProtocol)
 
 ## AVFoundation
 
