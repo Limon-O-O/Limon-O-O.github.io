@@ -15,6 +15,12 @@ footer: true
 # Notes
 
 ### 界面渲染流程
+
+点击 Button
+点击屏幕，SpringBoard.app 通过 IPC(进程间通信) 转发消息给 App， 由 runloop 的 source1 处理，然后在下一个 runloop 由 source0 转发给 UIApplication，然后再通过 hitTest ，找到相应的 view，然后看有没 UIResponder 响应，此时 button 响应，触发 `CA::Transaction::commit()` （关键），[CALayer drawInContext]，最终在 由 QuartzCore Framework 内的 CoreAnimation 提交到 GPU，
+
+Core Animation 的核心是 OpenGL ES 的一个抽象物，所以大部分的渲染是直接提交给 GPU 来处理。
+
 UIView 是继承自 UIResponder 的，所以说 UIView 是可以响应事件的，而 CALayer 是不能的。
 也就是说 UIView 负责处理用户交互，负责绘制内容的则是它持有的那个 CALayer。
 
@@ -22,11 +28,9 @@ CALayer 是负责绘制内容管理的一个类，而真正的绘制部分是由
 
 CoreGraphics 负责创建显示到屏幕上的数据模型，QuartzCore(CoreAnimation –> OpenGLES)负责把CoreGraphics 创建的数据模型真正显示到屏幕上。 CG 打头的类都是属于 CoreGraphics Framework
 
-HIDEventSystemClientQueueCallback)，并且在下一个runloop里由source0转发给UIApplication(_UIApplicationHandleEventQueue)，从而能过source0里的事件队列来调用CoreAnimation内部的CA::Transaction::commit() ();方法
-
 [CALayer drawInContext:] ()
 
-Core Animation 的核心是 OpenGL ES 的一个抽象物
+
 
 着色器程序， 在 OpenGL ES 中着色器程序必须创建两种着色器：顶点着色器 (vertex shaders) 和片段着色器 (fragment shaders)
 
