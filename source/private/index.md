@@ -14,6 +14,9 @@ footer: true
 
 # Animations
 
+[交互可控式动画转场](https://github.com/Touchwonders/Transition) -- 👍
+
+[UITableView 末行插入 UI 效果扩展实用工具类](https://github.com/marty-suzuki/ReverseExtension) --- 把整个 TableView 倒转实现，思路很赞
 
 [ CAMediaTimingFunction helper tool ](https://github.com/keefo/CATweaker)
 
