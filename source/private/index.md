@@ -17,7 +17,8 @@ footer: true
 ### 界面渲染流程
 
 点击 Button
-点击屏幕，SpringBoard.app 通过 IPC(进程间通信) 转发消息给 App， 由 runloop 的 source1 处理，然后在下一个 runloop 由 source0 转发给 UIApplication，然后再通过 hitTest ，找到相应的 view，然后看有没 UIResponder 响应，此时 button 响应，触发 `CA::Transaction::commit()` （关键），[CALayer drawInContext]，最终在 由 QuartzCore Framework 内的 CoreAnimation 提交到 GPU，
+点击屏幕，SpringBoard.app 通过 IPC(进程间通信) 转发消息给 App， 由 runloop 的 source1 处理，然后在下一个 runloop 由 source0 通过 UIApplication 把 UIEvent 转发给 UIWindow，然后再通过 hitTest ，找到相应的 view，然后看有没 UIResponder 响应，此时 button 响应，触发 `CA::Transaction::commit()` 提交中间状态，最终在 RunLoop 即将进入休眠（或者退出）时，由 QuartzCore Framework 内的 CoreAnimation 把中间状态通过 IPC 提交到 GPU。
+
 
 Core Animation 的核心是 OpenGL ES 的一个抽象物，所以大部分的渲染是直接提交给 GPU 来处理。
 
@@ -40,7 +41,7 @@ CoreGraphics 负责创建显示到屏幕上的数据模型，QuartzCore(CoreAnim
 顶点着色器，定义在 2D 或者 3D 场景中几何图形是如何处理的
 
 经过 图元装配、光栅化
-在光栅化阶段，基本图元被转换为二维的片元(fragment)，fragment 表示可以被渲染到屏幕上的像素，它包含位置，颜色，纹理坐标等信息
+在光栅化(像素化)阶段，基本图元被转换为二维的片元(fragment)，fragment 表示可以被渲染到屏幕上的像素，它包含位置，颜色，纹理坐标等信息
 
 片段着色器实现了一个通用的可编程操作片段的方法.片段着色器执行由光栅化生成的每个片段。
 
@@ -60,11 +61,56 @@ CoreGraphics 负责创建显示到屏幕上的数据模型，QuartzCore(CoreAnim
 
 [界面渲染的整体流程](http://blog.handy.wang/blog/2015/10/03/uiviewyu-calayerxie-zuo-xuan-ran-jie-mian-de-guo-cheng/)
 
+CFRunLoopSourceRef 是事件产生的地方。Source有两个版本：Source0 和 Source1。
+
+• Source0 只包含了一个回调（函数指针），它并不能主动触发事件。使用时，你需要先调用 CFRunLoopSourceSignal(source)，将这个 Source 标记为待处理，然后手动调用 CFRunLoopWakeUp(runloop) 来唤醒 RunLoop，让其处理这个事件。
+
+• Source1 包含了一个 mach_port 和一个回调（函数指针），被用于通过内核和其他线程相互发送消息。这种 Source 能主动唤醒 RunLoop 的线程，其原理在下面会讲到。
+
+
+#### 为什么 `shouldRasterize`, `mask`, `shadows` 等会触发离屏渲染？
+猜测，因为需要更高级的功能来处理，可能“窗口系统提供的“帧缓冲区并没”高级“附件来处理，所以需要新创建一个新的帧缓冲区来处理，由于新的帧缓冲区不是默认的帧缓冲区，渲染命令对窗口的可视输出不会产生任何影响。出于这个原因，它被称为离屏渲染（off-screen rendering）
+
+比如：阴影，需要深度缓冲(depth buffer)和模板缓冲(stencil buffer)，而默认的帧缓冲区只有 color buffer，比如 GPUImage 的 FBO 默认只添加了 color buffer
+
+```
+// Attach color buffer to FBO on GL_COLOR_ATTACHMENT0
+glFramebufferRenderbuffer(GLenum(GL_FRAMEBUFFER), GLenum(GL_COLOR_ATTACHMENT0), GLenum(GL_RENDERBUFFER), displayRenderbuffer)
+```
+
+> FBO 是一个容器，自身不能用于渲染，需要与 `纹理` 或 `渲染缓冲（renderbuffer）对象` 绑定在一起。
+	Render Buffer Object（RBO）即为渲染缓冲对象，分为 color buffer(颜色)、depth buffer(深度)、stencil buffer(模板)
+	
+
+#### 关于 FBO离屏渲染
+所谓的 FBO 就是Frame Buffer Object。之前我们使用 OpenGLES 渲染，都是直接渲染到屏幕上，FBO可以让我们的渲染不渲染到屏幕上，而是渲染到离屏Buffer中。这样的作用是什么呢？比如我们需要处理一张图片，在上传时增加时间的水印，这个时候不需要显示出来的。再比如我们需要对摄像头采集的数据，一个彩色原大小的显示出来，一个黑白的长宽各一半录制成视频。 
+像这些情况，我们就可以使用到 FBO离屏渲染 技术了，当然 FBO 并不是仅仅局限于此。
+
+FBO 是一个容器，自身不能用于渲染，需要与一些可渲染的缓冲区绑定在一起，像纹理或者渲染缓冲区。
+
+Render Buffer Object（RBO）即为渲染缓冲对象，分为color buffer(颜色)、depth buffer(深度)、stencil buffer(模板)。 
+在使用FBO做离屏渲染时，可以只绑定纹理，也可以只绑定Render Buffer，也可以都绑定或者绑定多个，视使用场景而定。如只是对一个图像做变色处理等，只绑定纹理即可。如果需要往一个图像上增加3D的模型和贴纸，则一定还要绑定depth Render Buffer。 
+同 Texture 使用一样，FrameBuffer 使用也需要调用 GLES20.glGenFrameBuffers 生成 FrameBuffer，然后在需要使用的时候调用 GLES20.glBindFrameBuffer。
+
+### 为什么在 `-drawRect:` 用了 CoreGraphics 会造成内存高涨？
+
+Core Graphics绘制 - 如果对视图实现了-drawRect:方法，或者CALayerDelegate的-drawLayer:inContext:方法，那么在绘制任何东西之前都会产生一个巨大的性能开销。为了支持对图层内容的任意绘制，Core Animation必须创建一个内存中等大小的**寄宿图**。然后一旦绘制结束之后，必须把图片数据通过IPC传到渲染服务器。在此基础上，Core Graphics绘制就会变得十分缓慢，所以在一个对性能十分挑剔的场景下这样做十分不好。
+
+
+# OpenGL ES
+
+[Android OpenGLES2.0（十二）——FBO离屏渲染](http://www.voidcn.com/blog/junzia/article/p-6354808.html)
+[模板缓冲区](http://www.twinklingstar.cn/2014/1176/stencil-buffer/)
+[LearnOpenGL-帧缓冲区](https://learnopengl-cn.readthedocs.io/zh/latest/04%20Advanced%20OpenGL/05%20Framebuffers/)
+[内存恶鬼drawRect](http://bihongbo.com/2016/01/03/memoryGhostdrawRect/)
+
+
 <br />
 
 <p><a name="animations"></a></p>
 
 <br />
+
 
 # Animations
 
