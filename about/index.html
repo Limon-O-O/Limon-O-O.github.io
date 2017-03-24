@@ -7,7 +7,7 @@
 	<meta name="author" content="Limon">
 
 	
-	<meta name="description" content="关于 Limon 冯柠龙 Limon 男，25岁，东莞人 吉林大学珠海学院 000-0000-0000 fengninglong@gmail.com limon.top github.com/Limon-O-O 工作经历 &nbsp; &nbsp; 2015.02 - 2016.03 &hellip;">
+	<meta name="description" content="关于 Limon 冯柠龙 Limon 男，26岁，广东人 吉林大学珠海学院（2011 ~ 2015） 130-5121-0514 fengninglong@gmail.com limon.top github.com/Limon-O-O 作品集 iOS &nbsp; ifanr 爱范儿客户端 ( &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -30,7 +30,17 @@
 
 	<div id="content" class="inner"><article class="page">
     
-    <div class="entry-content"><style type="text/css">
+    <div class="entry-content"><!-- A list of Font Awesome icons and their CSS content values  https://astronautweb.co/snippet/font-awesome/ -->
+<link rel="stylesheet" href="/images/portfolio/font-awesome-4.5.0/css/font-awesome.min.css">
+
+<!-- 播放器样式 -->
+<link href="/images/portfolio/video/video-js.min.css" rel="stylesheet" type="text/css">
+<!-- 如果要支持IE8 -->
+<script src="/images/portfolio/video/ie8/videojs-ie8.js"></script>
+<!-- 播放器js -->
+<script src="/images/portfolio/video/video.min.js"></script>
+
+<style type="text/css">
 
   .myinfo span i {
     width: 20px;
@@ -57,10 +67,231 @@
       display: block;
     }
   }
+
+  /* http://codepen.io/zanechua/details/GozrNe */
+  .video-js {
+  /* The base font size controls the size of everything, not just text.
+     All dimensions use em-based sizes so that the scale along with the font size.
+     Try increasing it to 15px and see what happens. */
+  font-size: 10px;
+  /* The main font color changes the ICON COLORS as well as the text */
+  color: #fff;
+  }
 </style>
 
-<!-- A list of Font Awesome icons and their CSS content values  https://astronautweb.co/snippet/font-awesome/ -->
-<link rel="stylesheet" href="/images/portfolio/font-awesome-4.5.0/css/font-awesome.min.css">
+<style type="text/css">
+/* http://codepen.io/zanechua/details/GozrNe */
+.video-js {
+/* The base font size controls the size of everything, not just text.
+   All dimensions use em-based sizes so that the scale along with the font size.
+   Try increasing it to 15px and see what happens. */
+font-size: 10px;
+/* The main font color changes the ICON COLORS as well as the text */
+color: #fff;
+}
+
+/* The &#8220;Big Play Button&#8221; is the play button that shows before the video plays.
+   To center it set the align values to center and middle. The typical location
+   of the button is the center, but there is trend towards moving it to a corner
+   where it gets out of the way of valuable content in the poster image.*/
+.vjs-sublime-skin .vjs-big-play-button {
+  /* The font size is what makes the big play button&#8230;big. 
+     All width/height values use ems, which are a multiple of the font size.
+     If the .video-js font-size is 10px, then 3em equals 30px.*/
+  font-size: 8em;
+  /* We&#8217;re using SCSS vars here because the values are used in multiple places.
+     Now that font size is set, the following em values will be a multiple of the
+     new font size. If the font-size is 3em (30px), then setting any of
+     the following values to 3em would equal 30px. 3 * font-size. */
+  /* 1.5em = 45px default */
+  line-height: 1.5em;
+  height: 1.5em;
+  width: 3em;
+  /* 0.06666em = 2px default */
+  border: 0;
+  /* 0.3em = 9px default */
+  border-radius: 0.3em;
+  /* Align center */
+  left: 50%;
+  top: 50%;
+  margin-left: -1.5em;
+  margin-top: -0.75em;
+}
+
+/* The default color of control backgrounds is mostly black but with a little
+   bit of blue so it can still be seen on all-black video frames, which are common. */
+.video-js .vjs-control-bar,
+.video-js .vjs-big-play-button,
+.video-js .vjs-menu-button .vjs-menu-content {
+  /* IE8 - has no alpha support */
+  background-color: #2B333F;
+  /* Opacity: 1.0 = 100%, 0.0 = 0% */
+  background-color: rgba(43, 51, 63, 0.7);
+  background-color: transparent;
+}
+
+/* Slider - used for Volume bar and Progress bar */
+.video-js .vjs-slider {
+  background-color: #73859f;
+  background-color: rgba(115, 133, 159, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  height: 6.5px;
+}
+
+/* The slider bar color is used for the progress bar and the volume bar
+   (the first two can be removed after a fix that&#8217;s coming) */
+.video-js .vjs-volume-level,
+.video-js .vjs-play-progress,
+.video-js .vjs-slider-bar {
+  background: #fff;
+}
+
+/* Enlarged Slider to enable easier tracking. Adjust all the height:6.5px to preferred height for the slider if necessary. */
+.video-js .vjs-progress-holder .vjs-load-progress,
+.video-js .vjs-progress-holder .vjs-load-progress div,
+.video-js .vjs-progress-holder .vjs-play-progress,
+.video-js .vjs-progress-holder .vjs-tooltip-progress-bar {
+  height: 6.5px;
+}
+
+/* The main progress bar also has a bar that shows how much has been loaded. */
+.video-js .vjs-load-progress {
+  /* For IE8 we&#8217;ll lighten the color */
+  background: ligthen(#73859f, 25%);
+  /* Otherwise we&#8217;ll rely on stacked opacities */
+  background: rgba(115, 133, 159, 0.5);
+}
+
+/* The load progress bar also has internal divs that represent
+   smaller disconnected loaded time ranges */
+.video-js .vjs-load-progress div {
+  /* For IE8 we&#8217;ll lighten the color */
+  background: ligthen(#73859f, 50%);
+  /* Otherwise we&#8217;ll rely on stacked opacities */
+  background: rgba(115, 133, 159, 0.75);
+}
+
+.vjs-sublime-skin .vjs-poster {
+  outline: none;
+  outline: 0;
+}
+
+.vjs-sublime-skin:hover .vjs-big-play-button {
+  background-color: transparent;
+}
+
+.vjs-sublime-skin .vjs-fullscreen-control:before, .vjs-sublime-skin.vjs-fullscreen .vjs-fullscreen-control:before {
+  content: &#8221;;
+}
+
+.vjs-sublime-skin.vjs-fullscreen .vjs-fullscreen-control {
+  background: #fff;
+}
+
+.vjs-sublime-skin .vjs-fullscreen-control {
+  border: 3px solid #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-top: -7px;
+  top: 50%;
+  height: 14px;
+  width: 22px;
+  margin-right: 10px;
+}
+
+.vjs-sublime-skin.vjs-fullscreen .vjs-fullscreen-control:after {
+  background: #000;
+  content: &#8220;&#8221;;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  width: 5px;
+}
+
+.vjs-sublime-skin .vjs-progress-holder {
+  margin: 0;
+}
+
+.vjs-sublime-skin .vjs-progress-control .vjs-progress-holder:after {
+  border-radius: 2px;
+  display: block;
+  height: 6.5px;
+}
+
+.vjs-sublime-skin .vjs-progress-control .vjs-load-progres, .vjs-sublime-skin .vjs-progress-control .vjs-play-progress {
+  border-radius: 2px;
+  height: 6.5px;
+}
+
+.vjs-sublime-skin .vjs-playback-rate {
+  display: none;
+}
+
+.vjs-sublime-skin .vjs-progress-control {
+  margin-right: 40px;
+}
+
+.vjs-sublime-skin .vjs-time-control {
+  right: 40px;
+}
+
+.vjs-sublime-skin .vjs-mute-control:before, .vjs-sublime-skin .vjs-volume-menu-button:before, .vjs-sublime-skin .vjs-mute-control.vjs-vol-0:before, .vjs-sublime-skin .vjs-volume-menu-button.vjs-vol-0:before, .vjs-sublime-skin .vjs-mute-control.vjs-vol-1:before, .vjs-sublime-skin .vjs-volume-menu-button.vjs-vol-1:before, .vjs-sublime-skin .vjs-mute-control.vjs-vol-2:before, .vjs-sublime-skin .vjs-volume-menu-button.vjs-vol-2:before {
+  content: &#8221;;
+}
+
+.vjs-sublime-skin .vjs-menu-button-inline .vjs-menu, .vjs-sublime-skin .vjs-menu-button-inline:focus .vjs-menu, .vjs-sublime-skin .vjs-menu-button-inline.vjs-slider-active .vjs-menu {
+  display: block;
+  opacity: 1;
+}
+
+.vjs-sublime-skin .vjs-volume-menu-button {
+  width: 3em;
+  position: absolute;
+  right: 0;
+  margin-right: 40px;
+}
+
+.vjs-sublime-skin .vjs-menu-button .vjs-menu-content, .vjs-sublime-skin .vjs-menu-button-inline:hover, .vjs-sublime-skin .vjs-menu-button-inline:focus, .vjs-sublime-skin .vjs-menu-button-inline.vjs-slider-active {
+  width: 3em;
+}
+
+.vjs-sublime-skin .vjs-menu-button-inline .vjs-menu {
+  left: 0;
+}
+
+.vjs-sublime-skin .vjs-mouse-display:before, .vjs-sublime-skin .vjs-play-progress:before, .vjs-sublime-skin .vjs-volume-level:before {
+  content: &#8221;;
+}
+
+.vjs-sublime-skin .vjs-mouse-display:after, .vjs-sublime-skin .vjs-play-progress:after, .vjs-sublime-skin .vjs-time-tooltip {
+  width: 5.5em;
+}
+
+.vjs-sublime-skin .vjs-volume-bar {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAcCAQAAACw95UnAAAAMElEQVRIx2NgoBL4n4YKGUYNHkEG4zJg1OCRYDCpBowaPJwMppbLRg0eNXjUYBLEAXWNUA6QNm1lAAAAAElFTkSuQmCC);
+  background-size: 22px 14px;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  max-width: 22px;
+  max-height: 14px;
+  margin: 7px 4px;
+  border-radius: 0;
+}
+
+.vjs-sublime-skin .vjs-volume-level {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAcAQAAAAAyhWABAAAAAnRSTlMAAHaTzTgAAAAZSURBVHgBYwAB/g9EUv+JokCqiaT+U4MCAPKPS7WUUOc1AAAAAElFTkSuQmCC);
+  background-size: 22px 14px;
+  background-repeat: no-repeat;
+  max-width: 22px;
+  max-height: 14px;
+  height: 100%;
+}
+
+</style>
 
 <h1 style="margin-top: -12px;">关于 Limon</h1>
 
@@ -70,17 +301,17 @@
   <p class="myinfo" style="margin-top: 28px; margin-bottom: 25px;">
     <span>
       <i class="fa fa-puzzle-piece fa-lg" style="padding-left: 1.5px;"></i>
-      <a style="color: #666; text-decoration: none;">男，25岁，东莞人</a>
+      <a style="color: #666; text-decoration: none;">男，26岁，广东人</a>
     </span>
     <span style="margin-left: 50px;">
       <i class="fa fa-graduation-cap fa-lg"></i>
-      <a style="color: #666; text-decoration: none;">吉林大学珠海学院</a>
+      <a style="color: #666; text-decoration: none;">吉林大学珠海学院（2011 ~ 2015）</a>
     </span>
   </p>
   <p class="myinfo" style="margin-top: 20px;">
     <span>
       <i class="fa fa-tablet fa-lg" style="padding-left: -3px;"></i>
-      <a href="tel:+00000000000" style="color: #666; text-decoration:line-through">000-0000-0000</a>
+      <a href="tel:+13051210514"">130-5121-0514</a>
     </span>
     <span style="margin-left: 70.2px;">
       <i class="fa fa-paper-plane-o fa-lg">
@@ -100,73 +331,33 @@
       <a href="https://github.com/Limon-O-O">github.com/Limon-O-O</a>
     </span>
   </p>
-
-  <div style="margin-top: 36px;">
-    <p style="font-weight: bold;">工作经历</p>
-    <p><i class="fa fa-angle-right fa-lg"></i>&nbsp; &nbsp; 2015.02 - 2016.03 就职于广州趣拼科技有限公司，CEO 为 <a href="https://github.com/kevinzhow">@周楷雯</a>，iOS Leader 为 <a href="https://github.com/nixzhu">@nixzhu</a>。</p> 
-    <p>&nbsp; &nbsp; &nbsp; &nbsp; 在此一年里，获益匪浅，独立完成爱范儿客户端、AppSolution 客户端。因公司搬到北京，Limon 恐到京成柠檬干，故逃离。</p>
-  
-    <p style="margin-top: 15px;" ><i class="fa fa-angle-right fa-lg"></i>&nbsp; &nbsp; 2014.07 - 2015.01 就职于珠海学帮网络科技有限公司。</p>
-    <p>&nbsp; &nbsp; &nbsp; &nbsp; 1. 维护 <a href="http://my00.cn">零零网</a> 服务器端(PHP)</p>
-    <p>&nbsp; &nbsp; &nbsp; &nbsp; 2. 开发手机应用 Yao</p>
-  </div>
-
-  <div style="margin-top: 36px;">
-    <p style="font-weight: bold;">技能清单</p>
-    <p><i class="fa fa-angle-right fa-lg" style="padding-right: 15px;"></i>熟悉 Swift</p>
-    <p><i class="fa fa-angle-right fa-lg" style="padding-right: 15px;"></i>较熟悉 iOS 动画、Objective-C、PHP</p>
-    <p><i class="fa fa-angle-right fa-lg" style="padding-right: 15px;"></i>了解 HTML、CSS、jQuery、Ruby on Rails</p>
-  </div>
-
 </div>
 
 <br />
-<br />
+
 <h1>作品集</h1>
 
 <h2>iOS</h2>
 <div class="projects-row first">
   <div class="project">
-    <img src="/images/portfolio/ifanr.png">
-    <span><i class="fa fa-mobile fa-lg"></i>&nbsp; <a href="https://itunes.apple.com/cn/app/ifanr/id574437211?mt=8" style="vertical-align: middle;">ifanr</a></span>
+    <a href="https://itunes.apple.com/app/id574437211"><img src="/images/portfolio/ifanr.png"></a>
+    <span><i class="fa fa-mobile fa-lg"></i>&nbsp; <a href="https://itunes.apple.com/cn/app/id574437211" style="vertical-align: middle;">ifanr</a></span>
     <p>
-      爱范儿客户端 (3.0.0)，2015.10 - 2016.01，独立开发完成，Swift 项目。
-      <p>特色：新颖的交互方式，支持 3D Touch，有望上 Apple 推荐榜。</p>
-      <p style="font-size: 13px;">注：<a href="http://ifanr.com">爱范儿</a> 是国内顶尖的科技媒体公司，准上市。</p>
+      爱范儿客户端 (3.0)，2015.10 - 2016.01，装机量达数百万，由 Limon 独立开发完成，Swift 项目
     </p>
   </div>
   <div class="project">
-    <img src="/images/portfolio/appSo_ad.jpg">
-    <span><i class="fa fa-mobile fa-lg"></i>&nbsp; <a href="https://itunes.apple.com/cn/app/appso-wan-zhuan-iphone-cheng/id966457637?mt=8" style="vertical-align: middle;">AppSo</a></span>
+    <a href="https://itunes.apple.com/app/id966457637"><img src="/images/portfolio/appSo_ad.jpg"></a>
+    <span><i class="fa fa-mobile fa-lg"></i>&nbsp; <a href="https://itunes.apple.com/cn/app/id966457637" style="vertical-align: middle;">AppSo</a></span>
     <p>
-      AppSo，国内第一的数字应用社区，于 2015.04 - 2015.10 由 Limon 独立开发并迭代至 1.7，Swift 项目。
-      <p>特色：动画流畅舒服，细节很到位，用户体验好。</p>
+      AppSo，爱范儿旗下知名数字应用社区，于 2015.04 - 2015.10 由 Limon 独立开发并迭代至 1.7，Swift 项目
     </p>
   </div>
   <div class="project">
-    <img src="/images/portfolio/yao.jpg">
-    <span><i class="fa fa-mobile fa-lg"></i>&nbsp; <a href="https://itunes.apple.com/in/app/yao-da-xue-tong-xue-shi-ming/id967100519?mt=8" style="vertical-align: middle;">Yao</a></span>
+    <a href="https://itunes.apple.com/app/id1174878355"><img src="/images/portfolio/crisp.png"></a>
+    <span><i class="fa fa-mobile fa-lg"></i>&nbsp; <a href="https://itunes.apple.com/cn/app/id1174878355" style="vertical-align: middle;">薯片视频</a></span>
     <p>
-      Yao (1.0)，2014.09 - 2015.01，负责支付、搜索、个人中心等模块，三人小组的 Objective-C 项目。
-    </p>
-  </div>
-</div>
-
-<h2>PHP</h2>
-<div class="projects-row first">
-  <div class="project">
-    <img src="/images/portfolio/ywuliu.jpg">
-    <span><i class="fa fa-globe fa-lg"></i>&nbsp; <a href="http://ywuliu.applinzi.com" style="vertical-align: middle;">云物流</a></span>
-    <p>
-      云物流，2014.06 - 2014.10，主要职责是：用 Thinkphp 框架搭建服务器端，配合前端构建一个响应式网站。
-      <p>此项目为 Limon 参加珠海创业大赛的比赛项目，目前仍在运营。</p>
-    </p>
-  </div>
-  <div class="project">
-    <img src="/images/portfolio/ounce.jpg">
-    <span><i class="fa fa-globe fa-lg"></i>&nbsp; <a href="http://ounce.applinzi.com" style="vertical-align: middle;">Ounce</a></span>
-    <p>
-      Ounce，一个响应式博客网站。前端使用 Bootstrap 框架，后端使用 PHP。主要用于学习前端知识。
+      薯片视频，短视频项目，Limon 主要负责视频拍摄编辑模块， 始于 2016.11， Swift 项目(两人)
     </p>
   </div>
 </div>
@@ -179,15 +370,73 @@
       <iframe src="https://ghbtns.com/github-btn.html?user=nixzhu&repo=MonkeyKing&type=fork&count=true" frameborder="0" scrolling="0" width="84px" height="20px" align="right"></iframe>
     </p>
     <p>
-    <a href="https://github.com/nixzhu/MonkeyKing">MonkeyKing</a>，不需要官方 SDK，集成微信、微博、QQ、Pocket、支付宝。（支持网页授权）
-    </p>
-    <p> 
-      Limon 实现了微信授权、微博授权及分享、Pocket 分享、QQ 授权，贡献度约为 50%，并为 MonkeyKing 的主要维护者。
+    <a href="https://github.com/nixzhu/MonkeyKing">MonkeyKing</a>，帮助开发者摆脱各种 SDK，快速集成微信、微博、QQ、支付宝的分享、支付等功能，目前在 Github 上拥有 1600 多个 Star。</p>
+    <p>
+      Limon 为作者之一，为其实现了微信授权、微博授权及分享、Pocket 分享、QQ 授权等功能，贡献度约为 50%。
     </p>
   </div>
 </div>
 
+<h2>更多</h2>
+
+<div style="margin-bottom: 20px;">
+  <div style="margin-top: 20px;">
+    <p style="font-weight: bold;">工作经历</p>
+    <p><i class="fa fa-angle-right fa-lg"></i>&nbsp; &nbsp; 2015.02 - 2016.03，广州趣拼科技有限公司</p> 
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; 在此一年里，独立完成 <a href="https://itunes.apple.com/cn/app/id574437211">爱范儿客户端</a>、<a href="https://itunes.apple.com/cn/app/id966457637">AppSo 客户端</a>，夯实了基础，养成了良好</p>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; 的编码习惯，锻炼出了优秀的动画及 UI 实现能力，大大提升了独立解决问题的能力。</p>
+    <p><i class="fa fa-angle-right fa-lg"></i>&nbsp; &nbsp; 2016.03 - 至今，北京艾欧源科技有限公司</p> 
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; 在此一年里，深入实践 iOS 平台视频的特效制作与处理，并对项目模块化的架构有了初步认识，</p>
+    <p>&nbsp; &nbsp; &nbsp; &nbsp; 为此架构方案配备了较多的自动化脚本。</p>
+  </div>
+
+  <div style="margin-top: 36px;">
+    <p style="font-weight: bold;">技能清单</p>
+    <p><i class="fa fa-angle-right fa-lg" style="padding-right: 15px;"></i>熟悉 Swift、iOS 视频录制及编辑</p>
+    <p><i class="fa fa-angle-right fa-lg" style="padding-right: 15px;"></i>较熟悉 Objective-C、iOS 动画</p>
+    <p><i class="fa fa-angle-right fa-lg" style="padding-right: 15px;"></i>了解 PHP、HTML、CSS</p>
+  </div>
+
+  <div style="margin-top: 36px;">
+    <p style="font-weight: bold;">近期情况</p>
+    <p><i class="fa fa-angle-right fa-lg" style="padding-right: 15px;"></i><a href="https://github.com/Limon-O-O/Lego">Lego</a>, 实践使用 Mediator 进行模块化架构，思考磋磨运用场景，丰富自动化脚本</p>
+    <p><i class="fa fa-angle-right fa-lg" style="padding-right: 15px;"></i>继续了解 OpenGL Shading Language</p>
+    <p><i class="fa fa-angle-right fa-lg" style="padding-right: 15px;"></i>了解 OpenCV 的人脸识别</p>
+  </div>
+
+  <div style="margin-top: 36px;">
+    <p style="font-weight: bold; margin-bottom: 16px;">视频介绍</p>
+    <video id="example_video_1" class="video-js vjs-sublime-skin" controls preload="none" width="220" height="390"  data-setup="{}">
+      <source src="/images/portfolio/video/limon.mp4" type='video/mp4' />
+    </video>
+  </div>
+
+</div>
+
+<br />
+
+<h2>PHP</h2>
+<div class="projects-row first">
+  <div class="project">
+    <img src="/images/portfolio/ywuliu.jpg">
+    <span><i class="fa fa-globe fa-lg"></i>&nbsp;云物流</a></span>
+    <p>
+      云物流，2014.06 - 2014.10，主要职责是：用 Thinkphp 框架搭建服务器端，配合前端构建一个响应式网站。
+      <p>此项目为 Limon 参加珠海创业大赛的比赛项目。</p>
+    </p>
+  </div>
+  <div class="project">
+    <img src="/images/portfolio/ounce.jpg">
+    <span><i class="fa fa-globe fa-lg"></i>&nbsp;Ounce</a></span>
+    <p>
+      Ounce，一个响应式博客网站。前端使用 Bootstrap 框架，后端使用 PHP。主要用于学习前端知识。
+    </p>
+  </div>
+</div>
+
+
 <h2>其它</h2>
+
 <div class="projects-row first">
   <div class="project">
     <img src="/images/portfolio/producter.png">

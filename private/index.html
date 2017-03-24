@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>CheatSheet - Limon&#8217;s Blog</title>
+	<title>private - Limon&#8217;s Blog</title>
 	<meta name="author" content="Limon">
 
 	
-	<meta name="description" content="CheatSheet cheatsheet Dec 23rd, 2015 4:22 am Swift Either enum enum Either&lt;A, B&gt;{ case Left(A) case Right(B)
-} let x: Either&lt;SomeType, &hellip;">
+	<meta name="description" content="Notes 界面渲染流程 点击 Button
+点击屏幕，SpringBoard.app 通过 IPC(进程间通信) 转发消息给 App， 由 runloop 的 source1 处理，然后在下一个 runloop 由 source0 通过 UIApplication 把 UIEvent 转发给 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -22,39 +22,464 @@
 </head>
 
 
-<body data-page=/cheatsheet/>
+<body data-page=/private/index.html>
 	<header id="header" class="inner"><h1><a href="/">Limon&#8217;s Blog</a></h1>
 
 
 
 </header>
 
-	<div id="content" class="inner"><article class="post">
-	
-	<h2 class="title">CheatSheet</h2>
+	<div id="content" class="inner"><article class="page">
+    
+    <h1 class="title">Private</h1>
+    
+    <div class="entry-content"><p><br /></p>
 
-	
-
-	<div class="entry-content">
-		<div class="meta_custom">
-		
-			<div class="tags">
+<p><a name="Notes"></a></p>
 
 
-	<a class='category' href='/blog/categories/cheatsheet/'>cheatsheet</a>
+<p><br /></p>
+
+<h1>Notes</h1>
+
+<h3>界面渲染流程</h3>
+
+<p>点击 Button
+点击屏幕，SpringBoard.app 通过 IPC(进程间通信) 转发消息给 App， 由 runloop 的 source1 处理，然后在下一个 runloop 由 source0 通过 UIApplication 把 UIEvent 转发给 UIWindow，然后再通过 hitTest ，找到相应的 view，然后看有没 UIResponder 响应，此时 button 响应，触发 <code>CA::Transaction::commit()</code> 提交中间状态，最终在 RunLoop 即将进入休眠（或者退出）时，由 QuartzCore Framework 内的 CoreAnimation 把中间状态通过 IPC 提交到 GPU。</p>
+
+<p>Core Animation 的核心是 OpenGL ES 的一个抽象物，所以大部分的渲染是直接提交给 GPU 来处理。</p>
+
+<p>UIView 是继承自 UIResponder 的，所以说 UIView 是可以响应事件的，而 CALayer 是不能的。
+也就是说 UIView 负责处理用户交互，负责绘制内容的则是它持有的那个 CALayer。</p>
+
+<p>CALayer 是负责绘制内容管理的一个类，而真正的绘制部分是由 CoreGraphics Framework 框架来处理的。CoreGraphics 中包括下图所示的各种类来处理绘制，比如：path 的绘图工作(如，CGPath)、变形操作(如，CGAffineTransform)、颜色管理(如，CGColor)、离屏渲染(如，CGBitmapContextCreateImage)、渲染模式(patterns)、渐变(gradients)、阴影效果、图形数据管理、图形创建、蒙版以及PDF文档的创建、显示和解析等等。</p>
+
+<p>CoreGraphics 负责创建显示到屏幕上的数据模型，QuartzCore(CoreAnimation –> OpenGLES)负责把CoreGraphics 创建的数据模型真正显示到屏幕上。 CG 打头的类都是属于 CoreGraphics Framework</p>
+
+<p>[CALayer drawInContext:] ()</p>
+
+<p>着色器程序， 在 OpenGL ES 中着色器程序必须创建两种着色器：顶点着色器 (vertex shaders) 和片段着色器 (fragment shaders)</p>
+
+<p>顶点着色器定义了在 2D 或者 3D 场景中几何图形是如何处理的。一个顶点指的是 2D 或者 3D 空间中的一个点。在图像处理中，有 4 个顶点：每一个顶点代表图像的一个角。顶点着色器设置顶点的位置，并且把位置和纹理坐标这样的参数发送到片段着色器。</p>
+
+<p>顶点着色器，定义在 2D 或者 3D 场景中几何图形是如何处理的</p>
+
+<p>经过 图元装配、光栅化
+在光栅化(像素化)阶段，基本图元被转换为二维的片元(fragment)，fragment 表示可以被渲染到屏幕上的像素，它包含位置，颜色，纹理坐标等信息</p>
+
+<p>片段着色器实现了一个通用的可编程操作片段的方法.片段着色器执行由光栅化生成的每个片段。</p>
+
+<p>片段着色器计算出每个像素的最终颜色</p>
+
+<p>片段着色器的目的就是确定一个像素的颜色</p>
+
+<p>再进行一些列测试，剪裁测试、模版测试、深度测试</p>
+
+<p>混合、抖动</p>
+
+<p>帧缓冲区</p>
+
+<p>视频控制器会按照 VSync 信号逐行读取帧缓冲区的数据，经过可能的数模转换传递给显示器显示</p>
+
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=400417748&amp;idx=1&amp;sn=0c5f6747dd192c5a0eea32bb4650c160&amp;scene=4#wechat_redirect">iOS 事件处理机制与图像渲染过程</a></p>
+
+<p><a href="http://blog.handy.wang/blog/2015/10/03/uiviewyu-calayerxie-zuo-xuan-ran-jie-mian-de-guo-cheng/">界面渲染的整体流程</a></p>
+
+<p>CFRunLoopSourceRef 是事件产生的地方。Source有两个版本：Source0 和 Source1。</p>
+
+<p>• Source0 只包含了一个回调（函数指针），它并不能主动触发事件。使用时，你需要先调用 CFRunLoopSourceSignal(source)，将这个 Source 标记为待处理，然后手动调用 CFRunLoopWakeUp(runloop) 来唤醒 RunLoop，让其处理这个事件。</p>
+
+<p>• Source1 包含了一个 mach_port 和一个回调（函数指针），被用于通过内核和其他线程相互发送消息。这种 Source 能主动唤醒 RunLoop 的线程，其原理在下面会讲到。</p>
+
+<h4>为什么 <code>shouldRasterize</code>, <code>mask</code>, <code>shadows</code> 等会触发离屏渲染？</h4>
+
+<p>猜测，因为需要更高级的功能来处理，可能“窗口系统提供的“帧缓冲区并没”高级“附件来处理，所以需要新创建一个新的帧缓冲区来处理，由于新的帧缓冲区不是默认的帧缓冲区，渲染命令对窗口的可视输出不会产生任何影响。出于这个原因，它被称为离屏渲染（off-screen rendering）</p>
+
+<p>比如：阴影，需要深度缓冲(depth buffer)和模板缓冲(stencil buffer)，而默认的帧缓冲区只有 color buffer，比如 GPUImage 的 FBO 默认只添加了 color buffer</p>
+
+<figure class='code'><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class=''><span class='line'>// Attach color buffer to FBO on GL_COLOR_ATTACHMENT0
+</span><span class='line'>glFramebufferRenderbuffer(GLenum(GL_FRAMEBUFFER), GLenum(GL_COLOR_ATTACHMENT0), GLenum(GL_RENDERBUFFER), displayRenderbuffer)</span></code></pre></td></tr></table></div></figure>
 
 
-</div>
-			
+<blockquote><p>FBO 是一个容器，自身不能用于渲染，需要与 <code>纹理</code> 或 <code>渲染缓冲（renderbuffer）对象</code> 绑定在一起。
+    Render Buffer Object（RBO）即为渲染缓冲对象，分为 color buffer(颜色)、depth buffer(深度)、stencil buffer(模板)</p></blockquote>
+
+<h4>关于 FBO离屏渲染</h4>
+
+<p>所谓的 FBO 就是Frame Buffer Object。之前我们使用 OpenGLES 渲染，都是直接渲染到屏幕上，FBO可以让我们的渲染不渲染到屏幕上，而是渲染到离屏Buffer中。这样的作用是什么呢？比如我们需要处理一张图片，在上传时增加时间的水印，这个时候不需要显示出来的。再比如我们需要对摄像头采集的数据，一个彩色原大小的显示出来，一个黑白的长宽各一半录制成视频。
+像这些情况，我们就可以使用到 FBO离屏渲染 技术了，当然 FBO 并不是仅仅局限于此。</p>
+
+<p>FBO 是一个容器，自身不能用于渲染，需要与一些可渲染的缓冲区绑定在一起，像纹理或者渲染缓冲区。</p>
+
+<p>Render Buffer Object（RBO）即为渲染缓冲对象，分为color buffer(颜色)、depth buffer(深度)、stencil buffer(模板)。
+在使用FBO做离屏渲染时，可以只绑定纹理，也可以只绑定Render Buffer，也可以都绑定或者绑定多个，视使用场景而定。如只是对一个图像做变色处理等，只绑定纹理即可。如果需要往一个图像上增加3D的模型和贴纸，则一定还要绑定depth Render Buffer。
+同 Texture 使用一样，FrameBuffer 使用也需要调用 GLES20.glGenFrameBuffers 生成 FrameBuffer，然后在需要使用的时候调用 GLES20.glBindFrameBuffer。</p>
+
+<h3>为什么在 <code>-drawRect:</code> 用了 CoreGraphics 会造成内存高涨？</h3>
+
+<p>Core Graphics绘制 - 如果对视图实现了-drawRect:方法，或者CALayerDelegate的-drawLayer:inContext:方法，那么在绘制任何东西之前都会产生一个巨大的性能开销。为了支持对图层内容的任意绘制，Core Animation必须创建一个内存中等大小的<strong>寄宿图</strong>。然后一旦绘制结束之后，必须把图片数据通过IPC传到渲染服务器。在此基础上，Core Graphics绘制就会变得十分缓慢，所以在一个对性能十分挑剔的场景下这样做十分不好。</p>
+
+<h1>OpenGL ES</h1>
+
+<p><a href="http://www.voidcn.com/blog/junzia/article/p-6354808.html">Android OpenGLES2.0（十二）——FBO离屏渲染</a>
+<a href="http://www.twinklingstar.cn/2014/1176/stencil-buffer/">模板缓冲区</a>
+<a href="https://learnopengl-cn.readthedocs.io/zh/latest/04%20Advanced%20OpenGL/05%20Framebuffers/">LearnOpenGL-帧缓冲区</a>
+<a href="http://bihongbo.com/2016/01/03/memoryGhostdrawRect/">内存恶鬼drawRect</a></p>
+
+<p><br /></p>
+
+<p><a name="animations"></a></p>
 
 
+<p><br /></p>
+
+<h1>Animations</h1>
+
+<p><a href="https://github.com/Touchwonders/Transition">交互可控式动画转场</a> &ndash; 👍</p>
+
+<p><a href="https://github.com/marty-suzuki/ReverseExtension">UITableView 末行插入 UI 效果扩展实用工具类</a> &mdash; 把整个 TableView 倒转实现，思路很赞</p>
+
+<p><a href="https://github.com/keefo/CATweaker"> CAMediaTimingFunction helper tool </a></p>
+
+<p><a href="https://github.com/cjwirth/awesome-ios-ui"> 动画集合 </a></p>
+
+<p><a href="https://github.com/ttmdung203/MDGroupAvatarView">Group Avatar</a></p>
+
+<p><a href="https://github.com/luowenxing/WXProgressWindow">ProgressWindow</a> &mdash; 进度悬浮窗</p>
+
+<p><a href="https://github.com/JakeLin/IBAnimatable/blob/master/Documentation/README.zh.md">IBAnimatable</a> &mdash; 是一个帮助我们在Interface Builder和Swift playground里面设计UI, 交互, 导航模式, 换场和动画的开源库</p>
+
+<p><a href="https://github.com/antiguab/BAFluidView"> 波浪 </a></p>
+
+<p><a href="https://github.com/poolqf/FillableLoaders"> 水波上涨填满 </a></p>
+
+<p><a href="https://github.com/FancyPixel/BallSwift"> UIDynamics iOS 9 </a></p>
+
+<p><a href="https://github.com/okmr-d/DOFavoriteButton"> 点赞 </a></p>
+
+<p><a href="https://github.com/dgytdhy/DGThumbUpButton">粒子扩散效果的点赞按钮</a></p>
+
+<p><a href="https://github.com/Fnoz/FNMatchPull">火柴文字下拉刷新</a></p>
+
+<p><a href="https://github.com/IFTTT/RazzleDazzle"> A simple keyframe-based animation framework </a></p>
+
+<p><a href="https://github.com/ninjaprox/NVActivityIndicatorView"> 加载动画集合 </a></p>
+
+<p><a href="http://www.cocoachina.com/ios/20151202/14532.html"> 一款Loading动画的实现思路 </a></p>
+
+<p><a href="https://github.com/yoavlt/LiquidLoader"> 粘性加载动画 </a></p>
+
+<p><a href="https://github.com/KittenYang/KYAnimatedPageControl">KYAnimatedPageControl 拥有两种动画样式的自定义 UIPageControl</a></p>
+
+<p><a href="http://pandara.xyz/2015/10/29/jelly_refresh/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">利用贝塞尔曲线实现Q弹的下拉刷新</a></p>
+
+<p><a href="https://github.com/PandaraWen/WaterDropViewDemo">水滴效果</a></p>
+
+<p><a href="https://github.com/overboming/ZCAnimatedLabel"> Label动画 </a></p>
+
+<p><a href="https://github.com/andreamazz/AMScrollingNavbar">滑动推动 Nav Bar 效果</a></p>
+
+<p><a href="https://github.com/gmertk/BusyNavigationBar"> NavigationBar 动画 </a></p>
+
+<p><a href="https://github.com/ltebean/LTNavigationBar"> NavigationBar的背景颜色，高度 </a></p>
+
+<p><a href="https://github.com/DanisFabric/RainbowNavigation/blob/master/README_CN.md"> 动态改变UINavigationBar背景色 </a></p>
+
+<p><a href="https://github.com/MoZhouqi/KMNavigationBarTransition"> 顺滑过渡导航栏（不同背景颜色） </a> &mdash; 👍</p>
+
+<p><a href="https://github.com/overboming/ZCAnimatedLabel"> UILabel 动画 </a></p>
+
+<p><a href="https://github.com/entotsu/PullToBounce"> 下拉刷新 PullToBounce </a></p>
+
+<p><a href="https://github.com/yoavlt/LiquidFloatingActionButton"> 菜单粘性按钮 </a></p>
+
+<p><a href="https://github.com/yannickl/FlowingMenu">粘性动画菜单</a></p>
+
+<p><a href="https://github.com/liuzhiyi1992/SpreadButton">自适应边界的散开按钮</a></p>
+
+<p><a href="https://github.com/Nightonke/VHBoomMenuButton">瞬间爆炸菜单按钮</a></p>
+
+<p><a href="https://github.com/noppefoxwolf/FlowBarButtonItem?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=web&amp;utm_source=This_Week_in_Swift_71">浮动的 Button</a></p>
+
+<p><a href="https://github.com/tinymind/LSFloatingActionMenu">浮动 Button</a></p>
+
+<p><a href="https://github.com/Yalantis/Context-Menu.iOS">折叠菜单</a></p>
+
+<p><a href="https://github.com/Yalantis/Persei">折叠菜单 (Yalantis出品)</a></p>
+
+<p><a href="http://www.cocoachina.com/ios/20160104/14858.html">图片实现多层折叠效果</a></p>
+
+<p><a href="https://github.com/Ramotion/folding-cell">Cell 折叠动</a> &mdash; 👍👍👍</p>
+
+<p><a href="https://github.com/liuzhiyi1992/ZYThumbnailTableView">可展开型预览 TableView</a> &mdash; 👍👍👍</p>
+
+<p><a href="https://github.com/MartinRGB/MTMaterialDelete"> 粉碎删除 </a></p>
+
+<p><a href="https://github.com/SergioChan/SCTableViewCell"> 侧滑删除cell </a></p>
+
+<p><a href="http://xxycode.com/ru-he-zhi-zuo-ge-xuan-ku-hao-wan-de-bao-zha-xiao-guo-2/"> 如何制作一个炫酷好玩的爆炸效果 </a></p>
+
+<p><a href="https://github.com/Boris-Em/BEMCheckBox"> Check box </a></p>
+
+<p><a href="https://github.com/gontovnik/DGElasticPullToRefresh"> 皮筋式弹性下拉即刷新 </a></p>
+
+<p><a href="http://iostuts.io/2015/10/17/elastic-bounce-using-uibezierpath-and-pan-gesture/">皮筋式弹性下拉即刷新 文章 Elastic view animation using UIBezierPath </a></p>
+
+<p><a href="https://github.com/lkzhao/ElasticTransition">皮筋式动画转场效果</a></p>
+
+<p><a href="https://github.com/Yalantis/StarWars.iOS"> 瞬间崩塌为小方块动画效果 </a></p>
+
+<p><a href="https://github.com/TBXark/TKRubberIndicator"> page control </a></p>
+
+<p><a href="https://github.com/AliThink/HorizontalProgress"> HorizontalProgress 进程 </a></p>
+
+<p><a href="https://github.com/SergioChan/SCTrelloNavigation"> trello 的导航动效控件 </a></p>
+
+<p><a href="https://github.com/DroidsOnRoids/MPParallaxView"> Apple TV Parallax 效果的视图 </a></p>
+
+<p><a href="https://github.com/CosmicMind/MaterialKit"> MaterialKit 是一个用 Swift 写的 Material Design 框架, 拥有多种漂亮的动画效果和样式 </a></p>
+
+<p><a href="https://github.com/Guidebook/gbkui-button-progress-view"> Download Button Aniamtion </a></p>
+
+<p><a href="https://github.com/vladislav-k/VKCheckbox">Checkbox</a></p>
+
+<p><a href="https://github.com/Magic-Unique/DoubleThumbSlider">双滑块Slider控件</a></p>
+
+<p><a href="https://github.com/Ramotion/reel-search">捷输入并选择组件</a> &mdash; 👍👍</p>
+
+<p><a href="https://github.com/AfryMask/AFWaveView">心形波浪</a></p>
+
+<p><a href="https://github.com/shu223/Pulsator">脉搏效果，适合附近的人之类的功能</a></p>
+
+<p><a href="https://github.com/mukyasa/MMTextFieldEffects">各种输入框交互动画</a></p>
+
+<p><a href="https://github.com/lovels/LBTagView">可拖拽的标签</a></p>
+
+<p><a href="https://github.com/hyperoslo/Hue#user-content-gradients-1">Gradient 渐变 滑动</a></p>
+
+<p><a href="https://github.com/manuelescrig/MEVHorizontalContacts">联系人列表 HorizontalContacts</a></p>
+
+<p><a href="https://github.com/imwangxuesen/EvernoteAnimation">仿 Evernote 的列表的下拉弹性效果</a></p>
+
+<p><a href="https://github.com/cbangchen/CBImagePicker">图片选择器</a></p>
+
+<p><a href="https://github.com/yahoo/YangMingShan">雅虎图片选择器</a></p>
+
+<p><a href="https://github.com/popwarsweet/PageControls">PageControls</a></p>
+
+<p><a href="https://github.com/edwinbosire/SwiflyOverlay">全屏 blur</a></p>
+
+<p><a href="https://github.com/alsedi/RippleEffectView">涟漪效应</a></p>
+
+<p><br />
+<br /></p>
+
+<h2>CollectionView</h2>
+
+<p><a href="https://github.com/CezaryKopacz/CKWaveCollectionViewTransition"> CollectionView 转场动画 </a></p>
+
+<p><a href="https://github.com/zhxnlai/ZLSwipeableViewSwift">ZLSwipeableViewSwift</a> &mdash; 片滑动效果</p>
+
+<p><a href="https://github.com/nathanwhy/HYAwesomeTransition"> 格瓦拉 cell移动动画Demo </a></p>
+
+<p><a href="https://github.com/nshintio/uicollectionview-reordering"> UICollectionViews 拖动 </a></p>
+
+<p><a href="https://github.com/alienjun/MyTags"> CollectionView实现的个人标签 </a></p>
+
+<p><a href="https://github.com/CezaryKopacz/CKWaveCollectionViewTransition"> Wave CollectionView Transition </a></p>
+
+<p><a href="http://t.cn/Rybxgpy?u=1783821582&amp;amp;amp;amp;amp;amp;amp;m=3885611247173418&amp;amp;amp;amp;amp;amp;amp;cu=1783821582"> iOS 书本打开动画制作教程 </a></p>
+
+<p><a href="https://github.com/zhxnlai/ZLSwipeableViewSwift"> 卡片 </a></p>
+
+<p><a href="https://github.com/seedante/CardAnimation"> 卡片式垂直翻转动画 </a></p>
+
+<p><a href="https://github.com/seedante/SDECollectionViewAlbumTransition"> 相册翻开动画效果 </a></p>
+
+<p><a href="https://github.com/demonnico/PinterestSwift"> 瀑布流 </a></p>
+
+<p><a href="http://allsome.love/yin-xiang-bi-ji-jiao-hu-xiao-guo-de-shi-xian/?u=1783821582&amp;amp;m=3905429706568663&amp;amp;cu=1783821582&amp;amp;ru=2029464644&amp;amp;rm=3905408588445881"> 印象笔记交互效果 </a></p>
+
+<p><a href="https://github.com/SmallLang/UICollectionViewLayoutDemo">自定义UICollectionViewFlowLayout和UICollectionViewLayout的两个例子</a></p>
+
+<p><a href="https://medium.com/@victor_wang/build-your-cells-in-a-way-of-lego-fbf6a1133bb1#.eh7fkk93s">响应式CollectionView</a></p>
+
+<p><br />
+<br /></p>
+
+<h2>Animations By Emails</h2>
+
+<p><a href="http://www.ios-animations-by-emails.com/posts/2015-may">Transitions with CoreImage</a></p>
+
+<p><a href="http://ios-animations-by-emails.com/posts/2015-july">Fun with Gradients and Masks</a></p>
+
+<p><a href="http://ios-animations-by-emails.com/posts/2015-november">fireworks</a></p>
+
+<p><a href="http://www.jianshu.com/p/76c588893b19?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note&amp;utm_source=weibo">使用CAReplicatorLayer创建动画</a></p>
+
+<p><br />
+<br /></p>
+
+<p><a name="frameworks"></a></p>
 
 
-<time class='entry-date' datetime='2015-12-23T04:22:06+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>4:22 am</span></time>
+<p><br />
+<br />
+<br /></p>
 
-		</div>
-		
-		<h4>Swift Either enum</h4>
+<hr />
+
+<p><br />
+<br />
+<br /></p>
+
+<h1>Frameworks</h1>
+
+<p><a href="https://github.com/luiyezheng/JLStickerTextView">JLStickerTextView</a> &mdash; 在图片上，添加文字，支持旋转，平移，缩放，编辑图的功能</p>
+
+<p><a href="https://github.com/enochng1/RaceMe">RaceMe</a> &mdash; 一个功能完整的运动追踪 App，做的很漂亮</p>
+
+<p><a href="https://github.com/phimage/Erik">Erik</a> &mdash;  WebKit的分装，较好支持CSS和JS</p>
+
+<p><a href="https://github.com/henrinormak/Heimdall">Heimdall</a> &mdash; 简单易用的加、解密安全框架（AES/RSA）库及示例</p>
+
+<p><a href="https://github.com/kishikawakatsumi/KeychainAccess">KeychainAccess</a></p>
+
+<p><a href="https://github.com/danielgindi/ios-charts">ios-charts</a> &mdash;   表格</p>
+
+<p><a href="http://www.jianshu.com/p/b45655e23a42">顶部标题滚动条</a></p>
+
+<p><a href="https://github.com/xxycode/XXYAudioEngine">XXYAudioEngine</a> &mdash; 基于 NSURLSession 和 AVAudioPlayer 封装的一个播放在线音乐的工具，可以把音乐下载至本地，支持清除缓存</p>
+
+<p><a href="https://github.com/AssistoLab/DropDown">iOS Material Design 效果的下拉菜单</a></p>
+
+<p><a href="https://github.com/xxycode/XXYAudioEngine">XXYAudioEngine</a> &mdash; 基于NSURLSession和AVAudioPlayer封装的一个播放在线音乐的工具，可以把音乐下载至本地，支持清除缓存</p>
+
+<p><a href="https://github.com/daisuke0131/ViewMonitor">VirwMonitor 点击测量视图位置、大小、背景、字体大小等信息</a></p>
+
+<p><a href="https://github.com/wojteklu/Watchdog">Watchdog</a> &mdash; iOS 实时卡顿监控</p>
+
+<p><a href="https://github.com/kasketis/netfox">netfox：iOS 网络调试工具</a> &mdash; 配置只需一行代码，可以调试包括第三方库在内的网络请求</p>
+
+<p><a href="https://github.com/FlexMonkey/Filterpedia">Filterpedia</a> &mdash; 基于 Core Image 框架，完整、强大的图片滤镜类库</p>
+
+<p><a href="https://github.com/KyoheiG3/AttributedLabel">高性能 AttributedLabel</a></p>
+
+<p><a href="https://github.com/IcaliaLabs/Presentr">弹窗</a></p>
+
+<p><a href="https://github.com/hackiftekhar/IQKeyboardManager">KeyboardManager</a></p>
+
+<p><a href="https://github.com/DeveloperLx/LxTabBadgePoint">tabBar 上的角标 Category 写法，无需继承子类</a></p>
+
+<p><a href="https://github.com/neonichu/LiveGIFs">Export your Live Photos as animated GIFs</a></p>
+
+<p><a href="https://github.com/Roxasora/RxWebViewController">实现类似微信的 webView 导航效果，左滑返回上个网页</a></p>
+
+<p><a href="https://github.com/onevcat/APNGKit">一个高性能的 APNG 库</a></p>
+
+<p><a href="https://github.com/khaledmtaha/XAnimatedImage">XAnimatedImage</a> &mdash; 一个高性能的 GIF 动画引擎基于 FLAnimatedImage</p>
+
+<p><a href="https://github.com/Aufree/Hodor?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">Hodor</a> &mdash; 应用内直接更改应用语言而无需退出应用, 类似微信</p>
+
+<p><a href="https://github.com/nixzhu/AudioBot">AudioBot</a> &mdash; 录音Demo，录音时，同时也可以录入正在播放的音乐</p>
+
+<p><a href="https://github.com/audiokit/AudioKit">AudioKit</a> &mdash; 一个很棒的录音库，文档教程齐全，已有一个上架<a href="http://matthewfecher.com/app-developement/swift-synth/">App</a></p>
+
+<p><a href="https://github.com/Shannon-s-Dreamland/DropdownMenu">多级下拉菜单</a></p>
+
+<p><a href="https://github.com/VerbalExpressions/SwiftVerbalExpressions">正则库</a></p>
+
+<p><a href="http://www.weibo.com/mygroups?gid=3771498714262571&amp;wvr=6&amp;leftnav=1">面向协议编程单元测试 Mock 框架</a></p>
+
+<p><a href="https://github.com/GJGroup/GJRatioAutoLayout">RatioAutoLayout</a> &mdash; Autolayout 下，只需一个开关，即可让当前 view 进行等比缩放</p>
+
+<p><a href="https://github.com/lra/mackup">Macup</a> &mdash; dotfiles 管理，通过git，dropbox来进行备份，恢复自定义设置的文件</p>
+
+<p><a href="https://github.com/yukiasai/Gecco">支持对视图进行局部高亮</a> &mdash; 快速创建产品的新手指导界面</p>
+
+<p><a href="https://github.com/FolioReader/FolioReaderKit?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=web&amp;utm_source=This_Week_in_Swift_71">阅读器</a></p>
+
+<p><a href="https://github.com/pili-engineering/PLCameraStreamingKit">PLCameraStreamingKit, 快速构建一款类似 Meerkat 或 Periscope 的手机直播应用</a> &mdash; 👍👍👍</p>
+
+<p><a href="https://github.com/longitachi/ZLPhotoBrowser">ZLPhotoBrowser</a> &mdash; 相册照片多选框架，支持拍照、预览快速多选</p>
+
+<p><a href="https://github.com/ytakzk/Fusuma?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=email&amp;utm_source=This_Week_in_Swift_79">Fusuma</a> &mdash; Instagram-like photo browser and a camera feature 👍👍👍</p>
+
+<p><a href="https://github.com/SwiftStudies/Duration">Duration</a> &mdash; 多种方法测量代码片段执行时间工具类库。为了测量准确性，还提供多计次重复执行求平均方案</p>
+
+<h3>聊天界面</h3>
+
+<p><a href="https://github.com/muukii/NextGrowingTextView">NextGrowingTextView</a></p>
+
+<p><a href="https://github.com/cbangchen/CBImagePicker">图片选择器</a></p>
+
+<p><a href="https://github.com/hyperoslo/ImagePicker">ImagePicker is an all-in-one camera solution for your iOS app</a></p>
+
+<p><a href="https://github.com/TimOliver/TOCropViewController">图片裁切</a></p>
+
+<p><a href="https://github.com/delba/TextAttributes?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=week_127_is_ready">TextAttributes</a></p>
+
+<p><a href="https://github.com/Lickability/PinpointKit">当 App 崩溃的时候，它会帮你自动截屏并打开邮件反馈页面，提交崩溃页面日志以及截屏</a></p>
+
+<p><a href="http://www.jianshu.com/p/b45655e23a42">顶部标题滚动条</a></p>
+
+<p><a href="https://github.com/kean/Preheat">Preheat</a> &mdash; UITableView and UICollectionView 预加载</p>
+
+<p><a href="https://github.com/Pluto-Y/iOS-Echarts">Echarts</a> &mdash; 强大的图表库</p>
+
+<p><a href="https://github.com/mariohahn/StatusProvider">StatusProvider</a> &mdash; 空白状态时的占位</p>
+
+<p><a href="https://github.com/liuf1986/LFRtmp">一个全开源的纯 OC 实现的 RTMP 推流 SDK，支持 AAC、H264、美颜滤镜、AMF编解码</a></p>
+
+<p><a href="https://github.com/hsylife/SwiftyPickerPopover">弹出滑动选择器</a></p>
+
+<p><a href="https://github.com/dani-gavrilov/GDPerformanceView">在屏幕上显示 FPS，CPU 使用率</a></p>
+
+<p><a href="https://github.com/kf99916/TimelineTableViewCell">Timeline Cell</a></p>
+
+<p><a href="https://github.com/douban/FRDIntent">FRDIntent</a> &mdash; 一个处理 View Controller 内部和外部调用的开源库。可用于解除 View Controller 间耦合</p>
+
+<p><a href="https://github.com/HamzaGhazouani/HGCircularSlider">圆形进度条</a></p>
+
+<p><a href="https://github.com/qiuncheng/NoticeBar">通知 Bar 效果</a></p>
+
+<p><a href="https://github.com/strongself/MRefresh">把 SVG 动画集成到下拉刷新中</a></p>
+
+<p><a href="https://github.com/CosmicMind/Motion">图片选择器(带转场)</a></p>
+
+<p><a href="https://github.com/patchthecode/JTAppleCalendar">漂亮的日历组件</a></p>
+
+<p><a href="https://github.com/strongself/MRefresh">把 SVG 动画集成到下拉刷新</a></p>
+
+<p><a href="https://github.com/MarioIannotta/MIBlurPopup">模糊背景的弹出窗口</a></p>
+
+<p><a href="https://github.com/ezefranca/EFInternetIndicator">iOS 网络变更通知</a></p>
+
+<p><a href="https://github.com/PierrePerrin/PPMusicImageShadow">细腻的图片 Shadow 效果</a></p>
+
+<p><a href="https://github.com/jhurray/SelectableTextView">可以点击和显示更多的 TextView</a></p>
+
+<p><a href="https://github.com/ChiliLabs/CHIPageControl">圆点翻页 PageControl</a></p>
+
+<p><br />
+<br /></p>
+
+<p><a name="cheatsheet"></a></p>
+
+
+<p><br />
+<br />
+<br /></p>
+
+<hr />
+
+<p><br />
+<br />
+<br /></p>
+
+<h1>CheatSheet</h1>
+
+<h4>Swift Either enum</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="n">Either</span><span class="o">&lt;</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="o">&gt;</span><span class="p">{</span>
 </span><span class='line'>  <span class="k">case</span> <span class="n">Left</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -523,7 +948,7 @@
 <p>deploy 时 <code>non-fast-forward</code> 问题解决方案</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">cd</span> <span class="n">octopress</span><span class="o">/</span><span class="n">_deploy</span>
-</span><span class='line'><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
+</span><span class='line'><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span> <span class="c1">// --allow-unrelated-histories</span>
 </span><span class='line'><span class="n">cd</span> <span class="p">..</span>
 </span><span class='line'><span class="n">rake</span> <span class="n">deploy</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -538,20 +963,339 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h5>Fastlane Connection reset by peer</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="cp"># brew uninstall ruby # not using homebrew&#39;s ruby</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">~/</span><span class="p">.</span><span class="n">gem</span>
+</span><span class='line'><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">~/</span><span class="p">.</span><span class="n">gems</span>
+</span><span class='line'><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">~/</span><span class="p">.</span><span class="n">rbenv</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">rbenv</span> <span class="n">ruby</span><span class="o">-</span><span class="n">built</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp"># Add rbenv to bash so that it loads every time you open a terminal</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">echo</span> <span class="err">&#39;</span><span class="k">if</span> <span class="n">which</span> <span class="n">rbenv</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span><span class="p">;</span> <span class="n">then</span> <span class="n">eval</span> <span class="s">&quot;$(rbenv init -)&quot;</span><span class="p">;</span> <span class="n">fi</span><span class="err">&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">bash_profile</span>
+</span><span class='line'><span class="n">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">bash_profile</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp"># Install Ruby</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rbenv</span> <span class="n">install</span> <span class="mf">2.3.1</span>
+</span><span class='line'><span class="n">rbenv</span> <span class="n">global</span> <span class="mf">2.3.1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-	</div>
 
 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="cp"># close teminal and re-open it</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">ruby</span> <span class="o">-</span><span class="n">v</span> <span class="err">#</span> <span class="n">should</span> <span class="n">output</span> <span class="mf">2.3.1</span> <span class="n">now</span>
+</span><span class='line'><span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="err">$</span><span class="p">(</span><span class="n">whoami</span><span class="p">)</span><span class="o">:</span> <span class="o">~/</span><span class="p">.</span><span class="n">rbenv</span> <span class="err">#</span> <span class="n">important</span><span class="o">!!!</span>
+</span><span class='line'><span class="n">gem</span> <span class="n">update</span> <span class="o">--</span><span class="n">system</span>
+</span><span class='line'><span class="n">gem</span> <span class="n">install</span> <span class="n">fastlane</span> <span class="err">#</span> <span class="n">this</span> <span class="n">will</span> <span class="n">install</span> <span class="n">a</span> <span class="n">lot</span> <span class="n">of</span> <span class="n">gems</span><span class="p">,</span> <span class="n">since</span> <span class="n">we</span> <span class="n">are</span> <span class="n">not</span> <span class="n">using</span> <span class="n">the</span> <span class="n">old</span> <span class="mf">2.0.0</span> <span class="n">gems</span> <span class="n">anymore</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="meta">
-	<div class="center"><a href="#"></a></div>
+
+<p>Then you may need to modify your .bash_profile or .zshrc if you use zsh.
+Add these 2 lines:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table style="margin-top: 5px; margin-left: -15px;"><tr><td class="gutter"><pre></pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">vim</span> <span class="p">.</span><span class="n">zshrc</span>
+</span><span class='line'><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s">&quot;$HOME/.rbenv/bin:$PATH&quot;</span>
+</span><span class='line'><span class="n">eval</span> <span class="s">&quot;$(rbenv init -)&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p><a href="https://github.com/fastlane/fastlane/issues/6553">https://github.com/fastlane/fastlane/issues/6553</a></p></blockquote>
+
+<p><br />
+<br /></p>
+
+<p><a name="reading"></a></p>
+
+
+<p><br />
+<br />
+<br /></p>
+
+<hr />
+
+<p><br />
+<br />
+<br /></p>
+
+<h1>Reading</h1>
+
+<p><a href="http://www.apokrupto.com/blog-1/2016/3/17/coordinators-with">Coordinators with Storyboards</a></p>
+
+<h2>WebView</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/24990222">WKWebView 那些坑</a>
+<a href="https://github.com/WildDylan/WKWebViewWithURLProtocol">WKWebViewWithURLProtocol</a></p>
+
+<h2>AVFoundation</h2>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=207686973&amp;idx=1&amp;sn=1883a6c9fa0462dd5596b8890b6fccf6&amp;scene=1&amp;srcid=bquF9P7agLaSN3IU0FFr&amp;key=18e81ac7415f67c4a63984a53bc911c050fb54e0890e4efac2d4d4f4b41ff63ff9b132efe16b0bcd17b23221ffadf5bb&amp;ascene=0">iOS微信小视频优化心得</a></p>
+
+<p><a href="https://github.com/adriaan/VideoCaptureDemo">VideoCaptureDemo</a> &mdash; objc.io issue 23</p>
+
+<p><a href="http://blog.csdn.net/zhangao0086/article/details/39433519">iOS8 Core Image In Swift：视频实时滤镜</a></p>
+
+<p><a href="https://github.com/robovm/apple-ios-samples/tree/master/AVReaderWriterOfflineAudioVideoProcessing">AVReaderWriter</a> &mdash; Apple Demo</p>
+
+<p><a href="https://github.com/rs/SDAVAssetExportSession">SDAVAssetExportSession</a></p>
+
+<p><a href="http://www.jianshu.com/p/485e946f80b4">AVFoundation(一):基础知识</a></p>
+
+<p><a href="https://developer.apple.com/library/mac/documentation/AudioVideo/Conceptual/AVFoundationPG/Articles/05_Export.html#//apple_ref/doc/uid/TP40010188-CH9-SW1">AVFoundation Programming Guide</a></p>
+
+<p><a href="http://stackoverflow.com/questions/14905892/pause-resume-video-capture-for-same-file-with-avfoundation-in-ios#answer-14986631">断点拍摄</a></p>
+
+<h2>Ask and Answer</h2>
+
+<p><a href="http://stackoverflow.com/questions/24788283/ios-animate-morph-shape-from-circle-to-square">圆形和正方形之间的动画</a></p>
+
+<p><a href="http://codingobjc.com/blog/2014/10/15/shi-yong-autolayoutshi-xian-uitableviewde-celldong-tai-bu-ju-he-ke-bian-xing-gao/">使用Autolayout实现UITableView的Cell动态布局和高度动态改变</a></p>
+
+<p><a href="http://stackoverflow.com/questions/20320591/uitableview-and-presentviewcontroller-takes-2-clicks-to-display">UITableView点击两次才能Present</a></p>
+
+<p><a href="http://www.it165.net/pro/html/201503/36130.html">iOS推送获取不到设备token：未找到应用程序的apsenvironment的权利字符串</a></p>
+
+<p><a href="http://stackoverflow.com/questions/35023904/is-there-way-to-define-compare-function-automatically-for-struct-in-swi">假设有一个巨大（包含很多属性的）的结构体，然后实现 “==” 操作就会很麻烦，因为要每个属性都比较一遍才行</a> &mdash; 👍👍👍</p>
+
+<h2>多 Target</h2>
+
+<p><a href="http://www.teratotech.com/blog/xcode-7-steps-to-easily-switch-between-multiple-environments/">XCode: 7 Steps to Easily Switch Between Multiple Environments</a>
+<a href="http://appfoundry.be/blog/2014/07/04/Xcode-Env-Configuration/">iOS multi-environment configuration</a></p>
+
+<p><a href="https://medium.com/@danielgalasko/change-your-api-endpoint-environment-using-xcode-configurations-in-swift-c1ad2722200e#.9ghrll66j">Change your API endpoint/environment using Xcode Configurations in Swift</a></p>
+
+<p><a href="http://blog.startry.com/2015/07/24/iOS_EnvWithXcconfig/">环境变量配置(Debug &amp; Release)</a></p>
+
+<p><a href="https://lookback.io/blog/cocoapods-by-configuration">CocoaPods and Lookback: The Build Configuration Journey</a></p>
+
+<h2>包罗万象</h2>
+
+<p><a href="http://www.marisibrothers.com/2016/03/extending-swift-generic-types.html">Extending Swift generic types</a> &mdash; extension 时指定 Element 类型</p>
+
+<p><a href="http://www.jianshu.com/p/b93c07fa8c3d">深入探究Swift数组背后的协议、方法、拓展</a></p>
+
+<p><a href="http://christiantietze.de/posts/2016/03/custom-enumerated-sequence/?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=web&amp;utm_source=This_Week_in_Swift_78">Creating a Cheap Protocol-Oriented Copy of SequenceType</a></p>
+
+<p><a href="http://www.jianshu.com/p/990ee3db0563">iOS 视频边下边播&ndash;缓存播放数据流</a> &mdash; 👍👍👍</p>
+
+<p><a href="http://www.jianshu.com/p/af2d471f7b9c?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note&amp;utm_source=weibo">在 iOS 开发中如何优雅地进行图片缩放</a></p>
+
+<p><a href="http://pomax.github.io/bezierinfo/">最好的 Bezier 曲线教程</a></p>
+
+<p><a href="https://realm.io/cn/news/jack-nutting-search-api-ios/">iOS 系统搜索集成</a> &mdash; Realm</p>
+
+<p><a href="http://www.devtalking.com/articles/ios-design-pattern-in-swift-1/">Swift 中的iOS设计模式（一）</a></p>
+
+<p><a href="http://swiftist.org/topics/165">Swift 编程风格指南</a></p>
+
+<p><a href="http://nshipster.com/new-years-2016">Reader Submissions - New Year&rsquo;s 2016</a> &mdash; 干货多 🍺</p>
+
+<p><a href="http://stackoverflow.com/questions/24183812/swift-warning-equivalent">Showing TODO as a warning in a Swift Xcode project</a> &mdash; 以⚠️的形式显示TODO、FIXME</p>
+
+<p><a href="http://mikebuss.com/2014/06/22/lazy-initialization-swift/">Lazy Initialization with Swift</a></p>
+
+<p><a href="https://github.com/callmewhy/Swift90Days/blob/master/Day11-initialization.md">Swift90Days - 蛋疼的初始化过程</a></p>
+
+<p><a href="http://nomothetis.svbtle.com/error-handling-in-swift">Error Handling in Swift: Might and Magic</a></p>
+
+<p><a href="http://natashatherobot.com/swift-guard-better-than-if/">Swift 2.0: Why Guard is Better than If</a></p>
+
+<p><a href="https://github.com/100mango/zen/blob/master/2015%20WWDC%20%E6%80%BB%E7%BB%93/2015%20WWDC%20Best%20Practices.md">2015 WWDC Best Practices</a></p>
+
+<p><a href="http://swifter.tips/lazy/">LAZY 修饰符和 LAZY 方法</a></p>
+
+<p><a href="http://oleb.net/blog/2015/12/lazy-properties-in-structs-swift/">Lazy Properties in Structs</a></p>
+
+<p><a href="http://www.obqo.de/blog/2015/11/25/true-lazy-sequences/">True Lazy Sequences</a></p>
+
+<p><a href="http://swift.gg/2015/09/25/ask-erica-how-do-i-loop-from-non-zero-n-swiftlang/">Swift 2.0 数组遍历</a></p>
+
+<p><a href="http://www.mokacoding.com/blog/demistifying-swift-functor/">Swift Optionals, Functional Programming, and You</a> &mdash; 函数式编程</p>
+
+<p><a href="http://www.cocoachina.com/ios/20150916/13324.html">用同一个工程创建两个不同版本的应用</a> &mdash; 如果同一个应用, 需要做一个带广告Lite版本, 一个不带广告的Pro版本. 那么问题来了, 该如何优雅的去实现呢？</p>
+
+<p><a href="https://pspdfkit.com/blog/2015/presentation-controllers/">Presentation Controllers and Adaptive Presentations</a> &mdash; 👍</p>
+
+<p><a href="https://www.omnigroup.com/developer/how-to-make-text-in-a-uivisualeffectview-readable-on-any-background">如何让 UIVisualEffectView 上面显示可读的文字</a></p>
+
+<p><a href="http://www.zoomfeng.com/blog/coretextshi-yong-jiao-cheng-%5B%3F%5D.html">CoreText使用教程</a> &mdash; 五篇</p>
+
+<p><a href="http://www.codeceo.com/article/https-worker.html">理解 HTTPS 的工作原理</a></p>
+
+<p><a href="http://swift.gg/2016/01/07/app-thinning-appcoda/">如何使用 iOS 9 App 瘦身功能</a></p>
+
+<p><a href="http://blog.sunnyxx.com/2014/12/20/64-bit-tips/">64-bit Tips</a></p>
+
+<p><a href="http://blog.sunnyxx.com/2014/10/15/behind-autorelease/">黑幕背后的Autorelease</a></p>
+
+<p><a href="http://mobile.51cto.com/iphone-284112.htm">Objective-C内存管理如何理解Autorelease</a></p>
+
+<p><a href="http://cocoa.venj.me/blog/view-controller-based-status-bar-style-and-uinavigationcontroller/#comment-1501032470">UINavigationController和View Controller-based状态栏风格</a> &mdash;&mdash; 指定状态栏风格</p>
+
+<p><a href="http://gracelancy.com/blog/2014/05/05/variable-argument-lists/">Variable Argument Lists</a> &mdash;&mdash; 可变参数函数的定义</p>
+
+<p><a href="http://www.imooc.com/wenda/detail/244497">100个iOS开发/设计面试题汇总</a></p>
+
+<p><a href="http://codingobjc.com/blog/2014/10/15/shi-yong-autolayoutshi-xian-uitableviewde-celldong-tai-bu-ju-he-ke-bian-xing-gao/">使用Autolayout实现UITableView的Cell动态布局和高度动态改变</a></p>
+
+<p><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">常用 Git 命令清单</a></p>
+
+<p><a href="http://flexmonkey.blogspot.co.nz/2015/12/scribe-handwriting-recognition.html"> 手写识别组建 A Handwriting Recognition Component for iOS </a></p>
+
+<p><a href="http://www.jianshu.com/p/98610bdc9bd6"> 加密解密介绍 </a></p>
+
+<p><a href="http://tanqisen.github.io/blog/2014/06/06/how-to-prevent-app-crack/">如何防止客户端被破解</a></p>
+
+<p><a href="http://tech.glowing.com/cn/change-uinavigationbar-backgroundcolor-dynamically/">动态修改UINavigationBar的背景色</a></p>
+
+<p><a href="http://www.jianshu.com/p/4af3b8179136">iOS开发中用户密码应该保存在哪里</a></p>
+
+<p><a href="http://oncenote.com/2015/06/01/How-App-Launch/">由 App 的启动说起</a> &mdash; 👍</p>
+
+<p><a href="https://medium.com/@pcperini/a-protocol-oriented-state-machine-for-layout-constraints-2c6c94bbd844#.g92o77vfm">State Machine for Layout Constraints</a> &mdash; 通过协议实现 Layout 的状态机 👍👍👍</p>
+
+<p><a href="http://alisoftware.github.io/swift/async/error/2016/02/06/async-errors/">Asynchronous error handling</a></p>
+
+<p><a href="http://www.marisibrothers.com/2016/03/extending-swift-generic-types.html">Extending Swift generic types</a> &mdash; 为 extension 指定类型 👍👍👍</p>
+
+<p><a href="http://useyourloaf.com/blog/adapting-auto-layout-without-interface-builder/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=week_125_is_ready">Adapting Auto Layout Without Interface Builder</a></p>
+
+<p><a href="https://github.com/ipraba/EPSignature?utm_campaign=This%2BWeek%2Bin%2BSwift&amp;utm_medium=email&amp;utm_source=This_Week_in_Swift_89">手势签名</a></p>
+
+<p><a href="http://blog.sunnyxx.com/2014/08/30/objc-pre-main/">iOS 程序 main 函数之前发生了什么</a></p>
+
+<h5>Enum</h5>
+
+<p><a href="http://swift.gg/2015/11/20/advanced-practical-enum-examples/">Swift 中枚举高级用法及实践</a></p>
+
+<p><a href="http://ericasadun.com/2015/10/19/sets-vs-dictionaries-smackdown-in-swiftlang/?utm_campaign=Swift%252BSandbox&amp;utm_medium=email&amp;utm_source=Swift_Sandbox_12">用枚举作 Options</a></p>
+
+<p><a href="http://swift.gg/2015/11/20/advanced-practical-enum-examples/#API_%E7%AB%AF%E7%82%B9">用枚举作 Rest API</a></p>
+
+<h5>Protocol</h5>
+
+<p><a href="http://natashatherobot.com/protocol-oriented-segue-identifiers-swift/">Protocol-Oriented Segue Identifiers in Swift</a></p>
+
+<p><a href="http://swift.gg/2015/12/15/mixins-over-inheritance/">Mixins 比继承更好</a> &mdash; 面向协议编程</p>
+
+<p><a href="https://www.natashatherobot.com/protocol-oriented-networking-in-swift/">Protocol-Oriented-Networking in Swift</a> &mdash; 👍👍👍</p>
+
+<h4>MapKit</h4>
+
+<p><a href="http://rshankar.com/how-to-add-mapview-annotation-and-draw-polyline-in-swift/">Add annotations and Polyline to MapView in Swift</a></p>
+
+<p><a href="http://www.jianshu.com/p/9d998307dc21">怎么样创建一个像RunKeeper一样的App（一）</a></p>
+
+<p><a href="https://www.raywenderlich.com/97945/make-app-like-runkeeper-swift-part-2">How To Make an App Like RunKeeper with Swift: Part 2</a></p>
+
+<p><a href="http://adad184.com/2015/07/22/how-to-deal-with-background-location-update/">后台定位上传的代码实践</a></p>
+
+<p><a href="http://adad184.com/2015/07/13/improve-performance-with-mkmapview/">一次对MKMapView的性能优化</a></p>
+
+<h4>翻译</h4>
+
+<p><a href="http://wdxtub.com/2015/12/22/programming-ios9-translation-1/">Programming iOS9 翻译</a></p>
+
+<h2>优化</h2>
+
+<p><a href="http://pingguohe.net/2016/01/31/lazyscroll.html?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">iOS 高性能异构滚动视图构建方案 —— LazyScrollView</a></p>
+
+<p><a href="https://github.com/RobertGummesson/BuildTimeAnalyzer-for-Xcode">Build Time Analyzer for Xcode</a> &mdash; 查看 Swift 文件编译的时间(插件)</p>
+
+<p><a href="http://irace.me/swift-profiling/?utm_campaign=iOS%2BDev%2BWeekly&amp;utm_medium=email&amp;utm_source=iOS_Dev_Weekly_Issue_234">Profiling your Swift compilation times</a> &mdash; 查看 Swift 文件编译的时间 👍👍👍👍👍👍</p>
+
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&amp;mid=444322139&amp;idx=1&amp;sn=c7bef4d439f46ee539aa76d612023d43&amp;scene=0#wechat_redirect">猿题库 iOS 客户端架构设计</a> &mdash; MVVM without Binding with DataController</p>
+
+<p><a href="http://blog.vars.me/blog/2015/04/26/UICollectionView-Optimizing/">UICollectionView的数据预加载及图片加载逻辑的优化</a></p>
+
+<p><a href="https://github.com/100mango/zen/blob/master/WWDC%E5%BF%83%E5%BE%97%EF%BC%9AAdvanced%20Graphics%20and%20Animations%20for%20iOS%20Apps/Advanced%20Graphics%20and%20Animations%20for%20iOS%20Apps.md">iOS图形性能进阶与测试</a></p>
+
+<p><a href="http://blog.cnbang.net/tech/2578/">iOS图片加载速度极限优化—FastImageCache解析</a></p>
+
+<p><a href="http://blog.cnbang.net/tech/2544/">iOS可执行文件瘦身方法</a></p>
+
+<p><a href="http://www.jianshu.com/p/0d972f45da86?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_author_hots&amp;utm_source=recommendation">iOS生产力之小工具合集</a>
+<a href="http://www.jianshu.com/p/9e1f0b44935c">iOS性能优化</a></p>
+
+<p><a href="http://ios.jobbole.com/83058/">10个加速Table Views开发的建议</a></p>
+
+<p><a href="http://www.ibm.com/developerworks/cn/mobile/mo-ios-memory/">使用 Swift 和 Objective-C 执行 iOS 内存管理的 7 个简单技巧</a></p>
+
+<p><a href="http://southpeak.github.io/blog/2015/12/20/perfect-smooth-scrolling-in-uitableviews/">Perfect smooth scrolling in UITableViews</a></p>
+
+<p><a href="http://holko.pl/2016/01/05/typed-table-view-controller/">Typed, yet Flexible Table View Controller</a> &mdash; TableViewController 代码重构</p>
+
+<h3>缓存</h3>
+
+<p><a href="http://www.jianshu.com/p/8a4dc775c051">(慕课网)imooc iPhone3.3 接口数据缓存</a> &mdash; 👍👍👍</p>
+
+<p><a href="https://github.com/ChenYilong/ParseSourceCodeStudy/blob/master/02_Parse%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BC%93%E5%AD%98%E4%B8%8E%E7%A6%BB%E7%BA%BF%E5%AD%98%E5%82%A8/iOS%E7%BD%91%E7%BB%9C%E7%BC%93%E5%AD%98%E6%89%AB%E7%9B%B2%E7%AF%87.md">使用两行代码就能完成80%的缓存需求</a> &mdash; 👍👍👍</p>
+
+<h2>底层</h2>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=400417748&amp;idx=1&amp;sn=0c5f6747dd192c5a0eea32bb4650c160&amp;scene=1&amp;srcid=1119iAGp9HUSGEMTBjUSM7L0&amp;key=d72a47206eca0ea9f5fd845c39ebee1715577b3db18f002c19b3747d6f2525f50d9ef530d825ee227e428e6dc5bd58a3&amp;ascene=0&amp;uin=MjY5MzMxNTMwMQ%3D%3D">iOS 事件处理机制与图像渲染过程</a></p>
+
+<p><a href="http://swift.gg/2015/12/28/friday-qa-2015-12-11-swift-weak-references/">Swift 中的弱引用</a> &mdash; 👍👍👍</p>
+
+<h2>内存管理</h2>
+
+<p><a href="http://www.oschina.net/translate/automatic-reference-counting-on-ios">iOS开发之ARC</a></p>
+
+<p><a href="http://onevcat.com/2012/06/arc-hand-by-hand/">手把手教你ARC——iOS/Mac开发ARC入门和使用</a></p>
+
+<p><a href="http://blog.csdn.net/nicktang/article/details/6792972">IOS 5编程 内存管理 ARC技术概述</a></p>
+
+<p><a href="http://www.yifeiyang.net/development-of-the-iphone-simply-1/">iPhone开发之深入浅出 (1) — ARC是什么</a></p>
+
+<h2>线程</h2>
+
+<p><a href="http://blog.cnbluebox.com/blog/2014/07/01/cocoashen-ru-xue-xi-nsoperationqueuehe-nsoperationyuan-li-he-shi-yong/">Cocoa深入学习:NSOperationQueue、NSRunLoop和线程安全</a></p>
+
+<p><a href="http://www.cnblogs.com/kenshincui/p/3983982.html">iOS开发系列&ndash;并行开发其实很容易</a></p>
+
+<p><a href="http://ksnowlv.github.io/blog/2014/09/07/ios-tong-bu-suo-xing-neng-dui-bi/">iOS同步对象性能对比</a></p>
+
+<p><a href="http://geek.csdn.net/news/detail/60236">iOS开发中设计并发任务技术与注意事项</a></p>
+
+<h2>工具</h2>
+
+<p><a href="http://www.bmob.cn">Bmob移动后端云服务平台</a></p>
+
+<p><a href="https://leancloud.cn/docs/rest_api.html">和应用服务器、存储服务器说再见</a></p>
+
+<p><a href="https://www.buglife.com">Bug 提交</a></p>
+
+<h2>插件</h2>
+
+<p><a href="https://github.com/wangshengjia/VWInstantRun">VWInstantRun</a> &mdash; 直接在Xcode中编译执行选中的Swift代码，打印输出到console  👍</p>
+
+<h2>CoreData</h2>
+
+<p><a href="http://www.jianshu.com/p/5a84008307ad">Core Data: 非标准数据类型总结</a></p>
+
+<h2>硬件</h2>
+
+<p><a href="http://blog.csdn.net/dolacmeng/article/details/46457487">iOS的蓝牙连接、数据接收及发送</a></p>
+
+<h2>CocoaPods</h2>
+
+<p><a href="http://www.pluto-y.com/cocoapod-private-pods-and-module-manager/">Cocoapods系列教程(三)——私有库管理和模块化管理</a></p>
+
+<p><a href="http://blog.devtang.com/blog/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/">用CocoaPods做iOS程序的依赖管理</a></p>
+
+<p><a href="http://gracelancy.com/blog/2013/08/11/make-your-own-cocoapods-spec/">制作自己的CocoaPods Spec</a></p>
+
+<p><a href="http://www.iwangke.me/2013/04/18/advanced-cocoapods/">CocoaPods进阶：本地包管理</a></p>
+
+<p><a href="http://lexrus.com/setup-a-mirror-of-cocoapods-specs.html">Setup a mirror of CocoaPods/Specs</a></p>
+
+<p><a href="http://blog.csdn.net/agdsdl/article/details/45218987#0-tsina-1-51027-397232819ff9a47a7b7e80a40613cfe1">CocoaPods建立私有仓库</a></p>
 </div>
-
-	<br />
-	<br />
 </article>
-
 
 	<div class="share">
 	<div class="addthis_toolbox addthis_default_style ">
