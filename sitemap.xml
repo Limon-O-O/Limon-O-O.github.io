@@ -68,10 +68,10 @@
 <loc>http://limon.top/about/</loc>
 </url>
 <url>
-<loc>http://limon.top/blog/archives/</loc>
+<loc>http://limon.top/</loc>
 </url>
 <url>
-<loc>http://limon.top/</loc>
+<loc>http://limon.top/blog/archives/</loc>
 </url>
 <url>
 <loc>http://limon.top/private/</loc>
@@ -111,6 +111,6 @@
 </url>
 <url>
 <loc>http://limon.top/images/portfolio/video/index.html</loc>
-<lastmod>2017-03-16T10:35:57+08:00</lastmod>
+<lastmod>2017-03-13T23:20:51+08:00</lastmod>
 </url>
 </urlset>
