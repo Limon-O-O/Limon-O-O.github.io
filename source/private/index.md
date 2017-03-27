@@ -7,9 +7,7 @@ footer: true
 ---
 
 <br />
-
 <p><a name="Notes"></a></p>
-
 <br />
 
 # Notes
@@ -65,7 +63,7 @@ CFRunLoopSourceRef 是事件产生的地方。Source有两个版本：Source0 �
 
 • Source0 只包含了一个回调（函数指针），它并不能主动触发事件。使用时，你需要先调用 CFRunLoopSourceSignal(source)，将这个 Source 标记为待处理，然后手动调用 CFRunLoopWakeUp(runloop) 来唤醒 RunLoop，让其处理这个事件。
 
-• Source1 包含了一个 mach_port 和一个回调（函数指针），被用于通过内核和其他线程相互发送消息。这种 Source 能主动唤醒 RunLoop 的线程，其原理在下面会讲到。
+• Source1 包含了一个 mach_port 和一个回调（函数指针），被用于通过内核和其他线程相互发送消息。这种 Source 能主动唤醒 RunLoop 的线程。
 
 
 #### 为什么 `shouldRasterize`, `mask`, `shadows` 等会触发离屏渲染？
@@ -97,18 +95,123 @@ Render Buffer Object（RBO）即为渲染缓冲对象，分为color buffer(颜�
 Core Graphics绘制 - 如果对视图实现了-drawRect:方法，或者CALayerDelegate的-drawLayer:inContext:方法，那么在绘制任何东西之前都会产生一个巨大的性能开销。为了支持对图层内容的任意绘制，Core Animation必须创建一个内存中等大小的**寄宿图**。然后一旦绘制结束之后，必须把图片数据通过IPC传到渲染服务器。在此基础上，Core Graphics绘制就会变得十分缓慢，所以在一个对性能十分挑剔的场景下这样做十分不好。
 
 
-# OpenGL ES
+## OpenGL ES
 
 [Android OpenGLES2.0（十二）——FBO离屏渲染](http://www.voidcn.com/blog/junzia/article/p-6354808.html)
 [模板缓冲区](http://www.twinklingstar.cn/2014/1176/stencil-buffer/)
 [LearnOpenGL-帧缓冲区](https://learnopengl-cn.readthedocs.io/zh/latest/04%20Advanced%20OpenGL/05%20Framebuffers/)
 [内存恶鬼drawRect](http://bihongbo.com/2016/01/03/memoryGhostdrawRect/)
 
+## Autorelease
+
+1. Autoreleasepool 与 Runloop 的关系
+    主线程默认为我们开启 Runloop，Runloop 会自动帮我们创建 Autoreleasepool，并进行Push、Pop 等操作来进行内存管理，在即将退出 Loop 时调用 _objc_autoreleasePoolPop() 来释放自动释放池
+    
+    
+2. Autorelease 对象什么时候释放？
+    Autorelease 对象是在当前的 runloop 迭代结束时释放的，而它能够释放的原因是系统在每个 runloop 迭代中都加入了自动释放池 Push 和 Pop
+
+3. 什么对象自动加入到 Autoreleasepool 中
+    ##### 第一种
+    当使用 `alloc/new/copy/mutableCopy` 进行初始化时，会生成并持有对象(也就是不需要 pool 管理，系统会自动的帮他在合适位置 release)
+       `id obj = [NSMutableArray array];`
+       这种情况会自动将返回值的对象注册到autorealeasepool，代码等效于：
+       
+       ```
+       @autorealsepool{
+        id __autorealeasing obj = [NSMutableArray array];
+}
+```
+
+    ##### 第二种
+    __weak修饰符只持有对象的弱引用
+
+    ##### 第三种
+    id的指针或对象的指针在没有显式指定时会被附加上__autorealeasing修饰符
+    
+# Runtime
+
+```
+struct objc_object {  
+    Class isa  OBJC_ISA_AVAILABILITY;
+};
+
+struct objc_class {  
+    Class isa  OBJC_ISA_AVAILABILITY;
+#if !__OBJC2__
+    Class super_class;
+    const char *name;
+    long version;
+    long info;
+    long instance_size;
+    struct objc_ivar_list *ivars;
+    **struct objc_method_list **methodLists**;
+    **struct objc_cache *cache**;
+    struct objc_protocol_list *protocols;
+#endif
+};
+
+struct objc_method {  
+    SEL method_name;
+    char *method_types;    /* char指针，其实存储着方法的参数类型和返回值类型 */
+    IMP method_imp; /* 指向了方法的实现，本质上是一个函数指针 */
+};
+
+struct objc_ivar {
+    char *ivar_name                                          
+    char *ivar_type                                          
+    int ivar_offset                                          
+#ifdef __LP64__
+    int space                                                
+#endif
+} 
+```
+
+
+## isa
+
+每一个对象都有一个名为 isa 的指针，指向该对象的类。每一个类描述了成员变量的列表，成员函数的列表，还有对象能够接收的消息列表
+
+## KVO
+
+当你观察一个对象时，一个新的类会动态被创建。这个类继承自该对象的原本的类，并重写了被观察属性的 setter 方法。自然，重写的 setter 方法，并插入 `willChangeValueForKey` 和 `didChangeValueForKey`。最后把这个对象的 isa 指针 ( isa 指针告诉 Runtime 系统这个对象的类是什么 ) 指向这个新创建的子类，对象就神奇的变成了新创建的子类的实例。
+
+## +(void)load; +(void)initialize；有什么用处？
+
+在Objective-C中，runtime会自动调用每个类的两个方法。+load会在类初始加载时调用，+initialize会在第一次调用类的类方法或实例方法之前被调用。这两个方法是可选的，且只有在实现了它们时才会被调用。 
+共同点：两个方法都只会被调用一次。
+
+## 消息发送、消息转发
+`[obj foo];`
+
+在objc动态编译时，会被转意为：
+
+```
+objc_msgSend(obj, @selector(foo));
+
+objc_msgSend ( id self, SEL op, ... );
+
+```
+
+第一个参数 `id` 是一个指向类实例的指针，而这个类实例就是 `objc_object`，里面是含有一个 isa 指针，
+isa 指针指向对象的类 `objc_class`，
+
+`objc_class` 结构体内有：方法列表，成员变量列表，还有一个方法的 `cache`，
+
+先在 `cache` 里有没缓存到这个方法，如果没有再去方法列表找，如果还没找到就到 `superclass` 好，如果找到了这个函数，就执行他的 IMP
+
+如果最终还没找到，通常情况下抛出 `unrecognized selector sent to … ` 的异常。但在抛去异常之前，有三次拯救程序
+
+1. 如果没有找到，Runtime 会发送 +resolveInstanceMethod: 或者 +resolveClassMethod: 尝试去 resolve 这个消息；
+
+2. 如果 resolve 方法返回 NO，Runtime 就发送 -forwardingTargetForSelector: 允许你把这个消息转发给另一个对象；
+
+3. 如果没有新的目标对象返回， Runtime 就会发送 -methodSignatureForSelector: 和 -forwardInvocation: 消息。你可以发送 -invokeWithTarget: 消息来手动转发消息或者发送 -doesNotRecognizeSelector: 抛出异常
 
 
 ###  Category
 #### 为什么 Category 不能添加实例变量
-在 Runtime 中，objc_class 结构体大小是固定的，不可能往这个结构体中添加数据，只能修改。所以ivars 指向的是一个固定区域，之所以能在 Category 添加方法，那是因为 `methodLists` 是指向 `objc_method_list` 指针的指针
+在 Runtime 中，objc_class 结构体大小是固定的，不可能往这个结构体中添加数据，只能修改。所以 ivars 指向的是一个固定区域，之所以能在 Category 添加方法，那是因为 `methodLists` 是指向 `objc_method_list` 指针的指针
 
 ```
 struct objc_ivar_list *ivars
@@ -135,7 +238,16 @@ typedef struct category_t {
 3. Category 的方法被放到了新方法列表的前面，而原来类的方法被放到了新方法列表的后面，这也就是我们平常所说的 Category 的方法会“覆盖”掉原来类的同名方法，这是因为运行时在查找方法的时候是顺着方法列表的顺序查找的，它只要一找到对应名字的方法，就会罢休，殊不知后面可能还有一样名字的方法。
 
 ### 集合
-[](https://dayon.gitbooks.io/-ios/content/chapter8.html)
+[招聘一个靠谱的 iOS](https://dayon.gitbooks.io/-ios/content/chapter8.html)
+
+[Objective-C Runtime](http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/)
+
+[Objective-C 消息发送与转发机制原理](http://yulingtianxia.com/blog/2016/06/15/Objective-C-Message-Sending-and-Forwarding/)
+
+[深入理解Objective-C：Category](http://tech.meituan.com/DiveIntoCategory.html)
+
+
+
 
 <br />
 
