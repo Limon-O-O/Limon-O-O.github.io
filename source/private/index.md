@@ -98,8 +98,11 @@ Core Graphics绘制 - 如果对视图实现了-drawRect:方法，或者CALayerDe
 ## OpenGL ES
 
 [Android OpenGLES2.0（十二）——FBO离屏渲染](http://www.voidcn.com/blog/junzia/article/p-6354808.html)
+
 [模板缓冲区](http://www.twinklingstar.cn/2014/1176/stencil-buffer/)
+
 [LearnOpenGL-帧缓冲区](https://learnopengl-cn.readthedocs.io/zh/latest/04%20Advanced%20OpenGL/05%20Framebuffers/)
+
 [内存恶鬼drawRect](http://bihongbo.com/2016/01/03/memoryGhostdrawRect/)
 
 ## Autorelease
@@ -112,24 +115,30 @@ Core Graphics绘制 - 如果对视图实现了-drawRect:方法，或者CALayerDe
     Autorelease 对象是在当前的 runloop 迭代结束时释放的，而它能够释放的原因是系统在每个 runloop 迭代中都加入了自动释放池 Push 和 Pop
 
 3. 什么对象自动加入到 Autoreleasepool 中
-    ##### 第一种
+
+    **第一种**
+
     当使用 `alloc/new/copy/mutableCopy` 进行初始化时，会生成并持有对象(也就是不需要 pool 管理，系统会自动的帮他在合适位置 release)
        `id obj = [NSMutableArray array];`
        这种情况会自动将返回值的对象注册到autorealeasepool，代码等效于：
        
-       ```
-       @autorealsepool{
+    ```
+    @autorealsepool{
         id __autorealeasing obj = [NSMutableArray array];
-}
-```
+    }
+    ```
 
-    ##### 第二种
+    **第二种**
+    
     __weak修饰符只持有对象的弱引用
 
-    ##### 第三种
-    id的指针或对象的指针在没有显式指定时会被附加上__autorealeasing修饰符
+    **第三种**
     
+    id的指针或对象的指针在没有显式指定时会被附加上__autorealeasing修饰符
+
+
 # Runtime
+
 
 ```
 struct objc_object {  
