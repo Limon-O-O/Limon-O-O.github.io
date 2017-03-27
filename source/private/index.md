@@ -105,6 +105,38 @@ Core Graphics绘制 - 如果对视图实现了-drawRect:方法，或者CALayerDe
 [内存恶鬼drawRect](http://bihongbo.com/2016/01/03/memoryGhostdrawRect/)
 
 
+
+###  Category
+#### 为什么 Category 不能添加实例变量
+在 Runtime 中，objc_class 结构体大小是固定的，不可能往这个结构体中添加数据，只能修改。所以ivars 指向的是一个固定区域，之所以能在 Category 添加方法，那是因为 `methodLists` 是指向 `objc_method_list` 指针的指针
+
+```
+struct objc_ivar_list *ivars
+struct objc_method_list **methodLists 
+```
+
+#### 为什么 Category 不能添加一个实例变量，而能添加属性，从 Category 的结构体可以看出
+
+```
+typedef struct category_t {
+    const char *name;
+    classref_t cls;
+    struct method_list_t *instanceMethods;
+    struct method_list_t *classMethods;
+    struct protocol_list_t *protocols;
+    struct property_list_t *instanceProperties;
+} category_t;
+```
+
+#### 使用 Category 需要注意的地方
+
+1. 在 Category 中是不能添加实例变量
+2. Category 是在运行时加载，而不是在编译
+3. Category 的方法被放到了新方法列表的前面，而原来类的方法被放到了新方法列表的后面，这也就是我们平常所说的 Category 的方法会“覆盖”掉原来类的同名方法，这是因为运行时在查找方法的时候是顺着方法列表的顺序查找的，它只要一找到对应名字的方法，就会罢休，殊不知后面可能还有一样名字的方法。
+
+### 集合
+[](https://dayon.gitbooks.io/-ios/content/chapter8.html)
+
 <br />
 
 <p><a name="animations"></a></p>
