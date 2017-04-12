@@ -67,7 +67,7 @@ CFRunLoopSourceRef 是事件产生的地方。Source有两个版本：Source0 �
 
 
 #### 为什么 `shouldRasterize`, `mask`, `shadows` 等会触发离屏渲染？
-猜测，因为需要更高级的功能来处理，可能“窗口系统提供的“帧缓冲区并没”高级“附件来处理，所以需要新创建一个新的帧缓冲区来处理，由于新的帧缓冲区不是默认的帧缓冲区，渲染命令对窗口的可视输出不会产生任何影响。出于这个原因，它被称为离屏渲染（off-screen rendering）
+    猜测，因为需要更高级的功能来处理，可能“窗口系统提供的“帧缓冲区并没”高级“附件来处理，所以需要新创建一个新的帧缓冲区来处理，由于新的帧缓冲区不是默认的帧缓冲区，渲染命令对窗口的可视输出不会产生任何影响。出于这个原因，它被称为离屏渲染（off-screen rendering）
 
 比如：阴影，需要深度缓冲(depth buffer)和模板缓冲(stencil buffer)，而默认的帧缓冲区只有 color buffer，比如 GPUImage 的 FBO 默认只添加了 color buffer
 
@@ -106,6 +106,21 @@ Core Graphics绘制 - 如果对视图实现了-drawRect:方法，或者CALayerDe
 [内存恶鬼drawRect](http://bihongbo.com/2016/01/03/memoryGhostdrawRect/)
 
 ## Autorelease
+
+1. AutoreleasePool并没有单独的结构，而是由若干个AutoreleasePoolPage以双向链表的形式组合而成（分别对应结构中的parent指针和child指针）
+2. AutoreleasePool是按线程一一对应的（结构中的thread指针指向当前线程）
+3. AutoreleasePoolPage每个对象会开辟4096字节内存（也就是虚拟内存一页的大小），除了上面的实例变量所占空间，剩下的空间全部用来储存autorelease对象的地址
+4. `id *next`指针作为游标指向栈顶最新 add 进来的 autorelease 对象的下一个位置
+5. 一个 AutoreleasePoolPage 的空间被占满时，会新建一个 AutoreleasePoolPage 对象，连接链表，后来的 autorelease 对象在新的 page 加入
+
+
+ARC 下，我们使用 `@autoreleasepool{}` 来使用一个 AutoreleasePool，随后编译器将其改写成下面的样子：
+
+```
+void *context = objc_autoreleasePoolPush();
+// {}中的代码
+objc_autoreleasePoolPop(context);
+```
 
 1. Autoreleasepool 与 Runloop 的关系
     主线程默认为我们开启 Runloop，Runloop 会自动帮我们创建 Autoreleasepool，并进行Push、Pop 等操作来进行内存管理，在即将退出 Loop 时调用 _objc_autoreleasePoolPop() 来释放自动释放池
@@ -190,6 +205,9 @@ struct objc_ivar {
 在Objective-C中，runtime会自动调用每个类的两个方法。+load会在类初始加载时调用，+initialize会在第一次调用类的类方法或实例方法之前被调用。这两个方法是可选的，且只有在实现了它们时才会被调用。 
 共同点：两个方法都只会被调用一次。
 
+## weak 变量的自动置变 nil？
+runtime 对注册的类， 会进行布局，对于 weak 对象会放入一个 hash 表中。 用 weak 指向的对象内存地址作为 key，当此对象的引用计数为0的时候会 dealloc，假如 weak 指向的对象内存地址是a，那么就会以a为键， 在这个 weak 表中搜索，找到所有以a为键的 weak 对象，从而设置为 nil。
+
 ## 消息发送、消息转发
 `[obj foo];`
 
@@ -245,6 +263,78 @@ typedef struct category_t {
 1. 在 Category 中是不能添加实例变量
 2. Category 是在运行时加载，而不是在编译
 3. Category 的方法被放到了新方法列表的前面，而原来类的方法被放到了新方法列表的后面，这也就是我们平常所说的 Category 的方法会“覆盖”掉原来类的同名方法，这是因为运行时在查找方法的时候是顺着方法列表的顺序查找的，它只要一找到对应名字的方法，就会罢休，殊不知后面可能还有一样名字的方法。
+
+
+# 深复制与浅复制
+
+对象拷贝有两种方式：浅复制和深复制。顾名思义，浅复制，并不拷贝对象本身，仅仅是拷贝指向对象的指针；深复制是直接拷贝整个对象内存到另一块内存中。
+
+> [iOS 集合的深复制与浅复制](https://www.zybuluo.com/MicroCai/note/50592)
+
+### 在非集合类对象中：
+
+1、对immutable对象进行copy操作，是指针复制，mutableCopy操作时内容复制；
+
+2、对mutable对象进行copy和mutableCopy都是内容复制。
+
+用代码简单表示如下：
+
+```
+[immutableObject copy] //浅复制
+
+[immutableObject mutableCopy] //深复制
+
+[mutableObject copy] //深复制
+
+[mutableObject mutableCopy] //深复制
+```
+
+### 集合的浅复制 (shallow copy)
+
+集合的浅复制有非常多种方法。当你进行浅复制时，会向原始的集合发送retain消息，引用计数加1，同时指针被拷贝到新的集合。
+
+现在让我们看一些浅复制的例子：
+
+```
+NSArray *shallowCopyArray = [someArray copyWithZone:nil];
+NSSet *shallowCopySet = [NSSet mutableCopyWithZone:nil];
+NSDictionary *shallowCopyDict = [[NSDictionary alloc] initWithDictionary:someDictionary copyItems:NO];
+```
+
+### 集合的深复制 (deep copy)
+
+集合的深复制有两种方法
+
+1. `initWithArray:copyItems:` 将第二个参数设置为YES即可深复制，如
+
+    ```
+    NSDictionary shallowCopyDict = [[NSDictionary alloc] initWithDictionary:someDictionary copyItems:YES];
+    ```
+    如果你用这种方法深复制，集合里的每个对象都会收到 copyWithZone: 消息。如果集合里的对象遵循 NSCopying 协议，那么对象就会被深复制到新的集合。如果对象没有遵循 NSCopying 协议，而尝试用这种方法进行深复制，会在运行时出错。copyWithZone: 这种拷贝方式只能够提供一层内存拷贝(one-level-deep copy)，而非真正的深复制。
+    
+2. 第二个方法是将集合进行归档(archive)，然后解档(unarchive)，如：
+    
+    ```
+    NSArray *trueDeepCopyArray = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:oldArray]];
+    ```
+
+# Block
+
+1. block 内部的代码决定了 block 代码存在的区域
+    
+    1. 未涉及局部变量或者外部变量的block, 存储在全局区(执行的代码存储在代码段)
+    2. 涉及局部变量或者外部变量的 block，ARC下都存储在堆区(连执行的代码都存储在堆区,不存储在代码段)
+
+2. block 允许读取局部变量, 但是不允许写入局部变量, 指针类型的变量, 修改的仅仅是指针指向的值, 而不是指针的值. 所以可以更改
+
+3. block 属性为什么用 copy 修饰, 因为在 MRC 下, 如果不用 copy, 拥有局部变量的代码, 存储在栈区, 当作用域结束, block 也因为作用域的原因, 被弹栈了, 也就是被销毁了. 如果使用了copy, 那么 block 就被 copy 到堆区了, 所以 MRC 下使用 copy, 可以解决此问题, ARC 下创建出来就在堆区, 不使用 copy 也行(可能系统内部帮我们 copy 到了堆区), 所以可以使用 strong 修饰.
+
+4. `__block` 就是将局部变量, 拷贝到了堆区, 所以作用域结束, 实际上block修改的只是堆区的备份.
+
+### `__block` 的作用
+
+Block不允许修改外部变量的值，这里所说的外部变量的值，指的是栈中指针的内存地址。`__block` 所起到的作用就是只要观察到该变量被 block 所持有，就将“外部变量”在栈中的内存地址放到了堆中。进而在 block 内部也可以修改外部变量的值。
+
 
 ### 集合
 [招聘一个靠谱的 iOS](https://dayon.gitbooks.io/-ios/content/chapter8.html)
